@@ -13,6 +13,7 @@ import mortgages from "./pages/mortgages";
 import projects from "./pages/projects";
 import projectItemCategories from "./pages/project-item-categories";
 import projectItems from "./pages/project-items";
+import transactions from "./pages/transactions";
 import Dashboard from "./dashboards/home/Dashboard";
 
 const defaultTheme = defaultDarkTheme;
@@ -64,5 +65,6 @@ export const App = () => (
       {...projectItems}
       options={{ label: "Project Items" }}
     />
+    <Resource name="transactions" {...transactions} />
   </Admin>
 );
