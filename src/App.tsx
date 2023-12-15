@@ -1,5 +1,6 @@
 import { Admin, Resource, defaultDarkTheme } from "react-admin";
 import { dataProvider } from "./dataProvider";
+import authProvider from "./authProvider";
 import accounts from "./pages/accounts";
 import accountTypes from "./pages/account-types";
 import balanceTransfers from "./pages/balance-transfers";
@@ -21,7 +22,12 @@ const defaultTheme = defaultDarkTheme;
 // Next 3 renewals
 
 export const App = () => (
-  <Admin dataProvider={dataProvider} theme={defaultTheme} dashboard={Dashboard}>
+  <Admin
+    authProvider={authProvider}
+    dataProvider={dataProvider}
+    theme={defaultTheme}
+    dashboard={Dashboard}
+  >
     <Resource name="accounts" {...accounts} />
     <Resource
       name="account-types"
