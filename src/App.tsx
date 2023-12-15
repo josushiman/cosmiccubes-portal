@@ -18,10 +18,6 @@ import Dashboard from "./dashboards/home/Dashboard";
 
 const defaultTheme = defaultDarkTheme;
 
-// Dashboard for:
-// Upcoming payments for the next 3 days
-// Next 3 renewals
-
 export const App = () => (
   <Admin
     authProvider={authProvider}
