@@ -14,7 +14,7 @@ const EntityList = () => (
       <TextField source="name" />
       <ReferenceField
         source="account.id"
-        reference="accounts"
+        reference="portal/accounts"
         label="Account"
         sortable={false}
       >
@@ -22,7 +22,7 @@ const EntityList = () => (
       </ReferenceField>
       <ReferenceField
         source="company.id"
-        reference="companies"
+        reference="portal/companies"
         label="Company"
         sortable={false}
       >

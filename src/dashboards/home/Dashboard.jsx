@@ -79,6 +79,7 @@ const Dashboard = () => (
       />
       <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
     </LineChart>
+    {/* <DirectDebits /> */}
     {/* <ResourceContextProvider value="admin/country">
       <CountryList />
     </ResourceContextProvider> */}

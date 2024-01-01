@@ -29,7 +29,7 @@ const EntityCreate = () => {
         <Stack direction="row" spacing={2} alignItems="center">
           <ReferenceInput
             source="account_id"
-            reference="accounts"
+            reference="portal/accounts"
             sort={{ field: "name", order: "ASC" }}
           >
             <AutocompleteInput

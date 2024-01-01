@@ -8,7 +8,7 @@ const EntityList = () => (
       <TextField source="name" />
       <ReferenceField
         source="type.id"
-        reference="account-types"
+        reference="portal/account-types"
         label="Type"
         sortable={false}
       >
