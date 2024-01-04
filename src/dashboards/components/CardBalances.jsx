@@ -1,4 +1,5 @@
 import { Box } from "@mui/material";
+import Grid from "@mui/material/Unstable_Grid2";
 import useAsync from "../../hooks/useAsync";
 
 const CardBalances = () => {
@@ -125,9 +126,9 @@ const CardBalances = () => {
   ));
 
   return (
-    <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+    <Grid container justifyContent={"space-between"} rowGap={"1rem"}>
       {cardBalances}
-    </Box>
+    </Grid>
   );
 };
 

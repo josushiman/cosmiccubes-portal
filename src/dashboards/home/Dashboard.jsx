@@ -58,16 +58,16 @@ const Dashboard = () => {
 
   return (
     <Grid container style={{ padding: "1rem" }} spacing={2}>
-      <Grid md={2}>
+      <Grid md={2} xs={12}>
         <AvailableBalance />
       </Grid>
-      <Grid md={6} style={{ alignSelf: "flex-end" }}>
+      <Grid md={6} xs={12} style={{ alignSelf: "flex-end" }}>
         <CardBalances />
       </Grid>
-      <Grid md={4} style={{ alignSelf: "flex-end" }}>
+      <Grid md={4} xs={12} style={{ alignSelf: "flex-end" }}>
         <SpentVsBudget />
       </Grid>
-      <Grid md={2}>
+      <Grid md={2} xs={12}>
         <TimePeriod
           months={months}
           setMonthIntervals={setMonthIntervals}
