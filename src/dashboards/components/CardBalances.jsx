@@ -14,8 +14,6 @@ const CardBalances = () => {
     return <div>Error: {error.message}</div>;
   }
 
-  //   For card in data.data create a card
-  //   Different logos for 'BA AMEX', 'HSBC CC', 'Barclays CC'
   const amexLogo = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
