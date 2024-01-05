@@ -12,6 +12,7 @@ import UpcomingBills from "../components/UpcomingBills";
 import UpcomingRenewals from "../components/UpcomingRenewals";
 import SalaryBreakdown from "../components/SalaryBreakdown";
 import CreditLastPaid from "../components/CreditLastPaid";
+import LastXTransactions from "../components/LastXTransactions";
 
 const Dashboard = () => {
   const [months, setMonths] = useState(3);
@@ -99,6 +100,9 @@ const Dashboard = () => {
       </Grid>
       <Grid md={4} xs={12}>
         <CategoriesSpent />
+      </Grid>
+      <Grid md={4} xs={12}>
+        <LastXTransactions />
       </Grid>
       <Grid md={2} xs={12}>
         <TimePeriod
