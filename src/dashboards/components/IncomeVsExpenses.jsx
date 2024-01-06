@@ -8,7 +8,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-// import useAsync from "../../hooks/useAsync";
+import formatCurrency from "../../hooks/formatCurrency";
 
 const IncomeVsExpenses = () => {
   //   const { data, loading, error } = useAsync("/ynab/available-balance");
@@ -41,14 +41,6 @@ const IncomeVsExpenses = () => {
     },
   ];
 
-  // TODO turn this into a hook
-  let GBPCurrency = new Intl.NumberFormat("en-GB", {
-    style: "currency",
-    currency: "GBP",
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  });
-
   return (
     <Card
       sx={{
@@ -70,7 +62,7 @@ const IncomeVsExpenses = () => {
             stroke="white"
             tickMargin={5}
             tickFormatter={(value) => {
-              return GBPCurrency.format(value);
+              return formatCurrency(value, true);
             }}
           />
           <Tooltip />

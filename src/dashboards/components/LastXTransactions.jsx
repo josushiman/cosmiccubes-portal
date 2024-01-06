@@ -1,6 +1,7 @@
 import { Card, Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 // import useAsync from "../../hooks/useAsync";
+import formatCurrency from "../../hooks/formatCurrency";
 
 const LastXTransactions = () => {
   //   const { data, loading, error } = useAsync("/ynab/available-balance");
@@ -30,7 +31,9 @@ const LastXTransactions = () => {
         >
           <Grid container justifyContent={"space-between"}>
             <Typography variant="subtitle1">Amazon</Typography>
-            <Typography variant="subtitle1">£51.94</Typography>
+            <Typography variant="subtitle1">
+              £ {formatCurrency(51.94)}
+            </Typography>
           </Grid>
           <Grid container justifyContent={"space-between"}>
             <Typography variant="caption" fontStyle={"italic"}>
@@ -48,7 +51,9 @@ const LastXTransactions = () => {
         >
           <Grid container justifyContent={"space-between"}>
             <Typography variant="subtitle1">Amazon</Typography>
-            <Typography variant="subtitle1">£51.94</Typography>
+            <Typography variant="subtitle1">
+              £ {formatCurrency(51.94)}
+            </Typography>
           </Grid>
           <Grid container justifyContent={"space-between"}>
             <Typography variant="caption" fontStyle={"italic"}>
@@ -66,7 +71,9 @@ const LastXTransactions = () => {
         >
           <Grid container justifyContent={"space-between"}>
             <Typography variant="subtitle1">Amazon</Typography>
-            <Typography variant="subtitle1">£51.94</Typography>
+            <Typography variant="subtitle1">
+              £ {formatCurrency(51.94)}
+            </Typography>
           </Grid>
           <Grid container justifyContent={"space-between"}>
             <Typography variant="caption" fontStyle={"italic"}>
@@ -84,7 +91,9 @@ const LastXTransactions = () => {
         >
           <Grid container justifyContent={"space-between"}>
             <Typography variant="subtitle1">Amazon</Typography>
-            <Typography variant="subtitle1">£51.94</Typography>
+            <Typography variant="subtitle1">
+              £ {formatCurrency(51.94)}
+            </Typography>
           </Grid>
           <Grid container justifyContent={"space-between"}>
             <Typography variant="caption" fontStyle={"italic"}>
@@ -102,7 +111,9 @@ const LastXTransactions = () => {
         >
           <Grid container justifyContent={"space-between"}>
             <Typography variant="subtitle1">Amazon</Typography>
-            <Typography variant="subtitle1">£51.94</Typography>
+            <Typography variant="subtitle1">
+              £ {formatCurrency(51.94)}
+            </Typography>
           </Grid>
           <Grid container justifyContent={"space-between"}>
             <Typography variant="caption" fontStyle={"italic"}>

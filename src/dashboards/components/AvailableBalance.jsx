@@ -1,6 +1,7 @@
 import { Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import useAsync from "../../hooks/useAsync";
+import formatCurrency from "../../hooks/formatCurrency";
 
 const AvailableBalance = () => {
   const { data, loading, error } = useAsync("/ynab/available-balance");
@@ -15,20 +16,16 @@ const AvailableBalance = () => {
     return <div>Error: {error.message}</div>;
   }
 
-  // TODO turn this into a hook
-  let GBPCurrency = new Intl.NumberFormat("en-GB", {
-    style: "currency",
-    currency: "GBP",
-  }).resolvedOptions().minimumFractionDigits;
-
   return (
-    <Grid container justifyContent={"space-between"} rowGap={"1rem"}>
+    <Grid
+      container
+      justifyContent={"space-between"}
+      rowGap={"0.25rem"}
+      flexDirection={"column"}
+    >
       <Typography variant="h4">Available Balance</Typography>
       <Typography variant="h5" fontWeight={300}>
-        <span>£</span>{" "}
-        {data.available.toLocaleString("en-GB", {
-          minimumFractionDigits: GBPCurrency,
-        })}
+        <span>£</span> {formatCurrency(data.available)}
       </Typography>
     </Grid>
   );

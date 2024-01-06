@@ -13,6 +13,7 @@ import UpcomingRenewals from "../components/UpcomingRenewals";
 import SalaryBreakdown from "../components/SalaryBreakdown";
 import CreditLastPaid from "../components/CreditLastPaid";
 import LastXTransactions from "../components/LastXTransactions";
+import "./styles.css";
 
 const Dashboard = () => {
   const [months, setMonths] = useState(3);
@@ -67,54 +68,56 @@ const Dashboard = () => {
 
   // TODO replace Grid with custom CSS grid.
   return (
-    <Grid container style={{ padding: "1rem" }} spacing={2}>
-      <Grid md={2} xs={12}>
-        <AvailableBalance />
-      </Grid>
-      <Grid md={6} xs={12} style={{ alignSelf: "flex-end" }}>
-        <CardBalances />
-      </Grid>
-      <Grid md={4} xs={12} style={{ alignSelf: "flex-end" }}>
-        <SpentVsBudget />
-      </Grid>
-      <Grid md={2} xs={12}>
-        <EarnedVsSpent />
-      </Grid>
-      <Grid md={6} xs={12}>
-        <IncomeVsExpenses />
-      </Grid>
-      <Grid md={4} xs={12}>
-        <SubCategoriesSpent />
-      </Grid>
-      <Grid md={3} xs={12}>
-        <UpcomingBills />
-      </Grid>
-      <Grid md={3} xs={12}>
-        <UpcomingRenewals />
-      </Grid>
-      <Grid md={3} xs={12}>
-        <SalaryBreakdown />
-      </Grid>
-      <Grid md={3} xs={12}>
-        <CreditLastPaid />
-      </Grid>
-      <Grid md={4} xs={12}>
-        <CategoriesSpent />
-      </Grid>
-      <Grid md={4} xs={12}>
-        <LastXTransactions />
-      </Grid>
-      <Grid md={2} xs={12}>
-        <TimePeriod
-          months={months}
-          setMonthIntervals={setMonthIntervals}
-          year={year}
-          setYearInterval={setYearInterval}
-          month={month}
-          setMonthInterval={setMonthInterval}
-        />
-      </Grid>
-    </Grid>
+    <>
+      <div className="dashboard-container">
+        <Grid style={{ gridArea: "available-balance" }}>
+          <AvailableBalance />
+        </Grid>
+        <Grid style={{ gridArea: "card-balances", alignSelf: "flex-end" }}>
+          <CardBalances />
+        </Grid>
+        <Grid style={{ gridArea: "spent-vs-budget", alignSelf: "flex-end" }}>
+          <SpentVsBudget />
+        </Grid>
+        <Grid style={{ gridArea: "earned-vs-spent" }}>
+          <EarnedVsSpent />
+        </Grid>
+        <Grid style={{ gridArea: "income-vs-expenses" }}>
+          <IncomeVsExpenses />
+        </Grid>
+        <Grid style={{ gridArea: "categories-spent" }}>
+          <CategoriesSpent />
+        </Grid>
+        <Grid style={{ gridArea: "time-period" }}>
+          <TimePeriod
+            months={months}
+            setMonthIntervals={setMonthIntervals}
+            year={year}
+            setYearInterval={setYearInterval}
+            month={month}
+            setMonthInterval={setMonthInterval}
+          />
+        </Grid>
+        <Grid style={{ gridArea: "sub-categories-spent" }}>
+          <SubCategoriesSpent />
+        </Grid>
+        <Grid style={{ gridArea: "upcoming-bills" }}>
+          <UpcomingBills />
+        </Grid>
+        <Grid style={{ gridArea: "credit-last-paid" }}>
+          <CreditLastPaid />
+        </Grid>
+        <Grid style={{ gridArea: "upcoming-renewals" }}>
+          <UpcomingRenewals />
+        </Grid>
+        <Grid style={{ gridArea: "salary-breakdown" }}>
+          <SalaryBreakdown />
+        </Grid>
+        <Grid style={{ gridArea: "last-x-transactions" }}>
+          <LastXTransactions />
+        </Grid>
+      </div>
+    </>
   );
 };
 

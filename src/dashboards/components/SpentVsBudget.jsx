@@ -1,13 +1,18 @@
-import { Box, Typography } from "@mui/material";
-import LinearProgress from "@mui/material/LinearProgress";
-import useAsync from "../../hooks/useAsync";
+import { styled } from "@mui/material/styles";
+import { Typography } from "@mui/material";
+import LinearProgress, {
+  linearProgressClasses,
+} from "@mui/material/LinearProgress";
+import Grid from "@mui/material/Unstable_Grid2";
+// import useAsync from "../../hooks/useAsync";
+import formatCurrency from "../../hooks/formatCurrency";
 
 const SpentVsBudget = () => {
-  const {
-    data: realData, // TODO change this to data
-    loading,
-    error,
-  } = useAsync("/ynab/available-balance"); // TODO replace with real endpoint.
+  // const {
+  //   data: realData, // TODO change this to data
+  //   loading,
+  //   error,
+  // } = useAsync("/ynab/available-balance"); // TODO replace with real endpoint.
 
   // Example output
   const data = {
@@ -16,42 +21,44 @@ const SpentVsBudget = () => {
     progress: 34,
   };
 
-  if (loading || !data) {
-    // Add skeleton
-    return <div>Loading...</div>;
-  }
+  // if (loading || !data) {
+  //   // Add skeleton
+  //   return <div>Loading...</div>;
+  // }
 
-  if (error) {
-    // Pass generic error message
-    return <div>Error: {error.message}</div>;
-  }
+  // if (error) {
+  //   // Pass generic error message
+  //   return <div>Error: {error.message}</div>;
+  // }
+
+  const BorderLinearProgress = styled(LinearProgress)(() => ({
+    height: 7,
+    borderRadius: 5,
+    [`&.${linearProgressClasses.colorPrimary}`]: {
+      backgroundColor: "white",
+    },
+    [`& .${linearProgressClasses.bar}`]: {
+      borderRadius: 0,
+      backgroundColor: "#C06969",
+    },
+  }));
 
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", gap: "0.25rem" }}>
+    <Grid container flexDirection={"column"} gap={"0.25rem"}>
       <Typography variant="h6" style={{ alignSelf: "flex-end" }}>
         Spent vs Budget
       </Typography>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "0.125rem",
-          color: "#C06969",
-        }}
-      >
+      <Grid container flexDirection={"column"} gap={"0.125rem"}>
         <Typography
           variant="body1"
           style={{ alignSelf: "flex-end", color: "white" }}
         >
-          <span>£</span> {data.spent} / {data.budget}
+          <span>£</span> {formatCurrency(data.spent)} /{" "}
+          {formatCurrency(data.budget)}
         </Typography>
-        <LinearProgress
-          variant="determinate"
-          value={data.progress}
-          color="inherit"
-        />
-      </Box>
-    </Box>
+        <BorderLinearProgress variant="determinate" value={data.progress} />
+      </Grid>
+    </Grid>
   );
 };
 

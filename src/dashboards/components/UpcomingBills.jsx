@@ -1,6 +1,7 @@
 import { Card, Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 // import useAsync from "../../hooks/useAsync";
+import formatCurrency from "../../hooks/formatCurrency";
 
 const UpcomingBills = () => {
   //   const { data, loading, error } = useAsync("/ynab/available-balance");
@@ -22,12 +23,6 @@ const UpcomingBills = () => {
   //     return <div>Error: {error.message}</div>;
   //   }
 
-  // TODO turn this into a hook
-  let GBPCurrency = new Intl.NumberFormat("en-GB", {
-    style: "currency",
-    currency: "GBP",
-  }).resolvedOptions().minimumFractionDigits;
-
   return (
     <Card>
       <Grid container flexDirection={"column"} rowGap={"1rem"} padding={"1rem"}>
@@ -37,50 +32,35 @@ const UpcomingBills = () => {
             <Typography variant="body2">Gym</Typography>
             <Typography variant="body2">1 day</Typography>
             <Typography variant="body2" fontWeight={300}>
-              <span>£</span>{" "}
-              {data.amount.toLocaleString("en-GB", {
-                minimumFractionDigits: GBPCurrency,
-              })}
+              <span>£</span> {formatCurrency(data.amount)}
             </Typography>
           </Grid>
           <Grid container columns={3} justifyContent={"space-between"}>
             <Typography variant="body2">Gym</Typography>
             <Typography variant="body2">1 day</Typography>
             <Typography variant="body2" fontWeight={300}>
-              <span>£</span>{" "}
-              {data.amount.toLocaleString("en-GB", {
-                minimumFractionDigits: GBPCurrency,
-              })}
+              <span>£</span> {formatCurrency(data.amount)}
             </Typography>
           </Grid>
           <Grid container columns={3} justifyContent={"space-between"}>
             <Typography variant="body2">Gym</Typography>
             <Typography variant="body2">1 day</Typography>
             <Typography variant="body2" fontWeight={300}>
-              <span>£</span>{" "}
-              {data.amount.toLocaleString("en-GB", {
-                minimumFractionDigits: GBPCurrency,
-              })}
+              <span>£</span> {formatCurrency(data.amount)}
             </Typography>
           </Grid>
           <Grid container columns={3} justifyContent={"space-between"}>
             <Typography variant="body2">Gym</Typography>
             <Typography variant="body2">1 day</Typography>
             <Typography variant="body2" fontWeight={300}>
-              <span>£</span>{" "}
-              {data.amount.toLocaleString("en-GB", {
-                minimumFractionDigits: GBPCurrency,
-              })}
+              <span>£</span> {formatCurrency(data.amount)}
             </Typography>
           </Grid>
           <Grid container columns={3} justifyContent={"space-between"}>
             <Typography variant="body2">Gym</Typography>
             <Typography variant="body2">1 day</Typography>
             <Typography variant="body2" fontWeight={300}>
-              <span>£</span>{" "}
-              {data.amount.toLocaleString("en-GB", {
-                minimumFractionDigits: GBPCurrency,
-              })}
+              <span>£</span> {formatCurrency(data.amount)}
             </Typography>
           </Grid>
         </Grid>

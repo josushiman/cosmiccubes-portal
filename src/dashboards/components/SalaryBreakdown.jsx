@@ -1,6 +1,7 @@
 import { Card, Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 // import useAsync from "../../hooks/useAsync";
+import formatCurrency from "../../hooks/formatCurrency";
 
 const SalaryBreakdown = () => {
   //   const { data, loading, error } = useAsync("/ynab/available-balance");
@@ -22,12 +23,6 @@ const SalaryBreakdown = () => {
   //     return <div>Error: {error.message}</div>;
   //   }
 
-  // TODO turn this into a hook
-  let GBPCurrency = new Intl.NumberFormat("en-GB", {
-    style: "currency",
-    currency: "GBP",
-  }).resolvedOptions().minimumFractionDigits;
-
   return (
     <Card>
       <Grid container flexDirection={"column"} rowGap={"1rem"} padding={"1rem"}>
@@ -42,10 +37,7 @@ const SalaryBreakdown = () => {
               Earnings
             </Typography>
             <Typography variant="body2">
-              <span>£</span>{" "}
-              {data.amount.toLocaleString("en-GB", {
-                minimumFractionDigits: GBPCurrency,
-              })}
+              <span>£</span> {formatCurrency(data.amount)}
             </Typography>
           </Grid>
           <Grid container justifyContent={"space-between"}>
@@ -57,10 +49,7 @@ const SalaryBreakdown = () => {
               Tax & NI
             </Typography>
             <Typography variant="body2">
-              <span>£</span>{" "}
-              {data.amount.toLocaleString("en-GB", {
-                minimumFractionDigits: GBPCurrency,
-              })}
+              <span>£</span> {formatCurrency(data.amount)}
             </Typography>
           </Grid>
           <Grid container justifyContent={"space-between"}>
@@ -72,10 +61,7 @@ const SalaryBreakdown = () => {
               Benefits
             </Typography>
             <Typography variant="body2">
-              <span>£</span>{" "}
-              {data.amount.toLocaleString("en-GB", {
-                minimumFractionDigits: GBPCurrency,
-              })}
+              <span>£</span> {formatCurrency(data.amount)}
             </Typography>
           </Grid>
           <Grid container justifyContent={"space-between"}>
@@ -88,10 +74,7 @@ const SalaryBreakdown = () => {
               Net
             </Typography>
             <Typography variant="body2" fontWeight={800}>
-              <span>£</span>{" "}
-              {data.amount.toLocaleString("en-GB", {
-                minimumFractionDigits: GBPCurrency,
-              })}
+              <span>£</span> {formatCurrency(data.amount)}
             </Typography>
           </Grid>
         </Grid>

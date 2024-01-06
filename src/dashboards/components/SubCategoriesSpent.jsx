@@ -5,6 +5,7 @@ import LinearProgress, {
 } from "@mui/material/LinearProgress";
 import Grid from "@mui/material/Unstable_Grid2";
 // import useAsync from "../../hooks/useAsync";
+import formatCurrency from "../../hooks/formatCurrency";
 
 const SubCategoriesSpent = () => {
   //   const {
@@ -66,7 +67,7 @@ const SubCategoriesSpent = () => {
               variant="body1"
               style={{ alignSelf: "flex-end", color: "white" }}
             >
-              <span>£</span> {data.spent}
+              <span>£</span> {formatCurrency(data.spent)}
             </Typography>
           </Grid>
           <BorderLinearProgress variant="determinate" value={data.progress} />
@@ -82,7 +83,7 @@ const SubCategoriesSpent = () => {
               variant="body1"
               style={{ alignSelf: "flex-end", color: "white" }}
             >
-              <span>£</span> {data.spent}
+              <span>£</span> {formatCurrency(data.spent)}
             </Typography>
           </Grid>
           <BorderLinearProgress variant="determinate" value={data.progress} />
@@ -98,7 +99,7 @@ const SubCategoriesSpent = () => {
               variant="body1"
               style={{ alignSelf: "flex-end", color: "white" }}
             >
-              <span>£</span> {data.spent}
+              <span>£</span> {formatCurrency(data.spent)}
             </Typography>
           </Grid>
           <BorderLinearProgress variant="determinate" value={data.progress} />
@@ -114,7 +115,23 @@ const SubCategoriesSpent = () => {
               variant="body1"
               style={{ alignSelf: "flex-end", color: "white" }}
             >
-              <span>£</span> {data.spent}
+              <span>£</span> {formatCurrency(data.spent)}
+            </Typography>
+          </Grid>
+          <BorderLinearProgress variant="determinate" value={data.progress} />
+        </Grid>
+        <Grid>
+          <Grid
+            container
+            justifyContent={"space-between"}
+            paddingBottom={"0.5rem"}
+          >
+            <Typography variant="subtitle1">Parking</Typography>
+            <Typography
+              variant="body1"
+              style={{ alignSelf: "flex-end", color: "white" }}
+            >
+              <span>£</span> {formatCurrency(data.spent)}
             </Typography>
           </Grid>
           <BorderLinearProgress variant="determinate" value={data.progress} />

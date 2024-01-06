@@ -4,6 +4,7 @@ import LinearProgress, {
   linearProgressClasses,
 } from "@mui/material/LinearProgress";
 import Grid from "@mui/material/Unstable_Grid2";
+import formatCurrency from "../../hooks/formatCurrency";
 // import useAsync from "../../hooks/useAsync";
 
 const CategoriesSpent = () => {
@@ -58,7 +59,8 @@ const CategoriesSpent = () => {
               variant="body1"
               style={{ alignSelf: "flex-end", color: "white" }}
             >
-              <span>£</span> {data.spent} / {data.budget}
+              <span>£</span> {formatCurrency(data.spent)} /{" "}
+              {formatCurrency(data.budget)}
             </Typography>
           </Grid>
           <BorderLinearProgress variant="determinate" value={data.progress} />
@@ -70,7 +72,8 @@ const CategoriesSpent = () => {
               variant="body1"
               style={{ alignSelf: "flex-end", color: "white" }}
             >
-              <span>£</span> {data.spent} / {data.budget}
+              <span>£</span> {formatCurrency(data.spent)} /{" "}
+              {formatCurrency(data.budget)}
             </Typography>
           </Grid>
           <BorderLinearProgress variant="determinate" value={data.progress} />
@@ -82,7 +85,8 @@ const CategoriesSpent = () => {
               variant="body1"
               style={{ alignSelf: "flex-end", color: "white" }}
             >
-              <span>£</span> {data.spent} / {data.budget}
+              <span>£</span> {formatCurrency(data.spent)} /{" "}
+              {formatCurrency(data.budget)}
             </Typography>
           </Grid>
           <BorderLinearProgress variant="determinate" value={data.progress} />
@@ -94,7 +98,8 @@ const CategoriesSpent = () => {
               variant="body1"
               style={{ alignSelf: "flex-end", color: "white" }}
             >
-              <span>£</span> {data.spent} / {data.budget}
+              <span>£</span> {formatCurrency(data.spent)} /{" "}
+              {formatCurrency(data.budget)}
             </Typography>
           </Grid>
           <BorderLinearProgress variant="determinate" value={data.progress} />

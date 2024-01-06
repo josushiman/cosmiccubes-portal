@@ -1,0 +1,42 @@
+/* Default mobile view */
+.dashboard-container {
+  display: grid;
+  width: 100%;
+  row-gap: 1rem;
+  padding: 1rem;
+  grid-template-areas:
+    "available-balance"
+    "card-balances"
+    "spent-vs-budget"
+    "time-period"
+    "earned-vs-spent"
+    "income-vs-expenses"
+    "categories-spent"
+    "sub-categories-spent"
+    "credit-last-paid"
+    "upcoming-bills"
+    "upcoming-renewals"
+    "last-x-transactions"
+    "salary-breakdown";
+}
+
+/* Desktop view */
+@media screen and (min-width: 700px) {
+  .dashboard-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, auto);
+    gap: 1rem;
+    padding: 1rem;
+    grid-template-areas:
+      "available-balance card-balances card-balances spent-vs-budget"
+      "earned-vs-spent income-vs-expenses income-vs-expenses categories-spent"
+      "earned-vs-spent income-vs-expenses income-vs-expenses categories-spent"
+      "time-period income-vs-expenses income-vs-expenses sub-categories-spent"
+      "time-period upcoming-bills upcoming-renewals sub-categories-spent"
+      "time-period upcoming-bills upcoming-renewals sub-categories-spent"
+      "time-period upcoming-bills upcoming-renewals sub-categories-spent"
+      "last-x-transactions upcoming-bills upcoming-renewals credit-last-paid"
+      "last-x-transactions upcoming-bills upcoming-renewals salary-breakdown";
+  }
+}

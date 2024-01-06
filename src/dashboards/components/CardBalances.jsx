@@ -1,6 +1,6 @@
-import { Box } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import useAsync from "../../hooks/useAsync";
+import formatCurrency from "../../hooks/formatCurrency";
 
 const CardBalances = () => {
   const { data, loading, error } = useAsync("/ynab/card-balances");
@@ -94,35 +94,26 @@ const CardBalances = () => {
 
   const cardBalanceData = data.data;
   const cardBalances = cardBalanceData.map((item, index) => (
-    <Box
-      key={index}
-      sx={{
-        display: "flex",
-        gap: "1rem",
-        height: "3rem",
-      }}
-    >
+    <Grid container gap={"1rem"} key={index}>
       {item.name == "BA AMEX"
         ? amexLogo
         : item.name == "Barclays CC"
         ? barclayLogo
         : hsbcLogo}
-      <Box
-        sx={{
-          backgroundColor: "#242424",
-          borderRadius: "0.5rem",
-          display: "flex",
-          gap: "1rem",
-          alignItems: "center",
-          padding: "1rem",
-          width: "9rem",
-          justifyContent: "space-between",
-        }}
+      <Grid
+        container
+        borderRadius={"0.5rem"}
+        gap={"1rem"}
+        alignItems={"center"}
+        padding={"0 1rem"}
+        justifyContent={"space-between"}
+        width={"9rem"}
+        backgroundColor={"#242424"}
       >
         <span>£</span>
-        <p>{item.balance}</p>
-      </Box>
-    </Box>
+        <p>{formatCurrency(item.balance)}</p>
+      </Grid>
+    </Grid>
   ));
 
   return (
