@@ -1,17 +1,10 @@
 import { Card, Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
-// import useAsync from "../../hooks/useAsync";
 import formatCurrency from "../../hooks/formatCurrency";
+// import useAsync from "../../hooks/useAsync";
 
 const UpcomingBills = () => {
   //   const { data, loading, error } = useAsync("/ynab/available-balance");
-
-  // Example output
-  const data = {
-    spent: 1200.34,
-    budget: 3500,
-    amount: 34.1,
-  };
 
   //   if (loading || !data) {
   //     // Add skeleton
@@ -23,46 +16,56 @@ const UpcomingBills = () => {
   //     return <div>Error: {error.message}</div>;
   //   }
 
+  // Example output
+  const data = {
+    since_date: "12/10/2023",
+    data: [
+      {
+        name: "Gym",
+        days: 1,
+        amount: 34.1,
+      },
+      {
+        name: "Gym",
+        days: 2,
+        amount: 34.1,
+      },
+      {
+        name: "Gym",
+        days: 2,
+        amount: 34.1,
+      },
+      {
+        name: "Gym",
+        days: 2,
+        amount: 34.1,
+      },
+      {
+        name: "Gym",
+        days: 3,
+        amount: 34.1,
+      },
+    ],
+  };
+
+  const upcomingBillsData = data.data.map((item, index) => (
+    <Grid key={index} container columns={3} justifyContent={"space-between"}>
+      <Typography variant="body2">{item.name}</Typography>
+      <Typography variant="body2">
+        {item.days} day{item.days > 1 ? "s" : ""}
+      </Typography>
+      <Typography variant="body2" fontWeight={300}>
+        <span>£</span> {formatCurrency(item.amount)}
+      </Typography>
+    </Grid>
+  ));
+
   return (
     <Card>
       <Grid container flexDirection={"column"} rowGap={"1rem"} padding={"1rem"}>
         <Typography variant="subtitle1">Upcoming Bills</Typography>
         <Grid container flexDirection={"column"} rowGap={"0.5rem"}>
-          <Grid container columns={3} justifyContent={"space-between"}>
-            <Typography variant="body2">Gym</Typography>
-            <Typography variant="body2">1 day</Typography>
-            <Typography variant="body2" fontWeight={300}>
-              <span>£</span> {formatCurrency(data.amount)}
-            </Typography>
-          </Grid>
-          <Grid container columns={3} justifyContent={"space-between"}>
-            <Typography variant="body2">Gym</Typography>
-            <Typography variant="body2">1 day</Typography>
-            <Typography variant="body2" fontWeight={300}>
-              <span>£</span> {formatCurrency(data.amount)}
-            </Typography>
-          </Grid>
-          <Grid container columns={3} justifyContent={"space-between"}>
-            <Typography variant="body2">Gym</Typography>
-            <Typography variant="body2">1 day</Typography>
-            <Typography variant="body2" fontWeight={300}>
-              <span>£</span> {formatCurrency(data.amount)}
-            </Typography>
-          </Grid>
-          <Grid container columns={3} justifyContent={"space-between"}>
-            <Typography variant="body2">Gym</Typography>
-            <Typography variant="body2">1 day</Typography>
-            <Typography variant="body2" fontWeight={300}>
-              <span>£</span> {formatCurrency(data.amount)}
-            </Typography>
-          </Grid>
-          <Grid container columns={3} justifyContent={"space-between"}>
-            <Typography variant="body2">Gym</Typography>
-            <Typography variant="body2">1 day</Typography>
-            <Typography variant="body2" fontWeight={300}>
-              <span>£</span> {formatCurrency(data.amount)}
-            </Typography>
-          </Grid>
+          {upcomingBillsData}
         </Grid>
       </Grid>
     </Card>

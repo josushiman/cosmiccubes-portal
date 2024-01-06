@@ -1,15 +1,12 @@
-import { styled } from "@mui/material/styles";
 import { Typography } from "@mui/material";
-import LinearProgress, {
-  linearProgressClasses,
-} from "@mui/material/LinearProgress";
 import Grid from "@mui/material/Unstable_Grid2";
-// import useAsync from "../../hooks/useAsync";
 import formatCurrency from "../../hooks/formatCurrency";
+import { BorderLinearProgressWhiteBackground } from "../../commons/BorderLinearProgress";
+// import useAsync from "../../hooks/useAsync";
 
 const SpentVsBudget = () => {
   // const {
-  //   data: realData, // TODO change this to data
+  //   data,
   //   loading,
   //   error,
   // } = useAsync("/ynab/available-balance"); // TODO replace with real endpoint.
@@ -31,18 +28,6 @@ const SpentVsBudget = () => {
   //   return <div>Error: {error.message}</div>;
   // }
 
-  const BorderLinearProgress = styled(LinearProgress)(() => ({
-    height: 7,
-    borderRadius: 5,
-    [`&.${linearProgressClasses.colorPrimary}`]: {
-      backgroundColor: "white",
-    },
-    [`& .${linearProgressClasses.bar}`]: {
-      borderRadius: 0,
-      backgroundColor: "#C06969",
-    },
-  }));
-
   return (
     <Grid container flexDirection={"column"} gap={"0.25rem"}>
       <Typography variant="h6" style={{ alignSelf: "flex-end" }}>
@@ -56,7 +41,10 @@ const SpentVsBudget = () => {
           <span>£</span> {formatCurrency(data.spent)} /{" "}
           {formatCurrency(data.budget)}
         </Typography>
-        <BorderLinearProgress variant="determinate" value={data.progress} />
+        <BorderLinearProgressWhiteBackground
+          variant="determinate"
+          value={data.progress}
+        />
       </Grid>
     </Grid>
   );

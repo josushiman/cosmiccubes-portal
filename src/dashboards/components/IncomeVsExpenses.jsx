@@ -23,23 +23,27 @@ const IncomeVsExpenses = () => {
   //     return <div>Error: {error.message}</div>;
   //   }
 
-  const data = [
-    {
-      month: "November",
-      income: 7000,
-      expenses: 3400,
-    },
-    {
-      month: "December",
-      income: 11000,
-      expenses: 4400,
-    },
-    {
-      month: "January",
-      income: 5000,
-      expenses: 2800,
-    },
-  ];
+  // Example output
+  const data = {
+    since_date: "12/12/2023",
+    data: [
+      {
+        month: "November",
+        income: 7000,
+        expenses: 3400,
+      },
+      {
+        month: "December",
+        income: 11000,
+        expenses: 4400,
+      },
+      {
+        month: "January",
+        income: 5000,
+        expenses: 2800,
+      },
+    ],
+  };
 
   return (
     <Card
@@ -49,7 +53,7 @@ const IncomeVsExpenses = () => {
     >
       <ResponsiveContainer width="100%" height={400}>
         <ComposedChart
-          data={data}
+          data={data.data}
           margin={{
             top: 10,
             right: 30,

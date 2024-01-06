@@ -1,19 +1,19 @@
 import Grid from "@mui/material/Unstable_Grid2";
-import useAsync from "../../hooks/useAsync";
 import formatCurrency from "../../hooks/formatCurrency";
+// import useAsync from "../../hooks/useAsync";
 
 const CardBalances = () => {
-  const { data, loading, error } = useAsync("/ynab/card-balances");
+  // const { data, loading, error } = useAsync("/ynab/card-balances");
 
-  if (loading || !data) {
-    // Add skeleton
-    return <div>Loading...</div>;
-  }
+  // if (loading || !data) {
+  //   // Add skeleton
+  //   return <div>Loading...</div>;
+  // }
 
-  if (error) {
-    // Pass generic error message
-    return <div>Error: {error.message}</div>;
-  }
+  // if (error) {
+  //   // Pass generic error message
+  //   return <div>Error: {error.message}</div>;
+  // }
 
   const amexLogo = (
     <svg
@@ -91,6 +91,29 @@ const CardBalances = () => {
       />
     </svg>
   );
+
+  const data = {
+    data: [
+      {
+        name: "BA AMEX",
+        balance: -3544.28,
+        cleared: -2449.28,
+        uncleared: -1095.0,
+      },
+      {
+        name: "HSBC CC",
+        balance: -134.12,
+        cleared: -134.12,
+        uncleared: 0.0,
+      },
+      {
+        name: "Barclays CC",
+        balance: -2568.05,
+        cleared: -2568.05,
+        uncleared: 0.0,
+      },
+    ],
+  };
 
   const cardBalanceData = data.data;
   const cardBalances = cardBalanceData.map((item, index) => (

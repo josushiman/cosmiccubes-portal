@@ -1,7 +1,7 @@
 import { Card, Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
-// import useAsync from "../../hooks/useAsync";
 import formatCurrency from "../../hooks/formatCurrency";
+// import useAsync from "../../hooks/useAsync";
 
 const LastXTransactions = () => {
   //   const { data, loading, error } = useAsync("/ynab/available-balance");
@@ -16,6 +16,67 @@ const LastXTransactions = () => {
   //     return <div>Error: {error.message}</div>;
   //   }
 
+  // Example output
+  const data = {
+    since_date: "12/10/2023",
+    data: [
+      {
+        payee: "Amazon",
+        amount: 51.94,
+        date: "02/01/2024",
+        subcategory: "Technology",
+      },
+      {
+        payee: "Amazon",
+        amount: 51.94,
+        date: "02/01/2024",
+        subcategory: "Technology",
+      },
+      {
+        payee: "Amazon",
+        amount: 51.94,
+        date: "02/01/2024",
+        subcategory: "Technology",
+      },
+      {
+        payee: "Amazon",
+        amount: 51.94,
+        date: "02/01/2024",
+        subcategory: "Technology",
+      },
+      {
+        payee: "Amazon",
+        amount: 51.94,
+        date: "02/01/2024",
+        subcategory: "Technology",
+      },
+    ],
+  };
+
+  const lastXTransactionsData = data.data.map((item, index) => (
+    <Grid
+      key={index}
+      container
+      flexDirection={"column"}
+      justifyContent={"space-between"}
+    >
+      <Grid container justifyContent={"space-between"}>
+        <Typography variant="subtitle1">{item.payee}</Typography>
+        <Typography variant="subtitle1">
+          £ {formatCurrency(item.amount)}
+        </Typography>
+      </Grid>
+      <Grid container justifyContent={"space-between"}>
+        <Typography variant="caption" fontStyle={"italic"}>
+          {item.subcategory}
+        </Typography>
+        <Typography variant="caption" fontStyle={"italic"}>
+          {item.date}
+        </Typography>
+      </Grid>
+    </Grid>
+  ));
+
   return (
     <Card>
       <Grid
@@ -24,106 +85,7 @@ const LastXTransactions = () => {
         rowGap={"0.5rem"}
         padding={"1rem"}
       >
-        <Grid
-          container
-          flexDirection={"column"}
-          justifyContent={"space-between"}
-        >
-          <Grid container justifyContent={"space-between"}>
-            <Typography variant="subtitle1">Amazon</Typography>
-            <Typography variant="subtitle1">
-              £ {formatCurrency(51.94)}
-            </Typography>
-          </Grid>
-          <Grid container justifyContent={"space-between"}>
-            <Typography variant="caption" fontStyle={"italic"}>
-              Technology
-            </Typography>
-            <Typography variant="caption" fontStyle={"italic"}>
-              02/01/2024
-            </Typography>
-          </Grid>
-        </Grid>
-        <Grid
-          container
-          flexDirection={"column"}
-          justifyContent={"space-between"}
-        >
-          <Grid container justifyContent={"space-between"}>
-            <Typography variant="subtitle1">Amazon</Typography>
-            <Typography variant="subtitle1">
-              £ {formatCurrency(51.94)}
-            </Typography>
-          </Grid>
-          <Grid container justifyContent={"space-between"}>
-            <Typography variant="caption" fontStyle={"italic"}>
-              Technology
-            </Typography>
-            <Typography variant="caption" fontStyle={"italic"}>
-              02/01/2024
-            </Typography>
-          </Grid>
-        </Grid>
-        <Grid
-          container
-          flexDirection={"column"}
-          justifyContent={"space-between"}
-        >
-          <Grid container justifyContent={"space-between"}>
-            <Typography variant="subtitle1">Amazon</Typography>
-            <Typography variant="subtitle1">
-              £ {formatCurrency(51.94)}
-            </Typography>
-          </Grid>
-          <Grid container justifyContent={"space-between"}>
-            <Typography variant="caption" fontStyle={"italic"}>
-              Technology
-            </Typography>
-            <Typography variant="caption" fontStyle={"italic"}>
-              02/01/2024
-            </Typography>
-          </Grid>
-        </Grid>
-        <Grid
-          container
-          flexDirection={"column"}
-          justifyContent={"space-between"}
-        >
-          <Grid container justifyContent={"space-between"}>
-            <Typography variant="subtitle1">Amazon</Typography>
-            <Typography variant="subtitle1">
-              £ {formatCurrency(51.94)}
-            </Typography>
-          </Grid>
-          <Grid container justifyContent={"space-between"}>
-            <Typography variant="caption" fontStyle={"italic"}>
-              Technology
-            </Typography>
-            <Typography variant="caption" fontStyle={"italic"}>
-              02/01/2024
-            </Typography>
-          </Grid>
-        </Grid>
-        <Grid
-          container
-          flexDirection={"column"}
-          justifyContent={"space-between"}
-        >
-          <Grid container justifyContent={"space-between"}>
-            <Typography variant="subtitle1">Amazon</Typography>
-            <Typography variant="subtitle1">
-              £ {formatCurrency(51.94)}
-            </Typography>
-          </Grid>
-          <Grid container justifyContent={"space-between"}>
-            <Typography variant="caption" fontStyle={"italic"}>
-              Technology
-            </Typography>
-            <Typography variant="caption" fontStyle={"italic"}>
-              02/01/2024
-            </Typography>
-          </Grid>
-        </Grid>
+        {lastXTransactionsData}
       </Grid>
     </Card>
   );

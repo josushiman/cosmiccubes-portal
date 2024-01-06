@@ -15,23 +15,38 @@ const CreditLastPaid = () => {
   //     return <div>Error: {error.message}</div>;
   //   }
 
+  // Example output
+  const data = {
+    since_date: "12/10/2023",
+    data: [
+      {
+        name: "AMEX",
+        date: "12/12/2023",
+      },
+      {
+        name: "Barclays CC",
+        date: "28/12/2023",
+      },
+      {
+        name: "HSBC CC",
+        date: "01/12/2023",
+      },
+    ],
+  };
+
+  const creditLastPaidData = data.data.map((item, index) => (
+    <Grid key={index} container justifyContent={"space-between"}>
+      <Typography variant="body2">{item.name}</Typography>
+      <Typography variant="body2">{item.date}</Typography>
+    </Grid>
+  ));
+
   return (
     <Card>
       <Grid container flexDirection={"column"} rowGap={"1rem"} padding={"1rem"}>
         <Typography variant="subtitle1">Credit Last Paid Dates</Typography>
         <Grid container flexDirection={"column"} rowGap={"0.5rem"}>
-          <Grid container justifyContent={"space-between"}>
-            <Typography variant="body2">AMEX</Typography>
-            <Typography variant="body2">12/12/2023</Typography>
-          </Grid>
-          <Grid container justifyContent={"space-between"}>
-            <Typography variant="body2">Barclays CC</Typography>
-            <Typography variant="body2">28/12/2023</Typography>
-          </Grid>
-          <Grid container justifyContent={"space-between"}>
-            <Typography variant="body2">HSBC CC</Typography>
-            <Typography variant="body2">01/12/2023</Typography>
-          </Grid>
+          {creditLastPaidData}
         </Grid>
       </Grid>
     </Card>

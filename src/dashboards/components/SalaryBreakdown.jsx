@@ -8,9 +8,10 @@ const SalaryBreakdown = () => {
 
   // Example output
   const data = {
-    spent: 1200.34,
-    budget: 3500,
-    amount: 34.1,
+    earnings: 9500.55,
+    tax_ni: 3400.12,
+    benefits: 63.08,
+    net: 5238.23,
   };
 
   //   if (loading || !data) {
@@ -23,60 +24,30 @@ const SalaryBreakdown = () => {
   //     return <div>Error: {error.message}</div>;
   //   }
 
+  const salaryBreakdownData = ["earnings", "tax_ni", "benefits", "net"].map(
+    (item, index) => (
+      <Grid key={index} container justifyContent={"space-between"}>
+        <Typography
+          variant="body2"
+          fontStyle={"italic"}
+          paddingLeft={"0.75rem"}
+          textTransform={"capitalize"}
+        >
+          {item == "tax_ni" ? "Tax & NI" : item}
+        </Typography>
+        <Typography variant="body2">
+          <span>£</span> {formatCurrency(data[item])}
+        </Typography>
+      </Grid>
+    )
+  );
+
   return (
     <Card>
       <Grid container flexDirection={"column"} rowGap={"1rem"} padding={"1rem"}>
         <Typography variant="subtitle1">Salary Breakdown</Typography>
         <Grid container flexDirection={"column"} rowGap={"0.5rem"}>
-          <Grid container justifyContent={"space-between"}>
-            <Typography
-              variant="body2"
-              fontStyle={"italic"}
-              paddingLeft={"0.75rem"}
-            >
-              Earnings
-            </Typography>
-            <Typography variant="body2">
-              <span>£</span> {formatCurrency(data.amount)}
-            </Typography>
-          </Grid>
-          <Grid container justifyContent={"space-between"}>
-            <Typography
-              variant="body2"
-              fontStyle={"italic"}
-              paddingLeft={"0.75rem"}
-            >
-              Tax & NI
-            </Typography>
-            <Typography variant="body2">
-              <span>£</span> {formatCurrency(data.amount)}
-            </Typography>
-          </Grid>
-          <Grid container justifyContent={"space-between"}>
-            <Typography
-              variant="body2"
-              fontStyle={"italic"}
-              paddingLeft={"0.75rem"}
-            >
-              Benefits
-            </Typography>
-            <Typography variant="body2">
-              <span>£</span> {formatCurrency(data.amount)}
-            </Typography>
-          </Grid>
-          <Grid container justifyContent={"space-between"}>
-            <Typography
-              variant="body2"
-              fontStyle={"italic"}
-              paddingLeft={"0.75rem"}
-              fontWeight={800}
-            >
-              Net
-            </Typography>
-            <Typography variant="body2" fontWeight={800}>
-              <span>£</span> {formatCurrency(data.amount)}
-            </Typography>
-          </Grid>
+          {salaryBreakdownData}
         </Grid>
       </Grid>
     </Card>

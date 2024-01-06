@@ -1,11 +1,8 @@
-import { styled } from "@mui/material/styles";
 import { Card, Typography } from "@mui/material";
-import LinearProgress, {
-  linearProgressClasses,
-} from "@mui/material/LinearProgress";
 import Grid from "@mui/material/Unstable_Grid2";
-// import useAsync from "../../hooks/useAsync";
 import formatCurrency from "../../hooks/formatCurrency";
+import { BorderLinearProgressNoBackground } from "../../commons/BorderLinearProgress";
+// import useAsync from "../../hooks/useAsync";
 
 const SubCategoriesSpent = () => {
   //   const {
@@ -13,13 +10,6 @@ const SubCategoriesSpent = () => {
   //     loading,
   //     error,
   //   } = useAsync("/ynab/available-balance"); // TODO replace with real endpoint.
-
-  // Example output
-  const data = {
-    spent: 1200.34,
-    budget: 3500,
-    progress: 34,
-  };
 
   //   if (loading || !data) {
   //     // Add skeleton
@@ -31,22 +21,56 @@ const SubCategoriesSpent = () => {
   //     return <div>Error: {error.message}</div>;
   //   }
 
-  //   TODO make this useable by additional classes.
-  const BorderLinearProgress = styled(LinearProgress)(() => ({
-    height: 7,
-    borderRadius: 5,
-    [`&.${linearProgressClasses.colorPrimary}`]: {
-      backgroundColor: "#121212",
-      backgroundImage:
-        "linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05))",
-    },
-    [`& .${linearProgressClasses.bar}`]: {
-      borderRadius: 0,
-      backgroundColor: "#C06969",
-    },
-  }));
+  // Example output
+  const data = {
+    since_date: "12/10/2023",
+    data: [
+      {
+        name: "Going Out",
+        spent: 928.11,
+        progress: 72,
+      },
+      {
+        name: "Technology",
+        spent: 293.92,
+        progress: 59,
+      },
+      {
+        name: "Groceries",
+        spent: 128.22,
+        progress: 56,
+      },
+      {
+        name: "Coffee",
+        spent: 24,
+        progress: 77,
+      },
+      {
+        name: "Parking",
+        spent: 12,
+        progress: 89,
+      },
+    ],
+  };
 
-  //   Loop over a list to generate this stuff.
+  const subcategoriesSpentData = data.data.map((item, index) => (
+    <Grid key={index}>
+      <Grid container justifyContent={"space-between"} paddingBottom={"0.5rem"}>
+        <Typography variant="subtitle1">{item.name}</Typography>
+        <Typography
+          variant="body1"
+          style={{ alignSelf: "flex-end", color: "white" }}
+        >
+          <span>£</span> {formatCurrency(item.spent)}
+        </Typography>
+      </Grid>
+      <BorderLinearProgressNoBackground
+        variant="determinate"
+        value={item.progress}
+      />
+    </Grid>
+  ));
+
   return (
     <Card>
       <Grid
@@ -56,86 +80,7 @@ const SubCategoriesSpent = () => {
         gap={"1.5rem"}
         padding={"1rem"}
       >
-        <Grid>
-          <Grid
-            container
-            justifyContent={"space-between"}
-            paddingBottom={"0.5rem"}
-          >
-            <Typography variant="subtitle1">Going Out</Typography>
-            <Typography
-              variant="body1"
-              style={{ alignSelf: "flex-end", color: "white" }}
-            >
-              <span>£</span> {formatCurrency(data.spent)}
-            </Typography>
-          </Grid>
-          <BorderLinearProgress variant="determinate" value={data.progress} />
-        </Grid>
-        <Grid>
-          <Grid
-            container
-            justifyContent={"space-between"}
-            paddingBottom={"0.5rem"}
-          >
-            <Typography variant="subtitle1">Technology</Typography>
-            <Typography
-              variant="body1"
-              style={{ alignSelf: "flex-end", color: "white" }}
-            >
-              <span>£</span> {formatCurrency(data.spent)}
-            </Typography>
-          </Grid>
-          <BorderLinearProgress variant="determinate" value={data.progress} />
-        </Grid>
-        <Grid>
-          <Grid
-            container
-            justifyContent={"space-between"}
-            paddingBottom={"0.5rem"}
-          >
-            <Typography variant="subtitle1">Groceries</Typography>
-            <Typography
-              variant="body1"
-              style={{ alignSelf: "flex-end", color: "white" }}
-            >
-              <span>£</span> {formatCurrency(data.spent)}
-            </Typography>
-          </Grid>
-          <BorderLinearProgress variant="determinate" value={data.progress} />
-        </Grid>
-        <Grid>
-          <Grid
-            container
-            justifyContent={"space-between"}
-            paddingBottom={"0.5rem"}
-          >
-            <Typography variant="subtitle1">Coffee</Typography>
-            <Typography
-              variant="body1"
-              style={{ alignSelf: "flex-end", color: "white" }}
-            >
-              <span>£</span> {formatCurrency(data.spent)}
-            </Typography>
-          </Grid>
-          <BorderLinearProgress variant="determinate" value={data.progress} />
-        </Grid>
-        <Grid>
-          <Grid
-            container
-            justifyContent={"space-between"}
-            paddingBottom={"0.5rem"}
-          >
-            <Typography variant="subtitle1">Parking</Typography>
-            <Typography
-              variant="body1"
-              style={{ alignSelf: "flex-end", color: "white" }}
-            >
-              <span>£</span> {formatCurrency(data.spent)}
-            </Typography>
-          </Grid>
-          <BorderLinearProgress variant="determinate" value={data.progress} />
-        </Grid>
+        {subcategoriesSpentData}
       </Grid>
     </Card>
   );

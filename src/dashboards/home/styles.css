@@ -20,6 +20,10 @@
     "salary-breakdown";
 }
 
+.dashboard-container > div:nth-of-type(2) > div {
+  justify-content: flex-end;
+}
+
 /* Desktop view */
 @media screen and (min-width: 700px) {
   .dashboard-container {
@@ -38,5 +42,9 @@
       "time-period upcoming-bills upcoming-renewals sub-categories-spent"
       "last-x-transactions upcoming-bills upcoming-renewals credit-last-paid"
       "last-x-transactions upcoming-bills upcoming-renewals salary-breakdown";
+  }
+
+  .dashboard-container > div:nth-of-type(2) > div {
+    justify-content: space-between;
   }
 }

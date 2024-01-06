@@ -1,20 +1,27 @@
 import { Box, Card, Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
-import useAsync from "../../hooks/useAsync";
 import formatCurrency from "../../hooks/formatCurrency";
+// import useAsync from "../../hooks/useAsync";
 
 const EarnedVsSpent = () => {
-  const { data, loading, error } = useAsync("/ynab/available-balance");
+  // const { data, loading, error } = useAsync("/ynab/available-balance");
 
-  if (loading || !data) {
-    // Add skeleton
-    return <div>Loading...</div>;
-  }
+  // if (loading || !data) {
+  //   // Add skeleton
+  //   return <div>Loading...</div>;
+  // }
 
-  if (error) {
-    // Pass generic error message
-    return <div>Error: {error.message}</div>;
-  }
+  // if (error) {
+  //   // Pass generic error message
+  //   return <div>Error: {error.message}</div>;
+  // }
+
+  // Example output
+  const data = {
+    since_date: "12/10/2023",
+    earned: 6837.27,
+    spent: -2348.11,
+  };
 
   return (
     <Card>
@@ -41,7 +48,7 @@ const EarnedVsSpent = () => {
             }}
           >
             <span>£</span>
-            <p>{formatCurrency(data.available)}</p>
+            <p>{formatCurrency(data.earned)}</p>
           </Grid>
         </Box>
         <Box>
@@ -60,7 +67,7 @@ const EarnedVsSpent = () => {
             }}
           >
             <span>£</span>
-            <p>{formatCurrency(data.available)}</p>
+            <p>{formatCurrency(data.spent)}</p>
           </Grid>
         </Box>
       </Grid>

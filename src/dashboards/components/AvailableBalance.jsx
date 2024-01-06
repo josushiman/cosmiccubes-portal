@@ -1,20 +1,22 @@
 import { Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
-import useAsync from "../../hooks/useAsync";
 import formatCurrency from "../../hooks/formatCurrency";
+// import useAsync from "../../hooks/useAsync";
 
 const AvailableBalance = () => {
-  const { data, loading, error } = useAsync("/ynab/available-balance");
+  // const { data, loading, error } = useAsync("/ynab/available-balance");
 
-  if (loading || !data) {
-    // Add skeleton
-    return <div>Loading...</div>;
-  }
+  // if (loading || !data) {
+  //   // Add skeleton
+  //   return <div>Loading...</div>;
+  // }
 
-  if (error) {
-    // Pass generic error message
-    return <div>Error: {error.message}</div>;
-  }
+  // if (error) {
+  //   // Pass generic error message
+  //   return <div>Error: {error.message}</div>;
+  // }
+
+  const data = { total: 21012.91, spent: -6246.45, available: 14766.46 };
 
   return (
     <Grid
