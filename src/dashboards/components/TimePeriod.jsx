@@ -13,6 +13,11 @@ const TimePeriod = ({
     backgroundColor: "#313131",
     padding: "0.75rem 1rem",
     borderRadius: "0.25rem",
+    cursor: "pointer",
+  };
+
+  const defaultStyle = {
+    cursor: "pointer",
   };
 
   return (
@@ -27,7 +32,7 @@ const TimePeriod = ({
         <Grid container xs={3} justifyContent={"center"}>
           <Typography
             onClick={setMonthIntervals(3)}
-            sx={months == 3 ? itemSelected : null}
+            sx={months == 3 ? itemSelected : defaultStyle}
           >
             3M
           </Typography>
@@ -35,7 +40,7 @@ const TimePeriod = ({
         <Grid container xs={3} justifyContent={"center"}>
           <Typography
             onClick={setMonthIntervals(6)}
-            sx={months == 6 ? itemSelected : null}
+            sx={months == 6 ? itemSelected : defaultStyle}
           >
             6M
           </Typography>
@@ -43,7 +48,7 @@ const TimePeriod = ({
         <Grid container xs={3} justifyContent={"center"}>
           <Typography
             onClick={setMonthIntervals(9)}
-            sx={months == 9 ? itemSelected : null}
+            sx={months == 9 ? itemSelected : defaultStyle}
           >
             9M
           </Typography>
@@ -51,7 +56,7 @@ const TimePeriod = ({
         <Grid container xs={3} justifyContent={"center"}>
           <Typography
             onClick={setMonthIntervals(12)}
-            sx={months == 12 ? itemSelected : null}
+            sx={months == 12 ? itemSelected : defaultStyle}
           >
             1Y
           </Typography>
@@ -74,7 +79,7 @@ const TimePeriod = ({
         <Grid container xs={3} justifyContent={"center"}>
           <Typography
             onClick={setYearInterval(2023)}
-            sx={year == 2023 ? itemSelected : null}
+            sx={year == 2023 ? itemSelected : defaultStyle}
           >
             `23
           </Typography>
@@ -82,7 +87,7 @@ const TimePeriod = ({
         <Grid container xs={3} justifyContent={"center"}>
           <Typography
             onClick={setYearInterval(2024)}
-            sx={year == 2024 ? itemSelected : null}
+            sx={year == 2024 ? itemSelected : defaultStyle}
           >
             `24
           </Typography>
@@ -120,7 +125,7 @@ const TimePeriod = ({
         <Grid container xs={3} justifyContent={"center"}>
           <Typography
             onClick={setMonthInterval(1)}
-            sx={month == 1 ? itemSelected : null}
+            sx={month == 1 ? itemSelected : defaultStyle}
           >
             Jan
           </Typography>
@@ -128,7 +133,7 @@ const TimePeriod = ({
         <Grid container xs={3} justifyContent={"center"}>
           <Typography
             onClick={setMonthInterval(2)}
-            sx={month == 2 ? itemSelected : null}
+            sx={month == 2 ? itemSelected : defaultStyle}
           >
             Feb
           </Typography>
@@ -136,7 +141,7 @@ const TimePeriod = ({
         <Grid container xs={3} justifyContent={"center"}>
           <Typography
             onClick={setMonthInterval(3)}
-            sx={month == 3 ? itemSelected : null}
+            sx={month == 3 ? itemSelected : defaultStyle}
           >
             Mar
           </Typography>
@@ -144,7 +149,7 @@ const TimePeriod = ({
         <Grid container xs={3} justifyContent={"center"}>
           <Typography
             onClick={setMonthInterval(4)}
-            sx={month == 4 ? itemSelected : null}
+            sx={month == 4 ? itemSelected : defaultStyle}
           >
             Apr
           </Typography>
@@ -160,7 +165,7 @@ const TimePeriod = ({
         <Grid container xs={3} justifyContent={"center"}>
           <Typography
             onClick={setMonthInterval(5)}
-            sx={month == 5 ? itemSelected : null}
+            sx={month == 5 ? itemSelected : defaultStyle}
           >
             May
           </Typography>
@@ -168,7 +173,7 @@ const TimePeriod = ({
         <Grid container xs={3} justifyContent={"center"}>
           <Typography
             onClick={setMonthInterval(6)}
-            sx={month == 6 ? itemSelected : null}
+            sx={month == 6 ? itemSelected : defaultStyle}
           >
             Jun
           </Typography>
@@ -176,7 +181,7 @@ const TimePeriod = ({
         <Grid container xs={3} justifyContent={"center"}>
           <Typography
             onClick={setMonthInterval(7)}
-            sx={month == 7 ? itemSelected : null}
+            sx={month == 7 ? itemSelected : defaultStyle}
           >
             Jul
           </Typography>
@@ -184,7 +189,7 @@ const TimePeriod = ({
         <Grid container xs={3} justifyContent={"center"}>
           <Typography
             onClick={setMonthInterval(8)}
-            sx={month == 8 ? itemSelected : null}
+            sx={month == 8 ? itemSelected : defaultStyle}
           >
             Aug
           </Typography>
@@ -200,7 +205,7 @@ const TimePeriod = ({
         <Grid container xs={3} justifyContent={"center"}>
           <Typography
             onClick={setMonthInterval(9)}
-            sx={month == 9 ? itemSelected : null}
+            sx={month == 9 ? itemSelected : defaultStyle}
           >
             Sep
           </Typography>
@@ -208,7 +213,7 @@ const TimePeriod = ({
         <Grid container xs={3} justifyContent={"center"}>
           <Typography
             onClick={setMonthInterval(10)}
-            sx={month == 10 ? itemSelected : null}
+            sx={month == 10 ? itemSelected : defaultStyle}
           >
             Oct
           </Typography>
@@ -216,7 +221,7 @@ const TimePeriod = ({
         <Grid container xs={3} justifyContent={"center"}>
           <Typography
             onClick={setMonthInterval(11)}
-            sx={month == 11 ? itemSelected : null}
+            sx={month == 11 ? itemSelected : defaultStyle}
           >
             Nov
           </Typography>
@@ -224,7 +229,7 @@ const TimePeriod = ({
         <Grid container xs={3} justifyContent={"center"}>
           <Typography
             onClick={setMonthInterval(12)}
-            sx={month == 12 ? itemSelected : null}
+            sx={month == 12 ? itemSelected : defaultStyle}
           >
             Dec
           </Typography>
