@@ -2,31 +2,20 @@ import { Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import formatCurrency from "../../hooks/formatCurrency";
 import { BorderLinearProgressWhiteBackground } from "../../commons/BorderLinearProgress";
-// import useAsync from "../../hooks/useAsync";
+import useAsync from "../../hooks/useAsync";
 
 const SpentVsBudget = () => {
-  // const {
-  //   data,
-  //   loading,
-  //   error,
-  // } = useAsync("/ynab/available-balance"); // TODO replace with real endpoint.
+  const { data, loading, error } = useAsync("/ynab/spent-vs-budget");
 
-  // Example output
-  const data = {
-    spent: 1200.34,
-    budget: 3500,
-    progress: 34,
-  };
+  if (loading || !data) {
+    // Add skeleton
+    return <div>Loading...</div>;
+  }
 
-  // if (loading || !data) {
-  //   // Add skeleton
-  //   return <div>Loading...</div>;
-  // }
-
-  // if (error) {
-  //   // Pass generic error message
-  //   return <div>Error: {error.message}</div>;
-  // }
+  if (error) {
+    // Pass generic error message
+    return <div>Error: {error.message}</div>;
+  }
 
   return (
     <Grid container flexDirection={"column"} gap={"0.25rem"}>
