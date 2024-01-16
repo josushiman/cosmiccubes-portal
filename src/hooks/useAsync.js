@@ -5,11 +5,14 @@ const useFetchData = (url, dependencies) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   url = getRoute(url);
+  const options = {};
+  options.headers = new Headers({ Accept: "application/json" });
+  options.headers.set("x-token", import.meta.env.VITE_JSON_SERVER_TOKEN);
 
   const fetchData = useCallback(async () => {
     setLoading(true);
     try {
-      const response = await fetch(url);
+      const response = await fetch(url, options);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
@@ -20,6 +23,7 @@ const useFetchData = (url, dependencies) => {
     } finally {
       setLoading(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url]);
 
   useEffect(() => {
