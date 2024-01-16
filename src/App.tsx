@@ -26,67 +26,67 @@ export const App = () => (
     dashboard={Dashboard}
   >
     <Resource
-      name="portal/accounts"
+      name="portal/admin/accounts"
       {...accounts}
       options={{ label: "Accounts" }}
     />
     <Resource
-      name="portal/account-types"
+      name="portal/admin/account-types"
       {...accountTypes}
       options={{ label: "Account Types" }}
     />
     <Resource
-      name="portal/balance-transfers"
+      name="portal/admin/balance-transfers"
       {...balanceTransfers}
       options={{ label: "Balance Transfers" }}
     />
     <Resource
-      name="portal/budgets"
+      name="portal/admin/budgets"
       {...budgets}
       options={{ label: "Budgets" }}
     />
     <Resource
-      name="portal/company-categories"
+      name="portal/admin/company-categories"
       {...companyCategories}
       options={{ label: "Company Categories" }}
     />
     <Resource
-      name="portal/companies"
+      name="portal/admin/companies"
       {...companies}
       options={{ label: "Companies" }}
     />
     <Resource
-      name="portal/direct-debits"
+      name="portal/admin/direct-debits"
       {...directDebits}
       options={{ label: "Direct Debits" }}
     />
     <Resource
-      name="portal/incomes"
+      name="portal/admin/incomes"
       {...incomes}
       options={{ label: "Incomes" }}
     />
     <Resource
-      name="portal/mortgages"
+      name="portal/admin/mortgages"
       {...mortgages}
       options={{ label: "Mortgages" }}
     />
     <Resource
-      name="portal/projects"
+      name="portal/admin/projects"
       {...projects}
       options={{ label: "Projects" }}
     />
     <Resource
-      name="portal/project-item-categories"
+      name="portal/admin/project-item-categories"
       {...projectItemCategories}
       options={{ label: "Project Item Categories" }}
     />
     <Resource
-      name="portal/project-items"
+      name="portal/admin/project-items"
       {...projectItems}
       options={{ label: "Project Items" }}
     />
     <Resource
-      name="portal/transactions"
+      name="portal/admin/transactions"
       {...transactions}
       options={{ label: "Transactions" }}
     />
