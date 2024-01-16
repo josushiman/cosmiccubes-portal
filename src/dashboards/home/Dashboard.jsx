@@ -57,7 +57,8 @@ const Dashboard = () => {
       }
       // Finally set the month to the value if it doesn't match what is already set, and also unset the month intervals.
       if (value != month) {
-        setMonth(value);
+        // Handle month values on the BE by adding a 0 infront of any that is less than 10.
+        value < 10 ? setMonth(`0${value}`) : setMonth(value);
       }
       setMonths(undefined);
     },
@@ -65,8 +66,8 @@ const Dashboard = () => {
   );
 
   // TODO set up a custom hook to take the month, years, and months values in order to build the URL to call out to CosmicCubes.
+  // TODO replace the callbacks with proper state management without redis.
 
-  // TODO replace Grid with custom CSS grid.
   return (
     <>
       <div className="dashboard-container">
