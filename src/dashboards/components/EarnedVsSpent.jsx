@@ -1,27 +1,35 @@
 import { Box, Card, Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import formatCurrency from "../../hooks/formatCurrency";
-// import useAsync from "../../hooks/useAsync";
+import useAsync from "../../hooks/useAsync";
 
-const EarnedVsSpent = () => {
-  // const { data, loading, error } = useAsync("/ynab/available-balance");
+const EarnedVsSpent = ({ months, year, month }) => {
+  const params = months
+    ? `?months=${months}`
+    : year && month
+    ? `?year=${year}&month=${month}`
+    : year
+    ? `?year=${year}`
+    : `?month=${month}`;
+  const urlParam = `/ynab/earned-vs-spent${params}`;
+  const { data, loading, error } = useAsync(urlParam);
 
-  // if (loading || !data) {
-  //   // Add skeleton
-  //   return <div>Loading...</div>;
-  // }
+  if (loading || !data) {
+    // Add skeleton
+    return <div>Loading...</div>;
+  }
 
-  // if (error) {
-  //   // Pass generic error message
-  //   return <div>Error: {error.message}</div>;
-  // }
+  if (error) {
+    // Pass generic error message
+    return <div>Error: {error.message}</div>;
+  }
 
-  // Example output
-  const data = {
-    since_date: "12/10/2023",
-    earned: 6837.27,
-    spent: -2348.11,
-  };
+  // // Example output
+  // const data = {
+  //   since_date: "12/10/2023",
+  //   earned: 6837.27,
+  //   spent: -2348.11,
+  // };
 
   return (
     <Card>

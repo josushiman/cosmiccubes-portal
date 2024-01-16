@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 
-const useFetchData = (url) => {
+const useFetchData = (url, dependencies) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -24,7 +24,9 @@ const useFetchData = (url) => {
 
   useEffect(() => {
     fetchData();
-  }, [fetchData]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fetchData, ...dependencies]);
 
   return { data, loading, error };
 };
@@ -35,8 +37,8 @@ const getRoute = (resource) => {
   return `${BASE_URL}${resource}`;
 };
 
-const useAsync = (fetchData) => {
-  return useFetchData(fetchData);
+const useAsync = (fetchData, dependencies = []) => {
+  return useFetchData(fetchData, dependencies);
 };
 
 export default useAsync;

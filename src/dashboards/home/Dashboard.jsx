@@ -80,7 +80,7 @@ const Dashboard = () => {
           <SpentVsBudget />
         </Grid>
         <Grid style={{ gridArea: "earned-vs-spent" }}>
-          <EarnedVsSpent />
+          <EarnedVsSpent months={months} year={year} month={month} />
         </Grid>
         <Grid style={{ gridArea: "income-vs-expenses" }}>
           <IncomeVsExpenses />
