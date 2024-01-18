@@ -2,51 +2,43 @@ import { Card, Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import formatCurrency from "../../hooks/formatCurrency";
 import { BorderLinearProgressWithBackground } from "../../commons/BorderLinearProgress";
-// import useAsync from "../../hooks/useAsync";
+import useAsync from "../../hooks/useAsync";
 
 const CategoriesSpent = () => {
-  // const { data, loading, error } = useAsync("/ynab/available-balance");
+  const { data, loading, error } = useAsync("/ynab/categories-spent");
 
-  //   if (loading || !data) {
-  //     // Add skeleton
-  //     return <div>Loading...</div>;
-  //   }
+  if (loading || !data) {
+    // Add skeleton
+    return <div>Loading...</div>;
+  }
 
-  //   if (error) {
-  //     // Pass generic error message
-  //     return <div>Error: {error.message}</div>;
-  //   }
+  if (error) {
+    // Pass generic error message
+    return <div>Error: {error.message}</div>;
+  }
 
   // Example output
-  const data = {
-    since_date: "12/10/2023",
-    data: [
-      {
-        name: "Bills",
-        spent: 283.92,
-        budget: 800.12,
-        progress: 36,
-      },
-      {
-        name: "Essentials",
-        spent: 293.92,
-        budget: 500.32,
-        progress: 59,
-      },
-      {
-        name: "Loans",
-        spent: 609.22,
-        budget: 1983.93,
-        progress: 31,
-      },
-      {
-        name: "Luxury",
-        spent: 837.23,
-        budget: 1600,
-        progress: 52,
-      },
-    ],
-  };
+  // const data = {
+  //   since_date: "12/10/2023",
+  //   data: [
+  //     {
+  //       name: "Bills",
+  //       spent: 283.92,
+  //       budget: 800.12,
+  //       progress: 36,
+  //     }
+  //   ],
+  // };
+
+  function returnCategoryString(spent, budget) {
+    let textString = formatCurrency(spent);
+
+    if (budget) {
+      textString = `${formatCurrency(spent)} / ${formatCurrency(budget)}`;
+    }
+
+    return <span>£{textString}</span>;
+  }
 
   const categoriesSpentData = data.data.map((item, index) => (
     <Grid key={index}>
@@ -56,8 +48,7 @@ const CategoriesSpent = () => {
           variant="body1"
           style={{ alignSelf: "flex-end", color: "white" }}
         >
-          <span>£</span> {formatCurrency(item.spent)} /{" "}
-          {formatCurrency(item.budget)}
+          {returnCategoryString(item.spent, item.budget)}
         </Typography>
       </Grid>
       <BorderLinearProgressWithBackground
