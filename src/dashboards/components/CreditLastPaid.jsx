@@ -2,7 +2,15 @@ import { Card, Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 // import useAsync from "../../hooks/useAsync";
 
-const CreditLastPaid = () => {
+const CreditLastPaid = ({ months, year, month }) => {
+  const params = months
+    ? `?months=${months}`
+    : year && month
+    ? `?year=${year}&month=${month}`
+    : year
+    ? `?year=${year}`
+    : `?month=${month}`;
+  const urlParam = `/ynab/credit-last-paid${params}`;
   //   const { data, loading, error } = useAsync("/ynab/available-balance");
 
   //   if (loading || !data) {

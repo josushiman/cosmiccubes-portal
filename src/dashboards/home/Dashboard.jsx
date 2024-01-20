@@ -84,10 +84,10 @@ const Dashboard = () => {
           <EarnedVsSpent months={months} year={year} month={month} />
         </Grid>
         <Grid style={{ gridArea: "income-vs-expenses" }}>
-          <IncomeVsExpenses />
+          <IncomeVsExpenses months={months} year={year} month={month} />
         </Grid>
         <Grid style={{ gridArea: "categories-spent" }}>
-          <CategoriesSpent />
+          <CategoriesSpent months={months} year={year} month={month} />
         </Grid>
         <Grid style={{ gridArea: "time-period" }}>
           <TimePeriod
@@ -100,13 +100,13 @@ const Dashboard = () => {
           />
         </Grid>
         <Grid style={{ gridArea: "sub-categories-spent" }}>
-          <SubCategoriesSpent />
+          <SubCategoriesSpent months={months} year={year} month={month} />
         </Grid>
         <Grid style={{ gridArea: "upcoming-bills" }}>
           <UpcomingBills />
         </Grid>
         <Grid style={{ gridArea: "credit-last-paid" }}>
-          <CreditLastPaid />
+          <CreditLastPaid months={months} year={year} month={month} />
         </Grid>
         <Grid style={{ gridArea: "upcoming-renewals" }}>
           <UpcomingRenewals />

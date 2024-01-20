@@ -4,8 +4,16 @@ import formatCurrency from "../../hooks/formatCurrency";
 import { BorderLinearProgressWithBackground } from "../../commons/BorderLinearProgress";
 import useAsync from "../../hooks/useAsync";
 
-const CategoriesSpent = () => {
-  const { data, loading, error } = useAsync("/ynab/categories-spent");
+const CategoriesSpent = ({ months, year, month }) => {
+  const params = months
+    ? `?months=${months}`
+    : year && month
+    ? `?year=${year}&month=${month}`
+    : year
+    ? `?year=${year}`
+    : `?month=${month}`;
+  const urlParam = `/ynab/categories-spent${params}`;
+  const { data, loading, error } = useAsync(urlParam);
 
   if (loading || !data) {
     // Add skeleton

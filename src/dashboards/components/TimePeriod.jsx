@@ -20,6 +20,20 @@ const TimePeriod = ({
     cursor: "pointer",
   };
 
+  const disabledStyle = {
+    opacity: "10%",
+    pointerEvents: "none",
+  };
+
+  // TODO get current date, and disable any month and year that is in the future of that date.
+  // const currentDate = new Date();
+  // const currentYear = currentDate.getFullYear();
+  // const currentMonth =
+  //   currentDate.getMonth() < 10
+  //     ? `0${currentDate.getMonth() + 1}`
+  //     : currentDate.getMonth() + 1;
+  // console.log(currentYear, currentMonth);
+
   return (
     <Card>
       <Grid
@@ -93,24 +107,12 @@ const TimePeriod = ({
           </Typography>
         </Grid>
         <Grid container xs={3} justifyContent={"center"}>
-          <Typography
-            onClick={setYearInterval(2025)}
-            sx={{
-              opacity: "10%",
-              pointerEvents: "none",
-            }}
-          >
+          <Typography onClick={setYearInterval(2025)} sx={disabledStyle}>
             `25
           </Typography>
         </Grid>
         <Grid container xs={3} justifyContent={"center"}>
-          <Typography
-            onClick={setYearInterval(2026)}
-            sx={{
-              opacity: "10%",
-              pointerEvents: "none",
-            }}
-          >
+          <Typography onClick={setYearInterval(2026)} sx={disabledStyle}>
             `26
           </Typography>
         </Grid>
