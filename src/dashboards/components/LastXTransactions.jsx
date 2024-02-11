@@ -3,10 +3,16 @@ import Grid from "@mui/material/Unstable_Grid2";
 import formatCurrency from "../../hooks/formatCurrency";
 import useAsync from "../../hooks/useAsync";
 
-const LastXTransactions = () => {
-  const { data, loading, error } = useAsync(
-    "/ynab/last-x-transactions?count=5"
-  );
+const LastXTransactions = ({ months, year, month }) => {
+  const params = months
+    ? `?months=${months}`
+    : year && month
+    ? `?year=${year}&month=${month}`
+    : year
+    ? `?year=${year}`
+    : `?month=${month}`;
+  const urlParam = `/ynab/last-x-transactions${params}&count=5`;
+  const { data, loading, error } = useAsync(urlParam);
 
   if (loading || !data) {
     // Add skeleton

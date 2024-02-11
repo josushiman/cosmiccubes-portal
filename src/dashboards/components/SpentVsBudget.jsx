@@ -17,6 +17,9 @@ const SpentVsBudget = () => {
     return <div>Error: {error.message}</div>;
   }
 
+  // // Example output
+  // const data = {"balance":474.33,"budget":0.0,"spent":199.6,"progress":0}
+
   return (
     <Grid container flexDirection={"column"} gap={"0.25rem"}>
       <Typography variant="h6" style={{ alignSelf: "flex-end" }}>

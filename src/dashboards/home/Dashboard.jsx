@@ -115,7 +115,7 @@ const Dashboard = () => {
           <SalaryBreakdown />
         </Grid>
         <Grid style={{ gridArea: "last-x-transactions" }}>
-          <LastXTransactions />
+          <LastXTransactions months={months} year={year} month={month} />
         </Grid>
       </div>
     </>
