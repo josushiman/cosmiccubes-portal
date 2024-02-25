@@ -2,7 +2,15 @@ import Grid from "@mui/material/Unstable_Grid2";
 import formatCurrency from "../../hooks/formatCurrency";
 import useAsync from "../../hooks/useAsync";
 
-const CardBalances = () => {
+const CardBalances = ({ months, year, month }) => {
+  const params = months
+    ? `?months=${months}`
+    : year && month
+    ? `?year=${year}&month=${month}`
+    : year
+    ? `?year=${year}`
+    : `?month=${month}`;
+  // TODO const urlParam = `/ynab/available-balance${params}`;
   const { data, loading, error } = useAsync("/ynab/card-balances");
 
   if (loading || !data) {

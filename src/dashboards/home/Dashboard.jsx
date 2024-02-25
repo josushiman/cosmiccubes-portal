@@ -75,10 +75,11 @@ const Dashboard = () => {
           <AvailableBalance />
         </Grid>
         <Grid style={{ gridArea: "card-balances", alignSelf: "flex-end" }}>
-          <CardBalances />
+          {/* TODO support months etc */}
+          <CardBalances months={months} year={year} month={month} />
         </Grid>
         <Grid style={{ gridArea: "spent-vs-budget", alignSelf: "flex-end" }}>
-          <SpentVsBudget />
+          <SpentVsBudget months={months} year={year} month={month} />
         </Grid>
         <Grid style={{ gridArea: "earned-vs-spent" }}>
           <EarnedVsSpent months={months} year={year} month={month} />
@@ -103,13 +104,15 @@ const Dashboard = () => {
           <SubCategoriesSpent months={months} year={year} month={month} />
         </Grid>
         <Grid style={{ gridArea: "upcoming-bills" }}>
-          <UpcomingBills />
+          {/* TODO support months etc */}
+          <UpcomingBills months={months} year={year} month={month} />
         </Grid>
         <Grid style={{ gridArea: "credit-last-paid" }}>
           <CreditLastPaid months={months} year={year} month={month} />
         </Grid>
         <Grid style={{ gridArea: "upcoming-renewals" }}>
-          <UpcomingRenewals />
+          {/* TODO support months etc */}
+          <UpcomingRenewals months={months} year={year} month={month} />
         </Grid>
         <Grid style={{ gridArea: "salary-breakdown" }}>
           <SalaryBreakdown />
