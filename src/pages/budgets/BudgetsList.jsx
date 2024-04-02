@@ -4,47 +4,36 @@ import {
   TextField,
   ReferenceField,
   NumberField,
-  DateField,
 } from "react-admin";
 import CustomIdField from "../../commons/CustomIdField";
 
 const EntityList = () => (
-  <List sort={{ field: "name", order: "ASC" }}>
+  <List>
     <Datagrid bulkActionButtons={false} rowClick="edit">
       <CustomIdField source="id" label="UUID" sortable={false} />
-      <TextField source="name" />
       <ReferenceField
-        source="account.id"
-        reference="portal/accounts"
-        label="Account"
+        source="category.id"
+        reference="portal/admin/ynab-categories"
+        label="Category"
         sortable={false}
       >
         <TextField source="name" />
       </ReferenceField>
-      <NumberField source="transactions" />
+      <ReferenceField
+        source="category.id"
+        reference="portal/admin/ynab-categories"
+        label="Category Group"
+        sortable={false}
+      >
+        <TextField source="category_group_name" />
+      </ReferenceField>
       <NumberField
-        source="current_amount"
+        source="amount"
         options={{
           style: "currency",
           currency: "GBP",
         }}
       />
-      <NumberField
-        source="target_amount"
-        options={{
-          style: "currency",
-          currency: "GBP",
-        }}
-      />
-      <NumberField
-        source="available_amount"
-        options={{
-          style: "currency",
-          currency: "GBP",
-        }}
-      />
-      <DateField source="start_date" />
-      <DateField source="end_date" />
     </Datagrid>
   </List>
 );

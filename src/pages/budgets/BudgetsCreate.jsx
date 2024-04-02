@@ -1,54 +1,38 @@
 import {
   Create,
-  TextInput,
   SimpleForm,
   ReferenceInput,
   AutocompleteInput,
   required,
   NumberInput,
-  DateInput,
 } from "react-admin";
-import { Stack } from "@mui/material";
 
 const EntityCreate = () => {
   return (
     <Create title="Create Entity">
       <SimpleForm>
-        <TextInput source="name" fullWidth validate={[required()]} />
-        <Stack direction="row" spacing={2} alignItems="center">
-          <NumberInput source="transactions" min={0} defaultValue={0} />
-          <NumberInput
-            source="current_amount"
-            options={{
-              style: "currency",
-              currency: "GBP",
-            }}
-            min={0}
-            defaultValue={0}
-          />
-          <NumberInput
-            source="target_amount"
-            options={{
-              style: "currency",
-              currency: "GBP",
-            }}
-            validate={[required()]}
-          />
-        </Stack>
-        <Stack direction="row" spacing={2} alignItems="center">
-          <DateInput source="start_date" />
-          <DateInput source="end_date" />
-        </Stack>
+        <NumberInput
+          source="amount"
+          options={{
+            style: "currency",
+            currency: "GBP",
+          }}
+          validate={[required()]}
+          fullWidth={true}
+        />
         <ReferenceInput
-          source="account_id"
-          reference="portal/accounts"
+          source="category_id"
+          reference="portal/admin/ynab-categories"
           sort={{ field: "name", order: "ASC" }}
         >
           <AutocompleteInput
-            optionText={(entity) => `${entity.name} ${entity.type.name}`}
-            label="Account Name"
+            optionText={(entity) =>
+              `${entity.name} - ${entity.category_group_name}`
+            }
+            label="Category"
             filterToQuery={(searchText) => ({ name: searchText })}
             validate={[required()]}
+            fullWidth={true}
             sx={{
               minWidth: "250px",
             }}

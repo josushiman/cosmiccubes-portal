@@ -1,11 +1,11 @@
 import { Admin, Resource, defaultDarkTheme } from "react-admin";
 import { dataProvider } from "./dataProvider";
 import authProvider from "./authProvider";
-import accounts from "./pages/accounts";
+// import accounts from "./pages/accounts";
 // import accountTypes from "./pages/account-types";
 // import balanceTransfers from "./pages/balance-transfers";
-// import budgets from "./pages/budgets";
-// import companyCategories from "./pages/company-categories";
+import budgets from "./pages/budgets";
+import categories from "./pages/categories";
 // import companies from "./pages/companies";
 // import directDebits from "./pages/direct-debits";
 // import incomes from "./pages/incomes";
@@ -14,7 +14,8 @@ import accounts from "./pages/accounts";
 // import projectItemCategories from "./pages/project-item-categories";
 // import projectItems from "./pages/project-items";
 // import transactions from "./pages/transactions";
-import Dashboard from "./dashboards/home/Dashboard";
+import Dashboard from "./dashboards/month-summary/MonthSummary";
+// import Dashboard from "./dashboards/home/Dashboard";
 
 const defaultTheme = defaultDarkTheme;
 
@@ -26,9 +27,14 @@ export const App = () => (
     dashboard={Dashboard}
   >
     <Resource
-      name="portal/admin/accounts"
-      {...accounts}
-      options={{ label: "Accounts" }}
+      name="portal/admin/budgets"
+      {...budgets}
+      options={{ label: "Budgets" }}
+    />
+    <Resource
+      name="portal/admin/ynab-categories"
+      {...categories}
+      options={{ label: "Categories" }}
     />
     {/* <Resource
       name="portal/admin/account-types"
@@ -39,11 +45,6 @@ export const App = () => (
       name="portal/admin/balance-transfers"
       {...balanceTransfers}
       options={{ label: "Balance Transfers" }}
-    />
-    <Resource
-      name="portal/admin/budgets"
-      {...budgets}
-      options={{ label: "Budgets" }}
     />
     <Resource
       name="portal/admin/company-categories"
