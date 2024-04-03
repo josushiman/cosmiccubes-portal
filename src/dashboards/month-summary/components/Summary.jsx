@@ -1,25 +1,8 @@
 import { Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import Card from "@mui/material/Card";
-import { styled } from "@mui/material/styles";
-import LinearProgress, {
-  linearProgressClasses,
-} from "@mui/material/LinearProgress";
-// import formatCurrency from "../../../hooks/formatCurrency";
-
-const BorderLinearProgressWithBackground = styled(LinearProgress)(
-  ({ theme }) => ({
-    height: 25,
-    borderRadius: 5,
-    [`&.${linearProgressClasses.colorPrimary}`]: {
-      backgroundColor: theme.palette.grey[800],
-    },
-    [`& .${linearProgressClasses.bar}`]: {
-      borderRadius: 0,
-      backgroundColor: "#C06969",
-    },
-  })
-);
+import formatCurrency from "../../../hooks/formatCurrency";
+import { ThickBorderLinearProgressWithBackground } from "../../../commons/BorderLinearProgress";
 
 const Summary = ({ data }) => {
   const {
@@ -29,8 +12,6 @@ const Summary = ({ data }) => {
     balance_budget,
     daily_spend,
   } = data;
-
-  // console.table(data);
 
   return (
     <Card>
@@ -42,7 +23,7 @@ const Summary = ({ data }) => {
           width={"100%"}
         >
           <Typography variant="h3" fontWeight={500}>
-            £ {balance_available}
+            £ {formatCurrency(balance_available)}
           </Typography>
           <hr style={{ opacity: "25%" }} />
           <Typography
@@ -56,14 +37,14 @@ const Summary = ({ data }) => {
           </Typography>
         </Grid>
         {/* TODO replace negative sign when resolved on Backend*/}
-        <BorderLinearProgressWithBackground
+        <ThickBorderLinearProgressWithBackground
           variant="determinate"
           value={balance_budget / -balance_spent}
         />
         <Typography variant="body1">
           {/* TODO replace negative sign when resolved on Backend*/}
-          <strong>£ {-balance_spent}</strong> of{" "}
-          <strong>£ {balance_budget}</strong> spent this month
+          <strong>£ {formatCurrency(-balance_spent)}</strong> of{" "}
+          <strong>£ {formatCurrency(balance_budget)}</strong> spent this month
         </Typography>
         <hr style={{ width: "100%", opacity: "25%" }} />
         <Grid
@@ -74,7 +55,7 @@ const Summary = ({ data }) => {
         >
           <Typography variant="h5">Daily spend:</Typography>
           <Typography variant="h5" fontWeight={500}>
-            £ {daily_spend}
+            £ {formatCurrency(daily_spend)}
           </Typography>
         </Grid>
       </Grid>
