@@ -15,7 +15,7 @@ const Categories = ({ data }) => {
   }
 
   const categoriesSpentData = data.map((item, index) => {
-    const { name, spent, budget } = item;
+    const { name, group, spent, budget } = item;
     const progress = (-spent / budget) * 100;
 
     return (
@@ -25,7 +25,9 @@ const Categories = ({ data }) => {
           justifyContent={"space-between"}
           paddingBottom={"0.5rem"}
         >
-          <Typography variant="subtitle1">{name}</Typography>
+          <Typography variant="subtitle1">
+            {group} - {name}
+          </Typography>
           <Typography
             variant="body1"
             style={{ alignSelf: "flex-end", color: "white" }}

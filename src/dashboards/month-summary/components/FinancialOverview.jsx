@@ -27,7 +27,7 @@ const FinancialOverview = ({ data }) => {
         <hr style={{ width: "100%", opacity: "25%" }} />
         <Grid container justifyContent={"space-between"}>
           <Typography variant="h5" fontWeight={500}>
-            What`&lsquo;s left:
+            What&lsquo;s left:
           </Typography>
           <Typography variant="h5" fontWeight={500}>
             <span>£</span> {formatCurrency(data.balance_available)}
