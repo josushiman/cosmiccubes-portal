@@ -13,6 +13,8 @@ const Summary = ({ data }) => {
     daily_spend,
   } = data;
 
+  const progress = (-balance_spent / balance_budget) * 100;
+
   return (
     <Card>
       <Grid container padding={"2rem"} rowGap={"1rem"} flexDirection={"column"}>
@@ -39,7 +41,7 @@ const Summary = ({ data }) => {
         {/* TODO replace negative sign when resolved on Backend*/}
         <ThickBorderLinearProgressWithBackground
           variant="determinate"
-          value={balance_budget / -balance_spent}
+          value={progress}
         />
         <Typography variant="body1">
           {/* TODO replace negative sign when resolved on Backend*/}
