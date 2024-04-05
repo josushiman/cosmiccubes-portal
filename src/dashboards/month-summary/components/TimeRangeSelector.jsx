@@ -3,31 +3,31 @@ import { Card, Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { useState } from "react";
 
-const TimeRangeSelector = ({
-  setMonthIntervals,
-  setMonthInterval,
-  setYearInterval,
-  months,
-  month,
-  year,
-}) => {
-  const itemSelected = {
-    backgroundColor: "#313131",
-    padding: "0.75rem 1rem",
-    borderRadius: "0.25rem",
-    cursor: "pointer",
-  };
+const itemSelected = {
+  backgroundColor: "#313131",
+  padding: "0.75rem 1rem",
+  borderRadius: "0.25rem",
+  cursor: "pointer",
+};
 
-  const defaultStyle = {
-    cursor: "pointer",
-  };
+const defaultStyle = {
+  cursor: "pointer",
+};
 
-  const disabledStyle = {
-    opacity: "10%",
-    pointerEvents: "none",
-  };
+const disabledStyle = {
+  opacity: "10%",
+  pointerEvents: "none",
+};
+
+const TimeRangeSelector = ({ urlParamsCallback }) => {
+  const now = new Date();
+  const currentMonth = now.getMonth() + 1;
+  const currentYear = now.getFullYear();
 
   const [open, setOpen] = useState(false);
+  const [months, setMonths] = useState(undefined);
+  const [year, setYear] = useState(currentYear);
+  const [specificMonth, setSpecificMonth] = useState(currentMonth);
 
   if (!open) {
     return (
@@ -52,14 +52,73 @@ const TimeRangeSelector = ({
   }
 
   const updateTimeRange = (
-    months = undefined,
-    month = undefined,
-    year = undefined
+    monthsSelection = undefined,
+    specificMonthSelection = undefined,
+    yearSelection = undefined
   ) => {
-    console.log("test");
-    // setMonthIntervals(3)
-    // setYearInterval(2024)
-    // setMonthInterval(2)
+    // For setting the months interval
+    if (monthsSelection && months !== monthsSelection) {
+      console.log("Changing month value");
+      setMonths(monthsSelection);
+      // Reset the year and specificMonth
+      setYear(undefined);
+      setSpecificMonth(undefined);
+    }
+
+    // Setting the year when no month has been set
+    if (specificMonthSelection && yearSelection == undefined) {
+      setYear(currentYear);
+      setSpecificMonth(specificMonthSelection);
+
+      // Reset the months interval
+      setMonths(undefined);
+    }
+
+    // For setting the year and the specificMonth
+    if (yearSelection && specificMonthSelection) {
+      console.log("Changing year and value");
+      // When the year is the same but the month is different
+      if (yearSelection == year && specificMonthSelection !== specificMonth) {
+        setSpecificMonth(specificMonthSelection);
+        // When the month is the same but the year is different
+      } else if (
+        specificMonthSelection === specificMonth &&
+        yearSelection != year
+      ) {
+        setYear(yearSelection);
+      } else if (
+        yearSelection !== year &&
+        specificMonthSelection !== specificMonth
+      ) {
+        setSpecificMonth(specificMonthSelection);
+        setYear(yearSelection);
+      } else {
+        setSpecificMonth(undefined);
+      }
+
+      setMonths(undefined);
+    }
+
+    if (yearSelection && year != yearSelection) {
+      console.log("Changing year value");
+      setYear(yearSelection);
+      setMonths(undefined);
+    }
+  };
+
+  const setTimeRange = () => {
+    if (months) {
+      urlParamsCallback(`?months=${months}`);
+    } else if (year && specificMonth) {
+      urlParamsCallback(`?year=${year}&month=${specificMonth}`);
+    } else if (year) {
+      urlParamsCallback(`?year=${year}`);
+    } else {
+      urlParamsCallback(`?month=${specificMonth}`);
+    }
+
+    setOpen(false);
+    return;
   };
 
   return (
@@ -74,7 +133,7 @@ const TimeRangeSelector = ({
         >
           <Grid container xs={3} justifyContent={"center"}>
             <Typography
-              onClick={setMonthIntervals(3)}
+              onClick={() => updateTimeRange(3, undefined, undefined)}
               sx={months == 3 ? itemSelected : defaultStyle}
             >
               3M
@@ -82,7 +141,7 @@ const TimeRangeSelector = ({
           </Grid>
           <Grid container xs={3} justifyContent={"center"}>
             <Typography
-              onClick={setMonthIntervals(6)}
+              onClick={() => updateTimeRange(6, undefined, undefined)}
               sx={months == 6 ? itemSelected : defaultStyle}
             >
               6M
@@ -90,7 +149,7 @@ const TimeRangeSelector = ({
           </Grid>
           <Grid container xs={3} justifyContent={"center"}>
             <Typography
-              onClick={setMonthIntervals(9)}
+              onClick={() => updateTimeRange(9, undefined, undefined)}
               sx={months == 9 ? itemSelected : defaultStyle}
             >
               9M
@@ -98,7 +157,7 @@ const TimeRangeSelector = ({
           </Grid>
           <Grid container xs={3} justifyContent={"center"}>
             <Typography
-              onClick={setMonthIntervals(12)}
+              onClick={() => updateTimeRange(12, undefined, undefined)}
               sx={months == 12 ? itemSelected : defaultStyle}
             >
               1Y
@@ -121,19 +180,25 @@ const TimeRangeSelector = ({
         >
           <Grid container xs={3} justifyContent={"center"}>
             <Typography
-              onClick={setYearInterval(2024)}
+              onClick={() => updateTimeRange(undefined, undefined, 2024)}
               sx={year == 2024 ? itemSelected : defaultStyle}
             >
               `24
             </Typography>
           </Grid>
           <Grid container xs={3} justifyContent={"center"}>
-            <Typography onClick={setYearInterval(2025)} sx={disabledStyle}>
+            <Typography
+              onClick={() => updateTimeRange(undefined, undefined, 2025)}
+              sx={disabledStyle}
+            >
               `25
             </Typography>
           </Grid>
           <Grid container xs={3} justifyContent={"center"}>
-            <Typography onClick={setYearInterval(2026)} sx={disabledStyle}>
+            <Typography
+              onClick={() => updateTimeRange(undefined, undefined, 2026)}
+              sx={disabledStyle}
+            >
               `26
             </Typography>
           </Grid>
@@ -147,32 +212,32 @@ const TimeRangeSelector = ({
         >
           <Grid container xs={3} justifyContent={"center"}>
             <Typography
-              onClick={setMonthInterval(1)}
-              sx={month == 1 ? itemSelected : defaultStyle}
+              onClick={() => updateTimeRange(undefined, 1, year)}
+              sx={specificMonth == 1 ? itemSelected : defaultStyle}
             >
               Jan
             </Typography>
           </Grid>
           <Grid container xs={3} justifyContent={"center"}>
             <Typography
-              onClick={setMonthInterval(2)}
-              sx={month == 2 ? itemSelected : defaultStyle}
+              onClick={() => updateTimeRange(undefined, 2, year)}
+              sx={specificMonth == 2 ? itemSelected : defaultStyle}
             >
               Feb
             </Typography>
           </Grid>
           <Grid container xs={3} justifyContent={"center"}>
             <Typography
-              onClick={setMonthInterval(3)}
-              sx={month == 3 ? itemSelected : defaultStyle}
+              onClick={() => updateTimeRange(undefined, 3, year)}
+              sx={specificMonth == 3 ? itemSelected : defaultStyle}
             >
               Mar
             </Typography>
           </Grid>
           <Grid container xs={3} justifyContent={"center"}>
             <Typography
-              onClick={setMonthInterval(4)}
-              sx={month == 4 ? itemSelected : defaultStyle}
+              onClick={() => updateTimeRange(undefined, 4, year)}
+              sx={specificMonth == 4 ? itemSelected : defaultStyle}
             >
               Apr
             </Typography>
@@ -187,32 +252,32 @@ const TimeRangeSelector = ({
         >
           <Grid container xs={3} justifyContent={"center"}>
             <Typography
-              onClick={setMonthInterval(5)}
-              sx={month == 5 ? itemSelected : defaultStyle}
+              onClick={() => updateTimeRange(undefined, 5, year)}
+              sx={specificMonth == 5 ? itemSelected : defaultStyle}
             >
               May
             </Typography>
           </Grid>
           <Grid container xs={3} justifyContent={"center"}>
             <Typography
-              onClick={setMonthInterval(6)}
-              sx={month == 6 ? itemSelected : defaultStyle}
+              onClick={() => updateTimeRange(undefined, 6, year)}
+              sx={specificMonth == 6 ? itemSelected : defaultStyle}
             >
               Jun
             </Typography>
           </Grid>
           <Grid container xs={3} justifyContent={"center"}>
             <Typography
-              onClick={setMonthInterval(7)}
-              sx={month == 7 ? itemSelected : defaultStyle}
+              onClick={() => updateTimeRange(undefined, 7, year)}
+              sx={specificMonth == 7 ? itemSelected : defaultStyle}
             >
               Jul
             </Typography>
           </Grid>
           <Grid container xs={3} justifyContent={"center"}>
             <Typography
-              onClick={setMonthInterval(8)}
-              sx={month == 8 ? itemSelected : defaultStyle}
+              onClick={() => updateTimeRange(undefined, 8, year)}
+              sx={specificMonth == 8 ? itemSelected : defaultStyle}
             >
               Aug
             </Typography>
@@ -227,32 +292,32 @@ const TimeRangeSelector = ({
         >
           <Grid container xs={3} justifyContent={"center"}>
             <Typography
-              onClick={setMonthInterval(9)}
-              sx={month == 9 ? itemSelected : defaultStyle}
+              onClick={() => updateTimeRange(undefined, 9, year)}
+              sx={specificMonth == 9 ? itemSelected : defaultStyle}
             >
               Sep
             </Typography>
           </Grid>
           <Grid container xs={3} justifyContent={"center"}>
             <Typography
-              onClick={setMonthInterval(10)}
-              sx={month == 10 ? itemSelected : defaultStyle}
+              onClick={() => updateTimeRange(undefined, 10, year)}
+              sx={specificMonth == 10 ? itemSelected : defaultStyle}
             >
               Oct
             </Typography>
           </Grid>
           <Grid container xs={3} justifyContent={"center"}>
             <Typography
-              onClick={setMonthInterval(11)}
-              sx={month == 11 ? itemSelected : defaultStyle}
+              onClick={() => updateTimeRange(undefined, 11, year)}
+              sx={specificMonth == 11 ? itemSelected : defaultStyle}
             >
               Nov
             </Typography>
           </Grid>
           <Grid container xs={3} justifyContent={"center"}>
             <Typography
-              onClick={setMonthInterval(12)}
-              sx={month == 12 ? itemSelected : defaultStyle}
+              onClick={() => updateTimeRange(undefined, 12, year)}
+              sx={specificMonth == 12 ? itemSelected : defaultStyle}
             >
               Dec
             </Typography>
@@ -261,7 +326,8 @@ const TimeRangeSelector = ({
       </Card>
 
       <Grid container flexDirection={"column"} rowGap={"0.5rem"}>
-        <Card>
+        {/* <Card onClick={setTimeRange()}> */}
+        <Card onClick={urlParamsCallback("test")}>
           <Grid container padding={"1rem"} justifyContent={"center"}>
             <Typography variant="h6">Confirm</Typography>
           </Grid>
