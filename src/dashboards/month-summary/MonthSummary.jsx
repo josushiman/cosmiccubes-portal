@@ -40,7 +40,10 @@ const MonthSummary = () => {
       rowGap={"0.5rem"}
       flexDirection={"column"}
     >
-      <TimeRangeSelector urlParamsCallback={urlParamsCallback} />
+      <TimeRangeSelector
+        urlParamsCallback={urlParamsCallback}
+        disabled={true}
+      />
       <Summary data={data.summary} />
       <Categories data={data.categories} />
       <FinancialOverview data={data.income_expenses} />

@@ -13,7 +13,12 @@ const Summary = ({ data }) => {
     daily_spend,
   } = data;
 
-  const progress = (-balance_spent / balance_budget) * 100;
+  // TODO replace negative sign when resolved on Backend
+  let progress = (-balance_spent / balance_budget) * 100;
+
+  if (progress >= 100) {
+    progress = 100;
+  }
 
   return (
     <Card>
@@ -38,7 +43,6 @@ const Summary = ({ data }) => {
             {days_left} days left
           </Typography>
         </Grid>
-        {/* TODO replace negative sign when resolved on Backend*/}
         <ThickBorderLinearProgressWithBackground
           variant="determinate"
           value={progress}

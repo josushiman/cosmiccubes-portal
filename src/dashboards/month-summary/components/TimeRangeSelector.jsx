@@ -19,7 +19,12 @@ const disabledStyle = {
   pointerEvents: "none",
 };
 
-const TimeRangeSelector = ({ urlParamsCallback }) => {
+const closedStyle = {
+  width: "75%",
+  alignSelf: "center",
+};
+
+const TimeRangeSelector = ({ urlParamsCallback, disabled }) => {
   const now = new Date();
   const currentMonth = now.getMonth() + 1;
   const currentYear = now.getFullYear();
@@ -32,10 +37,7 @@ const TimeRangeSelector = ({ urlParamsCallback }) => {
   if (!open) {
     return (
       <Card
-        style={{
-          width: "75%",
-          alignSelf: "center",
-        }}
+        style={disabled ? disabledStyle : closedStyle}
         onClick={() => setOpen(true)}
       >
         <Grid
@@ -106,20 +108,20 @@ const TimeRangeSelector = ({ urlParamsCallback }) => {
     }
   };
 
-  const setTimeRange = () => {
-    if (months) {
-      urlParamsCallback(`?months=${months}`);
-    } else if (year && specificMonth) {
-      urlParamsCallback(`?year=${year}&month=${specificMonth}`);
-    } else if (year) {
-      urlParamsCallback(`?year=${year}`);
-    } else {
-      urlParamsCallback(`?month=${specificMonth}`);
-    }
+  // const setTimeRange = () => {
+  //   if (months) {
+  //     urlParamsCallback(`?months=${months}`);
+  //   } else if (year && specificMonth) {
+  //     urlParamsCallback(`?year=${year}&month=${specificMonth}`);
+  //   } else if (year) {
+  //     urlParamsCallback(`?year=${year}`);
+  //   } else {
+  //     urlParamsCallback(`?month=${specificMonth}`);
+  //   }
 
-    setOpen(false);
-    return;
-  };
+  //   setOpen(false);
+  //   return;
+  // };
 
   return (
     <>
