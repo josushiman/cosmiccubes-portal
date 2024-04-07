@@ -1,7 +1,8 @@
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { Card, Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { TimePeriodContext } from "../../context/TimePeriodContext";
+import { ModalContext } from "../../context/ModalContextProvider";
 
 const itemSelected = {
   backgroundColor: "#313131",
@@ -19,39 +20,17 @@ const disabledStyle = {
   pointerEvents: "none",
 };
 
-const closedStyle = {
-  width: "75%",
-  alignSelf: "center",
-};
-
-const TimeRangeSelector = ({ urlParamsCallback, disabled }) => {
+const TimeRangeSelector = () => {
   const now = new Date();
   const currentMonth = now.getMonth() + 1;
   const currentYear = now.getFullYear();
 
-  const [open, setOpen] = useState(false);
   const [months, setMonths] = useState(undefined);
   const [year, setYear] = useState(currentYear);
   const [specificMonth, setSpecificMonth] = useState(currentMonth);
 
-  if (!open) {
-    return (
-      <Card
-        style={disabled ? disabledStyle : closedStyle}
-        onClick={() => setOpen(true)}
-      >
-        <Grid
-          container
-          padding={"1rem"}
-          justifyContent={"center"}
-          columnGap={"0.5rem"}
-        >
-          <Typography variant="body1">Current Month</Typography>
-          <ChevronRightIcon />
-        </Grid>
-      </Card>
-    );
-  }
+  const { setValue } = useContext(TimePeriodContext);
+  const { closeModal } = useContext(ModalContext);
 
   const updateTimeRange = (
     monthsSelection = undefined,
@@ -60,7 +39,7 @@ const TimeRangeSelector = ({ urlParamsCallback, disabled }) => {
   ) => {
     // For setting the months interval
     if (monthsSelection && months !== monthsSelection) {
-      console.log("Changing month value");
+      console.debug("Changing month value");
       setMonths(monthsSelection);
       // Reset the year and specificMonth
       setYear(undefined);
@@ -78,7 +57,7 @@ const TimeRangeSelector = ({ urlParamsCallback, disabled }) => {
 
     // For setting the year and the specificMonth
     if (yearSelection && specificMonthSelection) {
-      console.log("Changing year and value");
+      console.debug("Changing year and value");
       // When the year is the same but the month is different
       if (yearSelection == year && specificMonthSelection !== specificMonth) {
         setSpecificMonth(specificMonthSelection);
@@ -102,30 +81,29 @@ const TimeRangeSelector = ({ urlParamsCallback, disabled }) => {
     }
 
     if (yearSelection && year != yearSelection) {
-      console.log("Changing year value");
+      console.debug("Changing year value");
       setYear(yearSelection);
       setMonths(undefined);
     }
   };
 
-  // const setTimeRange = () => {
-  //   if (months) {
-  //     urlParamsCallback(`?months=${months}`);
-  //   } else if (year && specificMonth) {
-  //     urlParamsCallback(`?year=${year}&month=${specificMonth}`);
-  //   } else if (year) {
-  //     urlParamsCallback(`?year=${year}`);
-  //   } else {
-  //     urlParamsCallback(`?month=${specificMonth}`);
-  //   }
+  const setTimeRange = () => {
+    if (months) {
+      setValue(`?months=${months}`);
+    } else if (year && specificMonth) {
+      setValue(`?year=${year}&month=${specificMonth}`);
+    } else if (year) {
+      setValue(`?year=${year}`);
+    } else {
+      setValue(`?month=${specificMonth}`);
+    }
 
-  //   setOpen(false);
-  //   return;
-  // };
+    return closeModal();
+  };
 
   return (
-    <>
-      <Card>
+    <Grid position={"absolute"} left={0} top={0} width={"100%"}>
+      <Card style={{ marginTop: "4rem" }}>
         <Grid
           container
           justifyContent={"center"}
@@ -329,18 +307,18 @@ const TimeRangeSelector = ({ urlParamsCallback, disabled }) => {
 
       <Grid container flexDirection={"column"} rowGap={"0.5rem"}>
         {/* <Card onClick={setTimeRange()}> */}
-        <Card onClick={urlParamsCallback("test")}>
+        <Card onClick={() => setTimeRange()}>
           <Grid container padding={"1rem"} justifyContent={"center"}>
             <Typography variant="h6">Confirm</Typography>
           </Grid>
         </Card>
-        <Card onClick={() => setOpen(false)}>
+        <Card onClick={() => closeModal()}>
           <Grid container padding={"1rem"} justifyContent={"center"}>
             <Typography variant="h6">Cancel</Typography>
           </Grid>
         </Card>
       </Grid>
-    </>
+    </Grid>
   );
 };
 
