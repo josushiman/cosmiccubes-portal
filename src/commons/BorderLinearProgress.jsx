@@ -19,7 +19,7 @@ export const BorderLinearProgressNoBackground = styled(LinearProgress)(() => ({
 
 export const ThickBorderLinearProgressWithBackground = styled(LinearProgress)(
   ({ theme }) => ({
-    height: 25,
+    height: 20,
     borderRadius: 5,
     [`&.${linearProgressClasses.colorPrimary}`]: {
       backgroundColor: theme.palette.grey[800],

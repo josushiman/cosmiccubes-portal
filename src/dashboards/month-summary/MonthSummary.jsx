@@ -1,27 +1,13 @@
-import { useState, useCallback, useEffect } from "react";
 import Grid from "@mui/material/Unstable_Grid2";
 import useAsync from "../../hooks/useAsync";
 import Summary from "./components/Summary";
 import Categories from "./components/Categories";
 import FinancialOverview from "./components/FinancialOverview";
 import "./styles.css";
-import TimeRangeSelector from "./components/TimeRangeSelector";
+import NotificationCard from "./components/NotificationCard";
 
 const MonthSummary = () => {
   const { data, loading, error } = useAsync("/ynab/monthly-summary");
-  const [urlParams, setUrlParams] = useState(undefined);
-
-  const urlParamsCallback = useCallback(
-    (value) => () => {
-      console.log(value);
-      setUrlParams(value);
-    },
-    []
-  );
-
-  useEffect(() => {
-    console.log(urlParams);
-  }, [urlParams]);
 
   if (loading || !data) {
     // Add skeleton
@@ -33,6 +19,9 @@ const MonthSummary = () => {
     return <div>Error: {error.message}</div>;
   }
 
+  data.notif = "1 uncategorised transaction";
+  const notificationText = data?.notif ? data.notif : null;
+
   return (
     <Grid
       container
@@ -40,10 +29,9 @@ const MonthSummary = () => {
       rowGap={"0.5rem"}
       flexDirection={"column"}
     >
-      <TimeRangeSelector
-        urlParamsCallback={urlParamsCallback}
-        disabled={true}
-      />
+      {notificationText ? (
+        <NotificationCard data={"1 uncategorised transaction"} />
+      ) : null}
       <Summary data={data.summary} />
       <Categories data={data.categories} />
       <FinancialOverview data={data.income_expenses} />

@@ -15,6 +15,7 @@ import categories from "./pages/categories";
 // import projectItems from "./pages/project-items";
 // import transactions from "./pages/transactions";
 import Dashboard from "./dashboards/month-summary/MonthSummary";
+import CustomLayout from "./commons/CustomLayout";
 // import Dashboard from "./dashboards/home/Dashboard";
 
 const defaultTheme = defaultDarkTheme;
@@ -25,6 +26,7 @@ export const App = () => (
     dataProvider={dataProvider}
     theme={defaultTheme}
     dashboard={Dashboard}
+    layout={CustomLayout}
   >
     <Resource
       name="portal/admin/budgets"

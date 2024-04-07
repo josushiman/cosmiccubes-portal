@@ -29,7 +29,7 @@ const Summary = ({ data }) => {
           flexDirection={"row"}
           width={"100%"}
         >
-          <Typography variant="h3" fontWeight={500}>
+          <Typography variant="h4" fontWeight={500}>
             £ {formatCurrency(balance_available)}
           </Typography>
           <hr style={{ opacity: "25%" }} />

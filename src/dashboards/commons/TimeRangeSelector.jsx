@@ -46,7 +46,7 @@ const TimeRangeSelector = ({ urlParamsCallback, disabled }) => {
           justifyContent={"center"}
           columnGap={"0.5rem"}
         >
-          <Typography variant="body1">Current Month Summary</Typography>
+          <Typography variant="body1">Current Month</Typography>
           <ChevronRightIcon />
         </Grid>
       </Card>
