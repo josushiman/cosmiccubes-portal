@@ -61,7 +61,7 @@ export const testData = {
 
 const TransactionsSummary = ({ data = testData }) => {
   return (
-    <Grid container rowGap={"0.5rem"} flexDirection={"column"}>
+    <Grid container rowGap={"1rem"} flexDirection={"column"} padding={"1rem"}>
       <CreditSummary data={data.summary} />
       <Transactions data={data.transactions} />
     </Grid>

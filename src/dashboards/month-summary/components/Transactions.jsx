@@ -5,7 +5,12 @@ import formatCurrency from "../../../hooks/formatCurrency";
 const Transactions = ({ data }) => {
   return (
     <Card>
-      <Grid container flexDirection={"column"} padding={"2rem"} rowGap={"1rem"}>
+      <Grid
+        container
+        flexDirection={"column"}
+        padding={"1.5rem 2rem"}
+        rowGap={"1rem"}
+      >
         {data.map((value, index) => {
           return (
             <Grid

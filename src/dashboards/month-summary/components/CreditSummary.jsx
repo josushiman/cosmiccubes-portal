@@ -38,7 +38,7 @@ const CreditSummary = ({ data }) => {
     <Grid container flexDirection={"column"}>
       <Card
         sx={{
-          padding: "2rem",
+          padding: "1.5rem 2rem",
         }}
       >
         <Grid
