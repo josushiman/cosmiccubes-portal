@@ -1,8 +1,7 @@
 import Grid from "@mui/material/Unstable_Grid2";
 import CreditSummary from "./components/CreditSummary";
 import Transactions from "./components/Transactions";
-import BackButton from "../commons/BackButton";
-import Breadcrumbs from "../commons/Breadcrumbs";
+import Navigation from "../commons/Navigation";
 
 export const testData = {
   summary: {
@@ -64,10 +63,7 @@ export const testData = {
 const TransactionsSummary = ({ data = testData }) => {
   return (
     <Grid container rowGap={"1rem"} flexDirection={"column"} padding={"1rem"}>
-      <Grid container justifyContent={"space-between"} alignItems={"flex-end"}>
-        <Breadcrumbs />
-        <BackButton />
-      </Grid>
+      <Navigation />
       <CreditSummary data={data.summary} />
       <Transactions data={data.transactions} />
     </Grid>
