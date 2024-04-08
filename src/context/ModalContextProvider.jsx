@@ -7,13 +7,13 @@ const ModalContextProvider = ({ children }) => {
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-  const switchModal = () => setIsModalOpen(!isModalOpen);
+  const toggleModal = () => setIsModalOpen(!isModalOpen);
 
   console.debug(isModalOpen);
 
   return (
     <ModalContext.Provider
-      value={{ isModalOpen, openModal, closeModal, switchModal }}
+      value={{ isModalOpen, openModal, closeModal, toggleModal }}
     >
       {children}
     </ModalContext.Provider>

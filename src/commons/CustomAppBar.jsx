@@ -18,7 +18,7 @@ const defaultStyle = {
 };
 
 const CustomAppBar = () => {
-  const { isModalOpen, switchModal } = useContext(ModalContext);
+  const { isModalOpen, toggleModal } = useContext(ModalContext);
 
   return (
     <AppBar color="primary">
@@ -26,7 +26,7 @@ const CustomAppBar = () => {
         container
         marginRight={"0.5rem"}
         marginLeft={"auto"}
-        onClick={switchModal}
+        onClick={toggleModal}
       >
         <Card />
         <CalendarMonthIcon style={defaultStyle} />
