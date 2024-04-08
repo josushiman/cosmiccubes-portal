@@ -11,11 +11,11 @@ export const testData = {
         amount: 123.5,
       },
       {
-        name: "Barclays",
+        name: "HSBC CC",
         amount: 123.5,
       },
       {
-        name: "HSBC CC",
+        name: "Barclays",
         amount: 123.5,
       },
     ],

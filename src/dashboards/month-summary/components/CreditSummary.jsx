@@ -1,9 +1,6 @@
 import { Card, Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import formatCurrency from "../../../hooks/formatCurrency";
-import amexSvg from "/public/amex.svg";
-import hsbcSvg from "/public/hsbc.svg";
-import barclaysSvg from "/public/barclays.svg";
 
 const CreditSummary = ({ data }) => {
   const CardSummary = () => {
@@ -12,10 +9,10 @@ const CreditSummary = ({ data }) => {
         {data.accounts.map((value, index) => {
           const imageSource =
             value.name == "BA AMEX"
-              ? amexSvg
+              ? "/amex.svg?url"
               : value.name == "HSBC CC"
-              ? hsbcSvg
-              : barclaysSvg;
+              ? "/hsbc.svg?url"
+              : "/barclays.svg?url";
 
           return (
             <Grid
