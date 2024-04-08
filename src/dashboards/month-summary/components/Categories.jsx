@@ -5,10 +5,14 @@ import { BorderLinearProgressWithBackground } from "../../../commons/BorderLinea
 
 const Categories = ({ data }) => {
   function returnCategoryString(spent, budget) {
-    let textString = `${formatCurrency(-spent)} / ∞`;
+    let textString = `${formatCurrency(-spent, false, true)} / ∞`;
 
     if (budget) {
-      textString = `${formatCurrency(-spent)} / ${formatCurrency(budget)}`;
+      textString = `${formatCurrency(-spent, false, true)} / ${formatCurrency(
+        budget,
+        false,
+        true
+      )}`;
     }
 
     return <span>£ {textString}</span>;
