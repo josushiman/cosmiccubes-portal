@@ -31,8 +31,9 @@ const MonthSummary = () => {
     <Grid
       container
       justifyContent={"space-between"}
-      rowGap={"0.5rem"}
+      rowGap={"1rem"}
       flexDirection={"column"}
+      padding={"1rem"}
     >
       {notificationText ? (
         <NotificationCard data={"1 uncategorised transaction"} />

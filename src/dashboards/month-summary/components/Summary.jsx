@@ -22,7 +22,12 @@ const Summary = ({ data }) => {
 
   return (
     <Card>
-      <Grid container padding={"2rem"} rowGap={"1rem"} flexDirection={"column"}>
+      <Grid
+        container
+        padding={"1.5rem 2rem"}
+        rowGap={"1rem"}
+        flexDirection={"column"}
+      >
         <Grid
           container
           justifyContent={"space-between"}
@@ -30,7 +35,7 @@ const Summary = ({ data }) => {
           width={"100%"}
         >
           <Typography variant="h4" fontWeight={500}>
-            £ {formatCurrency(balance_available)}
+            £ {formatCurrency(balance_available, false, true)}
           </Typography>
           <hr style={{ opacity: "25%" }} />
           <Typography
@@ -49,8 +54,11 @@ const Summary = ({ data }) => {
         />
         <Typography variant="body1">
           {/* TODO replace negative sign when resolved on Backend*/}
-          <strong>£ {formatCurrency(-balance_spent)}</strong> of{" "}
-          <strong>£ {formatCurrency(balance_budget)}</strong> spent this month
+          <strong>
+            £ {formatCurrency(-balance_spent, false, true)}
+          </strong> of{" "}
+          <strong>£ {formatCurrency(balance_budget, false, true)}</strong> spent
+          this month
         </Typography>
         <hr style={{ width: "100%", opacity: "25%" }} />
         <Grid
@@ -61,7 +69,7 @@ const Summary = ({ data }) => {
         >
           <Typography variant="h5">Daily spend:</Typography>
           <Typography variant="h5" fontWeight={500}>
-            £ {formatCurrency(daily_spend)}
+            £ {formatCurrency(daily_spend, false, true)}
           </Typography>
         </Grid>
       </Grid>

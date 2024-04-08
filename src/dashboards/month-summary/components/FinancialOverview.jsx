@@ -16,7 +16,12 @@ const SpentButton = () => {
 const FinancialOverview = ({ data }) => {
   return (
     <Card>
-      <Grid container flexDirection={"column"} rowGap={"1rem"} padding={"2rem"}>
+      <Grid
+        container
+        flexDirection={"column"}
+        rowGap={"1rem"}
+        padding={"1.5rem 2rem"}
+      >
         <Grid container justifyContent={"space-between"}>
           <Typography variant="body1">Last month income:</Typography>
           <Typography variant="body1">

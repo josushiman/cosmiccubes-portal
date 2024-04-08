@@ -21,6 +21,7 @@ const CreditSummary = ({ data }) => {
               justifyContent={"space-between"}
               alignItems={"center"}
               padding={"1rem 2rem 0 2rem"}
+              onClick={() => console.log("TODO Filter the transactions")}
             >
               <img src={imageSource} alt={value.name} />
               <Typography variant="h6" fontWeight={300}>

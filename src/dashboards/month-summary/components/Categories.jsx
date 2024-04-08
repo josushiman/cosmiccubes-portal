@@ -45,7 +45,12 @@ const Categories = ({ data }) => {
 
   return (
     <Card>
-      <Grid container flexDirection={"column"} gap={"2rem"} padding={"2rem"}>
+      <Grid
+        container
+        flexDirection={"column"}
+        gap={"2rem"}
+        padding={"1.5rem 2rem"}
+      >
         {categoriesSpentData}
       </Grid>
     </Card>
