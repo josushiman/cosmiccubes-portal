@@ -15,7 +15,7 @@ const TimePeriodProvider = ({ children }) => {
     `?year=${year}&month=${specificMonth}`
   );
 
-  console.log(timePeriod);
+  console.debug(timePeriod);
 
   const setMonthIntervals = (monthsSelection) => {
     console.debug("Changing month value");
@@ -71,8 +71,37 @@ const TimePeriodProvider = ({ children }) => {
     } else if (year) {
       setTimePeriod(`?year=${year}`);
     } else {
+      // This shouldnt be triggered
       setTimePeriod(`?month=${specificMonth}`);
     }
+  };
+
+  const resetTimeRange = () => {
+    console.debug(timePeriod);
+
+    const monthsParts = timePeriod.split("?months=");
+    let numParts = monthsParts.length;
+
+    if (numParts > 1) {
+      setMonthIntervals(Number(monthsParts[1]));
+      return;
+    }
+
+    const yearMonthParts = timePeriod.split("&month=");
+    numParts = yearMonthParts.length;
+    if (numParts > 1) {
+      const yearParts = yearMonthParts[0].split("?year=");
+      setYearMonthInterval(Number(yearParts[1]), Number(yearMonthParts[1]));
+      return;
+    }
+
+    const yearParts = timePeriod.split("?year=");
+    numParts = yearParts.length;
+    if (numParts > 1) {
+      setYearInterval(Number(yearParts[1]));
+      return;
+    }
+    return;
   };
 
   return (
@@ -87,6 +116,7 @@ const TimePeriodProvider = ({ children }) => {
         setYearMonthInterval,
         setYearInterval,
         setTimeRange,
+        resetTimeRange,
       }}
     >
       {children}
