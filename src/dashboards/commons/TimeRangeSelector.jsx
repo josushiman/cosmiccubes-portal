@@ -181,13 +181,19 @@ const TimeRangeSelector = () => {
         zIndex={1}
         rowGap={"1rem"}
       >
-        <Card>
+        <Card
+          sx={{
+            boxShadow: "none",
+          }}
+        >
           <MonthsIntervalComponents />
           <hr
             style={{
               borderColor: "#313131",
-              marginLeft: "0.5rem",
-              marginRight: "0.5rem",
+              borderStyle: "solid",
+              height: "1px",
+              marginLeft: "1.5rem",
+              marginRight: "1.5rem",
             }}
           />
           <YearIntervalComponents />
