@@ -194,13 +194,28 @@ const TimeRangeSelector = () => {
           <MonthIntervalComponents />
         </Card>
 
-        <Grid container flexDirection={"column"} rowGap={"1rem"}>
-          <Card onClick={() => submitForm()}>
+        <Grid
+          container
+          flexDirection={"column"}
+          rowGap={"1rem"}
+          padding={"0 1rem"}
+        >
+          <Card
+            onClick={() => submitForm()}
+            sx={{
+              backgroundColor: "#313131",
+            }}
+          >
             <Grid container padding={"1rem"} justifyContent={"center"}>
               <Typography variant="h6">Confirm</Typography>
             </Grid>
           </Card>
-          <Card onClick={() => cancelForm()}>
+          <Card
+            onClick={() => cancelForm()}
+            sx={{
+              backgroundColor: "#C06969",
+            }}
+          >
             <Grid container padding={"1rem"} justifyContent={"center"}>
               <Typography variant="h6">Cancel</Typography>
             </Grid>
