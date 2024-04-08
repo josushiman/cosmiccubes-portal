@@ -1,4 +1,6 @@
 import Grid from "@mui/material/Unstable_Grid2";
+import { useContext } from "react";
+import { TimePeriodContext } from "../../context/TimePeriodContext";
 import useAsync from "../../hooks/useAsync";
 import Summary from "./components/Summary";
 import Categories from "./components/Categories";
@@ -7,7 +9,10 @@ import "./styles.css";
 import NotificationCard from "./components/NotificationCard";
 
 const MonthSummary = () => {
-  const { data, loading, error } = useAsync("/ynab/monthly-summary");
+  const { timePeriod } = useContext(TimePeriodContext);
+  const { data, loading, error } = useAsync(
+    `/ynab/monthly-summary${timePeriod}`
+  );
 
   if (loading || !data) {
     // Add skeleton

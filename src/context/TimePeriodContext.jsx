@@ -2,6 +2,10 @@ import { createContext, useState } from "react";
 
 export const TimePeriodContext = createContext();
 
+const zeroedMonth = (month) => {
+  return month > 9 ? month : `0${month}`;
+};
+
 const TimePeriodProvider = ({ children }) => {
   const now = new Date();
   const currentMonth = now.getMonth() + 1;
@@ -12,7 +16,7 @@ const TimePeriodProvider = ({ children }) => {
   const [specificMonth, setSpecificMonth] = useState(currentMonth);
 
   const [timePeriod, setTimePeriod] = useState(
-    `?year=${year}&month=${specificMonth}`
+    `?year=${year}&month=${zeroedMonth(specificMonth)}`
   );
 
   console.debug(timePeriod);
@@ -67,12 +71,12 @@ const TimePeriodProvider = ({ children }) => {
     if (months) {
       setTimePeriod(`?months=${months}`);
     } else if (year && specificMonth) {
-      setTimePeriod(`?year=${year}&month=${specificMonth}`);
+      setTimePeriod(`?year=${year}&month=${zeroedMonth(specificMonth)}`);
     } else if (year) {
       setTimePeriod(`?year=${year}`);
     } else {
       // This shouldnt be triggered
-      setTimePeriod(`?month=${specificMonth}`);
+      setTimePeriod(`?month=${zeroedMonth(specificMonth)}`);
     }
   };
 
