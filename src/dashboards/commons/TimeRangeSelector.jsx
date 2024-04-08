@@ -1,6 +1,6 @@
 import { Card, Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { TimePeriodContext } from "../../context/TimePeriodContext";
 import { ModalContext } from "../../context/ModalContextProvider";
 
@@ -21,15 +21,17 @@ const disabledStyle = {
 };
 
 const TimeRangeSelector = () => {
-  const now = new Date();
-  const currentMonth = now.getMonth() + 1;
-  const currentYear = now.getFullYear();
+  const {
+    months,
+    year,
+    specificMonth,
+    setMonthIntervals,
+    setYearNoMonthInterval,
+    setYearMonthInterval,
+    setYearInterval,
+    setTimeRange,
+  } = useContext(TimePeriodContext);
 
-  const [months, setMonths] = useState(undefined);
-  const [year, setYear] = useState(currentYear);
-  const [specificMonth, setSpecificMonth] = useState(currentMonth);
-
-  const { setValue } = useContext(TimePeriodContext);
   const { closeModal } = useContext(ModalContext);
 
   const updateTimeRange = (
@@ -39,65 +41,26 @@ const TimeRangeSelector = () => {
   ) => {
     // For setting the months interval
     if (monthsSelection && months !== monthsSelection) {
-      console.debug("Changing month value");
-      setMonths(monthsSelection);
-      // Reset the year and specificMonth
-      setYear(undefined);
-      setSpecificMonth(undefined);
+      setMonthIntervals(monthsSelection);
     }
 
     // Setting the year when no month has been set
     if (specificMonthSelection && yearSelection == undefined) {
-      setYear(currentYear);
-      setSpecificMonth(specificMonthSelection);
-
-      // Reset the months interval
-      setMonths(undefined);
+      setYearNoMonthInterval(specificMonthSelection);
     }
 
     // For setting the year and the specificMonth
     if (yearSelection && specificMonthSelection) {
-      console.debug("Changing year and value");
-      // When the year is the same but the month is different
-      if (yearSelection == year && specificMonthSelection !== specificMonth) {
-        setSpecificMonth(specificMonthSelection);
-        // When the month is the same but the year is different
-      } else if (
-        specificMonthSelection === specificMonth &&
-        yearSelection != year
-      ) {
-        setYear(yearSelection);
-      } else if (
-        yearSelection !== year &&
-        specificMonthSelection !== specificMonth
-      ) {
-        setSpecificMonth(specificMonthSelection);
-        setYear(yearSelection);
-      } else {
-        setSpecificMonth(undefined);
-      }
-
-      setMonths(undefined);
+      setYearMonthInterval(yearSelection, specificMonthSelection);
     }
 
     if (yearSelection && year != yearSelection) {
-      console.debug("Changing year value");
-      setYear(yearSelection);
-      setMonths(undefined);
+      setYearInterval(yearSelection);
     }
   };
 
-  const setTimeRange = () => {
-    if (months) {
-      setValue(`?months=${months}`);
-    } else if (year && specificMonth) {
-      setValue(`?year=${year}&month=${specificMonth}`);
-    } else if (year) {
-      setValue(`?year=${year}`);
-    } else {
-      setValue(`?month=${specificMonth}`);
-    }
-
+  const submit = () => {
+    setTimeRange();
     return closeModal();
   };
 
@@ -116,7 +79,7 @@ const TimeRangeSelector = () => {
         container
         flexDirection={"column"}
         position={"relative"}
-        marginTop={"100%"}
+        marginTop={"4rem"}
         zIndex={1}
         rowGap={"1rem"}
       >
@@ -323,7 +286,7 @@ const TimeRangeSelector = () => {
         </Card>
 
         <Grid container flexDirection={"column"} rowGap={"1rem"}>
-          <Card onClick={() => setTimeRange()}>
+          <Card onClick={() => submit()}>
             <Grid container padding={"1rem"} justifyContent={"center"}>
               <Typography variant="h6">Confirm</Typography>
             </Grid>
