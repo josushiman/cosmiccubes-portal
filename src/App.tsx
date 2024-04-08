@@ -1,11 +1,15 @@
-import { Admin, Resource, defaultDarkTheme } from "react-admin";
+import { Admin, CustomRoutes, Resource, defaultDarkTheme } from "react-admin";
+import { Route } from "react-router-dom";
+import Dashboard from "./dashboards/month-summary/MonthSummary";
+import CustomLayout from "./commons/CustomLayout";
+import TransactionsSummary from "./dashboards/month-summary/TransactionsSummary";
 import { dataProvider } from "./dataProvider";
 import authProvider from "./authProvider";
+import budgets from "./pages/budgets";
+import categories from "./pages/categories";
 // import accounts from "./pages/accounts";
 // import accountTypes from "./pages/account-types";
 // import balanceTransfers from "./pages/balance-transfers";
-import budgets from "./pages/budgets";
-import categories from "./pages/categories";
 // import companies from "./pages/companies";
 // import directDebits from "./pages/direct-debits";
 // import incomes from "./pages/incomes";
@@ -14,8 +18,6 @@ import categories from "./pages/categories";
 // import projectItemCategories from "./pages/project-item-categories";
 // import projectItems from "./pages/project-items";
 // import transactions from "./pages/transactions";
-import Dashboard from "./dashboards/month-summary/MonthSummary";
-import CustomLayout from "./commons/CustomLayout";
 // import Dashboard from "./dashboards/home/Dashboard";
 
 const defaultTheme = defaultDarkTheme;
@@ -38,6 +40,12 @@ export const App = () => (
       {...categories}
       options={{ label: "Categories" }}
     />
+    <CustomRoutes>
+      <Route
+        path="monthly-summary/transactions"
+        element={<TransactionsSummary />}
+      />
+    </CustomRoutes>
     {/* <Resource
       name="portal/admin/account-types"
       {...accountTypes}

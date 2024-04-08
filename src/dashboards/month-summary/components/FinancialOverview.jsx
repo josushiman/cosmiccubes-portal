@@ -1,6 +1,17 @@
 import { Card, Typography } from "@mui/material";
+import { useRedirect } from "react-admin";
 import Grid from "@mui/material/Unstable_Grid2";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import formatCurrency from "../../../hooks/formatCurrency";
+
+const SpentButton = () => {
+  const redirect = useRedirect();
+  const handleClick = () => {
+    redirect("/monthly-summary/transactions");
+  };
+
+  return <ChevronRightIcon onClick={handleClick} />;
+};
 
 const FinancialOverview = ({ data }) => {
   return (
@@ -20,9 +31,12 @@ const FinancialOverview = ({ data }) => {
         </Grid>
         <Grid container justifyContent={"space-between"}>
           <Typography variant="body1">Spent this month:</Typography>
-          <Typography variant="body1">
-            <span>£</span> {formatCurrency(-data.balance_spent)}
-          </Typography>
+          <Grid container>
+            <Typography variant="body1" paddingRight={"1rem"}>
+              <span>£</span> {formatCurrency(-data.balance_spent)}
+            </Typography>
+            <SpentButton />
+          </Grid>
         </Grid>
         <hr style={{ width: "100%", opacity: "25%" }} />
         <Grid container justifyContent={"space-between"}>
