@@ -18,6 +18,7 @@ const Transactions = ({ data }) => {
               container
               display={"grid"}
               gridTemplateColumns={"repeat(2, 1fr)"}
+              gridTemplateRows={"repeat(2, 1fr)"}
             >
               <Typography>{value.payee}</Typography>
               <Typography textAlign={"right"}>
