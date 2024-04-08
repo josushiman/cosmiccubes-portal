@@ -6,7 +6,14 @@ const BackButton = () => {
 
   return (
     <Card>
-      <Button onClick={() => navigate(-1)}>Back</Button>
+      <Button
+        onClick={() => navigate(-1)}
+        sx={{
+          color: "white",
+        }}
+      >
+        Back
+      </Button>
     </Card>
   );
 };
