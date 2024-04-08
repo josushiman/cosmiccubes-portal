@@ -1,16 +1,15 @@
 import { Card, Typography } from "@mui/material";
-import { useRedirect } from "react-admin";
+import { Link } from "react-router-dom";
 import Grid from "@mui/material/Unstable_Grid2";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import formatCurrency from "../../../hooks/formatCurrency";
 
 const SpentButton = () => {
-  const redirect = useRedirect();
-  const handleClick = () => {
-    redirect("/monthly-summary/transactions");
-  };
-
-  return <ChevronRightIcon onClick={handleClick} />;
+  return (
+    <Link to="/monthly-summary/transactions">
+      <ChevronRightIcon />
+    </Link>
+  );
 };
 
 const FinancialOverview = ({ data }) => {
