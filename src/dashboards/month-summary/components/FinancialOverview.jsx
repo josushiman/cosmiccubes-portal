@@ -6,13 +6,13 @@ import formatCurrency from "../../../hooks/formatCurrency";
 
 const SpentButton = () => {
   return (
-    <Link
-      to="/monthly-summary/transactions"
-      sx={{
-        color: "white",
-      }}
-    >
-      <ChevronRightIcon />
+    <Link to="/monthly-summary/transactions">
+      <ChevronRightIcon
+        sx={{
+          opacity: "50%",
+          color: "white",
+        }}
+      />
     </Link>
   );
 };
