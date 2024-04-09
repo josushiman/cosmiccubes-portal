@@ -171,6 +171,7 @@ const TimeRangeSelector = () => {
           top: "0px",
           height: "100vh",
           width: "100vw",
+          backgroundColor: "#313131",
         }}
       />
       <Grid
@@ -180,6 +181,7 @@ const TimeRangeSelector = () => {
         marginTop={"4rem"}
         zIndex={1}
         rowGap={"1rem"}
+        padding={"0 2rem 2rem 2rem"}
       >
         <Card
           sx={{
@@ -200,16 +202,11 @@ const TimeRangeSelector = () => {
           <MonthIntervalComponents />
         </Card>
 
-        <Grid
-          container
-          flexDirection={"column"}
-          rowGap={"1rem"}
-          padding={"0 1rem"}
-        >
+        <Grid container flexDirection={"column"} rowGap={"1rem"}>
           <Card
             onClick={() => submitForm()}
             sx={{
-              backgroundColor: "#313131",
+              backgroundColor: "#121212",
             }}
           >
             <Grid container padding={"1rem"} justifyContent={"center"}>
