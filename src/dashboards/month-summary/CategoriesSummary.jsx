@@ -7,16 +7,16 @@ import { BorderLinearProgressWithBackground } from "../../commons/BorderLinearPr
 export const testCateogryData = [
   {
     category: "frequent",
-    amount: 723.33,
+    amount: 1500,
     status: "on track",
     subcategories: [
       {
         name: "going out",
-        amount: 1200,
+        amount: 700,
       },
       {
         name: "going out",
-        amount: 1200,
+        amount: 300,
       },
     ],
   },
@@ -106,12 +106,14 @@ const CategoriesSummary = ({ data = testCateogryData }) => {
             justifyContent={"space-between"}
             paddingBottom={"0.5rem"}
           >
-            <Typography variant="subtitle1">{value.name}</Typography>
+            <Typography variant="subtitle1" textTransform={"capitalize"}>
+              {value.name}
+            </Typography>
             <Typography
               variant="body1"
               style={{ alignSelf: "flex-end", color: "white" }}
             >
-              {formatCurrency(value.amount)}
+              £ {formatCurrency(value.amount, false, true)}
             </Typography>
           </Grid>
           <BorderLinearProgressWithBackground
