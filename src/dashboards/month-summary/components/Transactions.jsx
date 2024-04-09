@@ -10,6 +10,9 @@ const Transactions = ({ data }) => {
         flexDirection={"column"}
         padding={"1.5rem 2rem"}
         rowGap={"1rem"}
+        maxHeight={"15rem"}
+        flexWrap={"nowrap"}
+        overflow={"scroll"}
       >
         {data.map((value, index) => {
           return (

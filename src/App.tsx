@@ -7,7 +7,6 @@ import { dataProvider } from "./dataProvider";
 import authProvider from "./authProvider";
 import budgets from "./pages/budgets";
 import categories from "./pages/categories";
-import ScrollToTop from "./commons/ScrollToTop";
 // import accounts from "./pages/accounts";
 // import accountTypes from "./pages/account-types";
 // import balanceTransfers from "./pages/balance-transfers";
@@ -31,7 +30,6 @@ export const App = () => (
     dashboard={Dashboard}
     layout={CustomLayout}
   >
-    <ScrollToTop />
     <Resource
       name="portal/admin/budgets"
       {...budgets}

@@ -57,6 +57,34 @@ export const testData = {
       subcategory: "Technology",
       payee: "Amazon",
     },
+    {
+      date: "2024-01-07",
+      amount: 7.3,
+      category: "Frequent",
+      subcategory: "Technology",
+      payee: "Amazon",
+    },
+    {
+      date: "2024-01-07",
+      amount: 7.3,
+      category: "Frequent",
+      subcategory: "Technology",
+      payee: "Amazon",
+    },
+    {
+      date: "2024-01-07",
+      amount: 7.3,
+      category: "Frequent",
+      subcategory: "Technology",
+      payee: "Amazon",
+    },
+    {
+      date: "2024-01-07",
+      amount: 7.3,
+      category: "Frequent",
+      subcategory: "Technology",
+      payee: "Amazon",
+    },
   ],
 };
 
