@@ -3,7 +3,7 @@ import CreditSummary from "./components/CreditSummary";
 import Transactions from "./components/Transactions";
 import Navigation from "../commons/Navigation";
 
-export const testData = {
+export const testTransactionData = {
   summary: {
     total: 123.5,
     accounts: [
@@ -88,7 +88,7 @@ export const testData = {
   ],
 };
 
-const TransactionsSummary = ({ data = testData }) => {
+const TransactionsSummary = ({ data = testTransactionData }) => {
   return (
     <Grid container rowGap={"1rem"} flexDirection={"column"} padding={"1rem"}>
       <Navigation />

@@ -1,5 +1,6 @@
 import { Card, Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
+import { Link } from "react-router-dom";
 import formatCurrency from "../../../hooks/formatCurrency";
 import { BorderLinearProgressWithBackground } from "../../../commons/BorderLinearProgress";
 
@@ -48,16 +49,23 @@ const CategoriesOverview = ({ data }) => {
   });
 
   return (
-    <Card>
-      <Grid
-        container
-        flexDirection={"column"}
-        gap={"2rem"}
-        padding={"1.5rem 2rem"}
-      >
-        {categoriesSpentData}
-      </Grid>
-    </Card>
+    <Link
+      to="/monthly-summary/categories"
+      style={{
+        textDecoration: "none",
+      }}
+    >
+      <Card>
+        <Grid
+          container
+          flexDirection={"column"}
+          gap={"2rem"}
+          padding={"1.5rem 2rem"}
+        >
+          {categoriesSpentData}
+        </Grid>
+      </Card>
+    </Link>
   );
 };
 

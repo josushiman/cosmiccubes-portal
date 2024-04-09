@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 import Dashboard from "./dashboards/month-summary/MonthSummary";
 import CustomLayout from "./commons/CustomLayout";
 import TransactionsSummary from "./dashboards/month-summary/TransactionsSummary";
+import CategoriesSummary from "./dashboards/month-summary/CategoriesSummary";
 import { dataProvider } from "./dataProvider";
 import authProvider from "./authProvider";
 import budgets from "./pages/budgets";
@@ -41,6 +42,10 @@ export const App = () => (
       options={{ label: "Categories" }}
     />
     <CustomRoutes>
+      <Route
+        path="monthly-summary/categories"
+        element={<CategoriesSummary />}
+      />
       <Route
         path="monthly-summary/transactions"
         element={<TransactionsSummary />}
