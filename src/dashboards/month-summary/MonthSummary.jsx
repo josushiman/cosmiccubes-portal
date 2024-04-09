@@ -3,10 +3,10 @@ import { useContext } from "react";
 import { TimePeriodContext } from "../../context/TimePeriodContext";
 import useAsync from "../../hooks/useAsync";
 import Summary from "./components/Summary";
-import Categories from "./components/Categories";
+import CategoriesOverview from "./components/CategoriesOverview";
 import FinancialOverview from "./components/FinancialOverview";
-import "./styles.css";
 import NotificationCard from "./components/NotificationCard";
+import "./styles.css";
 
 const MonthSummary = () => {
   const { timePeriod } = useContext(TimePeriodContext);
@@ -39,7 +39,7 @@ const MonthSummary = () => {
         <NotificationCard data={"1 uncategorised transaction"} />
       ) : null}
       <Summary data={data.summary} />
-      <Categories data={data.categories} />
+      <CategoriesOverview data={data.categories} />
       <FinancialOverview data={data.income_expenses} />
     </Grid>
   );

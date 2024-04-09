@@ -134,8 +134,8 @@ const TimeRangeSelector = () => {
         container
         display={"grid"}
         gridTemplateColumns={"repeat(3, 1fr)"}
-        gridTemplateRows={"repeat(4, 4rem)"}
-        rowGap={"1rem"}
+        gridTemplateRows={"repeat(4, 3rem)"}
+        rowGap={"0.5rem"}
         padding={"1rem 0"}
         justifyItems={"center"}
         alignItems={"center"}

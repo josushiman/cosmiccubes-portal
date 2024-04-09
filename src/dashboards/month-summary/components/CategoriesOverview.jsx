@@ -3,7 +3,7 @@ import Grid from "@mui/material/Unstable_Grid2";
 import formatCurrency from "../../../hooks/formatCurrency";
 import { BorderLinearProgressWithBackground } from "../../../commons/BorderLinearProgress";
 
-const Categories = ({ data }) => {
+const CategoriesOverview = ({ data }) => {
   function returnCategoryString(spent, budget) {
     let textString = `${formatCurrency(-spent, false, true)} / ∞`;
 
@@ -61,4 +61,4 @@ const Categories = ({ data }) => {
   );
 };
 
-export default Categories;
+export default CategoriesOverview;
