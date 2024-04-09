@@ -21,7 +21,11 @@ const CategoriesOverview = ({ data }) => {
 
   const categoriesSpentData = data.map((item, index) => {
     const { name, group, spent, budget } = item;
-    const progress = (-spent / budget) * 100;
+    let progress = (-spent / budget) * 100;
+
+    if (progress > 100) {
+      progress = 100;
+    }
 
     return (
       <Grid key={index}>
