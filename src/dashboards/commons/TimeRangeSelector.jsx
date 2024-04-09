@@ -6,7 +6,7 @@ import { ModalContext } from "../../context/ModalContextProvider";
 
 const itemSelected = {
   backgroundColor: "#313131",
-  padding: "0.75rem 1rem",
+  padding: "0.75rem 1.75rem",
   borderRadius: "0.25rem",
   cursor: "pointer",
 };
@@ -15,11 +15,10 @@ const defaultStyle = {
   cursor: "pointer",
 };
 
-// TODO figure out how to apply disabled fields to dates in the future
-// const disabledStyle = {
-//   opacity: "10%",
-//   pointerEvents: "none",
-// };
+const disabledStyle = {
+  opacity: "10%",
+  pointerEvents: "none",
+};
 
 const TimeRangeSelector = () => {
   const {
@@ -32,6 +31,8 @@ const TimeRangeSelector = () => {
     setYearInterval,
     setTimeRange,
     resetTimeRange,
+    currentMonth,
+    currentYear,
   } = useContext(TimePeriodContext);
 
   const { closeModal } = useContext(ModalContext);
@@ -110,7 +111,13 @@ const TimeRangeSelector = () => {
             <Grid key={index} container xs={3} justifyContent={"center"}>
               <Typography
                 onClick={() => updateTimeRange(undefined, undefined, value)}
-                sx={year == value ? itemSelected : defaultStyle}
+                sx={
+                  value > currentYear
+                    ? disabledStyle
+                    : year == value
+                    ? itemSelected
+                    : defaultStyle
+                }
               >
                 `{value.toString().slice(-2)}
               </Typography>
@@ -147,11 +154,19 @@ const TimeRangeSelector = () => {
           "Nov",
           "Dec",
         ].map((value, index) => {
+          // TODO update this to be able to handle all scenarios not just the current year.
+          // e.g. 2025 Jan needs to ensure Jan -> Dec is always available
           return (
             <Grid key={index} container xs={3} justifyContent={"center"}>
               <Typography
                 onClick={() => updateTimeRange(undefined, index + 1, year)}
-                sx={specificMonth == index + 1 ? itemSelected : defaultStyle}
+                sx={
+                  index + 1 > currentMonth
+                    ? disabledStyle
+                    : specificMonth == index + 1
+                    ? itemSelected
+                    : defaultStyle
+                }
               >
                 {value}
               </Typography>

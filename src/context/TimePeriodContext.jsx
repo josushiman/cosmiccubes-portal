@@ -121,6 +121,8 @@ const TimePeriodProvider = ({ children }) => {
         setYearInterval,
         setTimeRange,
         resetTimeRange,
+        currentMonth,
+        currentYear,
       }}
     >
       {children}
