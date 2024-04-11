@@ -16,7 +16,6 @@ const TransactionsSummary = () => {
 
   const setAccountType = useCallback(
     (value) => {
-      console.log(value);
       if (value == accountId) {
         setAccountId(undefined);
       } else {

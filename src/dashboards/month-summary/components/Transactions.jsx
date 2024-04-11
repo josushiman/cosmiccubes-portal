@@ -19,24 +19,22 @@ const Transactions = ({ data, accountId }) => {
   }
 
   return (
-    <Card>
-      <Grid
-        container
-        flexDirection={"column"}
-        padding={"1.5rem 2rem"}
-        rowGap={"1rem"}
-        maxHeight={"15rem"}
-        flexWrap={"nowrap"}
-        overflow={"scroll"}
-      >
+    <Card
+      sx={{
+        height: "25rem",
+        overflowY: "scroll",
+      }}
+    >
+      <Grid container display={"grid"} padding={"1.5rem 2rem"} rowGap={"1rem"}>
         {filteredData.map((value, index) => {
           return (
             <Grid
               key={index}
               container
               display={"grid"}
+              alignItems={"center"}
               gridTemplateColumns={"75% 25%"}
-              gridTemplateRows={"repeat(2, 1fr)"}
+              gridTemplateRows={"repeat(2, auto)"}
             >
               <Typography>
                 {value.payee.substring(0, 20)}
