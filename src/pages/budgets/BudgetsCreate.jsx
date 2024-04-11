@@ -9,7 +9,7 @@ import {
 
 const EntityCreate = () => {
   return (
-    <Create title="Create Entity">
+    <Create title="Create Entity" redirect="list">
       <SimpleForm>
         <NumberInput
           source="amount"

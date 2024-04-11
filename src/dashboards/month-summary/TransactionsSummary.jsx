@@ -1,99 +1,51 @@
+import { useCallback, useContext, useState } from "react";
+import { TimePeriodContext } from "../../context/TimePeriodContext";
+import useAsync from "../../hooks/useAsync";
 import Grid from "@mui/material/Unstable_Grid2";
 import CreditSummary from "./components/CreditSummary";
 import Transactions from "./components/Transactions";
 import Navigation from "../commons/Navigation";
 
-export const testTransactionData = {
-  summary: {
-    total: 123.5,
-    accounts: [
-      {
-        name: "BA AMEX",
-        amount: 123.5,
-      },
-      {
-        name: "HSBC CC",
-        amount: 123.5,
-      },
-      {
-        name: "Barclays",
-        amount: 123.5,
-      },
-    ],
-  },
-  transactions: [
-    {
-      date: "2024-01-07",
-      amount: 7.3,
-      category: "Frequent",
-      subcategory: "Technology",
-      payee: "Amazon",
-    },
-    {
-      date: "2024-01-07",
-      amount: 7.3,
-      category: "Frequent",
-      subcategory: "Technology",
-      payee: "Amazon",
-    },
-    {
-      date: "2024-01-07",
-      amount: 7.3,
-      category: "Frequent",
-      subcategory: "Technology",
-      payee: "Amazon",
-    },
-    {
-      date: "2024-01-07",
-      amount: 7.3,
-      category: "Frequent",
-      subcategory: "Technology",
-      payee: "Amazon",
-    },
-    {
-      date: "2024-01-07",
-      amount: 7.3,
-      category: "Frequent",
-      subcategory: "Technology",
-      payee: "Amazon",
-    },
-    {
-      date: "2024-01-07",
-      amount: 7.3,
-      category: "Frequent",
-      subcategory: "Technology",
-      payee: "Amazon",
-    },
-    {
-      date: "2024-01-07",
-      amount: 7.3,
-      category: "Frequent",
-      subcategory: "Technology",
-      payee: "Amazon",
-    },
-    {
-      date: "2024-01-07",
-      amount: 7.3,
-      category: "Frequent",
-      subcategory: "Technology",
-      payee: "Amazon",
-    },
-    {
-      date: "2024-01-07",
-      amount: 7.3,
-      category: "Frequent",
-      subcategory: "Technology",
-      payee: "Amazon",
-    },
-  ],
-};
+const TransactionsSummary = () => {
+  const { timePeriod } = useContext(TimePeriodContext);
+  const { data, loading, error } = useAsync(
+    `/ynab/transaction-summary${timePeriod}`
+  );
 
-const TransactionsSummary = ({ data = testTransactionData }) => {
+  const [accountId, setAccountId] = useState(undefined);
+
+  const setAccountType = useCallback(
+    (value) => {
+      console.log(value);
+      if (value == accountId) {
+        setAccountId(undefined);
+      } else {
+        setAccountId(value);
+      }
+    },
+    [accountId]
+  );
+
+  if (loading || !data) {
+    // Add skeleton
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    // Pass generic error message
+    return <div>Error: {error.message}</div>;
+  }
+
   return (
     <Grid container rowGap={"1rem"} flexDirection={"column"} padding={"1rem"}>
       <Navigation />
-      <CreditSummary data={data.summary} />
-      <Transactions data={data.transactions} />
+      <CreditSummary
+        data={data.summary}
+        accountId={accountId}
+        setAccountType={setAccountType}
+      />
+      {/* TODO filter by account name */}
+      <Transactions data={data.transactions} accountId={accountId} />
     </Grid>
   );
 };

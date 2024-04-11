@@ -24,7 +24,6 @@ const MonthSummary = () => {
     return <div>Error: {error.message}</div>;
   }
 
-  data.notif = "1 uncategorised transaction";
   const notificationText = data?.notif ? data.notif : null;
 
   return (
