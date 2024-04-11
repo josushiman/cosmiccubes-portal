@@ -6,10 +6,10 @@ import { BorderLinearProgressWithBackground } from "../../../commons/BorderLinea
 
 const CategoriesOverview = ({ data }) => {
   function returnCategoryString(spent, budget) {
-    let textString = `${formatCurrency(-spent, false, true)} / ∞`;
+    let textString = `${formatCurrency(spent, false, true)} / ∞`;
 
     if (budget) {
-      textString = `${formatCurrency(-spent, false, true)} / ${formatCurrency(
+      textString = `${formatCurrency(spent, false, true)} / ${formatCurrency(
         budget,
         false,
         true
@@ -21,7 +21,7 @@ const CategoriesOverview = ({ data }) => {
 
   const categoriesSpentData = data.map((item, index) => {
     const { name, group, spent, budget } = item;
-    let progress = (-spent / budget) * 100;
+    let progress = (spent / budget) * 100;
 
     if (progress > 100) {
       progress = 100;

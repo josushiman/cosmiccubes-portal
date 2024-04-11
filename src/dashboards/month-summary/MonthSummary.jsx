@@ -34,9 +34,7 @@ const MonthSummary = () => {
       flexDirection={"column"}
       padding={"1rem"}
     >
-      {notificationText ? (
-        <NotificationCard data={"1 uncategorised transaction"} />
-      ) : null}
+      {notificationText ? <NotificationCard data={data.notif} /> : null}
       <Summary data={data.summary} />
       <CategoriesOverview data={data.categories} />
       <FinancialOverview data={data.income_expenses} />

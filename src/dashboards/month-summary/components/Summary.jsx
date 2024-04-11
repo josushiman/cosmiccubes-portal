@@ -13,8 +13,7 @@ const Summary = ({ data }) => {
     daily_spend,
   } = data;
 
-  // TODO replace negative sign when resolved on Backend
-  let progress = (-balance_spent / balance_budget) * 100;
+  let progress = (balance_spent / balance_budget) * 100;
 
   if (progress >= 100) {
     progress = 100;
@@ -53,10 +52,7 @@ const Summary = ({ data }) => {
           value={progress}
         />
         <Typography variant="body1">
-          {/* TODO replace negative sign when resolved on Backend*/}
-          <strong>
-            £ {formatCurrency(-balance_spent, false, true)}
-          </strong> of{" "}
+          <strong>£ {formatCurrency(balance_spent, false, true)}</strong> of{" "}
           <strong>£ {formatCurrency(balance_budget, false, true)}</strong> spent
           this month
         </Typography>

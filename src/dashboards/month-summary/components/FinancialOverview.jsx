@@ -44,14 +44,14 @@ const FinancialOverview = ({ data }) => {
         <Grid container justifyContent={"space-between"}>
           <Typography variant="body1">Upcoming bills:</Typography>
           <Typography variant="body1">
-            <span>£</span> {formatCurrency(-data.bills)}
+            <span>£</span> {formatCurrency(data.bills)}
           </Typography>
         </Grid>
         <Grid container justifyContent={"space-between"}>
           <Typography variant="body1">Spent this month:</Typography>
           <Grid container>
             <Typography variant="body1" paddingRight={"1rem"}>
-              <span>£</span> {formatCurrency(-data.balance_spent)}
+              <span>£</span> {formatCurrency(data.balance_spent)}
             </Typography>
             <SpentButton />
           </Grid>
