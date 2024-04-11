@@ -33,6 +33,15 @@ const FinancialOverview = ({ data }) => {
           </Typography>
         </Grid>
         <Grid container justifyContent={"space-between"}>
+          <Typography variant="body1">Savings:</Typography>
+          <Grid container>
+            <Typography variant="body1">
+              <span>£</span> {formatCurrency(1000)}{" "}
+              {/* TODO replace with actual savings from DB */}
+            </Typography>
+          </Grid>
+        </Grid>
+        <Grid container justifyContent={"space-between"}>
           <Typography variant="body1">Upcoming bills:</Typography>
           <Typography variant="body1">
             <span>£</span> {formatCurrency(-data.bills)}
