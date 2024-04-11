@@ -1,96 +1,28 @@
+import { useContext } from "react";
+import { TimePeriodContext } from "../../context/TimePeriodContext";
+import useAsync from "../../hooks/useAsync";
 import { Card, Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import Navigation from "../commons/Navigation";
 import formatCurrency from "../../hooks/formatCurrency";
 import { BorderLinearProgressWithBackground } from "../../commons/BorderLinearProgress";
 
-export const testCateogryData = [
-  {
-    category: "frequent",
-    amount: 1500,
-    status: "on track",
-    subcategories: [
-      {
-        name: "going out",
-        amount: 700,
-      },
-      {
-        name: "going out",
-        amount: 300,
-      },
-    ],
-  },
-  {
-    category: "work",
-    amount: 723.33,
-    status: "overspend",
-    subcategories: [
-      {
-        name: "going out",
-        amount: 1200,
-      },
-      {
-        name: "going out",
-        amount: 1200,
-      },
-      {
-        name: "going out",
-        amount: 1200,
-      },
-      {
-        name: "going out",
-        amount: 1200,
-      },
-    ],
-  },
-  {
-    category: "frequent",
-    amount: 723.33,
-    status: "on track",
-    subcategories: [
-      {
-        name: "going out",
-        amount: 1200,
-      },
-      {
-        name: "going out",
-        amount: 1200,
-      },
-    ],
-  },
-  {
-    category: "frequent",
-    amount: 723.33,
-    status: "on track",
-    subcategories: [
-      {
-        name: "going out",
-        amount: 1200,
-      },
-      {
-        name: "going out",
-        amount: 1200,
-      },
-    ],
-  },
-  {
-    category: "frequent",
-    amount: 723.33,
-    status: "on track",
-    subcategories: [
-      {
-        name: "going out",
-        amount: 1200,
-      },
-      {
-        name: "going out",
-        amount: 1200,
-      },
-    ],
-  },
-];
+const CategoriesSummary = () => {
+  const { timePeriod } = useContext(TimePeriodContext);
+  const { data, loading, error } = useAsync(
+    `/ynab/categories-summary${timePeriod}`
+  );
 
-const CategoriesSummary = ({ data = testCateogryData }) => {
+  if (loading || !data) {
+    // Add skeleton
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    // Pass generic error message
+    return <div>Error: {error.message}</div>;
+  }
+
   const SubCategoryList = ({ total, data }) => {
     return data.map((value, index) => {
       let progress = (value.amount / total) * 100;
