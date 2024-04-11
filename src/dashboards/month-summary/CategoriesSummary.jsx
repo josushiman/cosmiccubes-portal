@@ -23,14 +23,22 @@ const CategoriesSummary = () => {
     return <div>Error: {error.message}</div>;
   }
 
-  const SubCategoryList = ({ total, data }) => {
+  function returnCategoryString(spent, budget) {
+    let textString = `${formatCurrency(spent, false, true)} / ∞`;
+
+    if (budget > 0) {
+      textString = `${formatCurrency(spent, false, true)} / ${formatCurrency(
+        budget,
+        false,
+        true
+      )}`;
+    }
+
+    return <span>£ {textString}</span>;
+  }
+
+  const SubCategoryList = ({ data }) => {
     return data.map((value, index) => {
-      let progress = (value.amount / total) * 100;
-
-      if (progress > 100) {
-        progress = 100;
-      }
-
       return (
         <Grid key={index}>
           <Grid
@@ -45,12 +53,12 @@ const CategoriesSummary = () => {
               variant="body1"
               style={{ alignSelf: "flex-end", color: "white" }}
             >
-              £ {formatCurrency(value.amount, false, true)}
+              {returnCategoryString(data.amount, data.budgeted)}
             </Typography>
           </Grid>
           <BorderLinearProgressWithBackground
             variant="determinate"
-            value={progress}
+            value={data.progress}
           />
         </Grid>
       );
@@ -100,10 +108,7 @@ const CategoriesSummary = () => {
               gap={"1.5rem"}
               padding={"1rem 0"}
             >
-              <SubCategoryList
-                total={value.amount}
-                data={value.subcategories}
-              />
+              <SubCategoryList data={value.subcategories} />
             </Grid>
           </Card>
         );
