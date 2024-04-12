@@ -1,5 +1,6 @@
-import { Card, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
+import { CustomCard } from "../../commons/CustomCard";
 
 const TimePeriod = ({
   setMonthIntervals,
@@ -35,7 +36,7 @@ const TimePeriod = ({
   // console.log(currentYear, currentMonth);
 
   return (
-    <Card>
+    <CustomCard>
       <Grid
         container
         justifyContent={"center"}
@@ -237,7 +238,7 @@ const TimePeriod = ({
           </Typography>
         </Grid>
       </Grid>
-    </Card>
+    </CustomCard>
   );
 };
 

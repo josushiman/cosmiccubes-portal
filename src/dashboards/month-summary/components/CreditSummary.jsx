@@ -1,5 +1,6 @@
-import { Card, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
+import { CustomCard } from "../../../commons/CustomCard";
 import formatCurrency from "../../../hooks/formatCurrency";
 
 const CreditSummary = ({ data, accountId, setAccountType }) => {
@@ -49,7 +50,7 @@ const CreditSummary = ({ data, accountId, setAccountType }) => {
 
   return (
     <Grid container flexDirection={"column"}>
-      <Card
+      <CustomCard
         sx={{
           padding: "1.5rem 2rem",
         }}
@@ -69,7 +70,7 @@ const CreditSummary = ({ data, accountId, setAccountType }) => {
         </Grid>
         <hr style={{ width: "100%", opacity: "25%" }} />
         <CardSummary />
-      </Card>
+      </CustomCard>
     </Grid>
   );
 };

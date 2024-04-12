@@ -1,8 +1,9 @@
 import { useContext } from "react";
 import { TimePeriodContext } from "../../context/TimePeriodContext";
 import useAsync from "../../hooks/useAsync";
-import { Card, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
+import { CustomCard } from "../../commons/CustomCard";
 import Navigation from "../commons/Navigation";
 import formatCurrency from "../../hooks/formatCurrency";
 import { BorderLinearProgressWithBackground } from "../../commons/BorderLinearProgress";
@@ -70,7 +71,7 @@ const CategoriesSummary = () => {
       <Navigation />
       {data.map((value, index) => {
         return (
-          <Card
+          <CustomCard
             key={index}
             sx={{
               padding: "1.5rem 2rem",
@@ -110,7 +111,7 @@ const CategoriesSummary = () => {
             >
               <SubCategoryList data={value.subcategories} />
             </Grid>
-          </Card>
+          </CustomCard>
         );
       })}
     </Grid>

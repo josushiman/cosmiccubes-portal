@@ -1,5 +1,6 @@
-import { Card, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
+import { CustomCard } from "../../../commons/CustomCard";
 import formatCurrency from "../../../hooks/formatCurrency";
 
 const Transactions = ({ data, accountId }) => {
@@ -10,16 +11,16 @@ const Transactions = ({ data, accountId }) => {
 
   if (filteredData.length < 1) {
     return (
-      <Card>
+      <CustomCard>
         <Typography variant="body1" padding={"1.5rem 2rem"}>
           No transactions during this period...
         </Typography>
-      </Card>
+      </CustomCard>
     );
   }
 
   return (
-    <Card
+    <CustomCard
       sx={{
         height: "25rem",
         overflowY: "scroll",
@@ -62,7 +63,7 @@ const Transactions = ({ data, accountId }) => {
           );
         })}
       </Grid>
-    </Card>
+    </CustomCard>
   );
 };
 

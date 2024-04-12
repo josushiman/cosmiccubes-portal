@@ -1,6 +1,7 @@
-import { Card, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
+import { CustomCard } from "../../../commons/CustomCard";
+import { Link } from "react-router-dom";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import formatCurrency from "../../../hooks/formatCurrency";
 
@@ -19,7 +20,7 @@ const SpentButton = () => {
 
 const FinancialOverview = ({ data }) => {
   return (
-    <Card>
+    <CustomCard>
       <Grid
         container
         flexDirection={"column"}
@@ -66,7 +67,7 @@ const FinancialOverview = ({ data }) => {
           </Typography>
         </Grid>
       </Grid>
-    </Card>
+    </CustomCard>
   );
 };
 

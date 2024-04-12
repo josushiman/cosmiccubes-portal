@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
-import Card from "@mui/material/Card";
+import { CustomCard } from "../../../commons/CustomCard";
 import formatCurrency from "../../../hooks/formatCurrency";
 import { ThickBorderLinearProgressWithBackground } from "../../../commons/BorderLinearProgress";
 
@@ -20,7 +20,7 @@ const Summary = ({ data }) => {
   }
 
   return (
-    <Card>
+    <CustomCard>
       <Grid
         container
         padding={"1.5rem 2rem"}
@@ -69,7 +69,7 @@ const Summary = ({ data }) => {
           </Typography>
         </Grid>
       </Grid>
-    </Card>
+    </CustomCard>
   );
 };
 

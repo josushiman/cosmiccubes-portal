@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AppBar } from "react-admin";
-import { Card } from "@mui/material";
+import { CustomCard } from "./CustomCard";
 import Grid from "@mui/material/Unstable_Grid2";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import { ModalContext } from "../context/ModalContextProvider";
@@ -21,14 +21,18 @@ const CustomAppBar = () => {
   const { isModalOpen, toggleModal } = useContext(ModalContext);
 
   return (
-    <AppBar color="primary">
+    <AppBar
+      sx={{
+        backgroundImage: "none",
+      }}
+    >
       <Grid
         container
         marginRight={"0.5rem"}
         marginLeft={"auto"}
         onClick={toggleModal}
       >
-        <Card />
+        <CustomCard />
         <CalendarMonthIcon style={defaultStyle} />
       </Grid>
       {isModalOpen ? <TimeRangeSelector /> : null}

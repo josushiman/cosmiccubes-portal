@@ -1,5 +1,6 @@
-import { Card, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
+import { CustomCard } from "../../../commons/CustomCard";
 import { Link } from "react-router-dom";
 import formatCurrency from "../../../hooks/formatCurrency";
 import { BorderLinearProgressWithBackground } from "../../../commons/BorderLinearProgress";
@@ -59,7 +60,7 @@ const CategoriesOverview = ({ data }) => {
         textDecoration: "none",
       }}
     >
-      <Card>
+      <CustomCard>
         <Grid
           container
           flexDirection={"column"}
@@ -68,7 +69,7 @@ const CategoriesOverview = ({ data }) => {
         >
           {categoriesSpentData}
         </Grid>
-      </Card>
+      </CustomCard>
     </Link>
   );
 };

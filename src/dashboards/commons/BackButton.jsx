@@ -1,11 +1,12 @@
-import { Button, Card } from "@mui/material";
+import { Button } from "@mui/material";
+import { CustomCard } from "../../commons/CustomCard";
 import { useNavigate } from "react-router-dom";
 
 const BackButton = () => {
   const navigate = useNavigate();
 
   return (
-    <Card>
+    <CustomCard>
       <Button
         onClick={() => navigate(-1)}
         sx={{
@@ -14,7 +15,7 @@ const BackButton = () => {
       >
         Back
       </Button>
-    </Card>
+    </CustomCard>
   );
 };
 

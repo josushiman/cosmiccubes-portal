@@ -1,5 +1,6 @@
-import { Card, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
+import { CustomCard } from "../../commons/CustomCard";
 import { useContext } from "react";
 import { TimePeriodContext } from "../../context/TimePeriodContext";
 import { ModalContext } from "../../context/ModalContextProvider";
@@ -179,7 +180,7 @@ const TimeRangeSelector = () => {
 
   return (
     <Grid position={"absolute"} left={0} top={0} width={"100%"}>
-      <Card
+      <CustomCard
         style={{
           position: "absolute",
           left: "0px",
@@ -198,7 +199,7 @@ const TimeRangeSelector = () => {
         rowGap={"1rem"}
         padding={"0 2rem 2rem 2rem"}
       >
-        <Card
+        <CustomCard
           sx={{
             boxShadow: "none",
           }}
@@ -215,10 +216,10 @@ const TimeRangeSelector = () => {
           />
           <YearIntervalComponents />
           <MonthIntervalComponents />
-        </Card>
+        </CustomCard>
 
         <Grid container flexDirection={"column"} rowGap={"1rem"}>
-          <Card
+          <CustomCard
             onClick={() => submitForm()}
             sx={{
               backgroundColor: "#121212",
@@ -227,8 +228,8 @@ const TimeRangeSelector = () => {
             <Grid container padding={"1rem"} justifyContent={"center"}>
               <Typography variant="h6">Confirm</Typography>
             </Grid>
-          </Card>
-          <Card
+          </CustomCard>
+          <CustomCard
             onClick={() => cancelForm()}
             sx={{
               backgroundColor: "#C06969",
@@ -237,7 +238,7 @@ const TimeRangeSelector = () => {
             <Grid container padding={"1rem"} justifyContent={"center"}>
               <Typography variant="h6">Cancel</Typography>
             </Grid>
-          </Card>
+          </CustomCard>
         </Grid>
       </Grid>
     </Grid>

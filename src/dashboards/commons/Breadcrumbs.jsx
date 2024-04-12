@@ -1,6 +1,7 @@
-import { Card, Typography } from "@mui/material";
-import { useLocation } from "react-router-dom";
+import { Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
+import { CustomCard } from "../../commons/CustomCard";
+import { useLocation } from "react-router-dom";
 
 const Breadcrumbs = () => {
   const location = useLocation();
@@ -19,7 +20,7 @@ const Breadcrumbs = () => {
 
   return (
     <Grid container>
-      <Card
+      <CustomCard
         sx={{
           padding: "0.5rem 0.75rem",
         }}
@@ -42,7 +43,7 @@ const Breadcrumbs = () => {
             );
           })}
         </Grid>
-      </Card>
+      </CustomCard>
     </Grid>
   );
 };
