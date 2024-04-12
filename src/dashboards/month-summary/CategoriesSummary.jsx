@@ -53,12 +53,12 @@ const CategoriesSummary = () => {
               variant="body1"
               style={{ alignSelf: "flex-end", color: "white" }}
             >
-              {returnCategoryString(data.amount, data.budgeted)}
+              {returnCategoryString(value.amount, value.budgeted)}
             </Typography>
           </Grid>
           <BorderLinearProgressWithBackground
             variant="determinate"
-            value={data.progress}
+            value={value.progress}
           />
         </Grid>
       );
