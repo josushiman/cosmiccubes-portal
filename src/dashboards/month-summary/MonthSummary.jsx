@@ -10,9 +10,7 @@ import "./styles.css";
 
 const MonthSummary = () => {
   const { timePeriod } = useContext(TimePeriodContext);
-  const { data, loading, error } = useAsync(
-    `/ynab/monthly-summary${timePeriod}`
-  );
+  const { data, loading, error } = useAsync(`/monthly-summary${timePeriod}`);
 
   if (loading || !data) {
     // Add skeleton

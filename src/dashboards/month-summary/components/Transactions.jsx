@@ -34,7 +34,7 @@ const Transactions = ({ data, accountId }) => {
               container
               display={"grid"}
               alignItems={"center"}
-              gridTemplateColumns={"75% 25%"}
+              gridTemplateColumns={"70% 30%"}
               gridTemplateRows={"repeat(2, auto)"}
             >
               <Typography>

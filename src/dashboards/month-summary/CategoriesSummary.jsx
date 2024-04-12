@@ -10,9 +10,7 @@ import { BorderLinearProgressWithBackground } from "../../commons/BorderLinearPr
 
 const CategoriesSummary = () => {
   const { timePeriod } = useContext(TimePeriodContext);
-  const { data, loading, error } = useAsync(
-    `/ynab/categories-summary${timePeriod}`
-  );
+  const { data, loading, error } = useAsync(`/categories-summary${timePeriod}`);
 
   if (loading || !data) {
     // Add skeleton

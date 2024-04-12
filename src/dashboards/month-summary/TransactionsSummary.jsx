@@ -9,7 +9,7 @@ import Navigation from "../commons/Navigation";
 const TransactionsSummary = () => {
   const { timePeriod } = useContext(TimePeriodContext);
   const { data, loading, error } = useAsync(
-    `/ynab/transaction-summary${timePeriod}`
+    `/transaction-summary${timePeriod}`
   );
 
   const [accountId, setAccountId] = useState(undefined);
