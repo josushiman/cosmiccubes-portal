@@ -2,8 +2,9 @@ import { Admin, CustomRoutes, Resource, defaultDarkTheme } from "react-admin";
 import { Route } from "react-router-dom";
 import Dashboard from "./dashboards/month-summary/MonthSummary";
 import CustomLayout from "./commons/CustomLayout";
-import TransactionsSummary from "./dashboards/month-summary/TransactionsSummary";
+import BillsSummary from "./dashboards/month-summary/BillsSummary";
 import CategoriesSummary from "./dashboards/month-summary/CategoriesSummary";
+import TransactionsSummary from "./dashboards/month-summary/TransactionsSummary";
 import { dataProvider } from "./dataProvider";
 import authProvider from "./authProvider";
 import budgets from "./pages/budgets";
@@ -42,6 +43,7 @@ export const App = () => (
       options={{ label: "Categories" }}
     />
     <CustomRoutes>
+      <Route path="monthly-summary/bills" element={<BillsSummary />} />
       <Route
         path="monthly-summary/categories"
         element={<CategoriesSummary />}

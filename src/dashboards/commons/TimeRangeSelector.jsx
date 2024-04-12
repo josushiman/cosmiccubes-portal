@@ -219,12 +219,7 @@ const TimeRangeSelector = () => {
         </CustomCard>
 
         <Grid container flexDirection={"column"} rowGap={"1rem"}>
-          <CustomCard
-            onClick={() => submitForm()}
-            sx={{
-              backgroundColor: "#121212",
-            }}
-          >
+          <CustomCard onClick={() => submitForm()}>
             <Grid container padding={"1rem"} justifyContent={"center"}>
               <Typography variant="h6">Confirm</Typography>
             </Grid>

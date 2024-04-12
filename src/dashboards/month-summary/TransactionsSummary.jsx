@@ -43,7 +43,6 @@ const TransactionsSummary = () => {
         accountId={accountId}
         setAccountType={setAccountType}
       />
-      {/* TODO filter by account name */}
       <Transactions data={data.transactions} accountId={accountId} />
     </Grid>
   );

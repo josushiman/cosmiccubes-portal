@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import formatCurrency from "../../../hooks/formatCurrency";
 
-const SpentButton = () => {
+const ChevronButton = ({ pageLink }) => {
   return (
-    <Link to="/monthly-summary/transactions">
+    <Link to={pageLink}>
       <ChevronRightIcon
         sx={{
           opacity: "50%",
@@ -44,9 +44,12 @@ const FinancialOverview = ({ data }) => {
         </Grid>
         <Grid container justifyContent={"space-between"}>
           <Typography variant="body1">Upcoming bills:</Typography>
-          <Typography variant="body1">
-            <span>£</span> {formatCurrency(data.bills)}
-          </Typography>
+          <Grid container>
+            <Typography variant="body1" paddingRight={"1rem"}>
+              <span>£</span> {formatCurrency(data.bills)}
+            </Typography>
+            <ChevronButton pageLink={"/monthly-summary/bills"} />
+          </Grid>
         </Grid>
         <Grid container justifyContent={"space-between"}>
           <Typography variant="body1">Spent this month:</Typography>
@@ -54,7 +57,7 @@ const FinancialOverview = ({ data }) => {
             <Typography variant="body1" paddingRight={"1rem"}>
               <span>£</span> {formatCurrency(data.balance_spent)}
             </Typography>
-            <SpentButton />
+            <ChevronButton pageLink={"/monthly-summary/transactions"} />
           </Grid>
         </Grid>
         <hr style={{ width: "100%", opacity: "25%" }} />
