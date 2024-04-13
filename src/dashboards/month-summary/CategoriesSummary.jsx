@@ -94,7 +94,9 @@ const CategoriesSummary = () => {
                 fontWeight={300}
                 textTransform={"capitalize"}
               >
-                {value.category}
+                {value.category != "Internal Master Category"
+                  ? value.category
+                  : "Uncategorized"}
               </Typography>
               <Typography variant="h5" fontWeight={500}>
                 £ {formatCurrency(value.amount)}
