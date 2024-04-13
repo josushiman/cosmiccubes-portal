@@ -25,9 +25,13 @@ const CustomIdField = () => {
   // And returning the actual field.
   // UUIDs are always greater than 10 chars, so slice it at 10 chars.
   // Also copy the UUID to the clipboard if you click on it.
-  return record ? (
+  return uuid ? (
     <span onClick={handleClick}>{uuid.slice(0, 5) + "..."}</span>
-  ) : null;
+  ) : (
+    <span>
+      <em>loading...</em>
+    </span>
+  );
 };
 
 export default CustomIdField;

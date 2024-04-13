@@ -4,14 +4,14 @@ import {
   DateField,
   NumberField,
   CreateButton,
+  TextField,
 } from "react-admin";
-import CustomIdField from "../../commons/CustomIdField";
 
 const EntityList = () => (
-  <List sort={{ field: "date", order: "ASC" }} actions={<CreateButton />}>
+  <List sort={{ field: "date", order: "DESC" }} actions={<CreateButton />}>
     <Datagrid bulkActionButtons={false} rowClick="edit">
-      <CustomIdField source="id" label="UUID" sortable={false} />
       <DateField source="date" />
+      <TextField source="name" />
       <NumberField
         source="amount"
         options={{
