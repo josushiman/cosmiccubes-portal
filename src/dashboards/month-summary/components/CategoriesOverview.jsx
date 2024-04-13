@@ -36,7 +36,7 @@ const CategoriesOverview = ({ data }) => {
           paddingBottom={"0.5rem"}
         >
           <Typography variant="subtitle1">
-            {group} - {name}
+            {group ? `${group} - ${name}` : name}
           </Typography>
           <Typography
             variant="body1"

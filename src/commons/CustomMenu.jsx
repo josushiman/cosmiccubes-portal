@@ -12,6 +12,7 @@ const CustomMenu = () => (
     <Menu.ResourceItem name="portal/admin/budgets" />
     <Menu.ResourceItem name="portal/admin/ynab-categories" />
     <Menu.ResourceItem name="portal/admin/savings" />
+    <Menu.ResourceItem name="portal/admin/ynab-server-knowledge" />
   </Menu>
 );
 
