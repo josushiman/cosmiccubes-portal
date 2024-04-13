@@ -49,7 +49,8 @@ const Transactions = ({ data, accountId }) => {
                 variant="subtitle2"
                 fontWeight={300}
               >
-                {value.subcategory} - {value.category}
+                {value.subcategory}{" "}
+                {value.category ? "- " + value.category : ""}
               </Typography>
               <Typography
                 textAlign={"right"}
