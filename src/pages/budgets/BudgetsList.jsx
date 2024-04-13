@@ -13,17 +13,9 @@ const EntityList = () => {
   return (
     <Grid container flexDirection={"column"} rowGap={"1rem"}>
       <BudgetsNeeded />
-      <List>
+      <List actions={null}>
         <Datagrid bulkActionButtons={false} rowClick="edit">
           <CustomIdField source="id" label="UUID" sortable={false} />
-          <ReferenceField
-            source="category.id"
-            reference="portal/admin/ynab-categories"
-            label="Category"
-            sortable={false}
-          >
-            <TextField source="name" />
-          </ReferenceField>
           <ReferenceField
             source="category.id"
             reference="portal/admin/ynab-categories"
@@ -31,6 +23,14 @@ const EntityList = () => {
             sortable={false}
           >
             <TextField source="category_group_name" />
+          </ReferenceField>
+          <ReferenceField
+            source="category.id"
+            reference="portal/admin/ynab-categories"
+            label="Category"
+            sortable={false}
+          >
+            <TextField source="name" />
           </ReferenceField>
           <NumberField
             source="amount"

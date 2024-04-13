@@ -31,8 +31,8 @@ const BudgetsNeeded = () => {
         {data.subcategories.map((value, index) => {
           return (
             <Grid key={index} container justifyContent={"space-between"}>
-              <Typography fontWeight={200}>{value.name}</Typography>
               <Typography fontWeight={200}>{value.category}</Typography>
+              <Typography fontWeight={200}>{value.name}</Typography>
             </Grid>
           );
         })}
@@ -62,10 +62,10 @@ const BudgetsNeeded = () => {
       <hr style={{ width: "100%", opacity: "25%", marginBottom: "1rem" }} />
       <Grid container justifyContent={"space-between"}>
         <Typography fontWeight={500} sx={{ textDecoration: "underline" }}>
-          Category
+          Category Group
         </Typography>
         <Typography fontWeight={500} sx={{ textDecoration: "underline" }}>
-          Category Group
+          Category
         </Typography>
       </Grid>
       <SubCategories />

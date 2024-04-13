@@ -9,6 +9,7 @@ import { dataProvider } from "./dataProvider";
 import authProvider from "./authProvider";
 import budgets from "./pages/budgets";
 import categories from "./pages/categories";
+import savings from "./pages/savings";
 // import accounts from "./pages/accounts";
 // import accountTypes from "./pages/account-types";
 // import balanceTransfers from "./pages/balance-transfers";
@@ -18,7 +19,6 @@ import categories from "./pages/categories";
 // import mortgages from "./pages/mortgages";
 // import projects from "./pages/projects";
 // import projectItemCategories from "./pages/project-item-categories";
-// import projectItems from "./pages/project-items";
 // import transactions from "./pages/transactions";
 // import Dashboard from "./dashboards/home/Dashboard";
 
@@ -41,6 +41,11 @@ export const App = () => (
       name="portal/admin/ynab-categories"
       {...categories}
       options={{ label: "Categories" }}
+    />
+    <Resource
+      name="portal/admin/savings"
+      {...savings}
+      options={{ label: "Savings" }}
     />
     <CustomRoutes>
       <Route path="monthly-summary/bills" element={<BillsSummary />} />
@@ -97,11 +102,6 @@ export const App = () => (
       name="portal/admin/project-item-categories"
       {...projectItemCategories}
       options={{ label: "Project Item Categories" }}
-    />
-    <Resource
-      name="portal/admin/project-items"
-      {...projectItems}
-      options={{ label: "Project Items" }}
     />
     <Resource
       name="portal/admin/transactions"

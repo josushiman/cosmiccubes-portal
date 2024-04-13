@@ -37,8 +37,7 @@ const FinancialOverview = ({ data }) => {
           <Typography variant="body1">Savings:</Typography>
           <Grid container>
             <Typography variant="body1">
-              <span>£</span> {formatCurrency(1000)}{" "}
-              {/* TODO replace with actual savings from DB */}
+              <span>£</span> {formatCurrency(data.savings)}
             </Typography>
           </Grid>
         </Grid>
