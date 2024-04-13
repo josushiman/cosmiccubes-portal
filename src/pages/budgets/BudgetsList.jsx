@@ -4,6 +4,7 @@ import {
   TextField,
   ReferenceField,
   NumberField,
+  CreateButton,
 } from "react-admin";
 import Grid from "@mui/material/Unstable_Grid2";
 import CustomIdField from "../../commons/CustomIdField";
@@ -13,7 +14,7 @@ const EntityList = () => {
   return (
     <Grid container flexDirection={"column"} rowGap={"1rem"}>
       <BudgetsNeeded />
-      <List actions={null}>
+      <List actions={<CreateButton />}>
         <Datagrid bulkActionButtons={false} rowClick="edit">
           <CustomIdField source="id" label="UUID" sortable={false} />
           <ReferenceField

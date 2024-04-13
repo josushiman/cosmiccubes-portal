@@ -2,20 +2,19 @@ import {
   Edit,
   SimpleForm,
   required,
-  TextInput,
   NumberInput,
   DateInput,
+  TextInput,
 } from "react-admin";
 
 export const editEntity = (data) => {
+  const dateTime = new Date(data.date);
+
   return {
-    name: data.name,
-    project_name_id: data.project_name.id,
-    category_id: data.category.id,
-    company_id: data.company.id,
-    quantity: data.quantity,
+    id: data.id,
+    date: dateTime,
     amount: data.amount,
-    link: data.link,
+    target: data.target,
   };
 };
 
@@ -25,7 +24,13 @@ const EntityEdit = () => {
   return (
     <Edit title="Edit Entity" transform={transform}>
       <SimpleForm>
-        <TextInput source="name" validate={[required()]} />
+        <TextInput
+          source="id"
+          disabled
+          sx={{
+            minWidth: "350px",
+          }}
+        />
         <DateInput source="date" validate={[required()]} />
         <NumberInput
           source="amount"
