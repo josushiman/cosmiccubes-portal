@@ -8,22 +8,20 @@ import {
 } from "react-admin";
 import * as dayjs from "dayjs";
 
-export const createEntity = (data) => {
-  const dateTime = dayjs(data.date).format("YYYY-MM-DD");
-
-  return {
-    date: dateTime,
-    name: data.name,
-    amount: 0.0,
-    target: data.target,
-  };
-};
-
 const EntityCreate = () => {
-  const transform = (data) => createEntity(data);
+  const createEntity = (data) => {
+    const dateTime = dayjs(data.date).format("YYYY-MM-DD");
+
+    return {
+      date: dateTime,
+      name: data.name,
+      amount: 0.0,
+      target: data.target,
+    };
+  };
 
   return (
-    <Create title="Create Entity" transform={transform} redirect="list">
+    <Create title="Create Entity" transform={createEntity} redirect="list">
       <SimpleForm>
         <DateInput source="date" validate={[required()]} />
         <TextInput source="name" validate={[required()]} />

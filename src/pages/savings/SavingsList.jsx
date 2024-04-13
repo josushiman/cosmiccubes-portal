@@ -1,14 +1,7 @@
-import {
-  List,
-  Datagrid,
-  DateField,
-  NumberField,
-  CreateButton,
-  TextField,
-} from "react-admin";
+import { List, Datagrid, DateField, NumberField, TextField } from "react-admin";
 
 const EntityList = () => (
-  <List sort={{ field: "date", order: "DESC" }} actions={<CreateButton />}>
+  <List sort={{ field: "date", order: "DESC" }}>
     <Datagrid bulkActionButtons={false} rowClick="edit">
       <DateField source="date" />
       <TextField source="name" />
