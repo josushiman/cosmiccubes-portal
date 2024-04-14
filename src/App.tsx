@@ -11,6 +11,7 @@ import budgets from "./pages/budgets";
 import categories from "./pages/categories";
 import savings from "./pages/savings";
 import serverKnowledge from "./pages/server-knowledge";
+import CategoryTransactions from "./dashboards/month-summary/components/CategoryTransactions";
 // import accounts from "./pages/accounts";
 // import accountTypes from "./pages/account-types";
 // import balanceTransfers from "./pages/balance-transfers";
@@ -57,6 +58,10 @@ export const App = () => (
       <Route
         path="monthly-summary/categories"
         element={<CategoriesSummary />}
+      />
+      <Route
+        path="monthly-summary/categories/:categoryName/:subcategoryName"
+        element={<CategoryTransactions />}
       />
       <Route
         path="monthly-summary/transactions"

@@ -6,7 +6,13 @@ import { useLocation } from "react-router-dom";
 const Breadcrumbs = () => {
   const location = useLocation();
   const currentRoute = location.pathname;
-  const routeParts = currentRoute.split("/");
+  let routeParts = currentRoute.split("/");
+
+  // Only return the last 2 paths
+  let routePartsLength = routeParts.length;
+  if (routePartsLength > 2) {
+    routeParts = routeParts.splice(-2);
+  }
 
   const cleanRouteName = (value) => {
     let cleanRouteLength = value.length;
