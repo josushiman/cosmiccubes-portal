@@ -1,7 +1,7 @@
-import ContactlessIcon from "@mui/icons-material/Contactless";
+import ReceiptIcon from "@mui/icons-material/Receipt";
 import EntityList from "./TransactionsList";
 
 export default {
   list: EntityList,
-  icon: ContactlessIcon,
+  icon: ReceiptIcon,
 };

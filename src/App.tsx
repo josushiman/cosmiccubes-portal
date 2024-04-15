@@ -13,6 +13,7 @@ import budgets from "./pages/budgets";
 import categories from "./pages/categories";
 import savings from "./pages/savings";
 import serverKnowledge from "./pages/server-knowledge";
+import transactions from "./pages/transactions";
 // import accounts from "./pages/accounts";
 // import accountTypes from "./pages/account-types";
 // import balanceTransfers from "./pages/balance-transfers";
@@ -21,7 +22,6 @@ import serverKnowledge from "./pages/server-knowledge";
 // import incomes from "./pages/incomes";
 // import mortgages from "./pages/mortgages";
 // import projectItemCategories from "./pages/project-item-categories";
-// import transactions from "./pages/transactions";
 // import Dashboard from "./dashboards/home/Dashboard";
 
 const defaultTheme = defaultDarkTheme;
@@ -48,6 +48,11 @@ export const App = () => (
       name="portal/admin/savings"
       {...savings}
       options={{ label: "Savings" }}
+    />
+    <Resource
+      name="portal/admin/ynab-transaction"
+      {...transactions}
+      options={{ label: "Transactions" }}
     />
     <Resource
       name="portal/admin/ynab-server-knowledge"
@@ -109,11 +114,6 @@ export const App = () => (
       name="portal/admin/project-item-categories"
       {...projectItemCategories}
       options={{ label: "Project Item Categories" }}
-    />
-    <Resource
-      name="portal/admin/transactions"
-      {...transactions}
-      options={{ label: "Transactions" }}
     /> */}
   </Admin>
 );

@@ -1,19 +1,17 @@
 import { List, Datagrid, TextField, DateField, NumberField } from "react-admin";
-import CustomIdField from "../../commons/CustomIdField";
 
 const EntityList = () => (
-  <List sort={{ field: "name", order: "ASC" }}>
+  <List sort={{ field: "date", order: "DESC" }} actions={null}>
     <Datagrid bulkActionButtons={false}>
-      <CustomIdField source="id" label="UUID" sortable={false} />
-      <TextField source="name" />
-      <TextField source="merchant" />
-      <DateField source="date_time" showTime={true} />
+      <TextField source="payee_name" />
+      <DateField source="date" />
       <NumberField
         source="amount"
         options={{
           style: "currency",
           currency: "GBP",
         }}
+        transform={(v) => v / 1000}
       />
     </Datagrid>
   </List>
