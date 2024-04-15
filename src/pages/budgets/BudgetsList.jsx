@@ -7,7 +7,6 @@ import {
   CreateButton,
 } from "react-admin";
 import Grid from "@mui/material/Unstable_Grid2";
-import CustomIdField from "../../commons/CustomIdField";
 import BudgetsNeeded from "./BudgetsNeeded";
 
 const EntityList = () => {
@@ -16,7 +15,6 @@ const EntityList = () => {
       <BudgetsNeeded />
       <List actions={<CreateButton />}>
         <Datagrid bulkActionButtons={false} rowClick="edit">
-          <CustomIdField source="id" label="UUID" sortable={false} />
           <ReferenceField
             source="category.id"
             reference="portal/admin/ynab-categories"
