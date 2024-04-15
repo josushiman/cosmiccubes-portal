@@ -21,6 +21,8 @@ const CreditSummary = ({ data, accountId, setAccountType }) => {
               ? "/amex.svg?url"
               : value.name == "HSBC CC"
               ? "/hsbc.svg?url"
+              : value.name == "HSBC ADVANCE"
+              ? "/hsbc.svg?url"
               : "/barclays.svg?url";
 
           return (
