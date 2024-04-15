@@ -22,7 +22,7 @@ const BudgetsNeeded = () => {
         container
         flexDirection={"column"}
         rowGap={"0.75rem"}
-        height={"15rem"}
+        height={"6rem"}
         flexWrap={"nowrap"}
         sx={{
           overflowY: "scroll",
