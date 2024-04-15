@@ -1,7 +1,7 @@
 import Grid from "@mui/material/Unstable_Grid2";
 import { Typography } from "@mui/material";
 import { CustomCard } from "../../../commons/CustomCard";
-import * as dayjs from "dayjs";
+import dayjs from "dayjs";
 import formatCurrency from "../../../hooks/formatCurrency";
 import useAsync from "../../../hooks/useAsync";
 import Navigation from "../../commons/Navigation";

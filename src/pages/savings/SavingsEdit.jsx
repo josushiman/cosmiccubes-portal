@@ -6,7 +6,7 @@ import {
   DateInput,
   TextInput,
 } from "react-admin";
-import * as dayjs from "dayjs";
+import dayjs from "dayjs";
 
 export const EntityEdit = () => {
   const editEntity = (data) => {
