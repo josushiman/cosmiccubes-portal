@@ -5,6 +5,7 @@ import { CustomCard } from "../../commons/CustomCard";
 import formatCurrency from "../../hooks/formatCurrency";
 import Navigation from "../commons/Navigation";
 import { BorderLinearProgressWithBackground } from "../../commons/BorderLinearProgress";
+import CustomButton from "../../commons/CustomButton";
 
 const BillsSummary = () => {
   const { data, loading, error } = useAsync("/upcoming-bills");
@@ -80,11 +81,7 @@ const BillsSummary = () => {
           <SubCategoryList data={data.subcategories} total_bills={data.total} />
         </Grid>
       </CustomCard>
-      <CustomCard onClick={() => console.log("go there")}>
-        <Grid container padding={"1rem"} justifyContent={"center"}>
-          <Typography variant="h6">See payment dates</Typography>
-        </Grid>
-      </CustomCard>
+      <CustomButton action="see payment dates" />
     </Grid>
   );
 };

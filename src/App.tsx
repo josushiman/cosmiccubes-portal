@@ -3,7 +3,9 @@ import { Route } from "react-router-dom";
 import Dashboard from "./dashboards/month-summary/MonthSummary";
 import CustomLayout from "./commons/CustomLayout";
 import BillsSummary from "./dashboards/month-summary/BillsSummary";
+import BillsDetails from "./dashboards/month-summary/components/BillsDetails";
 import CategoriesSummary from "./dashboards/month-summary/CategoriesSummary";
+import CategoryTransactions from "./dashboards/month-summary/components/CategoryTransactions";
 import TransactionsSummary from "./dashboards/month-summary/TransactionsSummary";
 import { dataProvider } from "./dataProvider";
 import authProvider from "./authProvider";
@@ -11,7 +13,6 @@ import budgets from "./pages/budgets";
 import categories from "./pages/categories";
 import savings from "./pages/savings";
 import serverKnowledge from "./pages/server-knowledge";
-import CategoryTransactions from "./dashboards/month-summary/components/CategoryTransactions";
 // import accounts from "./pages/accounts";
 // import accountTypes from "./pages/account-types";
 // import balanceTransfers from "./pages/balance-transfers";
@@ -55,6 +56,7 @@ export const App = () => (
     />
     <CustomRoutes>
       <Route path="monthly-summary/bills" element={<BillsSummary />} />
+      <Route path="monthly-summary/bills/details" element={<BillsDetails />} />
       <Route
         path="monthly-summary/categories"
         element={<CategoriesSummary />}
