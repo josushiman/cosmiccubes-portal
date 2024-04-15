@@ -28,32 +28,33 @@ const FinancialOverview = ({ data }) => {
         padding={"1.5rem 2rem"}
       >
         <Grid container justifyContent={"space-between"}>
-          <Typography variant="body1">Last month income:</Typography>
-          <Typography variant="body1">
+          <Typography variant="subtitle1">Last month income:</Typography>
+          <Typography variant="subtitle1">
             <span>£</span> {formatCurrency(data.income)}
           </Typography>
         </Grid>
         <Grid container justifyContent={"space-between"}>
-          <Typography variant="body1">Savings:</Typography>
+          <Typography variant="subtitle1">Savings:</Typography>
           <Grid container>
-            <Typography variant="body1">
+            <Typography variant="subtitle1" paddingRight={"0.25rem"}>
               <span>£</span> {formatCurrency(data.savings)}
             </Typography>
+            <ChevronButton pageLink={"/portal/admin/savings"} />
           </Grid>
         </Grid>
         <Grid container justifyContent={"space-between"}>
-          <Typography variant="body1">Upcoming bills:</Typography>
+          <Typography variant="subtitle1">Upcoming bills:</Typography>
           <Grid container>
-            <Typography variant="body1" paddingRight={"1rem"}>
+            <Typography variant="subtitle1" paddingRight={"0.25rem"}>
               <span>£</span> {formatCurrency(data.bills)}
             </Typography>
             <ChevronButton pageLink={"/monthly-summary/bills"} />
           </Grid>
         </Grid>
         <Grid container justifyContent={"space-between"}>
-          <Typography variant="body1">Spent this month:</Typography>
+          <Typography variant="subtitle1">Spent this month:</Typography>
           <Grid container>
-            <Typography variant="body1" paddingRight={"1rem"}>
+            <Typography variant="subtitle1" paddingRight={"0.25rem"}>
               <span>£</span> {formatCurrency(data.balance_spent)}
             </Typography>
             <ChevronButton pageLink={"/monthly-summary/transactions"} />

@@ -7,6 +7,7 @@ import CategoriesOverview from "./components/CategoriesOverview";
 import FinancialOverview from "./components/FinancialOverview";
 import NotificationCard from "./components/NotificationCard";
 import "./styles.css";
+import UpcomingRenewals from "./components/UpcomingRenewals";
 
 const MonthSummary = () => {
   const { timePeriod } = useContext(TimePeriodContext);
@@ -34,6 +35,7 @@ const MonthSummary = () => {
     >
       {notificationText ? <NotificationCard data={data.notif} /> : null}
       <Summary data={data.summary} />
+      <UpcomingRenewals data={data.renewals} />
       <CategoriesOverview data={data.categories} />
       <FinancialOverview data={data.income_expenses} />
     </Grid>

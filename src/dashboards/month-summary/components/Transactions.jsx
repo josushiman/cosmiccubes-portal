@@ -38,8 +38,8 @@ const Transactions = ({ data, accountId }) => {
               gridTemplateRows={"repeat(2, 1.5rem)"}
             >
               <Typography>
-                {value.payee.substring(0, 20)}
-                {value.payee.length > 20 ? "..." : null}
+                {value.payee.substring(0, 15)}
+                {value.payee.length > 15 ? "..." : null}
               </Typography>
               <Typography textAlign={"right"}>
                 £ {formatCurrency(value.amount)}

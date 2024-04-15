@@ -11,6 +11,7 @@ import { dataProvider } from "./dataProvider";
 import authProvider from "./authProvider";
 import budgets from "./pages/budgets";
 import categories from "./pages/categories";
+import loansAndRenewals from "./pages/loans-and-renewals";
 import savings from "./pages/savings";
 import serverKnowledge from "./pages/server-knowledge";
 import transactions from "./pages/transactions";
@@ -21,7 +22,6 @@ import transactions from "./pages/transactions";
 // import directDebits from "./pages/direct-debits";
 // import incomes from "./pages/incomes";
 // import mortgages from "./pages/mortgages";
-// import projectItemCategories from "./pages/project-item-categories";
 // import Dashboard from "./dashboards/home/Dashboard";
 
 const defaultTheme = defaultDarkTheme;
@@ -43,6 +43,11 @@ export const App = () => (
       name="portal/admin/ynab-categories"
       {...categories}
       options={{ label: "Categories" }}
+    />
+    <Resource
+      name="portal/admin/loans-and-renewals"
+      {...loansAndRenewals}
+      options={{ label: "Loans and Renewals" }}
     />
     <Resource
       name="portal/admin/savings"
@@ -110,10 +115,6 @@ export const App = () => (
       {...mortgages}
       options={{ label: "Mortgages" }}
     />
-    <Resource
-      name="portal/admin/project-item-categories"
-      {...projectItemCategories}
-      options={{ label: "Project Item Categories" }}
-    /> */}
+     */}
   </Admin>
 );
