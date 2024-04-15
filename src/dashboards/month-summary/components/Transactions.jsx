@@ -22,7 +22,7 @@ const Transactions = ({ data, accountId }) => {
   return (
     <CustomCard
       sx={{
-        height: "25rem",
+        height: filteredData.length >= 5 ? "20rem" : "auto",
         overflowY: "scroll",
       }}
     >
@@ -35,7 +35,7 @@ const Transactions = ({ data, accountId }) => {
               display={"grid"}
               alignItems={"center"}
               gridTemplateColumns={"70% 30%"}
-              gridTemplateRows={"repeat(2, auto)"}
+              gridTemplateRows={"repeat(2, 1.5rem)"}
             >
               <Typography>
                 {value.payee.substring(0, 20)}
