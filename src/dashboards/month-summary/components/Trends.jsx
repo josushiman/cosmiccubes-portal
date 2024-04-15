@@ -11,11 +11,30 @@ const Trends = ({ data }) => {
     <CustomCard>
       <Grid container flexDirection={"column"} rowGap={"1rem"} padding={"2rem"}>
         <Grid container display={"grid"} gridTemplateColumns={"repeat(3, 1fr)"}>
-          <Typography variant="subtitle1">Period</Typography>
-          <Typography variant="subtitle1" justifySelf={"flex-end"}>
+          <Typography
+            variant="subtitle1"
+            sx={{
+              textDecoration: "underline",
+            }}
+          >
+            Period
+          </Typography>
+          <Typography
+            variant="subtitle1"
+            justifySelf={"flex-end"}
+            sx={{
+              textDecoration: "underline",
+            }}
+          >
             Trend
           </Typography>
-          <Typography variant="subtitle1" justifySelf={"flex-end"}>
+          <Typography
+            variant="subtitle1"
+            justifySelf={"flex-end"}
+            sx={{
+              textDecoration: "underline",
+            }}
+          >
             Avg spent
           </Typography>
         </Grid>
