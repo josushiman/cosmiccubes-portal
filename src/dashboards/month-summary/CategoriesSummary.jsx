@@ -98,7 +98,8 @@ const CategoriesSummary = () => {
             </Typography>
             <Grid
               container
-              justifyContent={"space-between"}
+              display={"grid"}
+              gridTemplateColumns={"1fr auto"}
               alignItems={"center"}
               paddingBottom={"1rem"}
             >
@@ -107,11 +108,15 @@ const CategoriesSummary = () => {
                 fontWeight={300}
                 textTransform={"capitalize"}
               >
-                {value.category != "Internal Master Category"
-                  ? value.category
-                  : "Uncategorized"}
+                {value.category == "Internal Master Category"
+                  ? "Uncategorized"
+                  : value.category}
               </Typography>
-              <Typography variant="h5" fontWeight={500}>
+              <Typography
+                variant="h5"
+                fontWeight={500}
+                justifySelf={"flex-end"}
+              >
                 £ {formatCurrency(value.amount)}
               </Typography>
             </Grid>

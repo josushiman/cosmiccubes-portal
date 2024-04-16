@@ -29,9 +29,11 @@ const CreditSummary = ({ data, accountId, setAccountType }) => {
             <Grid
               key={index}
               container
-              justifyContent={"space-between"}
+              display={"grid"}
+              gridTemplateColumns={"auto 1fr auto"}
+              gridTemplateRows={"auto"}
+              columnGap={"0.5rem"}
               alignItems={"center"}
-              padding={"1rem 1rem 0 1rem"}
               sx={
                 value.id == accountId || accountId == undefined
                   ? selectedStyle
@@ -39,8 +41,19 @@ const CreditSummary = ({ data, accountId, setAccountType }) => {
               }
               onClick={() => setAccountType(value.id)}
             >
-              <img src={imageSource} alt={value.name} />
-              <Typography variant="h6" fontWeight={300}>
+              <img src={imageSource} alt={value.name} height={"30px"} />
+              <Typography
+                variant="body1"
+                fontWeight={300}
+                justifySelf={"flex-start"}
+              >
+                {value.name}
+              </Typography>
+              <Typography
+                variant="body1"
+                fontWeight={300}
+                justifySelf={"flex-end"}
+              >
                 £ {formatCurrency(value.balance)}
               </Typography>
             </Grid>
