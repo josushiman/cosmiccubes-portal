@@ -9,6 +9,8 @@ const CustomButton = ({ action }) => {
   const setClickFunction = () => {
     if (action == "back") {
       navigate(-1);
+    } else if (action == "cancel") {
+      // TODO
     } else if (action == "see payment dates") {
       navigate("/monthly-summary/bills/details");
     }

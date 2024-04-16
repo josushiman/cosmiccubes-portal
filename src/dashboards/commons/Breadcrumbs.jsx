@@ -19,9 +19,12 @@ const Breadcrumbs = () => {
 
     if (cleanRouteLength < 1) return null;
 
-    let cleanName = value.replace("-", " ");
+    // for UUIDs
+    if (cleanRouteLength > 30) return "transaction";
 
-    return cleanName;
+    const cleanName = value.replace("-", " ");
+
+    return decodeURIComponent(cleanName);
   };
 
   return (

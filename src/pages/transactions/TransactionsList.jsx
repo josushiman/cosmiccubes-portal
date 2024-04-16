@@ -15,7 +15,7 @@ const EntityList = () => (
     ]}
     actions={null}
   >
-    <Datagrid bulkActionButtons={false}>
+    <Datagrid bulkActionButtons={false} rowClick="show">
       <TextField source="payee_name" />
       <DateField source="date" />
       <NumberField

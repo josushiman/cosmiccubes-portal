@@ -1,5 +1,6 @@
 import { Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
+import { Link } from "react-router-dom";
 import { CustomCard } from "../../../commons/CustomCard";
 import formatCurrency from "../../../hooks/formatCurrency";
 
@@ -29,38 +30,45 @@ const Transactions = ({ data, accountId }) => {
       <Grid container display={"grid"} padding={"1.5rem 2rem"} rowGap={"1rem"}>
         {filteredData.map((value, index) => {
           return (
-            <Grid
+            <Link
               key={index}
-              container
-              display={"grid"}
-              alignItems={"center"}
-              gridTemplateColumns={"70% 30%"}
-              gridTemplateRows={"repeat(2, 1.5rem)"}
+              to={`/portal/admin/ynab-transaction/${value.id}/show`}
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+              }}
             >
-              <Typography>
-                {value.payee.substring(0, 15)}
-                {value.payee.length > 15 ? "..." : null}
-              </Typography>
-              <Typography textAlign={"right"}>
-                £ {formatCurrency(value.amount)}
-              </Typography>
-              <Typography
-                fontStyle={"italic"}
-                variant="subtitle2"
-                fontWeight={300}
+              <Grid
+                container
+                display={"grid"}
+                alignItems={"center"}
+                gridTemplateColumns={"70% 30%"}
+                gridTemplateRows={"repeat(2, 1.5rem)"}
               >
-                {value.subcategory}{" "}
-                {value.category ? "- " + value.category : ""}
-              </Typography>
-              <Typography
-                textAlign={"right"}
-                fontStyle={"italic"}
-                variant="subtitle2"
-                fontWeight={300}
-              >
-                {value.date}
-              </Typography>
-            </Grid>
+                <Typography>
+                  {value.payee.substring(0, 15)}
+                  {value.payee.length > 15 ? "..." : null}
+                </Typography>
+                <Typography textAlign={"right"}>
+                  £ {formatCurrency(value.amount)}
+                </Typography>
+                <Typography
+                  fontStyle={"italic"}
+                  variant="subtitle2"
+                  fontWeight={300}
+                >
+                  {value.subcategory}
+                </Typography>
+                <Typography
+                  textAlign={"right"}
+                  fontStyle={"italic"}
+                  variant="subtitle2"
+                  fontWeight={300}
+                >
+                  {value.date}
+                </Typography>
+              </Grid>
+            </Link>
           );
         })}
       </Grid>
