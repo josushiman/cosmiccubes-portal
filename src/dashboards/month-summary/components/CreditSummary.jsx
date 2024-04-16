@@ -31,7 +31,7 @@ const CreditSummary = ({ data, accountId, setAccountType }) => {
               container
               display={"grid"}
               gridTemplateColumns={"auto 1fr auto"}
-              gridTemplateRows={"auto"}
+              gridTemplateRows={"2rem"}
               columnGap={"0.5rem"}
               alignItems={"center"}
               sx={
