@@ -51,7 +51,7 @@ const LoanPortfolioChart = ({ data }) => {
             return (
               <Line
                 key={index}
-                type="bump"
+                type="step"
                 dataKey={value}
                 dot={false}
                 stroke="#BA306A"
