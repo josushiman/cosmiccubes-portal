@@ -10,6 +10,9 @@ import { CustomCard } from "../../commons/CustomCard";
 import formatCurrency from "../../hooks/formatCurrency";
 
 const LoanPortfolioChart = ({ data }) => {
+  const objKeys = Object.keys(data[0]);
+  const filteredKeys = objKeys.filter((key) => key !== "date");
+
   return (
     <CustomCard sx={{ padding: "0.75rem 0rem" }}>
       <ResponsiveContainer width="100%" height={150}>
@@ -44,22 +47,19 @@ const LoanPortfolioChart = ({ data }) => {
             }}
           />
           {/* <Tooltip content={<CustomTooltip />} /> */}
-          <Line
-            type="bump"
-            dataKey="Zopa Personal Loan"
-            dot={false}
-            stroke="#8d8f29a6"
-            strokeWidth={2}
-            strokeOpacity={0.7}
-          />
-          <Line
-            type="bump"
-            dataKey="Balance Transfer"
-            dot={false}
-            stroke="#BA306A"
-            strokeWidth={2}
-            strokeOpacity={0.7}
-          />
+          {filteredKeys.map((value, index) => {
+            return (
+              <Line
+                key={index}
+                type="bump"
+                dataKey={value}
+                dot={false}
+                stroke="#BA306A"
+                strokeWidth={2}
+                strokeOpacity={0.7}
+              />
+            );
+          })}
         </ComposedChart>
       </ResponsiveContainer>
     </CustomCard>
