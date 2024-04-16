@@ -45,19 +45,33 @@ const Trends = ({ data }) => {
                 key={index}
                 container
                 display={"grid"}
-                gridTemplateColumns={"auto 1fr 33%"}
+                gridTemplateColumns={"33% 1fr 33%"}
                 gridTemplateRows={"1rem"}
               >
                 <Typography variant="body1">{value.period}</Typography>
-                <Grid container columnGap={"1rem"} justifySelf={"flex-end"}>
+                <Grid
+                  container
+                  display={"grid"}
+                  gridTemplateColumns={"repeat(2, 1fr)"}
+                  gridTemplateRows={"auto"}
+                  columnGap={"0.125rem"}
+                  justifySelf={"flex-end"}
+                  width={"100%"}
+                >
                   {value.trend == "up" ? (
-                    <TrendingUpIcon sx={{ color: "#C06969" }} />
+                    <TrendingUpIcon
+                      sx={{ color: "#C06969", justifySelf: "flex-end" }}
+                    />
                   ) : value.trend == "down" ? (
-                    <TrendingDownIcon sx={{ color: "#DEF6CA" }} />
+                    <TrendingDownIcon
+                      sx={{ color: "#DEF6CA", justifySelf: "flex-end" }}
+                    />
                   ) : (
-                    <TrendingFlatIcon sx={{ color: "grey" }} />
+                    <TrendingFlatIcon
+                      sx={{ color: "grey", justifySelf: "flex-end" }}
+                    />
                   )}
-                  <Typography variant="body1">
+                  <Typography variant="body1" justifySelf={"flex-end"}>
                     {value.percentage !== "-" ? `${value.percentage}%` : ""}
                   </Typography>
                 </Grid>
