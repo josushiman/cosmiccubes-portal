@@ -46,24 +46,15 @@ const UpcomingRenewals = ({ data }) => {
                 gridTemplateRows={"1.25rem"}
                 alignItems={"start"}
               >
-                <Typography variant="body1" fontWeight={300}>
-                  {value.name}
-                </Typography>
-                <Typography
-                  variant="body1"
-                  justifySelf={"flex-end"}
-                  fontWeight={300}
-                >
+                <Typography variant="subtitle1">{value.name}</Typography>
+                <Typography variant="subtitle1" justifySelf={"flex-end"}>
                   {dayValue.date()}
-                  <Typography variant="caption" fontWeight={300}>
+                  <Typography variant="caption">
                     {getOrdinalSuffix(dayValue.date())}
-                  </Typography>
+                  </Typography>{" "}
+                  {dayValue.format("MMM")}
                 </Typography>
-                <Typography
-                  variant="body1"
-                  justifySelf={"flex-end"}
-                  fontWeight={300}
-                >
+                <Typography variant="body1" justifySelf={"flex-end"}>
                   £ {formatCurrency(value.amount, false, false)}
                 </Typography>
               </Grid>
