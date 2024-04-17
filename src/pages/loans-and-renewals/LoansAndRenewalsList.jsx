@@ -7,14 +7,17 @@ import {
 } from "react-admin";
 import Grid from "@mui/material/Unstable_Grid2";
 import LoanPortfolio from "./LoanPortfolio";
+import DirectDebits from "./DirectDebits";
 
 const EntityList = () => (
-  <Grid container flexDirection={"column"} rowGap={"1rem"}>
+  <Grid container flexDirection={"column"} rowGap={"0.5rem"}>
     <LoanPortfolio />
-    <List sort={{ field: "end_date", order: "ASC" }} actions={null}>
+    <DirectDebits />
+    <List sort={{ field: "period", order: "ASC" }} actions={null}>
       <CreateButton />
       <Datagrid bulkActionButtons={false} rowClick="edit">
         <TextField source="name" />
+        <TextField source="period" />
         <NumberField
           source="remaining_balance"
           label="Balance"
@@ -23,7 +26,6 @@ const EntityList = () => (
             currency: "GBP",
           }}
         />
-        <TextField source="status" />
       </Datagrid>
     </List>
   </Grid>

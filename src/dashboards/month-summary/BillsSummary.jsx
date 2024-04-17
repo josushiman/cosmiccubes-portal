@@ -51,7 +51,7 @@ const BillsSummary = () => {
   };
 
   return (
-    <Grid container rowGap={"1rem"} flexDirection={"column"} padding={"1rem"}>
+    <Grid container rowGap={"0.5rem"} flexDirection={"column"}>
       <Navigation />
       <CustomCard
         sx={{
