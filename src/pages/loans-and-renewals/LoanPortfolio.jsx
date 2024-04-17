@@ -35,24 +35,17 @@ const LoanPortfolio = () => {
         <Typography variant="h5" fontWeight={300}>
           Loan portfolio
         </Typography>
+        <Typography variant="h5" fontWeight={500}>
+          {data.count}
+        </Typography>
       </Grid>
       <hr style={{ width: "100%", opacity: "25%", marginBottom: "1rem" }} />
       <Grid container flexDirection={"column"} rowGap={"0.5rem"}>
-        <Grid container flexDirection={"column"} rowGap={"0.5rem"}>
-          <Grid container justifyContent={"space-between"}>
-            <Typography>Count</Typography>
-            <Typography>
-              <strong>{data.count}</strong>
-            </Typography>
-          </Grid>
-          <Grid container justifyContent={"space-between"}>
-            <Typography>Total credit</Typography>
-            <Typography>
-              <strong>
-                £ {formatCurrency(data.total_credit, false, true)}
-              </strong>
-            </Typography>
-          </Grid>
+        <Grid container justifyContent={"space-between"}>
+          <Typography>Total credit</Typography>
+          <Typography>
+            <strong>£ {formatCurrency(data.total_credit, false, true)}</strong>
+          </Typography>
         </Grid>
         {accountsLength > 0 ? (
           <LoanPortfolioChart data={data.accounts} />

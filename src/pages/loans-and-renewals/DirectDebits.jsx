@@ -32,15 +32,12 @@ const DirectDebits = () => {
         <Typography variant="h5" fontWeight={300}>
           Direct debits
         </Typography>
+        <Typography variant="h5" fontWeight={500}>
+          {data.count}
+        </Typography>
       </Grid>
       <hr style={{ width: "100%", opacity: "25%", marginBottom: "1rem" }} />
       <Grid container flexDirection={"column"} rowGap={"0.5rem"}>
-        <Grid container justifyContent={"space-between"}>
-          <Typography>Count</Typography>
-          <Typography>
-            <strong>{data.count}</strong>
-          </Typography>
-        </Grid>
         <Grid container justifyContent={"space-between"}>
           <Typography>Monthly cost</Typography>
           <Typography>
