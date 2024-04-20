@@ -31,7 +31,28 @@ const EntityCreate = () => {
             currency: "GBP",
           }}
         />
-        <TextInput source="period" />
+        <ReferenceInput
+          source="period_id"
+          reference="portal/admin/loans-and-renewals-periods"
+          sort={{ field: "name", order: "ASC" }}
+        >
+          <AutocompleteInput
+            optionText={(entity) => entity.name}
+            label="Period"
+            filterToQuery={(searchText) => ({ name: searchText })}
+          />
+        </ReferenceInput>
+        <ReferenceInput
+          source="type_id"
+          reference="portal/admin/loans-and-renewals-types"
+          sort={{ field: "name", order: "ASC" }}
+        >
+          <AutocompleteInput
+            optionText={(entity) => entity.name}
+            label="Type"
+            filterToQuery={(searchText) => ({ name: searchText })}
+          />
+        </ReferenceInput>
         <ReferenceInput
           source="account_id"
           reference="portal/admin/ynab-accounts"

@@ -12,6 +12,8 @@ import TransactionsSummary from "./dashboards/month-summary/TransactionsSummary"
 import budgets from "./pages/budgets";
 import categories from "./pages/categories";
 import loansAndRenewals from "./pages/loans-and-renewals";
+import loansAndRenewalsPeriods from "./pages/loans-and-renewals/periods";
+import loansAndRenewalsTypes from "./pages/loans-and-renewals/types";
 import savings from "./pages/savings";
 import serverKnowledge from "./pages/server-knowledge";
 import transactions from "./pages/transactions";
@@ -40,6 +42,16 @@ export const App = () => (
       name="portal/admin/loans-and-renewals"
       {...loansAndRenewals}
       options={{ label: "Loans and Renewals" }}
+    />
+    <Resource
+      name="portal/admin/loans-and-renewals-periods"
+      {...loansAndRenewalsPeriods}
+      options={{ label: "Loans and Renewals Periods" }}
+    />
+    <Resource
+      name="portal/admin/loans-and-renewals-types"
+      {...loansAndRenewalsTypes}
+      options={{ label: "Loans and Renewals Types" }}
     />
     <Resource
       name="portal/admin/savings"
