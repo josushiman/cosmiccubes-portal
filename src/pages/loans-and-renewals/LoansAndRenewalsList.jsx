@@ -9,11 +9,13 @@ import {
 import Grid from "@mui/material/Unstable_Grid2";
 import LoanPortfolio from "./LoanPortfolio";
 import DirectDebits from "./DirectDebits";
+import Insurance from "./Insurance";
 
 const EntityList = () => (
   <Grid container flexDirection={"column"} rowGap={"0.5rem"}>
-    <LoanPortfolio />
     <DirectDebits />
+    <Insurance />
+    <LoanPortfolio />
     <List sort={{ field: "period__name", order: "ASC" }} actions={null}>
       <CreateButton />
       <Datagrid bulkActionButtons={false} rowClick="edit">
