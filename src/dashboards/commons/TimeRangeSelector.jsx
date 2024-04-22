@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Typography, Button } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { CustomCard } from "../../commons/CustomCard";
 import { useContext } from "react";
@@ -219,19 +219,26 @@ const TimeRangeSelector = () => {
         </CustomCard>
 
         <Grid container flexDirection={"column"} rowGap={"1rem"}>
-          <CustomCard onClick={() => submitForm()}>
+          <CustomCard onClick={submitForm}>
             <Grid container padding={"1rem"} justifyContent={"center"}>
-              <Typography variant="h6">Confirm</Typography>
+              <Button
+                sx={{
+                  color: "white",
+                }}
+              >
+                Confirm
+              </Button>
             </Grid>
           </CustomCard>
-          <CustomCard
-            onClick={() => cancelForm()}
-            sx={{
-              backgroundColor: "#C06969",
-            }}
-          >
+          <CustomCard onClick={cancelForm} backgroundcolor={"#C06969"}>
             <Grid container padding={"1rem"} justifyContent={"center"}>
-              <Typography variant="h6">Cancel</Typography>
+              <Button
+                sx={{
+                  color: "white",
+                }}
+              >
+                Cancel
+              </Button>
             </Grid>
           </CustomCard>
         </Grid>
