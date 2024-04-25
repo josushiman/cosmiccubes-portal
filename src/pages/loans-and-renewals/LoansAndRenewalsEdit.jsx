@@ -24,6 +24,7 @@ const EntityEdit = () => {
     // 2024-04-02T00:00:00.000Z
     return {
       name: data.name,
+      provider: data.provider,
       payment_date: data.payment_date,
       payment_amount: data.payment_amount,
       starting_balance: data.starting_balance,
@@ -39,6 +40,7 @@ const EntityEdit = () => {
     <Edit title="Edit Entity" transform={editEntity}>
       <SimpleForm>
         <TextInput source="name" fullWidth validate={[required()]} />
+        <TextInput source="provider" fullWidth />
         <DateInput source="start_date" validate={[required()]} />
         <DateInput source="end_date" />
         <NumberInput source="payment_date" />

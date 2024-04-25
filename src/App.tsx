@@ -17,6 +17,7 @@ import loansAndRenewalsTypes from "./pages/loans-and-renewals/types";
 import savings from "./pages/savings";
 import serverKnowledge from "./pages/server-knowledge";
 import transactions from "./pages/transactions";
+import InsuranceDetails from "./pages/loans-and-renewals/insurance/InsuranceDetails";
 
 const defaultTheme = defaultDarkTheme;
 
@@ -79,6 +80,7 @@ export const App = () => (
         path="monthly-summary/categories/:categoryName/:subcategoryName"
         element={<CategoryTransactions />}
       />
+      <Route path="insurance/details" element={<InsuranceDetails />} />
       <Route
         path="monthly-summary/transactions"
         element={<TransactionsSummary />}

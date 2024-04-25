@@ -14,6 +14,7 @@ const EntityCreate = () => {
     <Create title="Create Entity" redirect="list">
       <SimpleForm>
         <TextInput source="name" fullWidth validate={[required()]} />
+        <TextInput source="provider" fullWidth />
         <DateInput source="start_date" validate={[required()]} />
         <DateInput source="end_date" />
         <NumberInput source="payment_date" />
