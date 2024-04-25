@@ -1,3 +1,4 @@
+import EditIcon from "@mui/icons-material/Edit";
 import { Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { Link, useLocation } from "react-router-dom";
@@ -24,9 +25,29 @@ const InsuranceDetails = () => {
               padding: "1.5rem 2rem",
             }}
           >
-            <Typography variant="h6" fontWeight={300}>
-              {value.name}
-            </Typography>
+            <Grid
+              container
+              justifyContent={"space-between"}
+              alignItems={"center"}
+            >
+              <Typography variant="h6" fontWeight={300}>
+                {value.name}
+              </Typography>
+              <Link
+                key={index}
+                to={`/portal/admin/loans-and-renewals/${value.id}`}
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                }}
+              >
+                <EditIcon
+                  sx={{
+                    color: "#313131",
+                  }}
+                />
+              </Link>
+            </Grid>
             <hr
               style={{ width: "100%", opacity: "25%", marginBottom: "1rem" }}
             />
