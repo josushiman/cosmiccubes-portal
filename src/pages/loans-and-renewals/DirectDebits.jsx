@@ -3,18 +3,13 @@ import Grid from "@mui/material/Unstable_Grid2";
 import useAsync from "../../hooks/useAsync";
 import { CustomCard } from "../../commons/CustomCard";
 import formatCurrency from "../../hooks/formatCurrency";
+import HandleDataLoad from "../../commons/HandleDataLoad";
 
 const DirectDebits = () => {
   const { data, loading, error } = useAsync("/direct-debits");
 
-  if (loading || !data) {
-    // Add skeleton
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    // Pass generic error message
-    return <div>Error: {error.message}</div>;
+  if (loading || !data || error) {
+    return <HandleDataLoad data={data} loading={loading} error={error} />;
   }
 
   return (

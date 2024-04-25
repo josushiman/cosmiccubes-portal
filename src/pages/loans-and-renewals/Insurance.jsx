@@ -3,18 +3,13 @@ import Grid from "@mui/material/Unstable_Grid2";
 import { Link } from "react-router-dom";
 import useAsync from "../../hooks/useAsync";
 import { CustomCard } from "../../commons/CustomCard";
+import HandleDataLoad from "../../commons/HandleDataLoad";
 
 const Insurance = () => {
   const { data, loading, error } = useAsync("/insurance");
 
-  if (loading || !data) {
-    // Add skeleton
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    // Pass generic error message
-    return <div>Error: {error.message}</div>;
+  if (loading || !data || error) {
+    return <HandleDataLoad data={data} loading={loading} error={error} />;
   }
 
   return (

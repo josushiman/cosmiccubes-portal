@@ -6,18 +6,13 @@ import formatCurrency from "../../hooks/formatCurrency";
 import Navigation from "../commons/Navigation";
 import { BorderLinearProgressWithBackground } from "../../commons/BorderLinearProgress";
 import CustomButton from "../../commons/CustomButton";
+import HandleDataLoad from "../../commons/HandleDataLoad";
 
 const BillsSummary = () => {
   const { data, loading, error } = useAsync("/upcoming-bills");
 
-  if (loading || !data) {
-    // Add skeleton
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    // Pass generic error message
-    return <div>Error: {error.message}</div>;
+  if (loading || !data || error) {
+    return <HandleDataLoad data={data} loading={loading} error={error} />;
   }
 
   const SubCategoryList = ({ data, total_bills }) => {

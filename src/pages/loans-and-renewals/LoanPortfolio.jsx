@@ -4,18 +4,13 @@ import useAsync from "../../hooks/useAsync";
 import { CustomCard } from "../../commons/CustomCard";
 import formatCurrency from "../../hooks/formatCurrency";
 import LoanPortfolioChart from "./LoanPortfolioChart";
+import HandleDataLoad from "../../commons/HandleDataLoad";
 
 const LoanPortfolio = () => {
   const { data, loading, error } = useAsync("/loan-portfolio");
 
-  if (loading || !data) {
-    // Add skeleton
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    // Pass generic error message
-    return <div>Error: {error.message}</div>;
+  if (loading || !data || error) {
+    return <HandleDataLoad data={data} loading={loading} error={error} />;
   }
 
   const accountsLength = data.accounts.length;

@@ -5,18 +5,13 @@ import dayjs from "dayjs";
 import formatCurrency from "../../../hooks/formatCurrency";
 import useAsync from "../../../hooks/useAsync";
 import Navigation from "../../commons/Navigation";
+import HandleDataLoad from "../../../commons/HandleDataLoad";
 
 const BillsDetails = () => {
   const { data, loading, error } = useAsync("/upcoming-bills/details");
 
-  if (loading || !data) {
-    // Add skeleton
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    // Pass generic error message
-    return <div>Error: {error.message}</div>;
+  if (loading || !data || error) {
+    return <HandleDataLoad data={data} loading={loading} error={error} />;
   }
 
   return (

@@ -2,18 +2,13 @@ import { Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { CustomCard } from "../../commons/CustomCard";
 import useAsync from "../../hooks/useAsync";
+import HandleDataLoad from "../../commons/HandleDataLoad";
 
 const BudgetsNeeded = () => {
   const { data, loading, error } = useAsync("/budgets-needed");
 
-  if (loading || !data) {
-    // Add skeleton
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    // Pass generic error message
-    return <div>Error: {error.message}</div>;
+  if (loading || !data || error) {
+    return <HandleDataLoad data={data} loading={loading} error={error} />;
   }
 
   const SubCategories = () => {

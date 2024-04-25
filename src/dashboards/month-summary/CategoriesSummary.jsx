@@ -8,19 +8,14 @@ import Navigation from "../commons/Navigation";
 import { BorderLinearProgressWithBackground } from "../../commons/BorderLinearProgress";
 import useAsync from "../../hooks/useAsync";
 import formatCurrency from "../../hooks/formatCurrency";
+import HandleDataLoad from "../../commons/HandleDataLoad";
 
 const CategoriesSummary = () => {
   const { timePeriod } = useContext(TimePeriodContext);
   const { data, loading, error } = useAsync(`/categories-summary${timePeriod}`);
 
-  if (loading || !data) {
-    // Add skeleton
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    // Pass generic error message
-    return <div>Error: {error.message}</div>;
+  if (loading || !data || error) {
+    return <HandleDataLoad data={data} loading={loading} error={error} />;
   }
 
   function returnCategoryString(spent, budget) {

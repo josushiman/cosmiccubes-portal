@@ -8,19 +8,14 @@ import FinancialOverview from "./components/FinancialOverview";
 import NotificationCard from "./components/NotificationCard";
 import "./styles.css";
 import UpcomingRenewals from "./components/UpcomingRenewals";
+import HandleDataLoad from "../../commons/HandleDataLoad";
 
 const MonthSummary = () => {
   const { timePeriod } = useContext(TimePeriodContext);
   const { data, loading, error } = useAsync(`/monthly-summary${timePeriod}`);
 
-  if (loading || !data) {
-    // Add skeleton
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    // Pass generic error message
-    return <div>Error: {error.message}</div>;
+  if (loading || !data || error) {
+    return <HandleDataLoad data={data} loading={loading} error={error} />;
   }
 
   const notificationText = data?.notif ? data.notif : null;

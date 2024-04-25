@@ -5,6 +5,7 @@ import Grid from "@mui/material/Unstable_Grid2";
 import CreditSummary from "./components/CreditSummary";
 import Transactions from "./components/Transactions";
 import Navigation from "../commons/Navigation";
+import HandleDataLoad from "../../commons/HandleDataLoad";
 
 const TransactionsSummary = () => {
   const { timePeriod } = useContext(TimePeriodContext);
@@ -25,16 +26,9 @@ const TransactionsSummary = () => {
     [accountId]
   );
 
-  if (loading || !data) {
-    // Add skeleton
-    return <div>Loading...</div>;
+  if (loading || !data || error) {
+    return <HandleDataLoad data={data} loading={loading} error={error} />;
   }
-
-  if (error) {
-    // Pass generic error message
-    return <div>Error: {error.message}</div>;
-  }
-
   return (
     <Grid container rowGap={"0.5rem"} flexDirection={"column"}>
       <Navigation />
