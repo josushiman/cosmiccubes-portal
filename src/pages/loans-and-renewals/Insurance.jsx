@@ -20,6 +20,7 @@ const Insurance = () => {
   return (
     <Link
       to={`/insurance/details`}
+      state={{ data: data }}
       style={{
         textDecoration: "none",
         color: "inherit",

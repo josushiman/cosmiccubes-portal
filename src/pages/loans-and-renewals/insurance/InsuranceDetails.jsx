@@ -1,22 +1,16 @@
 import { Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { CustomCard } from "../../../commons/CustomCard";
 import Navigation from "../../../dashboards/commons/Navigation";
-import useAsync from "../../../hooks/useAsync";
 import formatCurrency from "../../../hooks/formatCurrency";
 
 const InsuranceDetails = () => {
-  const { data, loading, error } = useAsync("/insurance");
+  const { data } = useLocation().state;
 
-  if (loading || !data) {
+  if (!data) {
     // Add skeleton
     return <div>Loading...</div>;
-  }
-
-  if (error) {
-    // Pass generic error message
-    return <div>Error: {error.message}</div>;
   }
 
   return (
@@ -40,6 +34,10 @@ const InsuranceDetails = () => {
               <Grid container justifyContent={"space-between"}>
                 <Typography>Provider</Typography>
                 <Typography fontWeight={200}>{value.provider}</Typography>
+              </Grid>
+              <Grid container justifyContent={"space-between"}>
+                <Typography>Period</Typography>
+                <Typography fontWeight={200}>{value.period}</Typography>
               </Grid>
               <Grid container justifyContent={"space-between"}>
                 <Typography>Amount paid</Typography>
