@@ -1,33 +1,17 @@
 import { Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { CustomCard } from "../../commons/CustomCard";
+import useAsync from "../../hooks/useAsync";
+import HandleDataLoad from "../../commons/HandleDataLoad";
 import formatCurrency from "../../hooks/formatCurrency";
 import BudgetSummaryChart from "./BudgetSummaryChart";
 
 const BudgetSummary = () => {
-  const data = {
-    total: 1234,
-    on_track: 6,
-    overspent: 12,
-    categories: [
-      {
-        name: "Frequent",
-        budgeted: 1231,
-      },
-      {
-        name: "Work",
-        budgeted: 123,
-      },
-      {
-        name: "Giving",
-        budgeted: 80,
-      },
-      {
-        name: "Non-Monthly Expenses",
-        budgeted: 210,
-      },
-    ],
-  };
+  const { data, loading, error } = useAsync("/budgets-summary");
+
+  if (loading || !data || error) {
+    return <HandleDataLoad data={data} loading={loading} error={error} />;
+  }
 
   return (
     <CustomCard
@@ -51,7 +35,7 @@ const BudgetSummary = () => {
       <hr style={{ width: "100%", opacity: "25%", marginBottom: "1rem" }} />
       <Grid container flexDirection={"column"} rowGap={"0.25rem"}>
         <BudgetSummaryChart data={data.categories} />
-        <hr style={{ width: "100%", opacity: "5%", marginBottom: "0.25rem" }} />
+        {/* <hr style={{ width: "100%", opacity: "5%", marginBottom: "0.25rem" }} />  TODO
         <Grid container justifyContent={"space-between"}>
           <Typography>On track</Typography>
           <Typography>
@@ -63,7 +47,7 @@ const BudgetSummary = () => {
           <Typography>
             <strong>{data.overspent}</strong>
           </Typography>
-        </Grid>
+        </Grid> */}
       </Grid>
     </CustomCard>
   );
