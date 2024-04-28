@@ -12,7 +12,7 @@ import BudgetSummary from "./BudgetSummary";
 
 const EntityList = () => {
   return (
-    <Grid container flexDirection={"column"} rowGap={"1rem"}>
+    <Grid container flexDirection={"column"} rowGap={"0.5rem"}>
       <BudgetSummary />
       <BudgetsNeeded />
       <List actions={<CreateButton />}>

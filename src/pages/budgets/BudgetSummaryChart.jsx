@@ -66,12 +66,16 @@ const BudgetSummaryChart = ({ data }) => {
       <Grid container flexDirection={"column"} rowGap={"0.25rem"}>
         <Grid container justifyContent={"space-between"}>
           <Typography>Name</Typography>
-          <Typography>{data[index].name}</Typography>
+          <Typography>
+            <strong>{data[index].name}</strong>
+          </Typography>
         </Grid>
         <Grid container justifyContent={"space-between"}>
           <Typography>Budgeted</Typography>
           <Typography>
-            £ {formatCurrency(data[index].budgeted, false, true)}
+            <strong>
+              £ {formatCurrency(data[index].budgeted, false, true)}
+            </strong>
           </Typography>
         </Grid>
       </Grid>

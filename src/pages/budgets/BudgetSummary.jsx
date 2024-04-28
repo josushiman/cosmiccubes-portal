@@ -49,15 +49,24 @@ const BudgetSummary = () => {
         </Typography>
       </Grid>
       <hr style={{ width: "100%", opacity: "25%", marginBottom: "1rem" }} />
-      <BudgetSummaryChart data={data.categories} />
+      <Grid container flexDirection={"column"} rowGap={"0.25rem"}>
+        <BudgetSummaryChart data={data.categories} />
+        <hr style={{ width: "100%", opacity: "5%", marginBottom: "0.25rem" }} />
+        <Grid container justifyContent={"space-between"}>
+          <Typography>On track</Typography>
+          <Typography>
+            <strong>{data.on_track}</strong>
+          </Typography>
+        </Grid>
+        <Grid container justifyContent={"space-between"}>
+          <Typography>Overspent</Typography>
+          <Typography>
+            <strong>{data.overspent}</strong>
+          </Typography>
+        </Grid>
+      </Grid>
     </CustomCard>
   );
 };
-
-// Summary - total amount budgeted
-// Pie chart with the main categories for what they take up in terms of budget
-// On Track count
-// Overspent count
-// Click through for details
 
 export default BudgetSummary;
