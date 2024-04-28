@@ -8,10 +8,12 @@ import {
 } from "react-admin";
 import Grid from "@mui/material/Unstable_Grid2";
 import BudgetsNeeded from "./BudgetsNeeded";
+import BudgetSummary from "./BudgetSummary";
 
 const EntityList = () => {
   return (
     <Grid container flexDirection={"column"} rowGap={"1rem"}>
+      <BudgetSummary />
       <BudgetsNeeded />
       <List actions={<CreateButton />}>
         <Datagrid bulkActionButtons={false} rowClick="edit">
