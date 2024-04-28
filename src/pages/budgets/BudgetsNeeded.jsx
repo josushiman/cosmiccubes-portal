@@ -3,36 +3,29 @@ import Grid from "@mui/material/Unstable_Grid2";
 import { CustomCard } from "../../commons/CustomCard";
 import useAsync from "../../hooks/useAsync";
 import HandleDataLoad from "../../commons/HandleDataLoad";
+import { useState } from "react";
+
+const itemSelected = {
+  backgroundColor: "#313131",
+  padding: "0.75rem 1.75rem",
+  borderRadius: "0.25rem",
+  cursor: "pointer",
+};
+
+const defaultStyle = {
+  cursor: "pointer",
+};
 
 const BudgetsNeeded = () => {
   const { data, loading, error } = useAsync("/budgets-needed");
+  const [category, setCategory] = useState(0);
 
   if (loading || !data || error) {
     return <HandleDataLoad data={data} loading={loading} error={error} />;
   }
 
-  const SubCategories = () => {
-    return (
-      <Grid
-        container
-        flexDirection={"column"}
-        rowGap={"0.75rem"}
-        height={"6rem"}
-        flexWrap={"nowrap"}
-        sx={{
-          overflowY: "scroll",
-        }}
-      >
-        {data.subcategories.map((value, index) => {
-          return (
-            <Grid key={index} container justifyContent={"space-between"}>
-              <Typography fontWeight={200}>{value.category}</Typography>
-              <Typography fontWeight={200}>{value.name}</Typography>
-            </Grid>
-          );
-        })}
-      </Grid>
-    );
+  const handleClick = (index) => {
+    setCategory(index);
   };
 
   return (
@@ -56,14 +49,39 @@ const BudgetsNeeded = () => {
       </Grid>
       <hr style={{ width: "100%", opacity: "25%", marginBottom: "1rem" }} />
       <Grid container justifyContent={"space-between"}>
-        <Typography fontWeight={500} sx={{ textDecoration: "underline" }}>
-          Category Group
-        </Typography>
-        <Typography fontWeight={500} sx={{ textDecoration: "underline" }}>
-          Category
-        </Typography>
+        {data.categories.map((value, index) => (
+          <Typography
+            key={index}
+            fontWeight={200}
+            padding={"0.75rem 1.75rem"}
+            onClick={() => handleClick(index)}
+            sx={category == index ? itemSelected : defaultStyle}
+          >
+            {value.name}: <strong>{value.count}</strong>
+          </Typography>
+        ))}
       </Grid>
-      <SubCategories />
+      <hr style={{ width: "100%", opacity: "5%", marginBottom: "0.25rem" }} />
+      <Grid
+        container
+        flexDirection={"column"}
+        flexWrap={"nowrap"}
+        maxHeight={"5rem"}
+        sx={{
+          overflowY: "scroll",
+        }}
+      >
+        {data.categories[category].subcategories.map((value, index) => (
+          <Typography
+            key={index}
+            variant="subtitle1"
+            padding={"0.75rem 1.75rem"}
+            // onClick={() => handleClick(index)}
+          >
+            {value}
+          </Typography>
+        ))}
+      </Grid>
     </CustomCard>
   );
 };

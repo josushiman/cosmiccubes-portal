@@ -54,7 +54,7 @@ const BudgetSummaryChart = ({ data }) => {
             data={data}
             cx="50%"
             cy="50%"
-            innerRadius={60}
+            innerRadius={50}
             outerRadius={80}
             fill="#C06969"
             stroke="#914747"
