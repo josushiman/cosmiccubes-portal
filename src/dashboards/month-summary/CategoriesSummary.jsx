@@ -41,6 +41,10 @@ const CategoriesSummary = () => {
         <Link
           key={index}
           to={`/monthly-summary/categories/${categoryName}/${cleanName}`}
+          state={{
+            progress: value.progress,
+            budgeted: value.budgeted,
+          }}
           style={{
             textDecoration: "none",
             color: "inherit",

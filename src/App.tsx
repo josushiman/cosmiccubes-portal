@@ -3,11 +3,12 @@ import { Route } from "react-router-dom";
 import CustomLayout from "./commons/CustomLayout";
 import { dataProvider } from "./dataProvider";
 import authProvider from "./authProvider";
+import GymSummary from "./dashboards/gym-summary/GymSummary";
 import Dashboard from "./dashboards/month-summary/MonthSummary";
 import BillsSummary from "./dashboards/month-summary/BillsSummary";
 import BillsDetails from "./dashboards/month-summary/components/BillsDetails";
 import CategoriesSummary from "./dashboards/month-summary/CategoriesSummary";
-import CategoryTransactions from "./dashboards/month-summary/components/CategoryTransactions";
+import CategoryDetails from "./dashboards/month-summary/components/CategoryDetails";
 import TransactionsSummary from "./dashboards/month-summary/TransactionsSummary";
 import budgets from "./pages/budgets";
 import categories from "./pages/categories";
@@ -70,6 +71,7 @@ export const App = () => (
       options={{ label: "Server Knowledge" }}
     />
     <CustomRoutes>
+      <Route path="gym-summary" element={<GymSummary />} />
       <Route path="monthly-summary/bills" element={<BillsSummary />} />
       <Route path="monthly-summary/bills/details" element={<BillsDetails />} />
       <Route
@@ -78,7 +80,7 @@ export const App = () => (
       />
       <Route
         path="monthly-summary/categories/:categoryName/:subcategoryName"
-        element={<CategoryTransactions />}
+        element={<CategoryDetails />}
       />
       <Route path="insurance/details" element={<InsuranceDetails />} />
       <Route

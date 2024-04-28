@@ -1,14 +1,16 @@
 import { Menu } from "react-admin";
-import LabelIcon from "@mui/icons-material/Label";
+import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
+import MoneyIcon from "@mui/icons-material/Money";
 
 const CustomMenu = () => (
   <Menu>
-    <Menu.DashboardItem />
+    <Menu.DashboardItem primaryText="Finances" leftIcon={<MoneyIcon />} />
     <Menu.Item
-      to="/month-summary"
-      primaryText="Miscellaneous"
-      leftIcon={<LabelIcon />}
+      to="/gym-summary"
+      primaryText="Gym Summary"
+      leftIcon={<FitnessCenterIcon />}
     />
+    <hr style={{ width: "100%" }} />
     <Menu.ResourceItem name="portal/admin/budgets" />
     <Menu.ResourceItem name="portal/admin/ynab-categories" />
     <Menu.ResourceItem name="portal/admin/loans-and-renewals" />
