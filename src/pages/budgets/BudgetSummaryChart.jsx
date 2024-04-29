@@ -45,39 +45,62 @@ const BudgetSummaryChart = ({ data }) => {
   };
 
   return (
-    <Grid container flexDirection={"column"} rowGap={"1rem"}>
-      <ResponsiveContainer width="100%" height={200}>
-        <PieChart>
-          <Pie
-            activeIndex={index}
-            activeShape={renderActiveShape}
-            data={data}
-            cx="50%"
-            cy="50%"
-            innerRadius={50}
-            outerRadius={80}
-            fill="#C06969"
-            stroke="#914747"
-            dataKey="budgeted"
-            onClick={(e, index) => handleClick(e, index)}
-          />
-        </PieChart>
-      </ResponsiveContainer>
-      <Grid container flexDirection={"column"} rowGap={"0.25rem"}>
-        <Grid container justifyContent={"space-between"}>
-          <Typography>Name</Typography>
-          <Typography>
-            <strong>{data[index].name}</strong>
-          </Typography>
+    <Grid container flexDirection={"column"} rowGap={"0.25rem"}>
+      <Grid container flexDirection={"column"} rowGap={"1rem"}>
+        <ResponsiveContainer width="100%" height={200}>
+          <PieChart>
+            <Pie
+              activeIndex={index}
+              activeShape={renderActiveShape}
+              data={data}
+              cx="50%"
+              cy="50%"
+              innerRadius={50}
+              outerRadius={80}
+              fill="#C06969"
+              stroke="#914747"
+              dataKey="budgeted"
+              onClick={(e, index) => handleClick(e, index)}
+            />
+          </PieChart>
+        </ResponsiveContainer>
+        <Grid container flexDirection={"column"} rowGap={"0.25rem"}>
+          <Grid container justifyContent={"space-between"}>
+            <Typography>Name</Typography>
+            <Typography>
+              <strong>{data[index].name}</strong>
+            </Typography>
+          </Grid>
+          <Grid container justifyContent={"space-between"}>
+            <Typography>Budgeted</Typography>
+            <Typography>
+              <strong>
+                £ {formatCurrency(data[index].budgeted, false, true)}
+              </strong>{" "}
+              <em>({data[index].subcategories.length})</em>
+            </Typography>
+          </Grid>
+          <Grid container justifyContent={"space-between"}>
+            <Typography>Status</Typography>
+            <Typography>
+              <strong>{data[index].status}</strong>
+            </Typography>
+          </Grid>
         </Grid>
-        <Grid container justifyContent={"space-between"}>
-          <Typography>Budgeted</Typography>
-          <Typography>
-            <strong>
-              £ {formatCurrency(data[index].budgeted, false, true)}
-            </strong>
-          </Typography>
-        </Grid>
+      </Grid>
+      <hr style={{ width: "100%", opacity: "5%", marginBottom: "0.25rem" }} />
+      <Typography variant="h6">Subcategories</Typography>
+      <Grid container justifyContent={"space-between"}>
+        <Typography>On track</Typography>
+        <Typography>
+          <strong>{data[index].on_track}</strong>
+        </Typography>
+      </Grid>
+      <Grid container justifyContent={"space-between"}>
+        <Typography>Overspent</Typography>
+        <Typography>
+          <strong>{data[index].overspent}</strong>
+        </Typography>
       </Grid>
     </Grid>
   );

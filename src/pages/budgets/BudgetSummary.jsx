@@ -33,22 +33,7 @@ const BudgetSummary = () => {
         </Typography>
       </Grid>
       <hr style={{ width: "100%", opacity: "25%", marginBottom: "1rem" }} />
-      <Grid container flexDirection={"column"} rowGap={"0.25rem"}>
-        <BudgetSummaryChart data={data.categories} />
-        {/* <hr style={{ width: "100%", opacity: "5%", marginBottom: "0.25rem" }} />  TODO
-        <Grid container justifyContent={"space-between"}>
-          <Typography>On track</Typography>
-          <Typography>
-            <strong>{data.on_track}</strong>
-          </Typography>
-        </Grid>
-        <Grid container justifyContent={"space-between"}>
-          <Typography>Overspent</Typography>
-          <Typography>
-            <strong>{data.overspent}</strong>
-          </Typography>
-        </Grid> */}
-      </Grid>
+      <BudgetSummaryChart data={data.categories} />
     </CustomCard>
   );
 };
