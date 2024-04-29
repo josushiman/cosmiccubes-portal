@@ -26,7 +26,7 @@ const BudgetSummary = () => {
         paddingBottom={"1rem"}
       >
         <Typography variant="h5" fontWeight={300}>
-          Summary
+          Total budgeted
         </Typography>
         <Typography variant="h5" fontWeight={500}>
           £ {formatCurrency(data.total, false, true)}
