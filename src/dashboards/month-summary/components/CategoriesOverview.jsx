@@ -53,6 +53,16 @@ const CategoriesOverview = ({ data }) => {
     );
   });
 
+  const categoriesCount = data.length;
+
+  const NoCategoryData = () => (
+    <Grid>
+      <Typography variant="subtitle1" fontStyle={"italic"}>
+        Waiting for category data...
+      </Typography>
+    </Grid>
+  );
+
   return (
     <Link
       to="/monthly-summary/categories"
@@ -67,7 +77,7 @@ const CategoriesOverview = ({ data }) => {
           gap={"2rem"}
           padding={"1.5rem 2rem"}
         >
-          {categoriesSpentData}
+          {categoriesCount > 0 ? categoriesSpentData : <NoCategoryData />}
         </Grid>
       </CustomCard>
     </Link>
