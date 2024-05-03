@@ -7,7 +7,7 @@ import { ModalContext } from "../../context/ModalContextProvider";
 
 const itemSelected = {
   backgroundColor: "#313131",
-  padding: "0.75rem 1.75rem",
+  padding: "0.75rem 2.5rem",
   borderRadius: "0.25rem",
   cursor: "pointer",
 };
@@ -34,6 +34,7 @@ const TimeRangeSelector = () => {
     resetTimeRange,
     currentMonth,
     currentYear,
+    timePeriod,
   } = useContext(TimePeriodContext);
 
   const { closeModal } = useContext(ModalContext);
@@ -73,6 +74,20 @@ const TimeRangeSelector = () => {
     return closeModal();
   };
 
+  const CurrentSelection = () => {
+    return (
+      <CustomCard
+        sx={{
+          padding: "1.5rem 2rem",
+        }}
+      >
+        <Grid container flexDirection={"column"} alignItems={"center"}>
+          <Typography>{timePeriod}</Typography>
+        </Grid>
+      </CustomCard>
+    );
+  };
+
   const MonthsIntervalComponents = () => {
     return (
       <Grid
@@ -80,9 +95,9 @@ const TimeRangeSelector = () => {
         justifyContent={"center"}
         alignItems={"center"}
         height={"4rem"}
-        padding={"0rem 0.25rem"}
+        columnGap={"2rem"}
       >
-        {[3, 6, 9, 12].map((value, index) => {
+        {[3, 6, 9].map((value, index) => {
           return (
             <Grid key={index} container xs={3} justifyContent={"center"}>
               <Typography
@@ -106,8 +121,9 @@ const TimeRangeSelector = () => {
         alignItems={"center"}
         height={"4rem"}
         padding={"0rem 0.25rem"}
+        columnGap={"2rem"}
       >
-        {[2024, 2025, 2026].map((value, index) => {
+        {[2024, 2025].map((value, index) => {
           return (
             <Grid key={index} container xs={3} justifyContent={"center"}>
               <Typography
@@ -196,9 +212,10 @@ const TimeRangeSelector = () => {
         position={"relative"}
         marginTop={"4rem"}
         zIndex={1}
-        rowGap={"1rem"}
-        padding={"0 2rem 2rem 2rem"}
+        rowGap={"0.5rem"}
+        padding={"0 0.5rem 0.5rem 0.5rem"}
       >
+        <CurrentSelection />
         <CustomCard
           sx={{
             boxShadow: "none",
@@ -218,7 +235,7 @@ const TimeRangeSelector = () => {
           <MonthIntervalComponents />
         </CustomCard>
 
-        <Grid container flexDirection={"column"} rowGap={"1rem"}>
+        <Grid container flexDirection={"column"} rowGap={"0.5rem"}>
           <CustomCard onClick={submitForm}>
             <Grid container padding={"1rem"} justifyContent={"center"}>
               <Button

@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { AppBar } from "react-admin";
+import { Typography } from "@mui/material";
 import { useLocation } from "react-router-dom";
-import { CustomCard } from "./CustomCard";
 import Grid from "@mui/material/Unstable_Grid2";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import { ModalContext } from "../context/ModalContextProvider";
+import { TimePeriodContext } from "../context/TimePeriodContext";
 import TimeRangeSelector from "../dashboards/commons/TimeRangeSelector";
 
 const disabledStyle = {
@@ -21,6 +22,7 @@ const defaultStyle = {
 const CustomAppBar = () => {
   const location = useLocation();
   const { isModalOpen, toggleModal } = useContext(ModalContext);
+  const { getAppBarText } = useContext(TimePeriodContext);
 
   // TODO change layout for previous month views
   const currentRoute = location.pathname;
@@ -37,7 +39,9 @@ const CustomAppBar = () => {
         marginLeft={"auto"}
         onClick={toggleModal}
       >
-        <CustomCard />
+        {currentRoute == "/" ? null : (
+          <Typography>{getAppBarText()}</Typography>
+        )}
         <CalendarMonthIcon
           style={currentRoute == "/" ? disabledStyle : defaultStyle}
         />

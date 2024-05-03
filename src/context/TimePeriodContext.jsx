@@ -19,7 +19,17 @@ const TimePeriodProvider = ({ children }) => {
     `?year=${year}&month=${zeroedMonth(specificMonth)}`
   );
 
-  console.debug(timePeriod);
+  const getAppBarText = () => {
+    if (year && specificMonth) {
+      return `Year: ${year} Month: ${specificMonth}`;
+    } else if (year) {
+      return `Year: ${year}`;
+    } else if (specificMonth) {
+      return `Month: ${specificMonth}`;
+    } else if (months) {
+      return `Months: L${months}M`;
+    }
+  };
 
   const setMonthIntervals = (monthsSelection) => {
     console.debug("Changing month value");
@@ -115,6 +125,7 @@ const TimePeriodProvider = ({ children }) => {
         months,
         year,
         specificMonth,
+        getAppBarText,
         setMonthIntervals,
         setYearNoMonthInterval,
         setYearMonthInterval,
