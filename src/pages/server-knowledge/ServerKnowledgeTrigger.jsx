@@ -4,18 +4,23 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import { useState } from "react";
 import { CustomCard } from "../../commons/CustomCard";
 import { useNotify } from "react-admin";
+import useAsync from "../../hooks/useAsync";
 
 const ServerKnowledgeTrigger = () => {
-  const [endpoint, setEndpoint] = useState("");
+  const [updateType, setUpdateType] = useState("");
+  const { fetchData } = useAsync();
   const notify = useNotify();
 
   const handleChange = (event) => {
-    setEndpoint(event.target.value);
+    setUpdateType(event.target.value);
   };
 
-  const handleClick = () => {
-    notify("Submitted", { type: "info" });
-    setEndpoint("");
+  const handleClick = async () => {
+    if (updateType !== undefined) {
+      fetchData(updateType);
+      notify("Submitted", { type: "info" });
+      setUpdateType("");
+    }
   };
 
   return (
@@ -43,23 +48,28 @@ const ServerKnowledgeTrigger = () => {
         columnGap={"1rem"}
         alignItems={"center"}
       >
-        <Select value={endpoint} onChange={handleChange} variant="filled">
+        <Select value={updateType} onChange={handleChange} variant="filled">
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
-          <MenuItem value={"accounts"}>Accounts</MenuItem>
-          <MenuItem value={"categories"}>Categories</MenuItem>
-          <MenuItem value={"months"}>Month Details</MenuItem>
-          <MenuItem value={"payees"}>Payees</MenuItem>
-          <MenuItem value={"transactions"}>Transactions</MenuItem>
+          <MenuItem value={"/ynab/update-accounts"}>Accounts</MenuItem>
+          <MenuItem value={"/ynab/update-categories"}>Categories</MenuItem>
+          <MenuItem value={"/ynab/update-month-details"}>
+            Month Details
+          </MenuItem>
+          <MenuItem value={"/ynab/update-month-summaries"}>
+            Month Summary
+          </MenuItem>
+          <MenuItem value={"/ynab/update-payees"}>Payees</MenuItem>
+          <MenuItem value={"/ynab/update-transactions"}>Transactions</MenuItem>
         </Select>
         <Button
           onClick={handleClick}
           sx={{
             color: "white",
             backgroundColor: "#313131",
-            opacity: endpoint != "" ? "100%" : "25%",
-            pointerEvents: endpoint != "" ? "unset" : "none",
+            opacity: updateType != "" ? "100%" : "25%",
+            pointerEvents: updateType != "" ? "unset" : "none",
           }}
         >
           <Grid
