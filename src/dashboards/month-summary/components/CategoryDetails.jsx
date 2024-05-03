@@ -1,6 +1,8 @@
 import { Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { useLocation, useParams } from "react-router-dom";
+import { useContext } from "react";
+import { TimePeriodContext } from "../../../context/TimePeriodContext";
 import { CustomCard } from "../../../commons/CustomCard";
 import Navigation from "../../commons/Navigation";
 import formatCurrency from "../../../hooks/formatCurrency";
@@ -12,10 +14,11 @@ import { ThickBorderLinearProgressWithBackground } from "../../../commons/Border
 
 const CategoryDetails = () => {
   let { categoryName, subcategoryName } = useParams();
+  const { timePeriod } = useContext(TimePeriodContext);
   const { budgeted, progress } = useLocation().state;
 
   const { data, loading, error } = useAsync(
-    `/categories-summary/${categoryName}/${subcategoryName}`
+    `/categories-summary/${categoryName}/${subcategoryName}${timePeriod}`
   );
 
   if (loading || !data || error) {
@@ -81,7 +84,8 @@ const CategoryDetails = () => {
           </Grid>
         </Grid>
       </CustomCard>
-      <Trends data={data.trends} />
+      <Trends data={data.trends} />{" "}
+      {/* TODO maybe hide this is the time period has changed?*/}
       <Transactions data={data.transactions} accountId={undefined} />
     </Grid>
   );
