@@ -54,6 +54,7 @@ const MonthSummary = () => {
               width: "100%",
               height: "100%",
             }}
+            backgroundcolor={"#F0F0C9"}
           >
             <Grid
               container
@@ -62,6 +63,7 @@ const MonthSummary = () => {
               height={"100%"}
               alignItems={"center"}
               justifyContent={"center"}
+              color={"#121212"}
             >
               <ShowChartIcon />
               <Typography>Budgets</Typography>
@@ -80,6 +82,7 @@ const MonthSummary = () => {
               width: "100%",
               height: "100%",
             }}
+            backgroundcolor={"#F0F0C9"}
           >
             <Grid
               container
@@ -88,6 +91,7 @@ const MonthSummary = () => {
               height={"100%"}
               alignItems={"center"}
               justifyContent={"center"}
+              color={"#121212"}
             >
               <CategoryIcon />
               <Typography>Categories</Typography>
@@ -106,6 +110,7 @@ const MonthSummary = () => {
               width: "100%",
               height: "100%",
             }}
+            backgroundcolor={"#F0F0C9"}
           >
             <Grid
               container
@@ -114,6 +119,7 @@ const MonthSummary = () => {
               height={"100%"}
               alignItems={"center"}
               justifyContent={"center"}
+              color={"#121212"}
             >
               <AutorenewIcon />
               <Typography>Renewals</Typography>

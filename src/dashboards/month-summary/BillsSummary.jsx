@@ -7,6 +7,8 @@ import TimePeriod from "../commons/TimePeriod";
 import { BorderLinearProgressWithBackground } from "../../commons/BorderLinearProgress";
 import CustomButton from "../../commons/CustomButton";
 import HandleDataLoad from "../../commons/HandleDataLoad";
+import CategoryIcon from "@mui/icons-material/Category";
+import ShowChartIcon from "@mui/icons-material/ShowChart";
 
 const BillsSummary = () => {
   const { data, loading, error } = useAsync("/upcoming-bills");
@@ -48,6 +50,50 @@ const BillsSummary = () => {
   return (
     <Grid container rowGap={"0.5rem"} flexDirection={"column"}>
       <TimePeriod />
+      <Grid
+        container
+        display={"grid"}
+        gridTemplateColumns={"repeat(2, 1fr)"}
+        columnGap={"0.5rem"}
+        gridTemplateRows={"6rem"}
+      >
+        <CustomCard
+          sx={{
+            width: "100%",
+            height: "100%",
+          }}
+        >
+          <Grid
+            container
+            flexDirection={"column"}
+            rowGap={"0.5rem"}
+            height={"100%"}
+            alignItems={"center"}
+            justifyContent={"center"}
+          >
+            <ShowChartIcon />
+            <Typography>Direct Debits</Typography>
+          </Grid>
+        </CustomCard>
+        <CustomCard
+          sx={{
+            width: "100%",
+            height: "100%",
+          }}
+        >
+          <Grid
+            container
+            flexDirection={"column"}
+            rowGap={"0.5rem"}
+            height={"100%"}
+            alignItems={"center"}
+            justifyContent={"center"}
+          >
+            <CategoryIcon />
+            <Typography>Insurance</Typography>
+          </Grid>
+        </CustomCard>
+      </Grid>
       <CustomCard
         sx={{
           padding: "1.5rem 2rem",
