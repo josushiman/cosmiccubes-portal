@@ -3,7 +3,6 @@ import Grid from "@mui/material/Unstable_Grid2";
 import { CustomCard } from "../../../commons/CustomCard";
 import formatCurrency from "../../../hooks/formatCurrency";
 import { ThickBorderLinearProgressWithBackground } from "../../../commons/BorderLinearProgress";
-import { Link } from "react-router-dom";
 
 const Summary = ({ data }) => {
   const {
@@ -42,60 +41,52 @@ const Summary = ({ data }) => {
   };
 
   return (
-    <Link
-      to={"/portal/admin/budgets"}
-      style={{
-        textDecoration: "none",
-        color: "inherit",
-      }}
-    >
-      <CustomCard>
+    <CustomCard>
+      <Grid
+        container
+        padding={"1.5rem 2rem"}
+        rowGap={"1rem"}
+        flexDirection={"column"}
+      >
         <Grid
           container
-          padding={"1.5rem 2rem"}
-          rowGap={"1rem"}
-          flexDirection={"column"}
+          justifyContent={"space-between"}
+          flexDirection={"row"}
+          width={"100%"}
         >
-          <Grid
-            container
-            justifyContent={"space-between"}
-            flexDirection={"row"}
-            width={"100%"}
+          <Typography variant="h4" fontWeight={500}>
+            £ {formatCurrency(balance_available, false, true)}
+          </Typography>
+          <hr style={{ opacity: "25%" }} />
+          <Typography
+            variant="body1"
+            fontWeight={300}
+            style={{
+              alignSelf: "center",
+            }}
           >
-            <Typography variant="h4" fontWeight={500}>
-              £ {formatCurrency(balance_available, false, true)}
-            </Typography>
-            <hr style={{ opacity: "25%" }} />
-            <Typography
-              variant="body1"
-              fontWeight={300}
-              style={{
-                alignSelf: "center",
-              }}
-            >
-              {days_left} days left
-            </Typography>
-          </Grid>
-          <ThickBorderLinearProgressWithBackground
-            variant="determinate"
-            value={progress}
-          />
-          <ProgressBarText />
-          <hr style={{ width: "100%", opacity: "25%" }} />
-          <Grid
-            container
-            justifyContent={"space-between"}
-            flexDirection={"row"}
-            width={"100%"}
-          >
-            <Typography variant="h5">Daily spend:</Typography>
-            <Typography variant="h5" fontWeight={500}>
-              £ {formatCurrency(daily_spend, false, true)}
-            </Typography>
-          </Grid>
+            {days_left} days left
+          </Typography>
         </Grid>
-      </CustomCard>
-    </Link>
+        <ThickBorderLinearProgressWithBackground
+          variant="determinate"
+          value={progress}
+        />
+        <ProgressBarText />
+        <hr style={{ width: "100%", opacity: "25%" }} />
+        <Grid
+          container
+          justifyContent={"space-between"}
+          flexDirection={"row"}
+          width={"100%"}
+        >
+          <Typography variant="h5">Daily spend:</Typography>
+          <Typography variant="h5" fontWeight={500}>
+            £ {formatCurrency(daily_spend, false, true)}
+          </Typography>
+        </Grid>
+      </Grid>
+    </CustomCard>
   );
 };
 

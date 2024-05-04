@@ -34,7 +34,7 @@ const FinancialOverview = ({ data }) => {
           </Typography>
         </Grid>
         <Grid container justifyContent={"space-between"}>
-          <Typography variant="subtitle1">Savings:</Typography>
+          <Typography variant="subtitle1">Savings goal:</Typography>
           <Grid container>
             <Typography variant="subtitle1" paddingRight={"0.25rem"}>
               <span>£</span> {formatCurrency(data.savings)}

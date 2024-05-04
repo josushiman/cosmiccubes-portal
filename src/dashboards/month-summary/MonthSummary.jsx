@@ -1,14 +1,18 @@
 import Grid from "@mui/material/Unstable_Grid2";
 import { useContext } from "react";
+import { Typography } from "@mui/material";
+import { Link } from "react-router-dom";
+import AutorenewIcon from "@mui/icons-material/Autorenew";
+import CategoryIcon from "@mui/icons-material/Category";
+import ShowChartIcon from "@mui/icons-material/ShowChart";
 import { TimePeriodContext } from "../../context/TimePeriodContext";
 import useAsync from "../../hooks/useAsync";
 import Summary from "./components/Summary";
-import CategoriesOverview from "./components/CategoriesOverview";
 import FinancialOverview from "./components/FinancialOverview";
 import NotificationCard from "./components/NotificationCard";
-import "./styles.css";
-import UpcomingRenewals from "./components/UpcomingRenewals";
 import HandleDataLoad from "../../commons/HandleDataLoad";
+import { CustomCard } from "../../commons/CustomCard";
+import "./styles.css";
 
 const MonthSummary = () => {
   const { timePeriod } = useContext(TimePeriodContext);
@@ -29,8 +33,92 @@ const MonthSummary = () => {
     >
       {notificationText ? <NotificationCard data={data.notif} /> : null}
       <Summary data={data.summary} />
-      <UpcomingRenewals data={data.renewals} />
-      <CategoriesOverview data={data.categories} />
+      <Grid
+        container
+        display={"grid"}
+        gridTemplateColumns={"repeat(3, 1fr)"}
+        columnGap={"0.5rem"}
+        gridTemplateRows={"6rem"}
+      >
+        <Link
+          to={"/portal/admin/budgets"}
+          style={{
+            textDecoration: "none",
+            color: "inherit",
+          }}
+        >
+          <CustomCard
+            sx={{
+              width: "100%",
+              height: "100%",
+            }}
+          >
+            <Grid
+              container
+              flexDirection={"column"}
+              rowGap={"0.5rem"}
+              height={"100%"}
+              alignItems={"center"}
+              justifyContent={"center"}
+            >
+              <ShowChartIcon />
+              <Typography>Budgets</Typography>
+            </Grid>
+          </CustomCard>
+        </Link>
+        <Link
+          to={"/monthly-summary/categories"}
+          style={{
+            textDecoration: "none",
+            color: "inherit",
+          }}
+        >
+          <CustomCard
+            sx={{
+              width: "100%",
+              height: "100%",
+            }}
+          >
+            <Grid
+              container
+              flexDirection={"column"}
+              rowGap={"0.5rem"}
+              height={"100%"}
+              alignItems={"center"}
+              justifyContent={"center"}
+            >
+              <CategoryIcon />
+              <Typography>Categories</Typography>
+            </Grid>
+          </CustomCard>
+        </Link>
+        <Link
+          to={"/portal/admin/loans-and-renewals"}
+          style={{
+            textDecoration: "none",
+            color: "inherit",
+          }}
+        >
+          <CustomCard
+            sx={{
+              width: "100%",
+              height: "100%",
+            }}
+          >
+            <Grid
+              container
+              flexDirection={"column"}
+              rowGap={"0.5rem"}
+              height={"100%"}
+              alignItems={"center"}
+              justifyContent={"center"}
+            >
+              <AutorenewIcon />
+              <Typography>Renewals</Typography>
+            </Grid>
+          </CustomCard>
+        </Link>
+      </Grid>
       <FinancialOverview data={data.income_expenses} />
     </Grid>
   );

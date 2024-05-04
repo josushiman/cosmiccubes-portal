@@ -13,6 +13,10 @@ const BudgetsNeeded = () => {
     return <HandleDataLoad data={data} loading={loading} error={error} />;
   }
 
+  if (data.count < 1) {
+    return null;
+  }
+
   const handleClick = (index) => {
     if (index == category) {
       setCategory(undefined);
