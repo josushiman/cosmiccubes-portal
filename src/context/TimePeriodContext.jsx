@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { createContext, useState } from "react";
 
 export const TimePeriodContext = createContext();
@@ -20,15 +21,14 @@ const TimePeriodProvider = ({ children }) => {
   );
 
   const getAppBarText = () => {
-    if (year && specificMonth) {
-      return `Year: ${year} Month: ${specificMonth}`;
-    } else if (year) {
-      return `Year: ${year}`;
-    } else if (specificMonth) {
-      return `Month: ${specificMonth}`;
-    } else if (months) {
-      return `Months: L${months}M`;
-    }
+    if (year == currentYear && specificMonth == currentMonth)
+      return "Current month";
+
+    if (months) return `Last ${months} months`;
+
+    if (year && !specificMonth) return year;
+
+    return dayjs(`${year}-${specificMonth}-01`).format("MMMM `YY");
   };
 
   const setMonthIntervals = (monthsSelection) => {

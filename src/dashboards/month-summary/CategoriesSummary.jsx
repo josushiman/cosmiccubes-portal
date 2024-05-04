@@ -4,7 +4,7 @@ import { Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { Link } from "react-router-dom";
 import { CustomCard } from "../../commons/CustomCard";
-import Navigation from "../commons/Navigation";
+import TimePeriod from "../commons/TimePeriod";
 import { BorderLinearProgressWithBackground } from "../../commons/BorderLinearProgress";
 import useAsync from "../../hooks/useAsync";
 import formatCurrency from "../../hooks/formatCurrency";
@@ -78,7 +78,7 @@ const CategoriesSummary = () => {
 
   return (
     <Grid container rowGap={"0.5rem"} flexDirection={"column"}>
-      <Navigation />
+      <TimePeriod />
       {data.map((value, index) => {
         return (
           <CustomCard

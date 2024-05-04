@@ -4,7 +4,7 @@ import { CustomCard } from "../../../commons/CustomCard";
 import dayjs from "dayjs";
 import formatCurrency from "../../../hooks/formatCurrency";
 import useAsync from "../../../hooks/useAsync";
-import Navigation from "../../commons/Navigation";
+import TimePeriod from "../../commons/TimePeriod";
 import HandleDataLoad from "../../../commons/HandleDataLoad";
 
 const BillsDetails = () => {
@@ -16,7 +16,7 @@ const BillsDetails = () => {
 
   return (
     <Grid container rowGap={"0.5rem"} flexDirection={"column"}>
-      <Navigation />
+      <TimePeriod />
       <CustomCard>
         <Grid container flexDirection={"column"} padding={"2rem"}>
           <Grid

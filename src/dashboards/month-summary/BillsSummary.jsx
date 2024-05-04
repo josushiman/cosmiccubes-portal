@@ -3,7 +3,7 @@ import Grid from "@mui/material/Unstable_Grid2";
 import { Typography } from "@mui/material";
 import { CustomCard } from "../../commons/CustomCard";
 import formatCurrency from "../../hooks/formatCurrency";
-import Navigation from "../commons/Navigation";
+import TimePeriod from "../commons/TimePeriod";
 import { BorderLinearProgressWithBackground } from "../../commons/BorderLinearProgress";
 import CustomButton from "../../commons/CustomButton";
 import HandleDataLoad from "../../commons/HandleDataLoad";
@@ -47,7 +47,7 @@ const BillsSummary = () => {
 
   return (
     <Grid container rowGap={"0.5rem"} flexDirection={"column"}>
-      <Navigation />
+      <TimePeriod />
       <CustomCard
         sx={{
           padding: "1.5rem 2rem",

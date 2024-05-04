@@ -4,7 +4,7 @@ import { useLocation, useParams } from "react-router-dom";
 import { useContext } from "react";
 import { TimePeriodContext } from "../../../context/TimePeriodContext";
 import { CustomCard } from "../../../commons/CustomCard";
-import Navigation from "../../commons/Navigation";
+import TimePeriod from "../../commons/TimePeriod";
 import formatCurrency from "../../../hooks/formatCurrency";
 import useAsync from "../../../hooks/useAsync";
 import Trends from "./Trends";
@@ -52,7 +52,7 @@ const CategoryDetails = () => {
 
   return (
     <Grid container rowGap={"0.5rem"} flexDirection={"column"}>
-      <Navigation />
+      <TimePeriod />
       <CustomCard
         sx={{
           padding: "1.5rem 2rem",

@@ -13,6 +13,7 @@ import NotificationCard from "./components/NotificationCard";
 import HandleDataLoad from "../../commons/HandleDataLoad";
 import { CustomCard } from "../../commons/CustomCard";
 import "./styles.css";
+import TimePeriod from "../commons/TimePeriod";
 
 const MonthSummary = () => {
   const { timePeriod } = useContext(TimePeriodContext);
@@ -31,6 +32,7 @@ const MonthSummary = () => {
       rowGap={"0.5rem"}
       flexDirection={"column"}
     >
+      <TimePeriod />
       {notificationText ? <NotificationCard data={data.notif} /> : null}
       <Summary data={data.summary} />
       <Grid

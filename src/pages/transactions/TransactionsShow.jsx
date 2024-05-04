@@ -6,12 +6,12 @@ import {
   NumberField,
 } from "react-admin";
 import Grid from "@mui/material/Unstable_Grid2";
-import Navigation from "../../dashboards/commons/Navigation";
+import TimePeriod from "../../dashboards/commons/TimePeriod";
 
 const EntityShow = () => {
   return (
     <Grid>
-      <Navigation />
+      <TimePeriod />
       <Show>
         <SimpleShowLayout
           sx={{
