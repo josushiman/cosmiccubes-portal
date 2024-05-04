@@ -9,6 +9,9 @@ import {
 import Grid from "@mui/material/Unstable_Grid2";
 import Refunds from "./Refunds";
 
+// Better refunds section
+// More transaction stats and filters
+
 const EntityList = () => {
   return (
     <Grid container flexDirection={"column"} rowGap={"0.5rem"}>

@@ -7,6 +7,8 @@ import {
   CreateButton,
 } from "react-admin";
 
+// Savings chart with savings over time.
+
 const EntityList = () => (
   <List sort={{ field: "date", order: "DESC" }} actions={null}>
     <CreateButton />

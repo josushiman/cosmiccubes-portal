@@ -3,6 +3,8 @@ import { TableHead, TableRow, TableCell } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import ServerKnowledgeTrigger from "./ServerKnowledgeTrigger";
 
+// Show warnings if no updates for the past 1 day
+
 const CustomRouteField = () => {
   // "record" is a prop received from the Datagrid
   const record = useRecordContext();
