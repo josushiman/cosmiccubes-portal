@@ -79,36 +79,36 @@ const DailySpendSummary = () => {
           />
           <Grid
             container
-            display={"grid"}
-            columnGap={"1rem"}
-            gridTemplateColumns={"repeat(2, 1fr)"}
-            gridTemplateRows={"auto"}
-            alignItems={"center"}
-            justifyItems={"center"}
-            justifyContent={"space-between"}
+            flexDirection={"column"}
+            rowGap={"0.5rem"}
+            alignItems={"stretch"}
           >
-            <FormControl sx={{ m: 1, width: "9rem" }} variant="filled" disabled>
+            <FormControl sx={{ m: 1, width: "100%" }} variant="filled" disabled>
               <InputLabel htmlFor="filled-days">Number of days</InputLabel>
               <FilledInput id="filled-days" label="Days" value={numDays + 1} />
             </FormControl>
             <Grid
               container
-              justifyContent={"space-between"}
-              borderRadius={"0.55rem"}
+              display={"grid"}
+              gridTemplateColumns={"1fr 2px 1fr"}
+              gridTemplateRows={"4rem"}
+              alignItems={"center"}
+              justifyItems={"center"}
+              borderRadius={"0.5rem"}
               border={"1px solid #313131"}
             >
               <Box
                 sx={numDays == 3 ? disabledStyles : defaultStyle}
                 onClick={() => handleClick(-1)}
               >
-                <RemoveIcon fontSize="small" />
+                <RemoveIcon fontSize="medium" />
               </Box>
-              <hr style={{ opacity: "5%" }} />
+              <hr style={{ opacity: "5%", height: "100%" }} />
               <Box
                 sx={numDays == 7 ? disabledStyles : defaultStyle}
                 onClick={() => handleClick(1)}
               >
-                <AddIcon fontSize="small" />
+                <AddIcon fontSize="medium" />
               </Box>
             </Grid>
           </Grid>
