@@ -17,12 +17,13 @@ import DailySpendChart from "./components/DailySpendChart";
 import Transactions from "./components/Transactions";
 
 const disabledStyles = {
+  padding: "0.75rem 1rem",
   pointerEvents: "none",
   opacity: "10%",
 };
 
 const defaultStyle = {
-  padding: "1rem",
+  padding: "0.75rem 1rem",
 };
 
 const DailySpendSummary = () => {
@@ -80,27 +81,36 @@ const DailySpendSummary = () => {
             container
             display={"grid"}
             columnGap={"1rem"}
-            gridTemplateColumns={"1fr repeat(2, 1fr)"}
+            gridTemplateColumns={"repeat(2, 1fr)"}
             gridTemplateRows={"auto"}
             alignItems={"center"}
             justifyItems={"center"}
+            justifyContent={"space-between"}
           >
             <FormControl sx={{ m: 1, width: "9rem" }} variant="filled" disabled>
               <InputLabel htmlFor="filled-days">Number of days</InputLabel>
               <FilledInput id="filled-days" label="Days" value={numDays + 1} />
             </FormControl>
-            <Box
-              sx={numDays == 3 ? disabledStyles : defaultStyle}
-              onClick={() => handleClick(-1)}
+            <Grid
+              container
+              justifyContent={"space-between"}
+              borderRadius={"0.55rem"}
+              border={"1px solid #313131"}
             >
-              <RemoveIcon />
-            </Box>
-            <Box
-              sx={numDays == 7 ? disabledStyles : defaultStyle}
-              onClick={() => handleClick(1)}
-            >
-              <AddIcon />
-            </Box>
+              <Box
+                sx={numDays == 3 ? disabledStyles : defaultStyle}
+                onClick={() => handleClick(-1)}
+              >
+                <RemoveIcon fontSize="small" />
+              </Box>
+              <hr style={{ opacity: "5%" }} />
+              <Box
+                sx={numDays == 7 ? disabledStyles : defaultStyle}
+                onClick={() => handleClick(1)}
+              >
+                <AddIcon fontSize="small" />
+              </Box>
+            </Grid>
           </Grid>
         </Grid>
       </CustomCard>
