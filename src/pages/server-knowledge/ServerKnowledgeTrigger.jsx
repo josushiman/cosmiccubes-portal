@@ -61,6 +61,7 @@ const ServerKnowledgeTrigger = () => {
             Month Summary
           </MenuItem>
           <MenuItem value={"/ynab/update-payees"}>Payees</MenuItem>
+          <MenuItem value={"/ynab/update-savings"}>Savings</MenuItem>
           <MenuItem value={"/ynab/update-transactions"}>Transactions</MenuItem>
         </Select>
         <Button

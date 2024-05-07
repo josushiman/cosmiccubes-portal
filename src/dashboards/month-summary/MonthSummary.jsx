@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
 import CategoryIcon from "@mui/icons-material/Category";
 import ShowChartIcon from "@mui/icons-material/ShowChart";
+import TodayIcon from "@mui/icons-material/Today";
+import SavingsIcon from "@mui/icons-material/Savings";
+import ReceiptIcon from "@mui/icons-material/Receipt";
 import { TimePeriodContext } from "../../context/TimePeriodContext";
 import useAsync from "../../hooks/useAsync";
 import Summary from "./components/Summary";
@@ -39,8 +42,9 @@ const MonthSummary = () => {
         container
         display={"grid"}
         gridTemplateColumns={"repeat(3, 1fr)"}
+        gridTemplateRows={"repeat(2, 6rem)"}
         columnGap={"0.5rem"}
-        gridTemplateRows={"6rem"}
+        rowGap={"0.5rem"}
       >
         <Link
           to={"/portal/admin/budgets"}
@@ -99,6 +103,37 @@ const MonthSummary = () => {
           </CustomCard>
         </Link>
         <Link
+          to={"/daily-spend"}
+          state={{
+            dailySpend: data.summary.daily_spend,
+          }}
+          style={{
+            textDecoration: "none",
+            color: "inherit",
+          }}
+        >
+          <CustomCard
+            sx={{
+              width: "100%",
+              height: "100%",
+            }}
+            backgroundcolor={"#F0F0C9"}
+          >
+            <Grid
+              container
+              flexDirection={"column"}
+              rowGap={"0.5rem"}
+              height={"100%"}
+              alignItems={"center"}
+              justifyContent={"center"}
+              color={"#121212"}
+            >
+              <TodayIcon />
+              <Typography>Daily spend</Typography>
+            </Grid>
+          </CustomCard>
+        </Link>
+        <Link
           to={"/portal/admin/loans-and-renewals"}
           style={{
             textDecoration: "none",
@@ -123,6 +158,62 @@ const MonthSummary = () => {
             >
               <AutorenewIcon />
               <Typography>Renewals</Typography>
+            </Grid>
+          </CustomCard>
+        </Link>
+        <Link
+          to={"/portal/admin/savings"}
+          style={{
+            textDecoration: "none",
+            color: "inherit",
+          }}
+        >
+          <CustomCard
+            sx={{
+              width: "100%",
+              height: "100%",
+            }}
+            backgroundcolor={"#F0F0C9"}
+          >
+            <Grid
+              container
+              flexDirection={"column"}
+              rowGap={"0.5rem"}
+              height={"100%"}
+              alignItems={"center"}
+              justifyContent={"center"}
+              color={"#121212"}
+            >
+              <SavingsIcon />
+              <Typography>Savings</Typography>
+            </Grid>
+          </CustomCard>
+        </Link>
+        <Link
+          to={"/portal/admin/ynab-transaction"}
+          style={{
+            textDecoration: "none",
+            color: "inherit",
+          }}
+        >
+          <CustomCard
+            sx={{
+              width: "100%",
+              height: "100%",
+            }}
+            backgroundcolor={"#F0F0C9"}
+          >
+            <Grid
+              container
+              flexDirection={"column"}
+              rowGap={"0.5rem"}
+              height={"100%"}
+              alignItems={"center"}
+              justifyContent={"center"}
+              color={"#121212"}
+            >
+              <ReceiptIcon />
+              <Typography>Transactions</Typography>
             </Grid>
           </CustomCard>
         </Link>
