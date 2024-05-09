@@ -30,23 +30,23 @@ const FinancialOverview = ({ data }) => {
         <Grid container justifyContent={"space-between"}>
           <Typography variant="subtitle1">Last month income:</Typography>
           <Typography variant="subtitle1">
-            <span>£</span> {formatCurrency(data.income)}
+            <span>£</span> {formatCurrency(data.income, false, true)}
           </Typography>
         </Grid>
         <Grid container justifyContent={"space-between"}>
           <Typography variant="subtitle1">Savings goal:</Typography>
           <Grid container>
             <Typography variant="subtitle1" paddingRight={"0.25rem"}>
-              <span>£</span> {formatCurrency(data.savings)}
+              <span>£</span> {formatCurrency(data.savings, false, true)}
             </Typography>
             <ChevronButton pageLink={"/portal/admin/savings"} />
           </Grid>
         </Grid>
         <Grid container justifyContent={"space-between"}>
-          <Typography variant="subtitle1">Upcoming bills:</Typography>
+          <Typography variant="subtitle1">Bills & renewals:</Typography>
           <Grid container>
             <Typography variant="subtitle1" paddingRight={"0.25rem"}>
-              <span>£</span> {formatCurrency(data.bills)}
+              <span>£</span> {formatCurrency(data.bills, false, true)}
             </Typography>
             <ChevronButton pageLink={"/monthly-summary/bills"} />
           </Grid>
@@ -55,7 +55,7 @@ const FinancialOverview = ({ data }) => {
           <Typography variant="subtitle1">Spent this month:</Typography>
           <Grid container>
             <Typography variant="subtitle1" paddingRight={"0.25rem"}>
-              <span>£</span> {formatCurrency(data.balance_spent)}
+              <span>£</span> {formatCurrency(data.balance_spent, false, true)}
             </Typography>
             <ChevronButton pageLink={"/monthly-summary/transactions"} />
           </Grid>
@@ -66,7 +66,7 @@ const FinancialOverview = ({ data }) => {
             What&lsquo;s left:
           </Typography>
           <Typography variant="h5" fontWeight={500}>
-            <span>£</span> {formatCurrency(data.balance_available)}
+            <span>£</span> {formatCurrency(data.balance_available, false, true)}
           </Typography>
         </Grid>
       </Grid>

@@ -1,14 +1,16 @@
 import useAsync from "../../hooks/useAsync";
 import Grid from "@mui/material/Unstable_Grid2";
-import { Typography } from "@mui/material";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Typography,
+} from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { CustomCard } from "../../commons/CustomCard";
 import formatCurrency from "../../hooks/formatCurrency";
-import TimePeriod from "../commons/TimePeriod";
 import { BorderLinearProgressWithBackground } from "../../commons/BorderLinearProgress";
-import CustomButton from "../../commons/CustomButton";
 import HandleDataLoad from "../../commons/HandleDataLoad";
-import CategoryIcon from "@mui/icons-material/Category";
-import ShowChartIcon from "@mui/icons-material/ShowChart";
 
 const BillsSummary = () => {
   const { data, loading, error } = useAsync("/upcoming-bills");
@@ -47,9 +49,12 @@ const BillsSummary = () => {
     });
   };
 
+  const renewalsLength = data.renewals.length;
+  const loansLength = data.loans.length;
+  // TODO when none - show a diff message
+
   return (
     <Grid container rowGap={"0.5rem"} flexDirection={"column"}>
-      <TimePeriod />
       <Grid
         container
         display={"grid"}
@@ -71,8 +76,8 @@ const BillsSummary = () => {
             alignItems={"center"}
             justifyContent={"center"}
           >
-            <ShowChartIcon />
-            <Typography>Direct Debits</Typography>
+            <Typography variant="h5">{renewalsLength}</Typography>
+            <Typography>Renewals</Typography>
           </Grid>
         </CustomCard>
         <CustomCard
@@ -89,40 +94,102 @@ const BillsSummary = () => {
             alignItems={"center"}
             justifyContent={"center"}
           >
-            <CategoryIcon />
-            <Typography>Insurance</Typography>
+            <Typography variant="h5">{loansLength}</Typography>
+            <Typography>Loan Payments</Typography>
           </Grid>
         </CustomCard>
       </Grid>
       <CustomCard
         sx={{
-          padding: "1.5rem 2rem",
+          padding: "1.5rem 1rem",
         }}
       >
-        <Grid
-          container
-          justifyContent={"space-between"}
-          alignItems={"center"}
-          paddingBottom={"1rem"}
-        >
+        <Grid container justifyContent={"space-between"} alignItems={"center"}>
           <Typography variant="h5" fontWeight={300}>
-            Bills
+            Total
           </Typography>
           <Typography variant="h4" fontWeight={500}>
             £ {formatCurrency(data.total, false, true)}
           </Typography>
         </Grid>
-        <hr style={{ width: "100%", opacity: "25%", marginBottom: "1rem" }} />
-        <Grid
-          container
-          flexDirection={"column"}
-          gap={"1.5rem"}
-          padding={"1rem 0"}
-        >
-          <SubCategoryList data={data.subcategories} total_bills={data.total} />
-        </Grid>
       </CustomCard>
-      <CustomButton action="see payment dates" />
+      <Grid>
+        <Accordion
+          sx={{
+            backgroundImage: "unset",
+            borderTopLeftRadius: "0.25rem",
+            borderTopRightRadius: "0.25rem",
+          }}
+        >
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1-content"
+            id="panel1-header"
+          >
+            <Typography
+              variant="h6"
+              fontWeight={300}
+              sx={{ alignSelf: "center", width: "50%", flexShrink: 0 }}
+            >
+              Bills
+            </Typography>
+            <Typography variant="h5" textAlign={"right"} width={"100%"}>
+              £ {formatCurrency(data.total_bills, false, true)}
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            {/* <SubCategoryList data={data.bills} total_bills={data.total_bills} /> */}
+          </AccordionDetails>
+        </Accordion>
+        <Accordion
+          sx={{
+            backgroundImage: "unset",
+          }}
+        >
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1-content"
+            id="panel1-header"
+          >
+            <Typography
+              variant="h6"
+              fontWeight={300}
+              sx={{ alignSelf: "center", width: "50%", flexShrink: 0 }}
+            >
+              Loans
+            </Typography>
+            <Typography variant="h5" textAlign={"right"} width={"100%"}>
+              £ {formatCurrency(data.total_loans, false, true)}
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails></AccordionDetails>
+        </Accordion>
+        <Accordion
+          sx={{
+            backgroundImage: "unset",
+            borderBottomLeftRadius: "0.25rem",
+            borderBottomRightRadius: "0.25rem",
+          }}
+        >
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1-content"
+            id="panel1-header"
+          >
+            <Typography
+              variant="h6"
+              fontWeight={300}
+              sx={{ alignSelf: "center", width: "50%", flexShrink: 0 }}
+            >
+              Renewals
+            </Typography>
+            <Typography variant="h5" textAlign={"right"} width={"100%"}>
+              £ {formatCurrency(data.total_renewals, false, true)}
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails></AccordionDetails>
+        </Accordion>
+      </Grid>
     </Grid>
   );
 };
