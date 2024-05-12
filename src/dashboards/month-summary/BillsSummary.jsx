@@ -27,10 +27,30 @@ const BillsSummary = () => {
       <Grid
         container
         display={"grid"}
-        gridTemplateColumns={"repeat(2, 1fr)"}
+        gridTemplateColumns={"repeat(3, 1fr)"}
         columnGap={"0.5rem"}
         gridTemplateRows={"6rem"}
       >
+        <CustomCard
+          sx={{
+            width: "100%",
+            height: "100%",
+          }}
+        >
+          <Grid
+            container
+            flexDirection={"column"}
+            rowGap={"0.5rem"}
+            height={"100%"}
+            alignItems={"center"}
+            justifyContent={"center"}
+          >
+            <Typography variant="h5">
+              {data.count_bills > 0 ? data.count_bills : "None"}
+            </Typography>
+            <Typography>Bills</Typography>
+          </Grid>
+        </CustomCard>
         <CustomCard
           sx={{
             width: "100%",
@@ -68,7 +88,7 @@ const BillsSummary = () => {
             <Typography variant="h5">
               {loansLength > 0 ? loansLength : "None"}
             </Typography>
-            <Typography>Loan Payments</Typography>
+            <Typography>Loans</Typography>
           </Grid>
         </CustomCard>
       </Grid>
@@ -118,6 +138,7 @@ const BillsSummary = () => {
           sx={{
             backgroundImage: "unset",
           }}
+          defaultExpanded={loansLength > 0 ? true : false}
         >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
@@ -147,6 +168,7 @@ const BillsSummary = () => {
             borderBottomLeftRadius: "0.25rem",
             borderBottomRightRadius: "0.25rem",
           }}
+          defaultExpanded={renewalsLength > 0 ? true : false}
         >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}

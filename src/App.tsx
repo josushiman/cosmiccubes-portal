@@ -6,7 +6,6 @@ import authProvider from "./authProvider";
 import GymSummary from "./dashboards/gym-summary/GymSummary";
 import Dashboard from "./dashboards/month-summary/MonthSummary";
 import BillsSummary from "./dashboards/month-summary/BillsSummary";
-import BillsDetails from "./dashboards/month-summary/components/BillsDetails";
 import CategoriesSummary from "./dashboards/month-summary/CategoriesSummary";
 import CategoryDetails from "./dashboards/month-summary/components/CategoryDetails";
 import TransactionsSummary from "./dashboards/month-summary/TransactionsSummary";
@@ -75,7 +74,6 @@ export const App = () => (
       <Route path="daily-spend" element={<DailySpendSummary />} />
       <Route path="gym-summary" element={<GymSummary />} />
       <Route path="monthly-summary/bills" element={<BillsSummary />} />
-      <Route path="monthly-summary/bills/details" element={<BillsDetails />} />
       <Route
         path="monthly-summary/categories"
         element={<CategoriesSummary />}
