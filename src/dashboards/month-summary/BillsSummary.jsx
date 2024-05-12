@@ -65,9 +65,13 @@ const BillsSummary = () => {
             alignItems={"center"}
             justifyContent={"center"}
           >
-            <Typography variant="h5">
-              {renewalsLength > 0 ? renewalsLength : "None"}
-            </Typography>
+            {renewalsLength > 0 ? (
+              <Typography variant="h5">{renewalsLength}</Typography>
+            ) : (
+              <Typography variant="h5" fontStyle={"italic"}>
+                None
+              </Typography>
+            )}
             <Typography>Renewals</Typography>
           </Grid>
         </CustomCard>
@@ -139,9 +143,10 @@ const BillsSummary = () => {
             backgroundImage: "unset",
           }}
           defaultExpanded={loansLength > 0 ? true : false}
+          disabled={loansLength > 0 ? false : true}
         >
           <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
+            expandIcon={loansLength > 0 ? <ExpandMoreIcon /> : null}
             aria-controls="panel1-content"
             id="panel1-header"
           >
@@ -152,11 +157,21 @@ const BillsSummary = () => {
             >
               Loans
             </Typography>
-            <Typography variant="h5" textAlign={"right"} width={"100%"}>
-              {loansLength > 0
-                ? `£ ${formatCurrency(data.total_loans, false, true)}`
-                : "None this month"}
-            </Typography>
+            {loansLength > 0 ? (
+              <Typography variant="h5" textAlign={"right"} width={"100%"}>
+                £ {formatCurrency(data.total_loans, false, true)}
+              </Typography>
+            ) : (
+              <Typography
+                variant="body1"
+                textAlign={"right"}
+                width={"100%"}
+                alignSelf={"center"}
+                fontStyle={"italic"}
+              >
+                None this month
+              </Typography>
+            )}
           </AccordionSummary>
           <AccordionDetails>
             {loansLength > 0 ? <CustomDataTable data={data.loans} /> : null}
@@ -169,9 +184,10 @@ const BillsSummary = () => {
             borderBottomRightRadius: "0.25rem",
           }}
           defaultExpanded={renewalsLength > 0 ? true : false}
+          disabled={renewalsLength > 0 ? false : true}
         >
           <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
+            expandIcon={renewalsLength > 0 ? <ExpandMoreIcon /> : null}
             aria-controls="panel1-content"
             id="panel1-header"
           >
@@ -182,11 +198,21 @@ const BillsSummary = () => {
             >
               Renewals
             </Typography>
-            <Typography variant="h5" textAlign={"right"} width={"100%"}>
-              {renewalsLength > 0
-                ? `£ ${formatCurrency(data.total_renewals, false, true)}`
-                : "None this month"}
-            </Typography>
+            {renewalsLength > 0 ? (
+              <Typography variant="h5" textAlign={"right"} width={"100%"}>
+                £ {formatCurrency(data.total_renewals, false, true)}
+              </Typography>
+            ) : (
+              <Typography
+                variant="body1"
+                textAlign={"right"}
+                width={"100%"}
+                alignSelf={"center"}
+                fontStyle={"italic"}
+              >
+                None this month
+              </Typography>
+            )}
           </AccordionSummary>
           <AccordionDetails>
             {renewalsLength > 0 ? (
