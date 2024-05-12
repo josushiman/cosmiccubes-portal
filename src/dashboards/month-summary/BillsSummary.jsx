@@ -9,8 +9,8 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { CustomCard } from "../../commons/CustomCard";
 import formatCurrency from "../../hooks/formatCurrency";
-import { BorderLinearProgressWithBackground } from "../../commons/BorderLinearProgress";
 import HandleDataLoad from "../../commons/HandleDataLoad";
+import CustomDataTable from "../../commons/CustomDataTable";
 
 const BillsSummary = () => {
   const { data, loading, error } = useAsync("/upcoming-bills");
@@ -19,39 +19,8 @@ const BillsSummary = () => {
     return <HandleDataLoad data={data} loading={loading} error={error} />;
   }
 
-  const SubCategoryList = ({ data, total_bills }) => {
-    return data.map((value, index) => {
-      const progress = (value.total / total_bills) * 100;
-
-      return (
-        <Grid key={index}>
-          <Grid
-            container
-            justifyContent={"space-between"}
-            paddingBottom={"0.5rem"}
-          >
-            <Typography variant="subtitle1" textTransform={"capitalize"}>
-              {value.name}
-            </Typography>
-            <Typography
-              variant="body1"
-              style={{ alignSelf: "flex-end", color: "white" }}
-            >
-              £ {formatCurrency(value.total)}
-            </Typography>
-          </Grid>
-          <BorderLinearProgressWithBackground
-            variant="determinate"
-            value={progress}
-          />
-        </Grid>
-      );
-    });
-  };
-
   const renewalsLength = data.renewals.length;
   const loansLength = data.loans.length;
-  // TODO when none - show a diff message
 
   return (
     <Grid container rowGap={"0.5rem"} flexDirection={"column"}>
@@ -76,7 +45,9 @@ const BillsSummary = () => {
             alignItems={"center"}
             justifyContent={"center"}
           >
-            <Typography variant="h5">{renewalsLength}</Typography>
+            <Typography variant="h5">
+              {renewalsLength > 0 ? renewalsLength : "None"}
+            </Typography>
             <Typography>Renewals</Typography>
           </Grid>
         </CustomCard>
@@ -94,7 +65,9 @@ const BillsSummary = () => {
             alignItems={"center"}
             justifyContent={"center"}
           >
-            <Typography variant="h5">{loansLength}</Typography>
+            <Typography variant="h5">
+              {loansLength > 0 ? loansLength : "None"}
+            </Typography>
             <Typography>Loan Payments</Typography>
           </Grid>
         </CustomCard>
@@ -138,7 +111,7 @@ const BillsSummary = () => {
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
-            {/* <SubCategoryList data={data.bills} total_bills={data.total_bills} /> */}
+            <CustomDataTable data={data.bills} />
           </AccordionDetails>
         </Accordion>
         <Accordion
@@ -159,10 +132,14 @@ const BillsSummary = () => {
               Loans
             </Typography>
             <Typography variant="h5" textAlign={"right"} width={"100%"}>
-              £ {formatCurrency(data.total_loans, false, true)}
+              {loansLength > 0
+                ? `£ ${formatCurrency(data.total_loans, false, true)}`
+                : "None this month"}
             </Typography>
           </AccordionSummary>
-          <AccordionDetails></AccordionDetails>
+          <AccordionDetails>
+            {loansLength > 0 ? <CustomDataTable data={data.loans} /> : null}
+          </AccordionDetails>
         </Accordion>
         <Accordion
           sx={{
@@ -184,10 +161,16 @@ const BillsSummary = () => {
               Renewals
             </Typography>
             <Typography variant="h5" textAlign={"right"} width={"100%"}>
-              £ {formatCurrency(data.total_renewals, false, true)}
+              {renewalsLength > 0
+                ? `£ ${formatCurrency(data.total_renewals, false, true)}`
+                : "None this month"}
             </Typography>
           </AccordionSummary>
-          <AccordionDetails></AccordionDetails>
+          <AccordionDetails>
+            {renewalsLength > 0 ? (
+              <CustomDataTable data={data.renewals} />
+            ) : null}
+          </AccordionDetails>
         </Accordion>
       </Grid>
     </Grid>
