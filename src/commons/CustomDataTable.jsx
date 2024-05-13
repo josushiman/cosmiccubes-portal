@@ -54,7 +54,7 @@ const CustomRow = ({ hasTransactions, row, tableKeys }) => {
                   Breakdown
                 </Typography>
                 <Table size="small" aria-label="purchases">
-                  <TableHead>
+                  <TableHead style={{ backgroundColor: "#C06969" }}>
                     <TableRow>
                       <TableCell>Name</TableCell>
                       <TableCell>Date</TableCell>
@@ -100,10 +100,11 @@ const CustomDataTable = ({ data }) => {
 
   dayjs.extend(advancedFormat);
 
+  // TODO figure out the way to remove the padding on the table for the bills summary page
   return (
     <TableContainer component={Paper}>
       <Table aria-label="simple table" size="small">
-        <TableHead>
+        <TableHead style={{ backgroundColor: "#C06969" }}>
           <TableRow>
             {hasTransactions ? <TableCell /> : null}
             {tableKeys.map((value, index) => {

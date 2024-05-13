@@ -67,31 +67,23 @@ const Transactions = ({ data, accountId }) => {
   dayjs.extend(advancedFormat);
 
   return (
-    <CustomCard
-      sx={{
-        height: filteredData.length >= 5 ? "20rem" : "auto",
-        padding: "1rem",
-        overflowY: "scroll",
-      }}
-    >
-      <TableContainer component={Paper}>
-        <Table aria-label="simple table" size="small">
-          <TableHead>
-            <TableRow>
-              <TableCell>Payee/Cat</TableCell>
-              <TableCell align="right" colSpan={6}>
-                (£)/Date
-              </TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {filteredData.map((row, rowIndex) => (
-              <CustomRow key={rowIndex} row={row} />
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </CustomCard>
+    <TableContainer component={Paper}>
+      <Table aria-label="simple table" size="small">
+        <TableHead style={{ backgroundColor: "#C06969" }}>
+          <TableRow>
+            <TableCell>Payee/Cat</TableCell>
+            <TableCell align="right" colSpan={6}>
+              (£)/Date
+            </TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody style={{ backgroundColor: "#121212" }}>
+          {filteredData.map((row, rowIndex) => (
+            <CustomRow key={rowIndex} row={row} />
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 };
 
