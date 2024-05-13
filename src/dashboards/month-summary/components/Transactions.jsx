@@ -1,8 +1,52 @@
-import { Typography } from "@mui/material";
-import Grid from "@mui/material/Unstable_Grid2";
-import { Link } from "react-router-dom";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
+  Paper,
+} from "@mui/material";
+import dayjs from "dayjs";
+import advancedFormat from "dayjs/plugin/advancedFormat";
 import { CustomCard } from "../../../commons/CustomCard";
 import formatCurrency from "../../../hooks/formatCurrency";
+
+const CustomRow = ({ row }) => {
+  return (
+    <>
+      <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
+        <TableCell style={{ borderBottom: "unset", paddingBottom: 0 }}>
+          {row.payee.length > 20 ? row.payee.slice(0, 20) + "..." : row.payee}
+        </TableCell>
+        <TableCell
+          align="right"
+          colSpan={6}
+          style={{ borderBottom: "unset", paddingBottom: 0 }}
+        >
+          £ {formatCurrency(row.amount, false, false)}
+        </TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell style={{ fontStyle: "italic", paddingTop: 0 }}>
+          <Typography variant="caption">
+            {row.category} - {row.subcategory}
+          </Typography>
+        </TableCell>
+        <TableCell
+          align="right"
+          colSpan={6}
+          style={{ fontStyle: "italic", paddingTop: 0 }}
+        >
+          <Typography variant="caption">
+            {dayjs(row.date).format("Do MMM")}
+          </Typography>
+        </TableCell>
+      </TableRow>
+    </>
+  );
+};
 
 const Transactions = ({ data, accountId }) => {
   let filteredData =
@@ -20,58 +64,33 @@ const Transactions = ({ data, accountId }) => {
     );
   }
 
+  dayjs.extend(advancedFormat);
+
   return (
     <CustomCard
       sx={{
         height: filteredData.length >= 5 ? "20rem" : "auto",
+        padding: "1rem",
         overflowY: "scroll",
       }}
     >
-      <Grid container display={"grid"} padding={"1.5rem 2rem"} rowGap={"1rem"}>
-        {filteredData.map((value, index) => {
-          return (
-            <Link
-              key={index}
-              to={`/portal/admin/ynab-transaction/${value.id}/show`}
-              style={{
-                textDecoration: "none",
-                color: "inherit",
-              }}
-            >
-              <Grid
-                container
-                display={"grid"}
-                alignItems={"center"}
-                gridTemplateColumns={"70% 30%"}
-                gridTemplateRows={"repeat(2, 1.5rem)"}
-              >
-                <Typography>
-                  {value.payee.substring(0, 15)}
-                  {value.payee.length > 15 ? "..." : null}
-                </Typography>
-                <Typography textAlign={"right"}>
-                  £ {formatCurrency(value.amount)}
-                </Typography>
-                <Typography
-                  fontStyle={"italic"}
-                  variant="subtitle2"
-                  fontWeight={300}
-                >
-                  {value.subcategory}
-                </Typography>
-                <Typography
-                  textAlign={"right"}
-                  fontStyle={"italic"}
-                  variant="subtitle2"
-                  fontWeight={300}
-                >
-                  {value.date}
-                </Typography>
-              </Grid>
-            </Link>
-          );
-        })}
-      </Grid>
+      <TableContainer component={Paper}>
+        <Table aria-label="simple table" size="small">
+          <TableHead>
+            <TableRow>
+              <TableCell>Payee/Cat</TableCell>
+              <TableCell align="right" colSpan={6}>
+                (£)/Date
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {filteredData.map((row, rowIndex) => (
+              <CustomRow key={rowIndex} row={row} />
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </CustomCard>
   );
 };
