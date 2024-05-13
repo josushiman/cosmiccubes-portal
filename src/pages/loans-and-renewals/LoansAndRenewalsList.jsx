@@ -2,7 +2,6 @@ import {
   List,
   Datagrid,
   TextField,
-  NumberField,
   CreateButton,
   ReferenceField,
 } from "react-admin";
@@ -16,7 +15,7 @@ const EntityList = () => (
     <DirectDebits />
     <Insurance />
     <LoanPortfolio />
-    <List sort={{ field: "period__name", order: "ASC" }} actions={null}>
+    <List actions={null}>
       <CreateButton />
       <Datagrid bulkActionButtons={false} rowClick="edit">
         <TextField source="name" />
@@ -28,14 +27,6 @@ const EntityList = () => (
         >
           <TextField source="name" />
         </ReferenceField>
-        <NumberField
-          source="remaining_balance"
-          label="Balance"
-          options={{
-            style: "currency",
-            currency: "GBP",
-          }}
-        />
       </Datagrid>
     </List>
   </Grid>

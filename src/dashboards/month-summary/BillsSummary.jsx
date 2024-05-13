@@ -45,9 +45,7 @@ const BillsSummary = () => {
             alignItems={"center"}
             justifyContent={"center"}
           >
-            <Typography variant="h5">
-              {data.count_bills > 0 ? data.count_bills : "None"}
-            </Typography>
+            <Typography variant="h5">{data.count_bills}</Typography>
             <Typography>Bills</Typography>
           </Grid>
         </CustomCard>
@@ -65,13 +63,7 @@ const BillsSummary = () => {
             alignItems={"center"}
             justifyContent={"center"}
           >
-            {renewalsLength > 0 ? (
-              <Typography variant="h5">{renewalsLength}</Typography>
-            ) : (
-              <Typography variant="h5" fontStyle={"italic"}>
-                None
-              </Typography>
-            )}
+            <Typography variant="h5">{renewalsLength}</Typography>
             <Typography>Renewals</Typography>
           </Grid>
         </CustomCard>
@@ -89,9 +81,7 @@ const BillsSummary = () => {
             alignItems={"center"}
             justifyContent={"center"}
           >
-            <Typography variant="h5">
-              {loansLength > 0 ? loansLength : "None"}
-            </Typography>
+            <Typography variant="h5">{loansLength}</Typography>
             <Typography>Loans</Typography>
           </Grid>
         </CustomCard>
