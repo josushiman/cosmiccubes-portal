@@ -181,7 +181,7 @@ const CustomDataTable = ({ data }) => {
             })}
           </TableRow>
         </TableHead>
-        <TableBody>
+        <TableBody style={{ backgroundColor: "#121212" }}>
           {(rowsPerPage > 0
             ? data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             : data
@@ -199,11 +199,10 @@ const CustomDataTable = ({ data }) => {
             </TableRow>
           )}
         </TableBody>
-        <TableFooter>
+        <TableFooter style={{ backgroundColor: "#121212" }}>
           <TableRow>
             <TablePagination
               rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
-              colSpan={3}
               count={data.length}
               rowsPerPage={rowsPerPage}
               page={page}

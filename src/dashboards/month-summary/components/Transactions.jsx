@@ -70,7 +70,6 @@ const CustomRow = ({ row }) => {
         </TableCell>
         <TableCell
           align="right"
-          colSpan={6}
           style={{ borderBottom: "unset", paddingBottom: 0 }}
         >
           £ {formatCurrency(row.amount, false, false)}
@@ -82,11 +81,7 @@ const CustomRow = ({ row }) => {
             {row.category} - {row.subcategory}
           </Typography>
         </TableCell>
-        <TableCell
-          align="right"
-          colSpan={6}
-          style={{ fontStyle: "italic", paddingTop: 0 }}
-        >
+        <TableCell align="right" style={{ fontStyle: "italic", paddingTop: 0 }}>
           <Typography variant="caption">
             {dayjs(row.date).format("Do MMM")}
           </Typography>
@@ -159,11 +154,10 @@ const Transactions = ({ data, accountId }) => {
             </TableRow>
           )}
         </TableBody>
-        <TableFooter>
+        <TableFooter style={{ backgroundColor: "#121212" }}>
           <TableRow>
             <TablePagination
               rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
-              colSpan={3}
               count={filteredData.length}
               rowsPerPage={rowsPerPage}
               page={page}
