@@ -15,7 +15,7 @@ import {
 import { useTheme } from "@mui/material/styles";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
 import { CustomCard } from "../../../commons/CustomCard";
@@ -97,17 +97,13 @@ const CustomRow = ({ row }) => {
 };
 
 const Transactions = ({ data, accountId }) => {
-  let filteredData =
-    accountId !== undefined
-      ? data.filter((item) => item.account_id == accountId)
-      : data;
-
+  const [filteredData, setFilteredData] = useState(data);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - data.length) : 0;
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - filteredData.length) : 0;
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -117,6 +113,12 @@ const Transactions = ({ data, accountId }) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
+
+  useEffect(() => {
+    accountId !== undefined
+      ? setFilteredData(data.filter((item) => item.account_id == accountId))
+      : setFilteredData(data);
+  }, [accountId, data]);
 
   if (filteredData.length < 1) {
     return (
@@ -162,7 +164,7 @@ const Transactions = ({ data, accountId }) => {
             <TablePagination
               rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
               colSpan={3}
-              count={data.length}
+              count={filteredData.length}
               rowsPerPage={rowsPerPage}
               page={page}
               slotProps={{
