@@ -1,4 +1,4 @@
-import { Menu } from "react-admin";
+import { Menu, UserMenu } from "react-admin";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import MoneyIcon from "@mui/icons-material/Money";
 
@@ -17,6 +17,7 @@ const CustomMenu = () => (
     <Menu.ResourceItem name="portal/admin/savings" />
     <Menu.ResourceItem name="portal/admin/ynab-server-knowledge" />
     <Menu.ResourceItem name="portal/admin/ynab-transaction" />
+    <UserMenu />
   </Menu>
 );
 

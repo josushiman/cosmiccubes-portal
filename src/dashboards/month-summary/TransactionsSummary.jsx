@@ -4,7 +4,6 @@ import useAsync from "../../hooks/useAsync";
 import Grid from "@mui/material/Unstable_Grid2";
 import CreditSummary from "./components/CreditSummary";
 import Transactions from "./components/Transactions";
-import TimePeriod from "../commons/TimePeriod";
 import HandleDataLoad from "../../commons/HandleDataLoad";
 
 const TransactionsSummary = () => {
@@ -31,7 +30,6 @@ const TransactionsSummary = () => {
   }
   return (
     <Grid container rowGap={"0.5rem"} flexDirection={"column"}>
-      <TimePeriod />
       <CreditSummary
         data={data.summary}
         accountId={accountId}

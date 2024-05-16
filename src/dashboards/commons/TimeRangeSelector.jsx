@@ -210,7 +210,7 @@ const TimeRangeSelector = () => {
         container
         flexDirection={"column"}
         position={"relative"}
-        marginTop={"4rem"}
+        marginTop={"0.5rem"}
         zIndex={1}
         rowGap={"0.5rem"}
         padding={"0 0.5rem 0.5rem 0.5rem"}
@@ -234,20 +234,17 @@ const TimeRangeSelector = () => {
           <YearIntervalComponents />
           <MonthIntervalComponents />
         </CustomCard>
-
-        <Grid container flexDirection={"column"} rowGap={"0.5rem"}>
-          <CustomCard onClick={submitForm}>
-            <Grid container padding={"1rem"} justifyContent={"center"}>
-              <Button
-                sx={{
-                  color: "white",
-                }}
-              >
-                Confirm
-              </Button>
-            </Grid>
-          </CustomCard>
-          <CustomCard onClick={cancelForm} backgroundcolor={"#C06969"}>
+        <Grid
+          container
+          columnGap={"0.5rem"}
+          justifyContent={"space-between"}
+          flexWrap={"nowrap"}
+        >
+          <CustomCard
+            onClick={cancelForm}
+            backgroundcolor={"#C06969"}
+            sx={{ width: "100%" }}
+          >
             <Grid container padding={"1rem"} justifyContent={"center"}>
               <Button
                 sx={{
@@ -255,6 +252,17 @@ const TimeRangeSelector = () => {
                 }}
               >
                 Cancel
+              </Button>
+            </Grid>
+          </CustomCard>
+          <CustomCard onClick={submitForm} sx={{ width: "100%" }}>
+            <Grid container padding={"1rem"} justifyContent={"center"}>
+              <Button
+                sx={{
+                  color: "white",
+                }}
+              >
+                Confirm
               </Button>
             </Grid>
           </CustomCard>

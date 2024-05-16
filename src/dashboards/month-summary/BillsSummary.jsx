@@ -63,8 +63,8 @@ const BillsSummary = () => {
             alignItems={"center"}
             justifyContent={"center"}
           >
-            <Typography variant="h5">{renewalsLength}</Typography>
-            <Typography>Renewals</Typography>
+            <Typography variant="h5">{loansLength}</Typography>
+            <Typography>Loans</Typography>
           </Grid>
         </CustomCard>
         <CustomCard
@@ -81,8 +81,8 @@ const BillsSummary = () => {
             alignItems={"center"}
             justifyContent={"center"}
           >
-            <Typography variant="h5">{loansLength}</Typography>
-            <Typography>Loans</Typography>
+            <Typography variant="h5">{renewalsLength}</Typography>
+            <Typography>Renewals</Typography>
           </Grid>
         </CustomCard>
       </Grid>

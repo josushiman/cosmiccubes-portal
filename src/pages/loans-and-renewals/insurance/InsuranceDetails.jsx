@@ -3,7 +3,6 @@ import { Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { Link, useLocation } from "react-router-dom";
 import { CustomCard } from "../../../commons/CustomCard";
-import TimePeriod from "../../../dashboards/commons/TimePeriod";
 import formatCurrency from "../../../hooks/formatCurrency";
 import CustomLoadingScreen from "../../../commons/CustomLoadingScreen";
 
@@ -16,7 +15,6 @@ const InsuranceDetails = () => {
 
   return (
     <Grid container rowGap={"0.5rem"} flexDirection={"column"}>
-      <TimePeriod />
       {data.map((value, index) => {
         return (
           <CustomCard

@@ -4,7 +4,6 @@ import { Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { Link } from "react-router-dom";
 import { CustomCard } from "../../commons/CustomCard";
-import TimePeriod from "../commons/TimePeriod";
 import { BorderLinearProgressWithBackground } from "../../commons/BorderLinearProgress";
 import useAsync from "../../hooks/useAsync";
 import formatCurrency from "../../hooks/formatCurrency";
@@ -76,9 +75,14 @@ const CategoriesSummary = () => {
     });
   };
 
+  // Squares with numbers for the ones that are overspent, or on track
+  // Progress bar for current progress
+  // Common offenders
+  // Top 3 payees for the month
+  // Payees page to go into more details?
+
   return (
     <Grid container rowGap={"0.5rem"} flexDirection={"column"}>
-      <TimePeriod />
       {data.map((value, index) => {
         return (
           <CustomCard
