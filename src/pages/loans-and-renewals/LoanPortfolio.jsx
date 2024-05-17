@@ -6,6 +6,8 @@ import formatCurrency from "../../hooks/formatCurrency";
 import LoanPortfolioChart from "./LoanPortfolioChart";
 import HandleDataLoad from "../../commons/HandleDataLoad";
 
+// Payments remaining of each of the loans
+
 const LoanPortfolio = () => {
   const { data, loading, error } = useAsync("/loan-portfolio");
 

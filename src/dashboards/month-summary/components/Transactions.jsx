@@ -70,18 +70,19 @@ const CustomRow = ({ row }) => {
         </TableCell>
         <TableCell
           align="right"
-          style={{ borderBottom: "unset", paddingBottom: 0 }}
+          style={{ borderBottom: "unset", paddingBottom: 0, paddingLeft: 0 }}
         >
           £ {formatCurrency(row.amount, false, false)}
         </TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ fontStyle: "italic", paddingTop: 0 }}>
-          <Typography variant="caption">
-            {row.category} - {row.subcategory}
-          </Typography>
+          <Typography variant="caption">{row.category}</Typography>
         </TableCell>
-        <TableCell align="right" style={{ fontStyle: "italic", paddingTop: 0 }}>
+        <TableCell
+          align="right"
+          style={{ fontStyle: "italic", paddingTop: 0, paddingLeft: 0 }}
+        >
           <Typography variant="caption">
             {dayjs(row.date).format("Do MMM")}
           </Typography>
@@ -133,9 +134,7 @@ const Transactions = ({ data, accountId }) => {
         <TableHead style={{ backgroundColor: "#C06969" }}>
           <TableRow>
             <TableCell>Payee/Cat</TableCell>
-            <TableCell align="right" colSpan={6}>
-              (£)/Date
-            </TableCell>
+            <TableCell align="right">(£)/Date</TableCell>
           </TableRow>
         </TableHead>
         <TableBody style={{ backgroundColor: "#121212" }}>
@@ -150,7 +149,7 @@ const Transactions = ({ data, accountId }) => {
           ))}
           {emptyRows > 0 && (
             <TableRow style={{ height: 53 * emptyRows }}>
-              <TableCell colSpan={6} />
+              <TableCell />
             </TableRow>
           )}
         </TableBody>
