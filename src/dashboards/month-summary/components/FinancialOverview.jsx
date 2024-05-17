@@ -1,22 +1,7 @@
 import { Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { CustomCard } from "../../../commons/CustomCard";
-import { Link } from "react-router-dom";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import formatCurrency from "../../../hooks/formatCurrency";
-
-const ChevronButton = ({ pageLink }) => {
-  return (
-    <Link to={pageLink}>
-      <ChevronRightIcon
-        sx={{
-          opacity: "50%",
-          color: "white",
-        }}
-      />
-    </Link>
-  );
-};
 
 const FinancialOverview = ({ data }) => {
   return (
@@ -24,40 +9,38 @@ const FinancialOverview = ({ data }) => {
       <Grid
         container
         flexDirection={"column"}
-        rowGap={"1rem"}
+        rowGap={"0.75rem"}
         padding={"1.5rem 2rem"}
       >
         <Grid container justifyContent={"space-between"}>
-          <Typography variant="subtitle1">Last month income:</Typography>
+          <Typography variant="subtitle1">Last month income</Typography>
           <Typography variant="subtitle1">
             <span>£</span> {formatCurrency(data.income, false, true)}
           </Typography>
         </Grid>
         <Grid container justifyContent={"space-between"}>
-          <Typography variant="subtitle1">Savings goal:</Typography>
+          <Typography variant="subtitle1">Savings goal</Typography>
           <Grid container>
             <Typography variant="subtitle1" paddingRight={"0.25rem"}>
-              <span>£</span> {formatCurrency(data.savings, false, true)}
+              ( <span>£</span> {formatCurrency(data.savings, false, true)} )
             </Typography>
-            <ChevronButton pageLink={"/portal/admin/savings"} />
           </Grid>
         </Grid>
         <Grid container justifyContent={"space-between"}>
-          <Typography variant="subtitle1">Bills & renewals:</Typography>
+          <Typography variant="subtitle1">Bills & renewals</Typography>
           <Grid container>
             <Typography variant="subtitle1" paddingRight={"0.25rem"}>
-              <span>£</span> {formatCurrency(data.bills, false, true)}
+              ( <span>£</span> {formatCurrency(data.bills, false, true)} )
             </Typography>
-            <ChevronButton pageLink={"/monthly-summary/bills"} />
           </Grid>
         </Grid>
         <Grid container justifyContent={"space-between"}>
-          <Typography variant="subtitle1">Spent this month:</Typography>
+          <Typography variant="subtitle1">Spent this month</Typography>
           <Grid container>
             <Typography variant="subtitle1" paddingRight={"0.25rem"}>
-              <span>£</span> {formatCurrency(data.balance_spent, false, true)}
+              ( <span>£</span> {formatCurrency(data.balance_spent, false, true)}{" "}
+              )
             </Typography>
-            <ChevronButton pageLink={"/monthly-summary/transactions"} />
           </Grid>
         </Grid>
         <hr style={{ width: "100%", opacity: "25%" }} />

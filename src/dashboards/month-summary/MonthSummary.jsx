@@ -2,7 +2,7 @@ import Grid from "@mui/material/Unstable_Grid2";
 import { useContext } from "react";
 import { Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-import AutorenewIcon from "@mui/icons-material/Autorenew";
+import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
 import CategoryIcon from "@mui/icons-material/Category";
 import ShowChartIcon from "@mui/icons-material/ShowChart";
 import TodayIcon from "@mui/icons-material/Today";
@@ -44,6 +44,34 @@ const MonthSummary = () => {
         columnGap={"0.5rem"}
         rowGap={"0.5rem"}
       >
+        <Link
+          to={"/monthly-summary/bills"}
+          style={{
+            textDecoration: "none",
+            color: "inherit",
+          }}
+        >
+          <CustomCard
+            sx={{
+              width: "100%",
+              height: "100%",
+            }}
+            backgroundcolor={"#F0F0C9"}
+          >
+            <Grid
+              container
+              flexDirection={"column"}
+              rowGap={"0.5rem"}
+              height={"100%"}
+              alignItems={"center"}
+              justifyContent={"center"}
+              color={"#121212"}
+            >
+              <ReceiptLongIcon />
+              <Typography>Bills</Typography>
+            </Grid>
+          </CustomCard>
+        </Link>
         <Link
           to={"/portal/admin/budgets"}
           style={{
@@ -132,34 +160,6 @@ const MonthSummary = () => {
           </CustomCard>
         </Link>
         <Link
-          to={"/portal/admin/loans-and-renewals"}
-          style={{
-            textDecoration: "none",
-            color: "inherit",
-          }}
-        >
-          <CustomCard
-            sx={{
-              width: "100%",
-              height: "100%",
-            }}
-            backgroundcolor={"#F0F0C9"}
-          >
-            <Grid
-              container
-              flexDirection={"column"}
-              rowGap={"0.5rem"}
-              height={"100%"}
-              alignItems={"center"}
-              justifyContent={"center"}
-              color={"#121212"}
-            >
-              <AutorenewIcon />
-              <Typography>Renewals</Typography>
-            </Grid>
-          </CustomCard>
-        </Link>
-        <Link
           to={"/portal/admin/savings"}
           style={{
             textDecoration: "none",
@@ -188,7 +188,7 @@ const MonthSummary = () => {
           </CustomCard>
         </Link>
         <Link
-          to={"/portal/admin/ynab-transaction"}
+          to={"/monthly-summary/transactions"}
           style={{
             textDecoration: "none",
             color: "inherit",

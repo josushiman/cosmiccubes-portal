@@ -3,6 +3,7 @@ import Grid from "@mui/material/Unstable_Grid2";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import LogoutIcon from "@mui/icons-material/Logout";
 import MoneyIcon from "@mui/icons-material/Money";
+import TranslateIcon from "@mui/icons-material/Translate";
 
 const LogoutMenuButton = ({ ref }) => {
   const logout = useLogout();
@@ -28,6 +29,11 @@ const CustomMenu = () => (
           to="/gym-summary"
           primaryText="Gym Summary"
           leftIcon={<FitnessCenterIcon />}
+        />
+        <Menu.Item
+          to="/languages-summary"
+          primaryText="Languages"
+          leftIcon={<TranslateIcon />}
         />
         <hr style={{ width: "100%" }} />
         <Menu.ResourceItem name="portal/admin/budgets" />
