@@ -15,6 +15,9 @@ import HandleDataLoad from "../../commons/HandleDataLoad";
 import formatCurrency from "../../hooks/formatCurrency";
 
 // Average credit card bill, trends?
+// Top spenders
+//  - Biggest purchase
+//  - Most common purchase & payee?
 
 const TransactionsSummary = () => {
   const { timePeriod } = useContext(TimePeriodContext);
@@ -51,6 +54,7 @@ const TransactionsSummary = () => {
                 borderTopLeftRadius: "0.25rem",
                 borderTopRightRadius: "0.25rem",
               }}
+              defaultExpanded={value.name == "BA AMEX" && true}
             >
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
