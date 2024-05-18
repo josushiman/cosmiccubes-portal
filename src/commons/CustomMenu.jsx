@@ -4,6 +4,7 @@ import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import LogoutIcon from "@mui/icons-material/Logout";
 import MoneyIcon from "@mui/icons-material/Money";
 import TranslateIcon from "@mui/icons-material/Translate";
+import BoltIcon from "@mui/icons-material/Bolt";
 
 const LogoutMenuButton = ({ ref }) => {
   const logout = useLogout();
@@ -34,6 +35,11 @@ const CustomMenu = () => (
           to="/languages-summary"
           primaryText="Languages"
           leftIcon={<TranslateIcon />}
+        />
+        <Menu.Item
+          to="/utilities-summary"
+          primaryText="Utilities"
+          leftIcon={<BoltIcon />}
         />
         <hr style={{ width: "100%" }} />
         <Menu.ResourceItem name="portal/admin/budgets" />
