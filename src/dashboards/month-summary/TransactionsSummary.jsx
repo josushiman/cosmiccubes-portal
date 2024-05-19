@@ -13,6 +13,7 @@ import { CustomCard } from "../../commons/CustomCard";
 import Transactions from "./components/Transactions";
 import HandleDataLoad from "../../commons/HandleDataLoad";
 import formatCurrency from "../../hooks/formatCurrency";
+import AverageCardBill from "./components/AverageCardBill";
 
 // Average credit card bill, trends?
 // Top spenders
@@ -44,6 +45,7 @@ const TransactionsSummary = () => {
           </Typography>
         </Grid>
       </CustomCard>
+      <AverageCardBill />
       <Grid>
         {data.accounts.map((value, index) => {
           return (
