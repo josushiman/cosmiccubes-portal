@@ -156,7 +156,7 @@ const Transactions = ({ data, accountId }) => {
         <TableFooter style={{ backgroundColor: "#121212" }}>
           <TableRow>
             <TablePagination
-              rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
+              rowsPerPageOptions={[{ label: "All", value: -1 }]}
               count={filteredData.length}
               rowsPerPage={rowsPerPage}
               page={page}
