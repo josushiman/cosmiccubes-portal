@@ -39,7 +39,7 @@ const AverageCardBill = () => {
           container
           display={"grid"}
           gridTemplateColumns={"auto 1fr"}
-          gridTemplateRows={"auto"}
+          gridTemplateRows={"1fr"}
           columnGap={"0.5rem"}
         >
           <Box border={"1px solid #313131"} borderRadius={"0.25rem"}>
