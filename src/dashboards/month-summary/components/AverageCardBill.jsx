@@ -20,7 +20,7 @@ const AverageCardBill = () => {
   return (
     <CustomCard
       sx={{
-        padding: "1.5rem 1rem",
+        padding: "1rem 1rem",
       }}
     >
       <Grid container paddingBottom={"1rem"}>
@@ -29,7 +29,7 @@ const AverageCardBill = () => {
         </Typography>
       </Grid>
       <hr style={{ width: "100%", opacity: "25%", marginBottom: "1rem" }} />
-      <Grid container flexDirection={"column"} rowGap={"0.5rem"}>
+      <Grid container flexDirection={"column"} rowGap={"1rem"}>
         {billsLength > 0 ? (
           <AverageCardBillChart data={data} setSelectedItem={setSelectedItem} />
         ) : (
@@ -39,6 +39,7 @@ const AverageCardBill = () => {
           container
           display={"grid"}
           gridTemplateColumns={"auto 1fr"}
+          gridTemplateRows={"auto"}
           columnGap={"0.5rem"}
         >
           <Box border={"1px solid #313131"} borderRadius={"0.25rem"}>
