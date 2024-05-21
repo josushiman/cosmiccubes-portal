@@ -19,6 +19,7 @@ import serverKnowledge from "./pages/server-knowledge";
 import transactions from "./pages/transactions";
 import InsuranceDetails from "./pages/loans-and-renewals/insurance/InsuranceDetails";
 import DailySpendSummary from "./dashboards/month-summary/DailySpendSummary";
+import BudgetDashboard from "./pages/budgets/BudgetDashboard";
 
 const defaultTheme = defaultDarkTheme;
 
@@ -71,6 +72,7 @@ export const App = () => (
       options={{ label: "Server Knowledge" }}
     />
     <CustomRoutes>
+      <Route path="dashboard/budgets" element={<BudgetDashboard />} />
       <Route path="daily-spend" element={<DailySpendSummary />} />
       <Route path="gym-summary" element={<GymSummary />} />
       <Route path="monthly-summary/bills" element={<BillsSummary />} />

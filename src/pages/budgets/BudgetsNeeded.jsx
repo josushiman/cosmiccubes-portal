@@ -14,7 +14,17 @@ const BudgetsNeeded = () => {
   }
 
   if (data.count < 1) {
-    return null;
+    return (
+      <CustomCard
+        sx={{
+          padding: "1.5rem 2rem",
+        }}
+      >
+        <Typography variant="subtitle1" fontWeight={300}>
+          All budgets created
+        </Typography>
+      </CustomCard>
+    );
   }
 
   const handleClick = (index) => {

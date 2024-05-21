@@ -15,7 +15,6 @@ import HandleDataLoad from "../../commons/HandleDataLoad";
 import formatCurrency from "../../hooks/formatCurrency";
 import AverageCardBill from "./components/AverageCardBill";
 
-// Average credit card bill, trends?
 // Top spenders
 //  - Biggest purchase
 //  - Most common purchase & payee?
@@ -45,7 +44,6 @@ const TransactionsSummary = () => {
           </Typography>
         </Grid>
       </CustomCard>
-      <AverageCardBill />
       <Grid>
         {data.accounts.map((value, index) => {
           return (
@@ -57,6 +55,7 @@ const TransactionsSummary = () => {
                 borderTopRightRadius: "0.25rem",
               }}
               defaultExpanded={value.name == "BA AMEX" && true}
+              disabled={value.balance < 1 && true}
             >
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
@@ -81,6 +80,7 @@ const TransactionsSummary = () => {
           );
         })}
       </Grid>
+      <AverageCardBill />
     </Grid>
   );
 };

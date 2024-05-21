@@ -135,7 +135,7 @@ const CustomRow = ({ hasTransactions, row, tableKeys }) => {
   );
 };
 
-const CustomDataTable = ({ data }) => {
+const CustomDataTable = ({ data, excludeKeys = undefined }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
@@ -157,6 +157,10 @@ const CustomDataTable = ({ data }) => {
 
   if (hasTransactions) {
     tableKeys.pop("transactions");
+  }
+
+  if (excludeKeys) {
+    tableKeys = tableKeys.filter((tableKey) => !excludeKeys.includes(tableKey));
   }
 
   dayjs.extend(advancedFormat);

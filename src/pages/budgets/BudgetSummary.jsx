@@ -1,40 +1,63 @@
-import { Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
-import { CustomCard } from "../../commons/CustomCard";
-import useAsync from "../../hooks/useAsync";
-import HandleDataLoad from "../../commons/HandleDataLoad";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Typography,
+} from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import PriorityHighIcon from "@mui/icons-material/PriorityHigh";
 import formatCurrency from "../../hooks/formatCurrency";
-import BudgetSummaryChart from "./BudgetSummaryChart";
+import CustomDataTable from "../../commons/CustomDataTable";
 
-const BudgetSummary = () => {
-  const { data, loading, error } = useAsync("/budgets-summary");
-
-  if (loading || !data || error) {
-    return <HandleDataLoad data={data} loading={loading} error={error} />;
-  }
-
+const BudgetSummary = ({ data }) => {
   return (
-    <CustomCard
-      sx={{
-        padding: "1.5rem 2rem",
-      }}
-    >
-      <Grid
-        container
-        justifyContent={"space-between"}
-        alignItems={"center"}
-        paddingBottom={"1rem"}
-      >
-        <Typography variant="h5" fontWeight={300}>
-          Total budgeted
-        </Typography>
-        <Typography variant="h5" fontWeight={500}>
-          £ {formatCurrency(data.total, false, true)}
-        </Typography>
-      </Grid>
-      <hr style={{ width: "100%", opacity: "25%", marginBottom: "1rem" }} />
-      <BudgetSummaryChart data={data.categories} />
-    </CustomCard>
+    <Grid>
+      {data.categories.map((value, index) => {
+        return (
+          <Accordion
+            key={index}
+            sx={{
+              backgroundImage: "unset",
+              borderTopLeftRadius: "0.25rem",
+              borderTopRightRadius: "0.25rem",
+            }}
+          >
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1-content"
+              id="panel1-header"
+            >
+              <Typography
+                variant="h6"
+                fontWeight={300}
+                sx={{ alignSelf: "center", width: "50%", flexShrink: 0 }}
+              >
+                {value.name}
+              </Typography>
+              {value.overspent > 0 && (
+                <PriorityHighIcon
+                  fontSize="1em"
+                  sx={{
+                    alignSelf: "center",
+                    color: "#C06969",
+                  }}
+                />
+              )}
+              <Typography variant="h5" textAlign={"right"} width={"100%"}>
+                £ {formatCurrency(value.budgeted, false, true)}
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <CustomDataTable
+                data={value.subcategories}
+                excludeKeys={["budgeted"]}
+              />
+            </AccordionDetails>
+          </Accordion>
+        );
+      })}
+    </Grid>
   );
 };
 

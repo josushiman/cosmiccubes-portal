@@ -6,11 +6,12 @@ import {
   required,
   NumberInput,
 } from "react-admin";
+import CreateAnotherButton from "../commons/CreateAnotherButton";
 
 const EntityCreate = () => {
   return (
     <Create title="Create Entity" redirect="list">
-      <SimpleForm>
+      <SimpleForm toolbar={<CreateAnotherButton />}>
         <NumberInput
           source="amount"
           options={{

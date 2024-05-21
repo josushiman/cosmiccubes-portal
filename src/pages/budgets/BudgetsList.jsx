@@ -4,18 +4,15 @@ import {
   TextField,
   ReferenceField,
   NumberField,
-  CreateButton,
 } from "react-admin";
 import Grid from "@mui/material/Unstable_Grid2";
-import BudgetsNeeded from "./BudgetsNeeded";
-import BudgetSummary from "./BudgetSummary";
+import CustomCreateButton from "../commons/CustomCreateButton";
 
 const EntityList = () => {
   return (
     <Grid container flexDirection={"column"} rowGap={"0.5rem"}>
-      <BudgetSummary />
-      <BudgetsNeeded />
-      <List actions={<CreateButton />}>
+      <CustomCreateButton resource={"portal/admin/budgets"} />
+      <List actions={null} hasCreate={false}>
         <Datagrid bulkActionButtons={false} rowClick="edit">
           <ReferenceField
             source="category.id"

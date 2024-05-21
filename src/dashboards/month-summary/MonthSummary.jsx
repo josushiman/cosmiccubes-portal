@@ -73,7 +73,7 @@ const MonthSummary = () => {
           </CustomCard>
         </Link>
         <Link
-          to={"/portal/admin/budgets"}
+          to={"/dashboard/budgets"}
           style={{
             textDecoration: "none",
             color: "inherit",
