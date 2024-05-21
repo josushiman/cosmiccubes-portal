@@ -9,7 +9,13 @@ import {
 import dayjs from "dayjs";
 import formatCurrency from "../../../hooks/formatCurrency";
 
-const AverageCardBillChart = ({ data, setSelectedItem }) => {
+const AverageCardBillChart = ({
+  data,
+  setSelectedItem,
+  amexLine,
+  hsbcLine,
+  barclaysLine,
+}) => {
   const handleMouseMove = (e) => {
     if (e.activePayload) {
       setSelectedItem(e.activePayload[0].payload);
@@ -55,30 +61,36 @@ const AverageCardBillChart = ({ data, setSelectedItem }) => {
           }}
         />
         <Tooltip content={<></>} />
-        <Line
-          type="bump"
-          dataKey="BA AMEX"
-          dot={true}
-          stroke="#BA306A"
-          strokeWidth={2}
-          strokeOpacity={0.7}
-        />
-        <Line
-          type="bump"
-          dataKey="HSBC CC"
-          dot={false}
-          stroke="#CFB09A"
-          strokeWidth={2}
-          strokeOpacity={0.7}
-        />
-        <Line
-          type="bump"
-          dataKey="Barclays CC"
-          dot={false}
-          stroke="#F0F0C9"
-          strokeWidth={2}
-          strokeOpacity={0.7}
-        />
+        {amexLine && (
+          <Line
+            type="bump"
+            dataKey="BA AMEX"
+            dot={true}
+            stroke="#BA306A"
+            strokeWidth={2}
+            strokeOpacity={0.7}
+          />
+        )}
+        {hsbcLine && (
+          <Line
+            type="bump"
+            dataKey="HSBC CC"
+            dot={false}
+            stroke="#CFB09A"
+            strokeWidth={2}
+            strokeOpacity={0.7}
+          />
+        )}
+        {barclaysLine && (
+          <Line
+            type="bump"
+            dataKey="Barclays CC"
+            dot={false}
+            stroke="#F0F0C9"
+            strokeWidth={2}
+            strokeOpacity={0.7}
+          />
+        )}
       </LineChart>
     </ResponsiveContainer>
   );
