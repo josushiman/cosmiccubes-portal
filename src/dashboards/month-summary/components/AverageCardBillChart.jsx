@@ -36,7 +36,6 @@ const AverageCardBillChart = ({
         }}
         onClick={(e) => handleMouseMove(e)}
         onMouseLeave={() => setSelectedItem(undefined)}
-        // onTouchMove={(e) => handleMouseMove(e)}
       >
         <XAxis
           dataKey="date"

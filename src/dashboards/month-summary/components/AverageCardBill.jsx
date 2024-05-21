@@ -22,15 +22,15 @@ const AverageCardBill = () => {
   const billsLength = data.length;
   let monthData = [
     {
-      name: "AMEX",
+      account: "AMEX",
       amount: "-",
     },
     {
-      name: "Barclays",
+      account: "Barclays",
       amount: "-",
     },
     {
-      name: "HSBC",
+      account: "HSBC",
       amount: "-",
     },
   ];
@@ -38,15 +38,15 @@ const AverageCardBill = () => {
   if (selectedItem) {
     monthData = [
       {
-        name: "AMEX",
+        account: "AMEX",
         amount: selectedItem["BA AMEX"],
       },
       {
-        name: "Barclays",
+        account: "Barclays",
         amount: selectedItem["Barclays CC"],
       },
       {
-        name: "HSBC",
+        account: "HSBC",
         amount: selectedItem["HSBC CC"],
       },
     ];
