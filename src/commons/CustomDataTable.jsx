@@ -135,6 +135,8 @@ const CustomRow = ({ hasTransactions, row, tableKeys }) => {
   );
 };
 
+// TODO support clicking through to place based on item type (e.g. budgets and clicking through to their category overview)
+
 const CustomDataTable = ({ data, excludeKeys = undefined }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -165,7 +167,6 @@ const CustomDataTable = ({ data, excludeKeys = undefined }) => {
 
   dayjs.extend(advancedFormat);
 
-  // TODO figure out the way to remove the padding on the table for the bills summary page
   return (
     <TableContainer component={Paper}>
       <Table aria-label="simple table" size="small">
