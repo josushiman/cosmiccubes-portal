@@ -17,7 +17,8 @@ import AverageCardBill from "./components/AverageCardBill";
 
 // Top spenders
 //  - Biggest purchase
-//  - Most common purchase & payee?
+//  - Refunds
+//  - Most common payee?
 
 const TransactionsSummary = () => {
   const { timePeriod } = useContext(TimePeriodContext);
@@ -30,6 +31,60 @@ const TransactionsSummary = () => {
   }
   return (
     <Grid container rowGap={"0.5rem"} flexDirection={"column"}>
+      <Grid
+        container
+        display={"grid"}
+        gridTemplateColumns={"repeat(3, 1fr)"}
+        columnGap={"0.5rem"}
+        gridTemplateRows={"6rem"}
+      >
+        <CustomCard
+          sx={{
+            width: "100%",
+            height: "100%",
+            gridColumn: "span 2",
+          }}
+        >
+          <Grid
+            container
+            display={"grid"}
+            gridTemplateColumns={"1fr"}
+            gridTemplateRows={"1fr auto"}
+            columns={2}
+            padding={"1rem"}
+            rowGap={"0.5rem"}
+            height={"100%"}
+            alignItems={"center"}
+            justifyItems={"center"}
+          >
+            <Typography variant="h5">
+              £ {formatCurrency(123.45, false, false)}
+            </Typography>
+            <Typography>Biggest purchase</Typography>
+          </Grid>
+        </CustomCard>
+        <CustomCard
+          sx={{
+            width: "100%",
+            height: "100%",
+          }}
+        >
+          <Grid
+            container
+            display={"grid"}
+            gridTemplateColumns={"1fr"}
+            gridTemplateRows={"1fr auto"}
+            padding={"1rem"}
+            rowGap={"0.5rem"}
+            height={"100%"}
+            alignItems={"center"}
+            justifyItems={"center"}
+          >
+            <Typography variant="h5">{data.refunds.count}</Typography>
+            <Typography>Refunds</Typography>
+          </Grid>
+        </CustomCard>
+      </Grid>
       <CustomCard
         sx={{
           padding: "1.5rem 1rem",
@@ -79,6 +134,34 @@ const TransactionsSummary = () => {
             </Accordion>
           );
         })}
+        <Accordion
+          sx={{
+            backgroundImage: "unset",
+            borderTopLeftRadius: "0.25rem",
+            borderTopRightRadius: "0.25rem",
+          }}
+          disabled={data.refunds.count < 1 && true}
+        >
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1-content"
+            id="panel1-header"
+          >
+            <Typography
+              variant="h6"
+              fontWeight={300}
+              sx={{ alignSelf: "center", width: "50%", flexShrink: 0 }}
+            >
+              Refunds
+            </Typography>
+            <Typography variant="h5" textAlign={"right"} width={"100%"}>
+              £ {formatCurrency(data.refunds.total, false, true)}
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Transactions data={data.refunds.transactions} />
+          </AccordionDetails>
+        </Accordion>
       </Grid>
       <AverageCardBill />
     </Grid>
