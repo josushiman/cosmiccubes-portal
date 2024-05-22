@@ -11,15 +11,20 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
 import { Link } from "react-router-dom";
 import Grid from "@mui/material/Unstable_Grid2";
+import { styled } from "@mui/material/styles";
 import { CustomCard } from "../../commons/CustomCard";
 import Transactions from "./components/Transactions";
 import HandleDataLoad from "../../commons/HandleDataLoad";
 import formatCurrency from "../../hooks/formatCurrency";
 
 // Top spenders
-//  - Biggest purchase
-//  - Refunds
 //  - Most common payee?
+
+const CustomAccordion = styled(Accordion)(() => ({
+  "&.Mui-disabled": {
+    backgroundColor: "#121212",
+  },
+}));
 
 const TransactionsSummary = () => {
   const { timePeriod } = useContext(TimePeriodContext);
@@ -141,7 +146,7 @@ const TransactionsSummary = () => {
       <Grid>
         {data.accounts.map((value, index) => {
           return (
-            <Accordion
+            <CustomAccordion
               key={index}
               sx={{
                 backgroundImage: "unset",
@@ -172,10 +177,10 @@ const TransactionsSummary = () => {
               <AccordionDetails>
                 <Transactions data={data.transactions} accountId={value.id} />
               </AccordionDetails>
-            </Accordion>
+            </CustomAccordion>
           );
         })}
-        <Accordion
+        <CustomAccordion
           sx={{
             backgroundImage: "unset",
             borderTopLeftRadius: "0.25rem",
@@ -204,7 +209,7 @@ const TransactionsSummary = () => {
           <AccordionDetails>
             <Transactions data={data.refunds.transactions} />
           </AccordionDetails>
-        </Accordion>
+        </CustomAccordion>
       </Grid>
     </Grid>
   );
