@@ -20,6 +20,7 @@ import transactions from "./pages/transactions";
 import InsuranceDetails from "./pages/loans-and-renewals/insurance/InsuranceDetails";
 import DailySpendSummary from "./dashboards/month-summary/DailySpendSummary";
 import BudgetDashboard from "./pages/budgets/BudgetDashboard";
+import PastBills from "./pages/transactions/PastBills";
 
 const defaultTheme = defaultDarkTheme;
 
@@ -75,6 +76,7 @@ export const App = () => (
       <Route path="dashboard/budgets" element={<BudgetDashboard />} />
       <Route path="daily-spend" element={<DailySpendSummary />} />
       <Route path="gym-summary" element={<GymSummary />} />
+      <Route path="insurance/details" element={<InsuranceDetails />} />
       <Route path="monthly-summary/bills" element={<BillsSummary />} />
       <Route
         path="monthly-summary/categories"
@@ -84,11 +86,11 @@ export const App = () => (
         path="monthly-summary/categories/:categoryName/:subcategoryName"
         element={<CategoryDetails />}
       />
-      <Route path="insurance/details" element={<InsuranceDetails />} />
       <Route
         path="monthly-summary/transactions"
         element={<TransactionsSummary />}
       />
+      <Route path="past-bills" element={<PastBills />} />
     </CustomRoutes>
   </Admin>
 );

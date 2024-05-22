@@ -1,11 +1,11 @@
 import { Checkbox, Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { useState } from "react";
-import useAsync from "../../../hooks/useAsync";
-import HandleDataLoad from "../../../commons/HandleDataLoad";
-import { CustomCard } from "../../../commons/CustomCard";
+import useAsync from "../../hooks/useAsync";
+import HandleDataLoad from "../../commons/HandleDataLoad";
+import { CustomCard } from "../../commons/CustomCard";
 import AverageCardBillChart from "./AverageCardBillChart";
-import CustomDataTable from "../../../commons/CustomDataTable";
+import CustomDataTable from "../../commons/CustomDataTable";
 import dayjs from "dayjs";
 
 const AverageCardBill = () => {

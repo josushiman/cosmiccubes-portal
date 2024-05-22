@@ -8,12 +8,13 @@ import {
   Typography,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import LeaderboardIcon from "@mui/icons-material/Leaderboard";
+import { Link } from "react-router-dom";
 import Grid from "@mui/material/Unstable_Grid2";
 import { CustomCard } from "../../commons/CustomCard";
 import Transactions from "./components/Transactions";
 import HandleDataLoad from "../../commons/HandleDataLoad";
 import formatCurrency from "../../hooks/formatCurrency";
-import AverageCardBill from "./components/AverageCardBill";
 
 // Top spenders
 //  - Biggest purchase
@@ -36,33 +37,9 @@ const TransactionsSummary = () => {
         display={"grid"}
         gridTemplateColumns={"repeat(3, 1fr)"}
         columnGap={"0.5rem"}
+        rowGap={"0.5rem"}
         gridTemplateRows={"6rem"}
       >
-        <CustomCard
-          sx={{
-            width: "100%",
-            height: "100%",
-            gridColumn: "span 2",
-          }}
-        >
-          <Grid
-            container
-            display={"grid"}
-            gridTemplateColumns={"1fr"}
-            gridTemplateRows={"1fr auto"}
-            columns={2}
-            padding={"1rem"}
-            rowGap={"0.5rem"}
-            height={"100%"}
-            alignItems={"center"}
-            justifyItems={"center"}
-          >
-            <Typography variant="h5">
-              £ {formatCurrency(data.biggest_purchase.amount, false, false)}
-            </Typography>
-            <Typography>Biggest purchase</Typography>
-          </Grid>
-        </CustomCard>
         <CustomCard
           sx={{
             width: "100%",
@@ -82,6 +59,68 @@ const TransactionsSummary = () => {
           >
             <Typography variant="h5">{data.refunds.count}</Typography>
             <Typography>Refunds</Typography>
+          </Grid>
+        </CustomCard>
+        <Link
+          to={"/past-bills"}
+          style={{
+            textDecoration: "none",
+            color: "inherit",
+            gridColumn: "span 2",
+          }}
+        >
+          <CustomCard
+            sx={{
+              width: "100%",
+              height: "100%",
+            }}
+            backgroundcolor={"#F0F0C9"}
+          >
+            <Grid
+              container
+              display={"grid"}
+              gridTemplateColumns={"1fr"}
+              gridTemplateRows={"1fr auto"}
+              padding={"1rem"}
+              rowGap={"0.5rem"}
+              height={"100%"}
+              alignItems={"center"}
+              justifyItems={"center"}
+              color={"#121212"}
+            >
+              <LeaderboardIcon />
+              <Typography>Past bills</Typography>
+            </Grid>
+          </CustomCard>
+        </Link>
+        <CustomCard
+          sx={{
+            width: "100%",
+            height: "100%",
+            gridColumn: "span 3",
+          }}
+        >
+          <Grid
+            container
+            display={"grid"}
+            gridTemplateColumns={"1fr"}
+            gridTemplateRows={"1fr auto"}
+            columns={2}
+            padding={"1rem"}
+            rowGap={"0.5rem"}
+            height={"100%"}
+            alignItems={"center"}
+            justifyItems={"center"}
+          >
+            <Grid container alignItems={"center"}>
+              <Typography variant="h5">
+                £ {formatCurrency(data.biggest_purchase.amount, false, false)} /
+              </Typography>
+              <Typography variant="body1">
+                {data.biggest_purchase.payee}
+              </Typography>
+            </Grid>
+            <Typography>Biggest purchase</Typography>
           </Grid>
         </CustomCard>
       </Grid>
@@ -124,9 +163,11 @@ const TransactionsSummary = () => {
                 >
                   {value.name}
                 </Typography>
-                <Typography variant="h5" textAlign={"right"} width={"100%"}>
-                  £ {formatCurrency(value.balance, false, true)}
-                </Typography>
+                {value.balance > 0 && (
+                  <Typography variant="h5" textAlign={"right"} width={"100%"}>
+                    ( £ {formatCurrency(value.balance, false, true)} )
+                  </Typography>
+                )}
               </AccordionSummary>
               <AccordionDetails>
                 <Transactions data={data.transactions} accountId={value.id} />
@@ -154,16 +195,17 @@ const TransactionsSummary = () => {
             >
               Refunds
             </Typography>
-            <Typography variant="h5" textAlign={"right"} width={"100%"}>
-              £ {formatCurrency(data.refunds.total, false, true)}
-            </Typography>
+            {data.refunds.count > 0 && (
+              <Typography variant="h5" textAlign={"right"} width={"100%"}>
+                £ {formatCurrency(data.refunds.total, false, true)}
+              </Typography>
+            )}
           </AccordionSummary>
           <AccordionDetails>
             <Transactions data={data.refunds.transactions} />
           </AccordionDetails>
         </Accordion>
       </Grid>
-      <AverageCardBill />
     </Grid>
   );
 };

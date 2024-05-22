@@ -114,7 +114,7 @@ const DailySpendSummary = () => {
           </Grid>
         </Grid>
       </CustomCard>
-      {selectedDate ? <Transactions data={selectedDate.transactions} /> : null}
+      {selectedDate && <Transactions data={selectedDate.transactions} />}
     </Grid>
   );
 };
