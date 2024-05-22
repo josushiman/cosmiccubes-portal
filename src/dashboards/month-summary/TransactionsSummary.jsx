@@ -58,7 +58,7 @@ const TransactionsSummary = () => {
             justifyItems={"center"}
           >
             <Typography variant="h5">
-              £ {formatCurrency(123.45, false, false)}
+              £ {formatCurrency(data.biggest_purchase.amount, false, false)}
             </Typography>
             <Typography>Biggest purchase</Typography>
           </Grid>
