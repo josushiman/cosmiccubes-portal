@@ -40,11 +40,61 @@ const TransactionsSummary = () => {
       <Grid
         container
         display={"grid"}
-        gridTemplateColumns={"repeat(3, 1fr)"}
         columnGap={"0.5rem"}
         rowGap={"0.5rem"}
         gridTemplateRows={"6rem"}
+        gridTemplateColumns={"repeat(3, 1fr)"}
       >
+        <CustomCard
+          sx={{
+            width: "100%",
+            height: "100%",
+          }}
+        >
+          <Grid
+            container
+            display={"grid"}
+            gridTemplateColumns={"1fr"}
+            gridTemplateRows={"1fr auto"}
+            padding={"1rem"}
+            rowGap={"0.5rem"}
+            height={"100%"}
+            alignItems={"center"}
+            justifyItems={"center"}
+          >
+            <Typography variant="h5">
+              £ {formatCurrency(data.average_purchase, false, true)}
+            </Typography>
+            <Typography>Average</Typography>
+          </Grid>
+        </CustomCard>
+        <CustomCard
+          sx={{
+            width: "100%",
+            height: "100%",
+            gridColumn: "span 2",
+          }}
+        >
+          <Grid
+            container
+            display={"grid"}
+            gridTemplateColumns={"1fr"}
+            gridTemplateRows={"1fr auto"}
+            columns={2}
+            padding={"1rem"}
+            rowGap={"0.5rem"}
+            height={"100%"}
+            alignItems={"center"}
+            justifyItems={"center"}
+          >
+            <Grid container alignItems={"center"}>
+              <Typography variant="h5">
+                £ {formatCurrency(data.biggest_purchase.amount, false, true)}
+              </Typography>
+            </Grid>
+            <Typography>Biggest</Typography>
+          </Grid>
+        </CustomCard>
         <CustomCard
           sx={{
             width: "100%",
@@ -66,12 +116,32 @@ const TransactionsSummary = () => {
             <Typography>Refunds</Typography>
           </Grid>
         </CustomCard>
+        <CustomCard
+          sx={{
+            width: "100%",
+            height: "100%",
+          }}
+        >
+          <Grid
+            container
+            display={"grid"}
+            gridTemplateColumns={"1fr"}
+            gridTemplateRows={"1fr auto"}
+            padding={"1rem"}
+            rowGap={"0.5rem"}
+            height={"100%"}
+            alignItems={"center"}
+            justifyItems={"center"}
+          >
+            <Typography variant="h5">{data.transaction_count}</Typography>
+            <Typography>Transactions</Typography>
+          </Grid>
+        </CustomCard>
         <Link
           to={"/past-bills"}
           style={{
             textDecoration: "none",
             color: "inherit",
-            gridColumn: "span 2",
           }}
         >
           <CustomCard
@@ -98,36 +168,6 @@ const TransactionsSummary = () => {
             </Grid>
           </CustomCard>
         </Link>
-        <CustomCard
-          sx={{
-            width: "100%",
-            height: "100%",
-            gridColumn: "span 3",
-          }}
-        >
-          <Grid
-            container
-            display={"grid"}
-            gridTemplateColumns={"1fr"}
-            gridTemplateRows={"1fr auto"}
-            columns={2}
-            padding={"1rem"}
-            rowGap={"0.5rem"}
-            height={"100%"}
-            alignItems={"center"}
-            justifyItems={"center"}
-          >
-            <Grid container alignItems={"center"}>
-              <Typography variant="h5">
-                £ {formatCurrency(data.biggest_purchase.amount, false, false)} /
-              </Typography>
-              <Typography variant="body1">
-                {data.biggest_purchase.payee}
-              </Typography>
-            </Grid>
-            <Typography>Biggest purchase</Typography>
-          </Grid>
-        </CustomCard>
       </Grid>
       <CustomCard
         sx={{
@@ -153,7 +193,6 @@ const TransactionsSummary = () => {
                 borderTopLeftRadius: "0.25rem",
                 borderTopRightRadius: "0.25rem",
               }}
-              defaultExpanded={value.name == "BA AMEX" && true}
               disabled={value.balance < 1 && true}
             >
               <AccordionSummary
