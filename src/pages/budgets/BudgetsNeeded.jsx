@@ -17,7 +17,7 @@ const BudgetsNeeded = () => {
     return (
       <CustomCard
         sx={{
-          padding: "1.5rem 2rem",
+          padding: "1.5rem 1rem",
         }}
       >
         <Typography variant="subtitle1" fontWeight={300}>

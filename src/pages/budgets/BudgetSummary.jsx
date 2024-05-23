@@ -28,25 +28,29 @@ const BudgetSummary = ({ data }) => {
               aria-controls="panel1-content"
               id="panel1-header"
             >
-              <Typography
-                variant="h6"
-                fontWeight={300}
-                sx={{ alignSelf: "center", width: "50%", flexShrink: 0 }}
+              <Grid
+                container
+                display={"grid"}
+                gridTemplateColumns={"1fr auto auto"}
+                gridTemplateRows={"auto"}
+                alignItems={"center"}
+                width={"100%"}
               >
-                {value.name}
-              </Typography>
-              {value.overspent > 0 && (
-                <PriorityHighIcon
-                  fontSize="1em"
-                  sx={{
-                    alignSelf: "center",
-                    color: "#C06969",
-                  }}
-                />
-              )}
-              <Typography variant="h5" textAlign={"right"} width={"100%"}>
-                £ {formatCurrency(value.budgeted, false, true)}
-              </Typography>
+                <Typography variant="h6" fontWeight={300}>
+                  {value.name}
+                </Typography>
+                {value.overspent > 0 && (
+                  <PriorityHighIcon
+                    fontSize="1em"
+                    sx={{
+                      color: "#C06969",
+                    }}
+                  />
+                )}
+                <Typography variant="h5">
+                  £ {formatCurrency(value.spent, false, true)}
+                </Typography>
+              </Grid>
             </AccordionSummary>
             <AccordionDetails>
               <CustomDataTable
