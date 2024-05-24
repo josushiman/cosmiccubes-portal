@@ -31,7 +31,7 @@ const AverageCardBillChart = ({
         margin={{
           top: 5,
           right: 0,
-          left: 0,
+          left: -15,
           bottom: 0,
         }}
         onClick={(e) => handleMouseMove(e)}

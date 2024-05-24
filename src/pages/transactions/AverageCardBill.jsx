@@ -58,12 +58,6 @@ const AverageCardBill = () => {
         padding: "1rem 1rem",
       }}
     >
-      <Grid container paddingBottom={"1rem"}>
-        <Typography variant="h5" fontWeight={300}>
-          Average bills
-        </Typography>
-      </Grid>
-      <hr style={{ width: "100%", opacity: "25%", marginBottom: "1rem" }} />
       <Grid container flexDirection={"column"} rowGap={"1rem"}>
         <Grid
           container

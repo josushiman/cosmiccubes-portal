@@ -1,12 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import {
-  Box,
-  FilledInput,
-  Typography,
-  FormControl,
-  InputLabel,
-} from "@mui/material";
+import { Box, FilledInput, FormControl, InputLabel } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import Grid from "@mui/material/Unstable_Grid2";
@@ -54,20 +48,9 @@ const DailySpendSummary = () => {
     <Grid container flexDirection={"column"} rowGap={"0.5rem"}>
       <CustomCard
         sx={{
-          padding: "1.5rem 2rem",
+          padding: "1.5rem 1rem",
         }}
       >
-        <Grid
-          container
-          justifyContent={"space-between"}
-          alignItems={"center"}
-          paddingBottom={"1rem"}
-        >
-          <Typography variant="h5" fontWeight={300}>
-            Daily spend
-          </Typography>
-        </Grid>
-        <hr style={{ width: "100%", opacity: "25%", marginBottom: "1rem" }} />
         <Grid container flexDirection={"column"} rowGap={"0.5rem"}>
           <DailySpendChart
             data={filteredData}

@@ -20,17 +20,6 @@ const SavingsOverTime = () => {
         padding: "1.5rem 2rem",
       }}
     >
-      <Grid
-        container
-        justifyContent={"space-between"}
-        alignItems={"center"}
-        paddingBottom={"1rem"}
-      >
-        <Typography variant="h5" fontWeight={300}>
-          Savings
-        </Typography>
-      </Grid>
-      <hr style={{ width: "100%", opacity: "25%", marginBottom: "1rem" }} />
       <Grid container flexDirection={"column"} rowGap={"0.5rem"}>
         <Grid container justifyContent={"space-between"}>
           <Typography>Savings over time</Typography>
