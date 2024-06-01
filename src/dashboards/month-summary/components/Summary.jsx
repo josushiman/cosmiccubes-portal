@@ -4,7 +4,7 @@ import { CustomCard } from "../../../commons/CustomCard";
 import formatCurrency from "../../../hooks/formatCurrency";
 import { ThickBorderLinearProgressWithBackground } from "../../../commons/BorderLinearProgress";
 
-const Summary = ({ data }) => {
+const Summary = ({ data, isCurrentMonth }) => {
   const {
     days_left,
     balance_available,
@@ -18,6 +18,8 @@ const Summary = ({ data }) => {
   if (progress >= 100) {
     progress = 100;
   }
+
+  console.log(isCurrentMonth);
 
   const ProgressBarText = () => {
     if (progress < 100) {
@@ -34,8 +36,8 @@ const Summary = ({ data }) => {
 
     return (
       <Typography variant="body1">
-        You are <strong>£ {formatCurrency(overSpent, false, true)}</strong> over
-        budget
+        You {isCurrentMonth() ? "are" : "were"}{" "}
+        <strong>£ {formatCurrency(overSpent, false, true)}</strong> over budget
       </Typography>
     );
   };
@@ -57,16 +59,20 @@ const Summary = ({ data }) => {
           <Typography variant="h4" fontWeight={500}>
             £ {formatCurrency(balance_available, false, true)}
           </Typography>
-          <hr style={{ opacity: "25%" }} />
-          <Typography
-            variant="body1"
-            fontWeight={300}
-            style={{
-              alignSelf: "center",
-            }}
-          >
-            {days_left} days left
-          </Typography>
+          {!isCurrentMonth() && (
+            <>
+              <hr style={{ opacity: "25%" }} />
+              <Typography
+                variant="body1"
+                fontWeight={300}
+                style={{
+                  alignSelf: "center",
+                }}
+              >
+                {days_left} days left
+              </Typography>
+            </>
+          )}
         </Grid>
         <ThickBorderLinearProgressWithBackground
           variant="determinate"
@@ -80,7 +86,9 @@ const Summary = ({ data }) => {
           flexDirection={"row"}
           width={"100%"}
         >
-          <Typography variant="h5">Daily spend:</Typography>
+          <Typography variant="h5">
+            {isCurrentMonth() ? "Daily" : "Average daily"} spend:
+          </Typography>
           <Typography variant="h5" fontWeight={500}>
             £ {formatCurrency(daily_spend, false, true)}
           </Typography>

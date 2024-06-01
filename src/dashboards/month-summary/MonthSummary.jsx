@@ -18,7 +18,7 @@ import { CustomCard } from "../../commons/CustomCard";
 import "./styles.css";
 
 const MonthSummary = () => {
-  const { timePeriod } = useContext(TimePeriodContext);
+  const { isCurrentMonth, timePeriod } = useContext(TimePeriodContext);
   const { data, loading, error } = useAsync(`/monthly-summary${timePeriod}`);
 
   if (loading || !data || error) {
@@ -35,7 +35,7 @@ const MonthSummary = () => {
       flexDirection={"column"}
     >
       {notificationText ? <NotificationCard data={data.notif} /> : null}
-      <Summary data={data.summary} />
+      <Summary data={data.summary} isCurrentMonth={isCurrentMonth} />
       <Grid
         container
         display={"grid"}

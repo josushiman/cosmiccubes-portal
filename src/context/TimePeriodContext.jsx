@@ -28,6 +28,13 @@ const TimePeriodProvider = ({ children }) => {
     return dayjs(`${year}-${specificMonth}-01`).format("MMMM 'YY");
   };
 
+  const isCurrentMonth = () => {
+    if (currentMonth == specificMonth && currentYear == year) {
+      return true;
+    }
+    return false;
+  };
+
   const setMonthIntervals = (monthsSelection) => {
     setMonths(monthsSelection);
     // Reset the year and specificMonth
@@ -120,6 +127,7 @@ const TimePeriodProvider = ({ children }) => {
         year,
         specificMonth,
         getAppBarText,
+        isCurrentMonth,
         setMonthIntervals,
         setYearNoMonthInterval,
         setYearMonthInterval,
