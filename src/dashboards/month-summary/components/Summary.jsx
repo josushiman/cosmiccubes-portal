@@ -19,8 +19,6 @@ const Summary = ({ data, isCurrentMonth }) => {
     progress = 100;
   }
 
-  console.log(isCurrentMonth);
-
   const ProgressBarText = () => {
     if (progress < 100) {
       return (
