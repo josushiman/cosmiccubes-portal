@@ -1,12 +1,15 @@
 import { Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
+import { useContext } from "react";
+import { TimePeriodContext } from "../../context/TimePeriodContext";
 import useAsync from "../../hooks/useAsync";
 import HandleDataLoad from "../../commons/HandleDataLoad";
 import { CustomCard } from "../../commons/CustomCard";
 import Transactions from "../../dashboards/month-summary/components/Transactions";
 
 const Refunds = () => {
-  const { data, loading, error } = useAsync(`/refunds`);
+  const { timePeriod } = useContext(TimePeriodContext);
+  const { data, loading, error } = useAsync(`/refunds${timePeriod}`);
 
   if (loading || !data || error) {
     return <HandleDataLoad data={data} loading={loading} error={error} />;
