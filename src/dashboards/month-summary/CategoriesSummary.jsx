@@ -9,6 +9,12 @@ import useAsync from "../../hooks/useAsync";
 import formatCurrency from "../../hooks/formatCurrency";
 import HandleDataLoad from "../../commons/HandleDataLoad";
 
+// Squares with numbers for the ones that are overspent, or on track
+// Progress bar for current progress
+// Common offenders
+// Top 3 payees for the month
+// Payees page to go into more details?
+
 const CategoriesSummary = () => {
   const { timePeriod } = useContext(TimePeriodContext);
   const { data, loading, error } = useAsync(`/categories-summary${timePeriod}`);
@@ -77,12 +83,6 @@ const CategoriesSummary = () => {
       );
     });
   };
-
-  // Squares with numbers for the ones that are overspent, or on track
-  // Progress bar for current progress
-  // Common offenders
-  // Top 3 payees for the month
-  // Payees page to go into more details?
 
   return (
     <Grid container rowGap={"0.5rem"} flexDirection={"column"}>
