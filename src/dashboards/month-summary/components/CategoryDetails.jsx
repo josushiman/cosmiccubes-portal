@@ -11,6 +11,8 @@ import Transactions from "./Transactions";
 import HandleDataLoad from "../../../commons/HandleDataLoad";
 import { ThickBorderLinearProgressWithBackground } from "../../../commons/BorderLinearProgress";
 
+// TODO graph to show budget and spent over time
+
 const CategoryDetails = () => {
   let { categoryName, subcategoryName } = useParams();
   const { timePeriod } = useContext(TimePeriodContext);

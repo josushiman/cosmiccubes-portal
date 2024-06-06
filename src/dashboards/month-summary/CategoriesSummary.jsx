@@ -32,14 +32,17 @@ const CategoriesSummary = () => {
   }
 
   const SubCategoryList = ({ data, categoryName }) => {
+    const cleanCatName = categoryName.replace(" ", "-");
+
     return data.map((value, index) => {
       let categoryLinkName = value.name.toLowerCase();
+      console.log(categoryLinkName);
       let cleanName = categoryLinkName.replace(" ", "-");
 
       return (
         <Link
           key={index}
-          to={`/monthly-summary/categories/${categoryName}/${cleanName}`}
+          to={`/monthly-summary/categories/${cleanCatName}/${cleanName}`}
           state={{
             progress: value.progress,
             budgeted: value.budgeted,

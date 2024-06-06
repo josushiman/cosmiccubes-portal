@@ -61,6 +61,7 @@ const CustomAppBar = () => {
         {pageTitle && (
           <Typography
             variant="caption"
+            textTransform={"capitalize"}
             padding={"0.25rem 0.5rem"}
             sx={{
               backgroundColor: "#121212",
