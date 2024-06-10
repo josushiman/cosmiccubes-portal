@@ -34,6 +34,7 @@ const CategoryDetails = () => {
 
   categoryName = categoryName.replace("-", " ");
   const maxBar = data.budget >= data.total ? data.budget : data.total;
+  const reversedData = data.trends.data.slice().reverse();
 
   return (
     <Grid container rowGap={"0.5rem"} flexDirection={"column"}>
@@ -213,7 +214,7 @@ const CategoryDetails = () => {
       >
         <Grid container flexDirection={"column"} rowGap={"1rem"}>
           <CustomLineChart data={data.trends.data} />
-          <CustomDataTable data={data.trends.data} defaultRowsPerPage={6} />
+          <CustomDataTable data={reversedData} defaultRowsPerPage={6} />
         </Grid>
       </CustomCard>
     </Grid>

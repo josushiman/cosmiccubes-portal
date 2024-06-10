@@ -17,7 +17,7 @@ const CustomLineChart = ({ data }) => {
         margin={{
           top: 5,
           right: 0,
-          left: -15,
+          left: -5,
           bottom: 0,
         }}
       >
@@ -35,10 +35,9 @@ const CustomLineChart = ({ data }) => {
           tickMargin={10}
           domain={[0, "dataMax + 10"]}
           tickFormatter={(value) => {
-            let axisTick = formatCurrency(value, true);
+            const axisTick = formatCurrency(value, true);
             if (value >= 1000) {
-              let axisParts = axisTick.split(",");
-              return axisParts[0] + "k";
+              return axisTick.split(",")[0] + "k";
             }
             return axisTick;
           }}
