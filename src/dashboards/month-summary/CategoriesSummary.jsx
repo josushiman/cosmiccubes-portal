@@ -42,7 +42,7 @@ const CategoriesSummary = () => {
 
     return data.map((value, index) => {
       let categoryLinkName = value.name.toLowerCase();
-      console.log(categoryLinkName);
+      // console.log(categoryLinkName);
       let cleanName = categoryLinkName.replace(" ", "-");
 
       return (
