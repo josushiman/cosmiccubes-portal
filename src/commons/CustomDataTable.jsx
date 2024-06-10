@@ -86,6 +86,8 @@ const CustomRow = ({ hasTransactions, row, tableKeys }) => {
               ? formatCurrency(row[value], false, false)
               : value == "date"
               ? dayjs(row[value]).format("Do")
+              : value == "month"
+              ? dayjs(row[value]).format("MMMM 'YY")
               : row[value]}
           </TableCell>
         ))}
@@ -137,9 +139,13 @@ const CustomRow = ({ hasTransactions, row, tableKeys }) => {
 
 // TODO support clicking through to place based on item type (e.g. budgets and clicking through to their category overview)
 
-const CustomDataTable = ({ data, excludeKeys = undefined }) => {
+const CustomDataTable = ({
+  data,
+  excludeKeys = undefined,
+  defaultRowsPerPage = 5,
+}) => {
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [rowsPerPage, setRowsPerPage] = useState(defaultRowsPerPage);
 
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
