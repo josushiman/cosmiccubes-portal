@@ -6,7 +6,7 @@ import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
 import CategoryIcon from "@mui/icons-material/Category";
 import ShowChartIcon from "@mui/icons-material/ShowChart";
 import TodayIcon from "@mui/icons-material/Today";
-import SavingsIcon from "@mui/icons-material/Savings";
+import GroupsIcon from "@mui/icons-material/Groups";
 import ReceiptIcon from "@mui/icons-material/Receipt";
 import { TimePeriodContext } from "../../context/TimePeriodContext";
 import useAsync from "../../hooks/useAsync";
@@ -160,7 +160,7 @@ const MonthSummary = () => {
           </CustomCard>
         </Link>
         <Link
-          to={"/portal/admin/savings"}
+          to={"/monthly-summary/payees"}
           style={{
             textDecoration: "none",
             color: "inherit",
@@ -182,8 +182,8 @@ const MonthSummary = () => {
               justifyContent={"center"}
               color={"#121212"}
             >
-              <SavingsIcon />
-              <Typography>Savings</Typography>
+              <GroupsIcon />
+              <Typography>Payees</Typography>
             </Grid>
           </CustomCard>
         </Link>

@@ -2,6 +2,7 @@ const pathMap = {
   "/": "Home",
   "/monthly-summary/bills": "Bills summary",
   "/monthly-summary/categories": "Categories summary",
+  "/monthly-summary/payees": "Payee summary",
   "/monthly-summary/transactions": "Transaction summary",
   "/dashboard/budgets": "Budgets summary",
   "/daily-spend": "Daily spend",

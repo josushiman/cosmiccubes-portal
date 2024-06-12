@@ -8,6 +8,7 @@ import Dashboard from "./dashboards/month-summary/MonthSummary";
 import BillsSummary from "./dashboards/month-summary/BillsSummary";
 import CategoriesSummary from "./dashboards/month-summary/CategoriesSummary";
 import CategoryDetails from "./dashboards/month-summary/components/CategoryDetails";
+import PayeeSummary from "./dashboards/month-summary/PayeeSummary";
 import TransactionsSummary from "./dashboards/month-summary/TransactionsSummary";
 import budgets from "./pages/budgets";
 import categories from "./pages/categories";
@@ -86,6 +87,7 @@ export const App = () => (
         path="monthly-summary/categories/:categoryName/:subcategoryName"
         element={<CategoryDetails />}
       />
+      <Route path="monthly-summary/payees" element={<PayeeSummary />} />
       <Route
         path="monthly-summary/transactions"
         element={<TransactionsSummary />}
