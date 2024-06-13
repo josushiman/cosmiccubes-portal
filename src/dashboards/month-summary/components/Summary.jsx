@@ -41,7 +41,7 @@ const Summary = ({ data, isCurrentMonth }) => {
   };
 
   return (
-    <CustomCard>
+    <CustomCard nopadding={"true"}>
       <Grid
         container
         padding={"1.5rem 2rem"}

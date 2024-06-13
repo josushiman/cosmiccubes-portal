@@ -46,11 +46,7 @@ const DailySpendSummary = () => {
 
   return (
     <Grid container flexDirection={"column"} rowGap={"0.5rem"}>
-      <CustomCard
-        sx={{
-          padding: "1.5rem 1rem",
-        }}
-      >
+      <CustomCard>
         <Grid container flexDirection={"column"} rowGap={"0.5rem"}>
           <DailySpendChart
             data={filteredData}

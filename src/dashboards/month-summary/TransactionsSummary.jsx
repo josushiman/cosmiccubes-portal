@@ -50,6 +50,7 @@ const TransactionsSummary = () => {
             width: "100%",
             height: "100%",
           }}
+          nopadding={"true"}
         >
           <Grid
             container
@@ -74,6 +75,7 @@ const TransactionsSummary = () => {
             height: "100%",
             gridColumn: "span 2",
           }}
+          nopadding={"true"}
         >
           <Grid
             container
@@ -100,6 +102,7 @@ const TransactionsSummary = () => {
             width: "100%",
             height: "100%",
           }}
+          nopadding={"true"}
         >
           <Grid
             container
@@ -121,6 +124,7 @@ const TransactionsSummary = () => {
             width: "100%",
             height: "100%",
           }}
+          nopadding={"true"}
         >
           <Grid
             container
@@ -150,6 +154,7 @@ const TransactionsSummary = () => {
               height: "100%",
             }}
             backgroundcolor={"#F0F0C9"}
+            nopadding={"true"}
           >
             <Grid
               container
@@ -169,11 +174,7 @@ const TransactionsSummary = () => {
           </CustomCard>
         </Link>
       </Grid>
-      <CustomCard
-        sx={{
-          padding: "1.5rem 1rem",
-        }}
-      >
+      <CustomCard>
         <Grid container justifyContent={"space-between"} alignItems={"center"}>
           <Typography variant="h5" fontWeight={300}>
             Total

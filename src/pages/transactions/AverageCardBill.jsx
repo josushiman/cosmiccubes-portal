@@ -53,11 +53,7 @@ const AverageCardBill = () => {
   }
 
   return (
-    <CustomCard
-      sx={{
-        padding: "1rem 1rem",
-      }}
-    >
+    <CustomCard>
       <Grid container flexDirection={"column"} rowGap={"1rem"}>
         <Grid
           container

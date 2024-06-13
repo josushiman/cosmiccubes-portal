@@ -48,7 +48,6 @@ const CategoryDetails = () => {
       >
         <CustomCard
           sx={{
-            padding: "1.5rem 2rem",
             gridColumn: "span 2",
           }}
         >
@@ -90,6 +89,7 @@ const CategoryDetails = () => {
             width: "100%",
             height: "100%",
           }}
+          nopadding={"true"}
         >
           <Grid
             container
@@ -117,6 +117,7 @@ const CategoryDetails = () => {
             width: "100%",
             height: "100%",
           }}
+          nopadding={"true"}
         >
           <Grid
             container
@@ -156,6 +157,7 @@ const CategoryDetails = () => {
               height: "100%",
             }}
             backgroundcolor={"#F0F0C9"}
+            nopadding={"true"}
           >
             <Grid
               container
@@ -187,6 +189,7 @@ const CategoryDetails = () => {
               height: "100%",
             }}
             backgroundcolor={"#F0F0C9"}
+            nopadding={"true"}
           >
             <Grid
               container
@@ -207,11 +210,7 @@ const CategoryDetails = () => {
         </Link>
       </Grid>
       <Trends data={data.trends.summary} />
-      <CustomCard
-        sx={{
-          padding: "1rem 1rem",
-        }}
-      >
+      <CustomCard>
         <Grid container flexDirection={"column"} rowGap={"1rem"}>
           <CustomLineChart data={data.trends.data} />
           <CustomDataTable data={reversedData} defaultRowsPerPage={6} />

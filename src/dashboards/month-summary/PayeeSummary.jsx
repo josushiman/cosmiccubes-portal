@@ -37,6 +37,7 @@ const PayeeSummary = () => {
             width: "100%",
             height: "100%",
           }}
+          nopadding={"true"}
         >
           <Grid
             container
@@ -56,6 +57,7 @@ const PayeeSummary = () => {
             height: "100%",
             gridColumn: "span 2",
           }}
+          nopadding={"true"}
         >
           <Grid
             container

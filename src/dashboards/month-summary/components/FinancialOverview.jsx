@@ -5,7 +5,7 @@ import formatCurrency from "../../../hooks/formatCurrency";
 
 const FinancialOverview = ({ data }) => {
   return (
-    <CustomCard>
+    <CustomCard nopadding={"true"}>
       <Grid
         container
         flexDirection={"column"}

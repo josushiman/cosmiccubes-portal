@@ -17,7 +17,7 @@ const UpcomingRenewals = ({ data }) => {
         color: "inherit",
       }}
     >
-      <CustomCard>
+      <CustomCard nopadding={"true"}>
         <Grid
           container
           flexDirection={"column"}

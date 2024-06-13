@@ -76,11 +76,7 @@ const TimeRangeSelector = () => {
 
   const CurrentSelection = () => {
     return (
-      <CustomCard
-        sx={{
-          padding: "1.5rem 2rem",
-        }}
-      >
+      <CustomCard>
         <Grid container flexDirection={"column"} alignItems={"center"}>
           <Typography>{timePeriod}</Typography>
         </Grid>
@@ -197,6 +193,7 @@ const TimeRangeSelector = () => {
   return (
     <Grid position={"absolute"} left={0} top={0} width={"100%"}>
       <CustomCard
+        nopadding={"true"}
         style={{
           position: "absolute",
           left: "0px",
@@ -217,6 +214,7 @@ const TimeRangeSelector = () => {
       >
         <CurrentSelection />
         <CustomCard
+          nopadding={"true"}
           sx={{
             boxShadow: "none",
           }}
@@ -241,6 +239,7 @@ const TimeRangeSelector = () => {
           flexWrap={"nowrap"}
         >
           <CustomCard
+            nopadding={"true"}
             onClick={cancelForm}
             backgroundcolor={"#C06969"}
             sx={{ width: "100%" }}
@@ -255,7 +254,11 @@ const TimeRangeSelector = () => {
               </Button>
             </Grid>
           </CustomCard>
-          <CustomCard onClick={submitForm} sx={{ width: "100%" }}>
+          <CustomCard
+            onClick={submitForm}
+            sx={{ width: "100%" }}
+            nopadding={"true"}
+          >
             <Grid container padding={"1rem"} justifyContent={"center"}>
               <Button
                 sx={{

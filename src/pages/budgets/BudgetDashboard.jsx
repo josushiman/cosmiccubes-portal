@@ -31,6 +31,7 @@ const BudgetDashboard = () => {
             width: "100%",
             height: "100%",
           }}
+          nopadding={"true"}
         >
           <Grid
             container
@@ -52,6 +53,7 @@ const BudgetDashboard = () => {
             width: "100%",
             height: "100%",
           }}
+          nopadding={"true"}
         >
           <Grid
             container
@@ -81,6 +83,7 @@ const BudgetDashboard = () => {
               height: "100%",
             }}
             backgroundcolor={"#F0F0C9"}
+            nopadding={"true"}
           >
             <Grid
               container
@@ -100,11 +103,7 @@ const BudgetDashboard = () => {
           </CustomCard>
         </Link>
       </Grid>
-      <CustomCard
-        sx={{
-          padding: "1.5rem 1rem",
-        }}
-      >
+      <CustomCard>
         <Grid container justifyContent={"space-between"} alignItems={"center"}>
           <Typography variant="h5" fontWeight={300}>
             Total budgeted

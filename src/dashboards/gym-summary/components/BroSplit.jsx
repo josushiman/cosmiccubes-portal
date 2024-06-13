@@ -5,11 +5,7 @@ import { CustomCard } from "../../../commons/CustomCard";
 const BroSplit = () => {
   return (
     <Grid container rowGap={"0.5rem"} flexDirection={"column"}>
-      <CustomCard
-        sx={{
-          padding: "1.5rem 2rem",
-        }}
-      >
+      <CustomCard>
         <Typography variant="h5" fontWeight={300}>
           Bro Split
         </Typography>

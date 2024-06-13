@@ -15,11 +15,7 @@ const BudgetsNeeded = () => {
 
   if (data.count < 1) {
     return (
-      <CustomCard
-        sx={{
-          padding: "1.5rem 1rem",
-        }}
-      >
+      <CustomCard>
         <Typography variant="subtitle1" fontWeight={300}>
           All budgets created
         </Typography>
@@ -36,11 +32,7 @@ const BudgetsNeeded = () => {
   };
 
   return (
-    <CustomCard
-      sx={{
-        padding: "1.5rem 2rem",
-      }}
-    >
+    <CustomCard>
       <Grid
         container
         justifyContent={"space-between"}
@@ -110,6 +102,7 @@ const BudgetsNeeded = () => {
               <CustomCard
                 onClick={() => handleClick(undefined)}
                 backgroundcolor={"#C06969"}
+                nopadding={"true"}
               >
                 <Grid container padding={"unset"} justifyContent={"center"}>
                   <Button

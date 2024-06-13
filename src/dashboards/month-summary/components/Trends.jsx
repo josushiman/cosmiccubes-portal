@@ -8,7 +8,7 @@ import formatCurrency from "../../../hooks/formatCurrency";
 
 const Trends = ({ data }) => {
   return (
-    <CustomCard>
+    <CustomCard nopadding={"true"}>
       <Grid container flexDirection={"column"} padding={"2rem"}>
         <Grid container flexDirection={"column"} rowGap={"1rem"}>
           {data.map((value, index) => {

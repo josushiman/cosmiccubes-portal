@@ -15,11 +15,7 @@ const SavingsOverTime = () => {
   const savingsLength = data.length;
 
   return (
-    <CustomCard
-      sx={{
-        padding: "1.5rem 2rem",
-      }}
-    >
+    <CustomCard>
       <Grid container flexDirection={"column"} rowGap={"0.5rem"}>
         <Grid container justifyContent={"space-between"}>
           <Typography>Savings over time</Typography>

@@ -70,7 +70,7 @@ const CategoriesOverview = ({ data }) => {
         textDecoration: "none",
       }}
     >
-      <CustomCard>
+      <CustomCard nopadding={"true"}>
         <Grid
           container
           flexDirection={"column"}

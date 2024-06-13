@@ -57,6 +57,7 @@ const MonthSummary = () => {
               height: "100%",
             }}
             backgroundcolor={"#F0F0C9"}
+            nopadding={"true"}
           >
             <Grid
               container
@@ -85,6 +86,7 @@ const MonthSummary = () => {
               height: "100%",
             }}
             backgroundcolor={"#F0F0C9"}
+            nopadding={"true"}
           >
             <Grid
               container
@@ -113,6 +115,7 @@ const MonthSummary = () => {
               height: "100%",
             }}
             backgroundcolor={"#F0F0C9"}
+            nopadding={"true"}
           >
             <Grid
               container
@@ -144,6 +147,7 @@ const MonthSummary = () => {
               height: "100%",
             }}
             backgroundcolor={"#F0F0C9"}
+            nopadding={"true"}
           >
             <Grid
               container
@@ -172,6 +176,7 @@ const MonthSummary = () => {
               height: "100%",
             }}
             backgroundcolor={"#F0F0C9"}
+            nopadding={"true"}
           >
             <Grid
               container
@@ -200,6 +205,7 @@ const MonthSummary = () => {
               height: "100%",
             }}
             backgroundcolor={"#F0F0C9"}
+            nopadding={"true"}
           >
             <Grid
               container

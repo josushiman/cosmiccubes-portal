@@ -5,11 +5,7 @@ import { CustomCard } from "../../../commons/CustomCard";
 const Last7Sessions = () => {
   return (
     <Grid container rowGap={"0.5rem"} flexDirection={"column"}>
-      <CustomCard
-        sx={{
-          padding: "1.5rem 2rem",
-        }}
-      >
+      <CustomCard>
         <Typography variant="h5" fontWeight={300}>
           Last 7 Sessions
         </Typography>

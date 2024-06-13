@@ -13,11 +13,7 @@ const GymSummary = () => {
 
   return (
     <Grid container rowGap={"0.5rem"} flexDirection={"column"}>
-      <CustomCard
-        sx={{
-          padding: "1.5rem 2rem",
-        }}
-      >
+      <CustomCard>
         <Grid container justifyContent={"space-between"} alignItems={"center"}>
           <Typography variant="h5" fontWeight={300}>
             Next session

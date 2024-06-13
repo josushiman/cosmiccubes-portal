@@ -5,11 +5,7 @@ import { CustomCard } from "./CustomCard";
 const CustomErrorScreen = ({ error }) => {
   return (
     <Grid container rowGap={"0.5rem"} flexDirection={"column"}>
-      <CustomCard
-        sx={{
-          padding: "1.5rem 2rem",
-        }}
-      >
+      <CustomCard>
         <Grid
           container
           flexDirection={"column"}

@@ -6,11 +6,7 @@ import "./styles.css";
 const CustomLoadingScreen = () => {
   return (
     <Grid container rowGap={"0.5rem"} flexDirection={"column"}>
-      <CustomCard
-        sx={{
-          padding: "1.5rem 2rem",
-        }}
-      >
+      <CustomCard>
         <Grid
           container
           flexDirection={"column"}

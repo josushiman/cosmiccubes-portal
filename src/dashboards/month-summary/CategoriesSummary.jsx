@@ -88,12 +88,7 @@ const CategoriesSummary = () => {
     <Grid container rowGap={"0.5rem"} flexDirection={"column"}>
       {data.map((value, index) => {
         return (
-          <CustomCard
-            key={index}
-            sx={{
-              padding: "1.5rem 2rem",
-            }}
-          >
+          <CustomCard key={index}>
             <Typography
               variant="subtitle2"
               fontWeight={300}

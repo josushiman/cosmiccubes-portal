@@ -24,7 +24,7 @@ export const returnColumnKey = (originalKey) => {
 
 export const returnColumnValue = (originalValue, row) => {
   dayjs.extend(advancedFormat);
-  console.log(originalValue, row);
+
   const formatter = columnValueFormatMap[originalValue];
   return formatter ? formatter(row[originalValue]) : row[originalValue];
 };

@@ -5,11 +5,7 @@ import { CustomCard } from "../../../commons/CustomCard";
 const NotificationCard = ({ data }) => {
   return (
     <Grid container justifyContent={"center"}>
-      <CustomCard
-        sx={{
-          padding: "0.75rem 3rem",
-        }}
-      >
+      <CustomCard>
         <Typography variant="body1">
           <strong>{data}</strong>
         </Typography>

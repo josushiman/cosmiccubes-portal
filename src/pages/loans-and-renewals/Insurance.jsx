@@ -21,11 +21,7 @@ const Insurance = () => {
         color: "inherit",
       }}
     >
-      <CustomCard
-        sx={{
-          padding: "1.5rem 2rem",
-        }}
-      >
+      <CustomCard>
         <Grid
           container
           justifyContent={"space-between"}

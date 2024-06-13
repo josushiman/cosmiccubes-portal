@@ -13,11 +13,7 @@ const PayeesChart = ({ data, payeeCount }) => {
   const endIndexVar = Math.round(payeeCount / 3);
 
   return (
-    <CustomCard
-      sx={{
-        padding: "1.5rem 1rem",
-      }}
-    >
+    <CustomCard>
       <ResponsiveContainer width="100%" height={225}>
         <BarChart
           data={data}
