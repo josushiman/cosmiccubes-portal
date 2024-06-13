@@ -6,6 +6,6 @@ export const CustomCard = styled(Card)(
     backgroundImage: "none",
     backgroundColor: backgroundcolor ? backgroundcolor : "#121212",
     color: textColor ? textColor : "#fff",
-    padding: nopadding ? "unset" : "1.5rem 2rem",
+    padding: nopadding ? "unset" : "1.5rem 1rem",
   })
 );

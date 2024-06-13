@@ -1,21 +1,40 @@
 import Grid from "@mui/material/Unstable_Grid2";
 import { useContext } from "react";
-import { Typography } from "@mui/material";
-import { Link } from "react-router-dom";
-import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
-import CategoryIcon from "@mui/icons-material/Category";
-import ShowChartIcon from "@mui/icons-material/ShowChart";
-import TodayIcon from "@mui/icons-material/Today";
-import GroupsIcon from "@mui/icons-material/Groups";
-import ReceiptIcon from "@mui/icons-material/Receipt";
 import { TimePeriodContext } from "../../context/TimePeriodContext";
 import useAsync from "../../hooks/useAsync";
 import Summary from "./components/Summary";
 import FinancialOverview from "./components/FinancialOverview";
 import NotificationCard from "./components/NotificationCard";
 import HandleDataLoad from "../../commons/HandleDataLoad";
-import { CustomCard } from "../../commons/CustomCard";
-import "./styles.css";
+import LinkedInfoCard from "../../commons/LinkedInfoCard";
+import InfoCardGrid from "../../commons/InfoCardGrid";
+
+const infoCards = [
+  {
+    name: "bills",
+    navLink: "/monthly-summary/bills",
+  },
+  {
+    name: "budgets",
+    navLink: "/dashboard/budgets",
+  },
+  {
+    name: "categories",
+    navLink: "/monthly-summary/categories",
+  },
+  {
+    name: "daily spend",
+    navLink: "/daily-spend",
+  },
+  {
+    name: "payees",
+    navLink: "/monthly-summary/payees",
+  },
+  {
+    name: "transactions",
+    navLink: "/monthly-summary/transactions",
+  },
+];
 
 const MonthSummary = () => {
   const { isCurrentMonth, timePeriod } = useContext(TimePeriodContext);
@@ -36,192 +55,18 @@ const MonthSummary = () => {
     >
       {notificationText ? <NotificationCard data={data.notif} /> : null}
       <Summary data={data.summary} isCurrentMonth={isCurrentMonth} />
-      <Grid
-        container
-        display={"grid"}
-        gridTemplateColumns={"repeat(3, 1fr)"}
-        gridTemplateRows={"repeat(2, 6rem)"}
-        columnGap={"0.5rem"}
-        rowGap={"0.5rem"}
-      >
-        <Link
-          to={"/monthly-summary/bills"}
-          style={{
-            textDecoration: "none",
-            color: "inherit",
-          }}
-        >
-          <CustomCard
-            sx={{
-              width: "100%",
-              height: "100%",
-            }}
-            backgroundcolor={"#F0F0C9"}
-            nopadding={"true"}
-          >
-            <Grid
-              container
-              flexDirection={"column"}
-              rowGap={"0.5rem"}
-              height={"100%"}
-              alignItems={"center"}
-              justifyContent={"center"}
-              color={"#121212"}
-            >
-              <ReceiptLongIcon />
-              <Typography>Bills</Typography>
-            </Grid>
-          </CustomCard>
-        </Link>
-        <Link
-          to={"/dashboard/budgets"}
-          style={{
-            textDecoration: "none",
-            color: "inherit",
-          }}
-        >
-          <CustomCard
-            sx={{
-              width: "100%",
-              height: "100%",
-            }}
-            backgroundcolor={"#F0F0C9"}
-            nopadding={"true"}
-          >
-            <Grid
-              container
-              flexDirection={"column"}
-              rowGap={"0.5rem"}
-              height={"100%"}
-              alignItems={"center"}
-              justifyContent={"center"}
-              color={"#121212"}
-            >
-              <ShowChartIcon />
-              <Typography>Budgets</Typography>
-            </Grid>
-          </CustomCard>
-        </Link>
-        <Link
-          to={"/monthly-summary/categories"}
-          style={{
-            textDecoration: "none",
-            color: "inherit",
-          }}
-        >
-          <CustomCard
-            sx={{
-              width: "100%",
-              height: "100%",
-            }}
-            backgroundcolor={"#F0F0C9"}
-            nopadding={"true"}
-          >
-            <Grid
-              container
-              flexDirection={"column"}
-              rowGap={"0.5rem"}
-              height={"100%"}
-              alignItems={"center"}
-              justifyContent={"center"}
-              color={"#121212"}
-            >
-              <CategoryIcon />
-              <Typography>Categories</Typography>
-            </Grid>
-          </CustomCard>
-        </Link>
-        <Link
-          to={"/daily-spend"}
-          state={{
-            dailySpend: data.summary.daily_spend,
-          }}
-          style={{
-            textDecoration: "none",
-            color: "inherit",
-          }}
-        >
-          <CustomCard
-            sx={{
-              width: "100%",
-              height: "100%",
-            }}
-            backgroundcolor={"#F0F0C9"}
-            nopadding={"true"}
-          >
-            <Grid
-              container
-              flexDirection={"column"}
-              rowGap={"0.5rem"}
-              height={"100%"}
-              alignItems={"center"}
-              justifyContent={"center"}
-              color={"#121212"}
-            >
-              <TodayIcon />
-              <Typography>Daily spend</Typography>
-            </Grid>
-          </CustomCard>
-        </Link>
-        <Link
-          to={"/monthly-summary/payees"}
-          style={{
-            textDecoration: "none",
-            color: "inherit",
-          }}
-        >
-          <CustomCard
-            sx={{
-              width: "100%",
-              height: "100%",
-            }}
-            backgroundcolor={"#F0F0C9"}
-            nopadding={"true"}
-          >
-            <Grid
-              container
-              flexDirection={"column"}
-              rowGap={"0.5rem"}
-              height={"100%"}
-              alignItems={"center"}
-              justifyContent={"center"}
-              color={"#121212"}
-            >
-              <GroupsIcon />
-              <Typography>Payees</Typography>
-            </Grid>
-          </CustomCard>
-        </Link>
-        <Link
-          to={"/monthly-summary/transactions"}
-          style={{
-            textDecoration: "none",
-            color: "inherit",
-          }}
-        >
-          <CustomCard
-            sx={{
-              width: "100%",
-              height: "100%",
-            }}
-            backgroundcolor={"#F0F0C9"}
-            nopadding={"true"}
-          >
-            <Grid
-              container
-              flexDirection={"column"}
-              rowGap={"0.5rem"}
-              height={"100%"}
-              alignItems={"center"}
-              justifyContent={"center"}
-              color={"#121212"}
-            >
-              <ReceiptIcon />
-              <Typography>Transactions</Typography>
-            </Grid>
-          </CustomCard>
-        </Link>
-      </Grid>
+      <InfoCardGrid>
+        {infoCards.map((value, index) => {
+          return (
+            <LinkedInfoCard
+              key={index}
+              icon={true}
+              name={value.name}
+              navLink={value.navLink}
+            />
+          );
+        })}
+      </InfoCardGrid>
       <FinancialOverview data={data.income_expenses} />
     </Grid>
   );

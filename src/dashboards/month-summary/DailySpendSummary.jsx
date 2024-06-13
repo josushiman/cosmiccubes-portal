@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 import { Box, FilledInput, FormControl, InputLabel } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
@@ -24,7 +23,9 @@ const DailySpendSummary = () => {
   const [numDays, setNumDays] = useState(7);
   const [selectedDate, setSelectedDate] = useState(undefined);
   const { data, loading, error } = useAsync(`/daily-spend?num_days=7`);
-  const { dailySpend } = useLocation().state;
+  const dailySpend = 53;
+  // const { dailySpend } = useLocation().state;
+  // TODO remove state from navigation
 
   useEffect(() => {
     setSelectedDate(undefined);
