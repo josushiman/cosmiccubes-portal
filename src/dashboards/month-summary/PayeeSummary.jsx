@@ -7,6 +7,7 @@ import HandleDataLoad from "../../commons/HandleDataLoad";
 import useAsync from "../../hooks/useAsync";
 import formatCurrency from "../../hooks/formatCurrency";
 import PayeesChart from "./components/PayeesChart";
+import CustomDataTable from "../../commons/CustomDataTable";
 
 // Payees broken down by:
 //  Number of unique payees (no bills)
@@ -72,6 +73,7 @@ const PayeeSummary = () => {
         </CustomCard>
       </Grid>
       <PayeesChart data={data.data} payeeCount={data.count} />
+      <CustomDataTable data={data.data} defaultRowsPerPage={10} />
     </Grid>
   );
 };

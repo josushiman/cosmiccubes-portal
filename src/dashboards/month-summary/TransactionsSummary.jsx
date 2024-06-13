@@ -13,9 +13,9 @@ import { Link } from "react-router-dom";
 import Grid from "@mui/material/Unstable_Grid2";
 import { styled } from "@mui/material/styles";
 import { CustomCard } from "../../commons/CustomCard";
-import Transactions from "./components/Transactions";
 import HandleDataLoad from "../../commons/HandleDataLoad";
 import formatCurrency from "../../hooks/formatCurrency";
+import CustomDataTable from "../../commons/CustomDataTable";
 
 // Top spenders
 //  - Most common payee?
@@ -214,7 +214,11 @@ const TransactionsSummary = () => {
                 )}
               </AccordionSummary>
               <AccordionDetails>
-                <Transactions data={data.transactions} accountId={value.id} />
+                <CustomDataTable
+                  data={data.transactions}
+                  accountId={value.id}
+                  showTransactions={true}
+                />
               </AccordionDetails>
             </CustomAccordion>
           );
@@ -246,7 +250,10 @@ const TransactionsSummary = () => {
             )}
           </AccordionSummary>
           <AccordionDetails>
-            <Transactions data={data.refunds.transactions} />
+            <CustomDataTable
+              data={data.refunds.transactions}
+              showTransactions={true}
+            />
           </AccordionDetails>
         </CustomAccordion>
       </Grid>

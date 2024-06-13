@@ -5,7 +5,7 @@ import { TimePeriodContext } from "../../context/TimePeriodContext";
 import useAsync from "../../hooks/useAsync";
 import HandleDataLoad from "../../commons/HandleDataLoad";
 import { CustomCard } from "../../commons/CustomCard";
-import Transactions from "../../dashboards/month-summary/components/Transactions";
+import CustomDataTable from "../../commons/CustomDataTable";
 
 const Refunds = () => {
   const { timePeriod } = useContext(TimePeriodContext);
@@ -37,7 +37,11 @@ const Refunds = () => {
         </Grid>
         <hr style={{ width: "100%", opacity: "25%", marginBottom: "1rem" }} />
       </CustomCard>
-      <Transactions data={data.transactions} accountId={undefined} />
+      <CustomDataTable
+        data={data.transactions}
+        accountId={undefined}
+        showTransactions={true}
+      />
     </>
   );
 };

@@ -8,7 +8,7 @@ import useAsync from "../../hooks/useAsync";
 import HandleDataLoad from "../../commons/HandleDataLoad";
 import { CustomCard } from "../../commons/CustomCard";
 import DailySpendChart from "./components/DailySpendChart";
-import Transactions from "./components/Transactions";
+import CustomDataTable from "../../commons/CustomDataTable";
 
 const disabledStyles = {
   padding: "0.75rem 1rem",
@@ -97,7 +97,12 @@ const DailySpendSummary = () => {
           </Grid>
         </Grid>
       </CustomCard>
-      {selectedDate && <Transactions data={selectedDate.transactions} />}
+      {selectedDate && (
+        <CustomDataTable
+          data={selectedDate.transactions}
+          showTransactions={true}
+        />
+      )}
     </Grid>
   );
 };
