@@ -1,14 +1,12 @@
 import Grid from "@mui/material/Unstable_Grid2";
-import { Typography } from "@mui/material";
 import useAsync from "../../hooks/useAsync";
 import HandleDataLoad from "../../commons/HandleDataLoad";
-import { CustomCard } from "../../commons/CustomCard";
-import formatCurrency from "../../hooks/formatCurrency";
 import BudgetSummary from "./BudgetSummary";
 import BudgetsNeeded from "./BudgetsNeeded";
 import InfoCardGrid from "../../commons/InfoCardGrid";
 import InfoCard from "../../commons/InfoCard";
 import LinkedInfoCard from "../../commons/LinkedInfoCard";
+import TotalCard from "../../commons/TotalCard";
 
 const BudgetDashboard = () => {
   const { data, loading, error } = useAsync("/budgets-dashboard");
@@ -28,16 +26,7 @@ const BudgetDashboard = () => {
           navLink="/portal/admin/budgets"
         />
       </InfoCardGrid>
-      <CustomCard>
-        <Grid container justifyContent={"space-between"} alignItems={"center"}>
-          <Typography variant="h5" fontWeight={300}>
-            Total budgeted
-          </Typography>
-          <Typography variant="h4" fontWeight={500}>
-            £ {formatCurrency(data.total, false, true)}
-          </Typography>
-        </Grid>
-      </CustomCard>
+      <TotalCard value={data.total} />
       <BudgetSummary data={data} />
       <BudgetsNeeded />
     </Grid>

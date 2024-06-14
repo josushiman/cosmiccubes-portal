@@ -1,6 +1,6 @@
-import formatCurrency from "./formatCurrency";
 import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
+import formatCurrency from "./formatCurrency";
 
 const columnKeyMap = {
   amount: "amount (£)",
@@ -12,6 +12,12 @@ export const columnValueFormatMap = {
   amount: (value) => formatCurrency(value, false, false),
   average: (value) => `£ ${formatCurrency(value, false, true)}`,
   biggest: (value) => `£ ${formatCurrency(value, false, false)}`,
+  budget: (value) =>
+    value > 0
+      ? `£ ${formatCurrency(value, false, true)}`
+      : value == 0
+      ? `£ ${formatCurrency(0, false, true)}`
+      : "∞",
   date: (value) => dayjs(value).format("Do"),
   month: (value) => dayjs(value).format("MMMM 'YY"),
   payee: (value) => (value.length > 20 ? value.slice(0, 20) + "..." : value),

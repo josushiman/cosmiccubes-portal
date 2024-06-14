@@ -10,13 +10,13 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Grid from "@mui/material/Unstable_Grid2";
 import { styled } from "@mui/material/styles";
-import { CustomCard } from "../../commons/CustomCard";
 import HandleDataLoad from "../../commons/HandleDataLoad";
 import formatCurrency from "../../hooks/formatCurrency";
 import CustomDataTable from "../../commons/CustomDataTable";
 import InfoCardGrid from "../../commons/InfoCardGrid";
 import InfoCard from "../../commons/InfoCard";
 import LinkedInfoCard from "../../commons/LinkedInfoCard";
+import TotalCard from "../../commons/TotalCard";
 
 // Top spenders
 //  - Most common payee?
@@ -49,16 +49,7 @@ const TransactionsSummary = () => {
         <InfoCard name="transactions" value={data.transaction_count} />
         <LinkedInfoCard icon={true} name="past bills" navLink="/past-bills" />
       </InfoCardGrid>
-      <CustomCard>
-        <Grid container justifyContent={"space-between"} alignItems={"center"}>
-          <Typography variant="h5" fontWeight={300}>
-            Total
-          </Typography>
-          <Typography variant="h4" fontWeight={500}>
-            £ {formatCurrency(data.total, false, true)}
-          </Typography>
-        </Grid>
-      </CustomCard>
+      <TotalCard value={data.total} />
       <Grid>
         {data.accounts.map((value, index) => {
           return (

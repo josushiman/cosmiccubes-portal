@@ -4,7 +4,7 @@ import { CustomCard } from "./CustomCard";
 import returnIcon from "../hooks/returnIcon";
 import { returnValue } from "../hooks/returnValue";
 
-const InfoCard = ({ icon, name, value, span = undefined }) => {
+const InfoCard = ({ icon, name, value = undefined, span = undefined }) => {
   console.debug("Props passed down:", icon, name, value);
   return (
     <CustomCard
@@ -13,7 +13,7 @@ const InfoCard = ({ icon, name, value, span = undefined }) => {
         height: "100%",
         gridColumn: span ? `span ${span}` : "unset",
       }}
-      backgroundcolor={icon && "#F0F0C9"}
+      backgroundcolor={icon && value == undefined && "#F0F0C9"}
       nopadding={"true"}
     >
       <Grid
@@ -23,10 +23,10 @@ const InfoCard = ({ icon, name, value, span = undefined }) => {
         height={"100%"}
         alignItems={"center"}
         justifyContent={"center"}
-        color={icon && "#121212"}
+        color={icon && value == undefined && "#121212"}
       >
         {icon ? (
-          returnIcon(name)
+          returnIcon(name, value)
         ) : (
           <Typography variant="h5">{returnValue(name, value)}</Typography>
         )}

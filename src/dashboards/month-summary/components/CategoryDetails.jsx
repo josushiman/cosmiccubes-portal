@@ -1,11 +1,7 @@
 import { Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
-import { useLocation, useParams, Link } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { useContext } from "react";
-import GroupsIcon from "@mui/icons-material/Groups";
-import ReceiptIcon from "@mui/icons-material/Receipt";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import CancelIcon from "@mui/icons-material/Cancel";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import { TimePeriodContext } from "../../../context/TimePeriodContext";
 import { CustomCard } from "../../../commons/CustomCard";
@@ -16,6 +12,9 @@ import HandleDataLoad from "../../../commons/HandleDataLoad";
 import { ThickBorderLinearProgressWithBackground } from "../../../commons/BorderLinearProgress";
 import CustomLineChart from "../../../pages/commons/CustomLineChart";
 import CustomDataTable from "../../../commons/CustomDataTable";
+import InfoCardGrid from "../../../commons/InfoCardGrid";
+import InfoCard from "../../../commons/InfoCard";
+import LinkedInfoCard from "../../../commons/LinkedInfoCard";
 
 // TODO pie chart for spent in that category but broken down by payee
 
@@ -38,14 +37,7 @@ const CategoryDetails = () => {
 
   return (
     <Grid container rowGap={"0.5rem"} flexDirection={"column"}>
-      <Grid
-        container
-        display={"grid"}
-        columnGap={"0.5rem"}
-        rowGap={"0.5rem"}
-        gridTemplateRows={"6rem"}
-        gridTemplateColumns={"repeat(3, 1fr)"}
-      >
+      <InfoCardGrid rows={2}>
         <CustomCard
           sx={{
             gridColumn: "span 2",
@@ -84,131 +76,19 @@ const CategoryDetails = () => {
             )}
           </Grid>
         </CustomCard>
-        <CustomCard
-          sx={{
-            width: "100%",
-            height: "100%",
-          }}
-          nopadding={"true"}
-        >
-          <Grid
-            container
-            display={"grid"}
-            gridTemplateColumns={"1fr"}
-            gridTemplateRows={"1fr auto"}
-            padding={"1rem"}
-            rowGap={"0.5rem"}
-            height={"100%"}
-            alignItems={"center"}
-            justifyItems={"center"}
-          >
-            {data.on_track ? (
-              <CheckCircleIcon />
-            ) : data.on_track == false ? (
-              <CancelIcon />
-            ) : (
-              <Typography variant="h5">-</Typography>
-            )}
-            <Typography>On track</Typography>
-          </Grid>
-        </CustomCard>
-        <CustomCard
-          sx={{
-            width: "100%",
-            height: "100%",
-          }}
-          nopadding={"true"}
-        >
-          <Grid
-            container
-            display={"grid"}
-            gridTemplateColumns={"1fr"}
-            gridTemplateRows={"1fr auto"}
-            padding={"1rem"}
-            rowGap={"0.5rem"}
-            height={"100%"}
-            alignItems={"center"}
-            justifyItems={"center"}
-          >
-            {data.budget > 0 ? (
-              <Typography variant="h5">
-                £ {formatCurrency(data.budget, false, true)}
-              </Typography>
-            ) : data.budget == 0 ? (
-              <Typography variant="h5">
-                £ {formatCurrency(0, false, true)}
-              </Typography>
-            ) : (
-              <Typography variant="h5">∞</Typography>
-            )}
-            <Typography>Budget</Typography>
-          </Grid>
-        </CustomCard>
-        <Link
-          to={`/categories-summary/${categoryName}/${subcategoryName}/payees`}
-          style={{
-            textDecoration: "none",
-            color: "inherit",
-          }}
-        >
-          <CustomCard
-            sx={{
-              width: "100%",
-              height: "100%",
-            }}
-            backgroundcolor={"#F0F0C9"}
-            nopadding={"true"}
-          >
-            <Grid
-              container
-              display={"grid"}
-              gridTemplateColumns={"1fr"}
-              gridTemplateRows={"1fr auto"}
-              padding={"1rem"}
-              rowGap={"0.5rem"}
-              height={"100%"}
-              alignItems={"center"}
-              justifyItems={"center"}
-              color={"#121212"}
-            >
-              <GroupsIcon />
-              <Typography>Payees</Typography>
-            </Grid>
-          </CustomCard>
-        </Link>
-        <Link
-          to={`/categories-summary/${categoryName}/${subcategoryName}/transactions`}
-          style={{
-            textDecoration: "none",
-            color: "inherit",
-          }}
-        >
-          <CustomCard
-            sx={{
-              width: "100%",
-              height: "100%",
-            }}
-            backgroundcolor={"#F0F0C9"}
-            nopadding={"true"}
-          >
-            <Grid
-              container
-              display={"grid"}
-              gridTemplateColumns={"1fr"}
-              gridTemplateRows={"1fr auto"}
-              padding={"1rem"}
-              rowGap={"0.5rem"}
-              height={"100%"}
-              alignItems={"center"}
-              justifyItems={"center"}
-              color={"#121212"}
-            >
-              <ReceiptIcon />
-              <Typography>Transactions</Typography>
-            </Grid>
-          </CustomCard>
-        </Link>
-      </Grid>
+        <InfoCard icon={true} name="on track" value={data.on_track} />
+        <InfoCard name="budget" value={data.budget} />
+        <LinkedInfoCard
+          icon={true}
+          name="payees"
+          navLink={`/categories-summary/${categoryName}/${subcategoryName}/payees`}
+        />
+        <LinkedInfoCard
+          icon={true}
+          name="transactions"
+          navLink={`/categories-summary/${categoryName}/${subcategoryName}/transactions`}
+        />
+      </InfoCardGrid>
       <Trends data={data.trends.summary} />
       <CustomCard>
         <Grid container flexDirection={"column"} rowGap={"1rem"}>

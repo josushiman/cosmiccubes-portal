@@ -6,13 +6,13 @@ import {
   Typography,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { CustomCard } from "../../commons/CustomCard";
 import useAsync from "../../hooks/useAsync";
 import formatCurrency from "../../hooks/formatCurrency";
 import HandleDataLoad from "../../commons/HandleDataLoad";
 import CustomDataTable from "../../commons/CustomDataTable";
 import InfoCardGrid from "../../commons/InfoCardGrid";
 import InfoCard from "../../commons/InfoCard";
+import TotalCard from "../../commons/TotalCard";
 
 const BillsSummary = () => {
   const { data, loading, error } = useAsync("/upcoming-bills");
@@ -31,16 +31,7 @@ const BillsSummary = () => {
         <InfoCard name="loans" value={loansLength} />
         <InfoCard name="renewals" value={renewalsLength} />
       </InfoCardGrid>
-      <CustomCard>
-        <Grid container justifyContent={"space-between"} alignItems={"center"}>
-          <Typography variant="h5" fontWeight={300}>
-            Total
-          </Typography>
-          <Typography variant="h4" fontWeight={500}>
-            £ {formatCurrency(data.total, false, true)}
-          </Typography>
-        </Grid>
-      </CustomCard>
+      <TotalCard value={data.total} />
       <Grid>
         <Accordion
           sx={{
