@@ -11,6 +11,8 @@ import useAsync from "../../hooks/useAsync";
 import formatCurrency from "../../hooks/formatCurrency";
 import HandleDataLoad from "../../commons/HandleDataLoad";
 import CustomDataTable from "../../commons/CustomDataTable";
+import InfoCardGrid from "../../commons/InfoCardGrid";
+import InfoCard from "../../commons/InfoCard";
 
 const BillsSummary = () => {
   const { data, loading, error } = useAsync("/upcoming-bills");
@@ -24,71 +26,11 @@ const BillsSummary = () => {
 
   return (
     <Grid container rowGap={"0.5rem"} flexDirection={"column"}>
-      <Grid
-        container
-        display={"grid"}
-        gridTemplateColumns={"repeat(3, 1fr)"}
-        columnGap={"0.5rem"}
-        gridTemplateRows={"6rem"}
-      >
-        <CustomCard
-          sx={{
-            width: "100%",
-            height: "100%",
-          }}
-          nopadding={"true"}
-        >
-          <Grid
-            container
-            flexDirection={"column"}
-            rowGap={"0.5rem"}
-            height={"100%"}
-            alignItems={"center"}
-            justifyContent={"center"}
-          >
-            <Typography variant="h5">{data.count_bills}</Typography>
-            <Typography>Bills</Typography>
-          </Grid>
-        </CustomCard>
-        <CustomCard
-          sx={{
-            width: "100%",
-            height: "100%",
-          }}
-          nopadding={"true"}
-        >
-          <Grid
-            container
-            flexDirection={"column"}
-            rowGap={"0.5rem"}
-            height={"100%"}
-            alignItems={"center"}
-            justifyContent={"center"}
-          >
-            <Typography variant="h5">{loansLength}</Typography>
-            <Typography>Loans</Typography>
-          </Grid>
-        </CustomCard>
-        <CustomCard
-          sx={{
-            width: "100%",
-            height: "100%",
-          }}
-          nopadding={"true"}
-        >
-          <Grid
-            container
-            flexDirection={"column"}
-            rowGap={"0.5rem"}
-            height={"100%"}
-            alignItems={"center"}
-            justifyContent={"center"}
-          >
-            <Typography variant="h5">{renewalsLength}</Typography>
-            <Typography>Renewals</Typography>
-          </Grid>
-        </CustomCard>
-      </Grid>
+      <InfoCardGrid rows={1}>
+        <InfoCard name="bills" value={data.count_bills} />
+        <InfoCard name="loans" value={loansLength} />
+        <InfoCard name="renewals" value={renewalsLength} />
+      </InfoCardGrid>
       <CustomCard>
         <Grid container justifyContent={"space-between"} alignItems={"center"}>
           <Typography variant="h5" fontWeight={300}>

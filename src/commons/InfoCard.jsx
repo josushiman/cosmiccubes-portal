@@ -2,14 +2,16 @@ import Grid from "@mui/material/Unstable_Grid2";
 import { Typography } from "@mui/material";
 import { CustomCard } from "./CustomCard";
 import returnIcon from "../hooks/returnIcon";
+import { returnValue } from "../hooks/returnValue";
 
-const InfoCard = ({ icon, name, value }) => {
+const InfoCard = ({ icon, name, value, span = undefined }) => {
   console.debug("Props passed down:", icon, name, value);
   return (
     <CustomCard
       sx={{
         width: "100%",
         height: "100%",
+        gridColumn: span ? `span ${span}` : "unset",
       }}
       backgroundcolor={icon && "#F0F0C9"}
       nopadding={"true"}
@@ -23,7 +25,11 @@ const InfoCard = ({ icon, name, value }) => {
         justifyContent={"center"}
         color={icon && "#121212"}
       >
-        {icon && returnIcon(name)}
+        {icon ? (
+          returnIcon(name)
+        ) : (
+          <Typography variant="h5">{returnValue(name, value)}</Typography>
+        )}
         <Typography textTransform={"capitalize"}>{name}</Typography>
       </Grid>
     </CustomCard>

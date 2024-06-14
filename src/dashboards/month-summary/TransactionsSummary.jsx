@@ -8,14 +8,15 @@ import {
   Typography,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import LeaderboardIcon from "@mui/icons-material/Leaderboard";
-import { Link } from "react-router-dom";
 import Grid from "@mui/material/Unstable_Grid2";
 import { styled } from "@mui/material/styles";
 import { CustomCard } from "../../commons/CustomCard";
 import HandleDataLoad from "../../commons/HandleDataLoad";
 import formatCurrency from "../../hooks/formatCurrency";
 import CustomDataTable from "../../commons/CustomDataTable";
+import InfoCardGrid from "../../commons/InfoCardGrid";
+import InfoCard from "../../commons/InfoCard";
+import LinkedInfoCard from "../../commons/LinkedInfoCard";
 
 // Top spenders
 //  - Most common payee?
@@ -37,143 +38,17 @@ const TransactionsSummary = () => {
   }
   return (
     <Grid container rowGap={"0.5rem"} flexDirection={"column"}>
-      <Grid
-        container
-        display={"grid"}
-        columnGap={"0.5rem"}
-        rowGap={"0.5rem"}
-        gridTemplateRows={"6rem"}
-        gridTemplateColumns={"repeat(3, 1fr)"}
-      >
-        <CustomCard
-          sx={{
-            width: "100%",
-            height: "100%",
-          }}
-          nopadding={"true"}
-        >
-          <Grid
-            container
-            display={"grid"}
-            gridTemplateColumns={"1fr"}
-            gridTemplateRows={"1fr auto"}
-            padding={"1rem"}
-            rowGap={"0.5rem"}
-            height={"100%"}
-            alignItems={"center"}
-            justifyItems={"center"}
-          >
-            <Typography variant="h5">
-              £ {formatCurrency(data.average_purchase, false, true)}
-            </Typography>
-            <Typography>Average</Typography>
-          </Grid>
-        </CustomCard>
-        <CustomCard
-          sx={{
-            width: "100%",
-            height: "100%",
-            gridColumn: "span 2",
-          }}
-          nopadding={"true"}
-        >
-          <Grid
-            container
-            display={"grid"}
-            gridTemplateColumns={"1fr"}
-            gridTemplateRows={"1fr auto"}
-            columns={2}
-            padding={"1rem"}
-            rowGap={"0.5rem"}
-            height={"100%"}
-            alignItems={"center"}
-            justifyItems={"center"}
-          >
-            <Grid container alignItems={"center"}>
-              <Typography variant="h5">
-                £ {formatCurrency(data.biggest_purchase.amount, false, true)}
-              </Typography>
-            </Grid>
-            <Typography>Biggest</Typography>
-          </Grid>
-        </CustomCard>
-        <CustomCard
-          sx={{
-            width: "100%",
-            height: "100%",
-          }}
-          nopadding={"true"}
-        >
-          <Grid
-            container
-            display={"grid"}
-            gridTemplateColumns={"1fr"}
-            gridTemplateRows={"1fr auto"}
-            padding={"1rem"}
-            rowGap={"0.5rem"}
-            height={"100%"}
-            alignItems={"center"}
-            justifyItems={"center"}
-          >
-            <Typography variant="h5">{data.refunds.count}</Typography>
-            <Typography>Refunds</Typography>
-          </Grid>
-        </CustomCard>
-        <CustomCard
-          sx={{
-            width: "100%",
-            height: "100%",
-          }}
-          nopadding={"true"}
-        >
-          <Grid
-            container
-            display={"grid"}
-            gridTemplateColumns={"1fr"}
-            gridTemplateRows={"1fr auto"}
-            padding={"1rem"}
-            rowGap={"0.5rem"}
-            height={"100%"}
-            alignItems={"center"}
-            justifyItems={"center"}
-          >
-            <Typography variant="h5">{data.transaction_count}</Typography>
-            <Typography>Transactions</Typography>
-          </Grid>
-        </CustomCard>
-        <Link
-          to={"/past-bills"}
-          style={{
-            textDecoration: "none",
-            color: "inherit",
-          }}
-        >
-          <CustomCard
-            sx={{
-              width: "100%",
-              height: "100%",
-            }}
-            backgroundcolor={"#F0F0C9"}
-            nopadding={"true"}
-          >
-            <Grid
-              container
-              display={"grid"}
-              gridTemplateColumns={"1fr"}
-              gridTemplateRows={"1fr auto"}
-              padding={"1rem"}
-              rowGap={"0.5rem"}
-              height={"100%"}
-              alignItems={"center"}
-              justifyItems={"center"}
-              color={"#121212"}
-            >
-              <LeaderboardIcon />
-              <Typography>Past bills</Typography>
-            </Grid>
-          </CustomCard>
-        </Link>
-      </Grid>
+      <InfoCardGrid rows={2}>
+        <InfoCard name="average" value={data.average_purchase} />
+        <InfoCard
+          name="biggest"
+          value={data.biggest_purchase.amount}
+          span={2}
+        />
+        <InfoCard name="refunds" value={data.refunds.count} />
+        <InfoCard name="transactions" value={data.transaction_count} />
+        <LinkedInfoCard icon={true} name="past bills" navLink="/past-bills" />
+      </InfoCardGrid>
       <CustomCard>
         <Grid container justifyContent={"space-between"} alignItems={"center"}>
           <Typography variant="h5" fontWeight={300}>

@@ -55,7 +55,7 @@ const MonthSummary = () => {
     >
       {notificationText ? <NotificationCard data={data.notif} /> : null}
       <Summary data={data.summary} isCurrentMonth={isCurrentMonth} />
-      <InfoCardGrid>
+      <InfoCardGrid rows={2}>
         {infoCards.map((value, index) => {
           return (
             <LinkedInfoCard

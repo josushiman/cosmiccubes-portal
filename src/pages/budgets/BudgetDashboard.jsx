@@ -1,13 +1,14 @@
 import Grid from "@mui/material/Unstable_Grid2";
 import { Typography } from "@mui/material";
-import { Link } from "react-router-dom";
-import TableRowsIcon from "@mui/icons-material/TableRows";
 import useAsync from "../../hooks/useAsync";
 import HandleDataLoad from "../../commons/HandleDataLoad";
 import { CustomCard } from "../../commons/CustomCard";
 import formatCurrency from "../../hooks/formatCurrency";
 import BudgetSummary from "./BudgetSummary";
 import BudgetsNeeded from "./BudgetsNeeded";
+import InfoCardGrid from "../../commons/InfoCardGrid";
+import InfoCard from "../../commons/InfoCard";
+import LinkedInfoCard from "../../commons/LinkedInfoCard";
 
 const BudgetDashboard = () => {
   const { data, loading, error } = useAsync("/budgets-dashboard");
@@ -18,91 +19,15 @@ const BudgetDashboard = () => {
 
   return (
     <Grid container flexDirection={"column"} rowGap={"0.5rem"}>
-      <Grid
-        container
-        display={"grid"}
-        gridTemplateColumns={"repeat(3, 1fr)"}
-        gridTemplateRows={"6rem"}
-        columnGap={"0.5rem"}
-        rowGap={"0.5rem"}
-      >
-        <CustomCard
-          sx={{
-            width: "100%",
-            height: "100%",
-          }}
-          nopadding={"true"}
-        >
-          <Grid
-            container
-            display={"grid"}
-            gridTemplateColumns={"1fr"}
-            gridTemplateRows={"1fr auto"}
-            padding={"1rem"}
-            rowGap={"0.5rem"}
-            height={"100%"}
-            alignItems={"center"}
-            justifyItems={"center"}
-          >
-            <Typography variant="h5">{data.on_track}</Typography>
-            <Typography>On track</Typography>
-          </Grid>
-        </CustomCard>
-        <CustomCard
-          sx={{
-            width: "100%",
-            height: "100%",
-          }}
-          nopadding={"true"}
-        >
-          <Grid
-            container
-            display={"grid"}
-            gridTemplateColumns={"1fr"}
-            gridTemplateRows={"1fr auto"}
-            padding={"1rem"}
-            rowGap={"0.5rem"}
-            height={"100%"}
-            alignItems={"center"}
-            justifyItems={"center"}
-          >
-            <Typography variant="h5">{data.overspent}</Typography>
-            <Typography>Overspent</Typography>
-          </Grid>
-        </CustomCard>
-        <Link
-          to={"/portal/admin/budgets"}
-          style={{
-            textDecoration: "none",
-            color: "inherit",
-          }}
-        >
-          <CustomCard
-            sx={{
-              width: "100%",
-              height: "100%",
-            }}
-            backgroundcolor={"#F0F0C9"}
-            nopadding={"true"}
-          >
-            <Grid
-              container
-              display={"grid"}
-              gridTemplateColumns={"1fr"}
-              gridTemplateRows={"1fr auto"}
-              padding={"1rem"}
-              rowGap={"0.5rem"}
-              height={"100%"}
-              alignItems={"center"}
-              justifyItems={"center"}
-              color={"#121212"}
-            >
-              <TableRowsIcon />
-              <Typography>View all</Typography>
-            </Grid>
-          </CustomCard>
-        </Link>
-      </Grid>
+      <InfoCardGrid rows={1}>
+        <InfoCard name="on track" value={data.on_track} />
+        <InfoCard name="overspent" value={data.overspent} />
+        <LinkedInfoCard
+          icon={true}
+          name="view all"
+          navLink="/portal/admin/budgets"
+        />
+      </InfoCardGrid>
       <CustomCard>
         <Grid container justifyContent={"space-between"} alignItems={"center"}>
           <Typography variant="h5" fontWeight={300}>

@@ -8,14 +8,17 @@ const columnKeyMap = {
   total: "total (£)",
 };
 
-const columnValueFormatMap = {
+export const columnValueFormatMap = {
   amount: (value) => formatCurrency(value, false, false),
-  total: (value) => formatCurrency(value, false, false),
+  average: (value) => `£ ${formatCurrency(value, false, true)}`,
+  biggest: (value) => `£ ${formatCurrency(value, false, false)}`,
   date: (value) => dayjs(value).format("Do"),
   month: (value) => dayjs(value).format("MMMM 'YY"),
   payee: (value) => (value.length > 20 ? value.slice(0, 20) + "..." : value),
   payee_name: (value) =>
     value.length > 20 ? value.slice(0, 20) + "..." : value,
+  topspender: (value) => `£ ${formatCurrency(value, false, false)}`,
+  total: (value) => formatCurrency(value, false, false),
 };
 
 export const returnColumnKey = (originalKey) => {
