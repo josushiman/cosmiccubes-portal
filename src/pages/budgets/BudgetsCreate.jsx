@@ -25,13 +25,16 @@ const EntityCreate = () => {
           source="category_id"
           reference="portal/admin/ynab-categories"
           sort={{ field: "name", order: "ASC" }}
+          filter={{ filter_expense_cats: true }}
         >
           <AutocompleteInput
             optionText={(entity) =>
               `${entity.name} - ${entity.category_group_name}`
             }
             label="Category"
-            filterToQuery={(searchText) => ({ name: searchText })}
+            filterToQuery={(searchText) => ({
+              name: searchText,
+            })}
             validate={[required()]}
             fullWidth={true}
             sx={{
@@ -45,3 +48,13 @@ const EntityCreate = () => {
 };
 
 export default EntityCreate;
+
+// category_group_name__not_in
+// "Monthly Bills",
+// "Yearly Bills",
+// "Loans",
+// "Credit Card Payments",
+// "Internal Master Category",
+// "Non-Monthly Expenses",
+// "Saving Goals",
+// "Holidays",
