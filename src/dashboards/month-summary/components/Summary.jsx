@@ -53,7 +53,7 @@ const Summary = ({ data, isCurrentMonth }) => {
           <Typography variant="h4" fontWeight={500}>
             £ {formatCurrency(balance_available, false, true)}
           </Typography>
-          {!isCurrentMonth() && (
+          {isCurrentMonth() && (
             <>
               <hr style={{ opacity: "25%" }} />
               <Typography
