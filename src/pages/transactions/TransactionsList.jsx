@@ -6,13 +6,13 @@ import {
   NumberField,
   TextInput,
 } from "react-admin";
-import Grid from "@mui/material/Unstable_Grid2";
+import DefaultPageGrid from "../../commons/DefaultPageGrid";
 
 // More transaction stats and filters
 
 const EntityList = () => {
   return (
-    <Grid container flexDirection={"column"} rowGap={"0.5rem"}>
+    <DefaultPageGrid>
       <List
         sort={{ field: "date", order: "DESC" }}
         filters={[
@@ -33,7 +33,7 @@ const EntityList = () => {
           />
         </Datagrid>
       </List>
-    </Grid>
+    </DefaultPageGrid>
   );
 };
 

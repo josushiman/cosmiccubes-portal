@@ -8,6 +8,7 @@ import HandleDataLoad from "../../commons/HandleDataLoad";
 import { CustomCard } from "../../commons/CustomCard";
 import DailySpendChart from "./components/DailySpendChart";
 import CustomDataTable from "../../commons/CustomDataTable";
+import DefaultPageGrid from "../../commons/DefaultPageGrid";
 
 const disabledStyles = {
   padding: "0.75rem 1rem",
@@ -46,9 +47,9 @@ const DailySpendSummary = () => {
     setNumDays((prevNumDays) => prevNumDays + count);
 
   return (
-    <Grid container flexDirection={"column"} rowGap={"0.5rem"}>
+    <DefaultPageGrid>
       <CustomCard>
-        <Grid container flexDirection={"column"} rowGap={"0.5rem"}>
+        <DefaultPageGrid>
           <DailySpendChart
             data={filteredData}
             dailySpend={dailySpend}
@@ -92,7 +93,7 @@ const DailySpendSummary = () => {
               </Box>
             </Grid>
           </Grid>
-        </Grid>
+        </DefaultPageGrid>
       </CustomCard>
       {selectedDate && (
         <CustomDataTable
@@ -100,7 +101,7 @@ const DailySpendSummary = () => {
           showTransactions={true}
         />
       )}
-    </Grid>
+    </DefaultPageGrid>
   );
 };
 

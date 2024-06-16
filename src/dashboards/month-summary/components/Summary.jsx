@@ -3,6 +3,7 @@ import Grid from "@mui/material/Unstable_Grid2";
 import { CustomCard } from "../../../commons/CustomCard";
 import formatCurrency from "../../../hooks/formatCurrency";
 import { ThickBorderLinearProgressWithBackground } from "../../../commons/BorderLinearProgress";
+import DefaultPageGrid from "../../../commons/DefaultPageGrid";
 
 const Summary = ({ data, isCurrentMonth }) => {
   const {
@@ -41,13 +42,8 @@ const Summary = ({ data, isCurrentMonth }) => {
   };
 
   return (
-    <CustomCard nopadding={"true"}>
-      <Grid
-        container
-        padding={"1.5rem 2rem"}
-        rowGap={"1rem"}
-        flexDirection={"column"}
-      >
+    <CustomCard>
+      <DefaultPageGrid>
         <Grid
           container
           justifyContent={"space-between"}
@@ -91,7 +87,7 @@ const Summary = ({ data, isCurrentMonth }) => {
             £ {formatCurrency(daily_spend, false, true)}
           </Typography>
         </Grid>
-      </Grid>
+      </DefaultPageGrid>
     </CustomCard>
   );
 };

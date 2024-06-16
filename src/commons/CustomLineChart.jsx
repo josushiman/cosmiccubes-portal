@@ -7,7 +7,7 @@ import {
   Tooltip,
 } from "recharts";
 import dayjs from "dayjs";
-import formatCurrency from "../../hooks/formatCurrency";
+import formatCurrency from "../hooks/formatCurrency";
 
 const CustomLineChart = ({ data }) => {
   return (

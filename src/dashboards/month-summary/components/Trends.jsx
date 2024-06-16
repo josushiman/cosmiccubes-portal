@@ -5,11 +5,12 @@ import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 import TrendingFlatIcon from "@mui/icons-material/TrendingFlat";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import formatCurrency from "../../../hooks/formatCurrency";
+import DefaultPageGrid from "../../../commons/DefaultPageGrid";
 
 const Trends = ({ data }) => {
   return (
-    <CustomCard nopadding={"true"}>
-      <Grid container flexDirection={"column"} padding={"2rem"}>
+    <CustomCard>
+      <DefaultPageGrid>
         <Grid container flexDirection={"column"} rowGap={"1rem"}>
           {data.map((value, index) => {
             return (
@@ -54,7 +55,7 @@ const Trends = ({ data }) => {
             );
           })}
         </Grid>
-      </Grid>
+      </DefaultPageGrid>
     </CustomCard>
   );
 };

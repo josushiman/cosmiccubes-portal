@@ -17,6 +17,7 @@ import InfoCardGrid from "../../commons/InfoCardGrid";
 import InfoCard from "../../commons/InfoCard";
 import LinkedInfoCard from "../../commons/LinkedInfoCard";
 import TotalCard from "../../commons/TotalCard";
+import DefaultPageGrid from "../../commons/DefaultPageGrid";
 
 // Top spenders
 //  - Most common payee?
@@ -37,7 +38,7 @@ const TransactionsSummary = () => {
     return <HandleDataLoad data={data} loading={loading} error={error} />;
   }
   return (
-    <Grid container rowGap={"0.5rem"} flexDirection={"column"}>
+    <DefaultPageGrid>
       <InfoCardGrid rows={2}>
         <InfoCard name="average" value={data.average_purchase} />
         <InfoCard
@@ -124,7 +125,7 @@ const TransactionsSummary = () => {
           </AccordionDetails>
         </CustomAccordion>
       </Grid>
-    </Grid>
+    </DefaultPageGrid>
   );
 };
 

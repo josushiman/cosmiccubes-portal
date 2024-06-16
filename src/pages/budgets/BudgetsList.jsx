@@ -5,12 +5,12 @@ import {
   ReferenceField,
   NumberField,
 } from "react-admin";
-import Grid from "@mui/material/Unstable_Grid2";
 import CustomCreateButton from "../commons/CustomCreateButton";
+import DefaultPageGrid from "../../commons/DefaultPageGrid";
 
 const EntityList = () => {
   return (
-    <Grid container flexDirection={"column"} rowGap={"0.5rem"}>
+    <DefaultPageGrid>
       <CustomCreateButton resource={"portal/admin/budgets"} />
       <List actions={null} hasCreate={false}>
         <Datagrid bulkActionButtons={false} rowClick="edit">
@@ -39,7 +39,7 @@ const EntityList = () => {
           />
         </Datagrid>
       </List>
-    </Grid>
+    </DefaultPageGrid>
   );
 };
 

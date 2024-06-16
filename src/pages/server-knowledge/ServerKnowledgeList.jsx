@@ -1,7 +1,7 @@
 import { List, Datagrid, DateField, useRecordContext } from "react-admin";
 import { TableHead, TableRow, TableCell } from "@mui/material";
-import Grid from "@mui/material/Unstable_Grid2";
 import ServerKnowledgeTrigger from "./ServerKnowledgeTrigger";
+import DefaultPageGrid from "../../commons/DefaultPageGrid";
 
 // Show warnings if no updates for the past 1 day
 
@@ -28,7 +28,7 @@ const CustomDatagridHeader = () => (
 );
 
 const EntityList = () => (
-  <Grid container flexDirection={"column"} rowGap={"1rem"}>
+  <DefaultPageGrid>
     <ServerKnowledgeTrigger />
     <List sort={{ field: "last_updated", order: "DESC" }} actions={null}>
       <Datagrid bulkActionButtons={false} header={<CustomDatagridHeader />}>
@@ -36,7 +36,7 @@ const EntityList = () => (
         <DateField source="last_updated" showTime={true} textAlign="right" />
       </Datagrid>
     </List>
-  </Grid>
+  </DefaultPageGrid>
 );
 
 export default EntityList;

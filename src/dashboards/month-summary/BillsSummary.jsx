@@ -13,6 +13,7 @@ import CustomDataTable from "../../commons/CustomDataTable";
 import InfoCardGrid from "../../commons/InfoCardGrid";
 import InfoCard from "../../commons/InfoCard";
 import TotalCard from "../../commons/TotalCard";
+import DefaultPageGrid from "../../commons/DefaultPageGrid";
 
 const BillsSummary = () => {
   const { data, loading, error } = useAsync("/upcoming-bills");
@@ -25,7 +26,7 @@ const BillsSummary = () => {
   const loansLength = data.loans.length;
 
   return (
-    <Grid container rowGap={"0.5rem"} flexDirection={"column"}>
+    <DefaultPageGrid>
       <InfoCardGrid rows={1}>
         <InfoCard name="bills" value={data.count_bills} />
         <InfoCard name="loans" value={loansLength} />
@@ -143,7 +144,7 @@ const BillsSummary = () => {
           </AccordionDetails>
         </Accordion>
       </Grid>
-    </Grid>
+    </DefaultPageGrid>
   );
 };
 

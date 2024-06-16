@@ -1,4 +1,3 @@
-import Grid from "@mui/material/Unstable_Grid2";
 import { useContext } from "react";
 import { TimePeriodContext } from "../../context/TimePeriodContext";
 import useAsync from "../../hooks/useAsync";
@@ -8,6 +7,7 @@ import NotificationCard from "./components/NotificationCard";
 import HandleDataLoad from "../../commons/HandleDataLoad";
 import LinkedInfoCard from "../../commons/LinkedInfoCard";
 import InfoCardGrid from "../../commons/InfoCardGrid";
+import DefaultPageGrid from "../../commons/DefaultPageGrid";
 
 const infoCards = [
   {
@@ -47,12 +47,7 @@ const MonthSummary = () => {
   const notificationText = data?.notif ? data.notif : null;
 
   return (
-    <Grid
-      container
-      justifyContent={"space-between"}
-      rowGap={"0.5rem"}
-      flexDirection={"column"}
-    >
+    <DefaultPageGrid>
       {notificationText ? <NotificationCard data={data.notif} /> : null}
       <Summary data={data.summary} isCurrentMonth={isCurrentMonth} />
       <InfoCardGrid rows={2}>
@@ -68,7 +63,7 @@ const MonthSummary = () => {
         })}
       </InfoCardGrid>
       <FinancialOverview data={data.income_expenses} />
-    </Grid>
+    </DefaultPageGrid>
   );
 };
 

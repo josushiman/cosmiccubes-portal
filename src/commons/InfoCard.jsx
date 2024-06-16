@@ -13,7 +13,7 @@ const InfoCard = ({ icon, name, value = undefined, span = undefined }) => {
         height: "100%",
         gridColumn: span ? `span ${span}` : "unset",
       }}
-      backgroundcolor={icon && value == undefined && "#F0F0C9"}
+      backgroundcolor={icon && value == undefined ? "#F0F0C9" : "#121212"}
       nopadding={"true"}
     >
       <Grid

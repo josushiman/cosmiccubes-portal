@@ -1,4 +1,3 @@
-import Grid from "@mui/material/Unstable_Grid2";
 import { useContext } from "react";
 import { TimePeriodContext } from "../../context/TimePeriodContext";
 import HandleDataLoad from "../../commons/HandleDataLoad";
@@ -7,6 +6,7 @@ import PayeesChart from "./components/PayeesChart";
 import CustomDataTable from "../../commons/CustomDataTable";
 import InfoCardGrid from "../../commons/InfoCardGrid";
 import InfoCard from "../../commons/InfoCard";
+import DefaultPageGrid from "../../commons/DefaultPageGrid";
 
 // Payees broken down by:
 //  Number of unique payees (no bills)
@@ -23,14 +23,14 @@ const PayeeSummary = () => {
   }
 
   return (
-    <Grid container flexDirection={"column"} rowGap={"0.5rem"}>
+    <DefaultPageGrid>
       <InfoCardGrid rows={1}>
         <InfoCard name="count" value={data.count} />
         <InfoCard name="topspender" value={data.topspender.total} span={2} />
       </InfoCardGrid>
       <PayeesChart data={data.data} payeeCount={data.count} />
       <CustomDataTable data={data.data} defaultRowsPerPage={10} />
-    </Grid>
+    </DefaultPageGrid>
   );
 };
 

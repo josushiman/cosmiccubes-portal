@@ -8,6 +8,7 @@ import { BorderLinearProgressWithBackground } from "../../commons/BorderLinearPr
 import useAsync from "../../hooks/useAsync";
 import formatCurrency from "../../hooks/formatCurrency";
 import HandleDataLoad from "../../commons/HandleDataLoad";
+import DefaultPageGrid from "../../commons/DefaultPageGrid";
 
 // Squares with numbers for the ones that are overspent, or on track
 // Progress bar for current progress
@@ -85,7 +86,7 @@ const CategoriesSummary = () => {
   };
 
   return (
-    <Grid container rowGap={"0.5rem"} flexDirection={"column"}>
+    <DefaultPageGrid>
       {data.map((value, index) => {
         return (
           <CustomCard key={index}>
@@ -136,7 +137,7 @@ const CategoriesSummary = () => {
           </CustomCard>
         );
       })}
-    </Grid>
+    </DefaultPageGrid>
   );
 };
 

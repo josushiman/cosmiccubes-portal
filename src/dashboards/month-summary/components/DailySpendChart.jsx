@@ -11,6 +11,7 @@ import { Typography } from "@mui/material";
 import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
 import formatCurrency from "../../../hooks/formatCurrency";
+import DefaultPageGrid from "../../../commons/DefaultPageGrid";
 
 const DailySpendChart = ({
   data,
@@ -32,7 +33,7 @@ const DailySpendChart = ({
   };
 
   return (
-    <Grid container flexDirection={"column"} rowGap={"1rem"}>
+    <DefaultPageGrid>
       <ResponsiveContainer width="100%" height={150}>
         <BarChart
           data={data}
@@ -107,7 +108,7 @@ const DailySpendChart = ({
           </Grid>
         )}
       </Grid>
-    </Grid>
+    </DefaultPageGrid>
   );
 };
 

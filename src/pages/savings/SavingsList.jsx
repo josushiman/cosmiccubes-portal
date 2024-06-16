@@ -6,13 +6,13 @@ import {
   TextField,
   CreateButton,
 } from "react-admin";
-import Grid from "@mui/material/Unstable_Grid2";
 import SavingsOverTime from "./SavingsOverTime";
+import DefaultPageGrid from "../../commons/DefaultPageGrid";
 
 // Savings chart with savings over time.
 
 const EntityList = () => (
-  <Grid container flexDirection={"column"} rowGap={"0.5rem"}>
+  <DefaultPageGrid>
     <SavingsOverTime />
     <List sort={{ field: "date", order: "DESC" }} actions={null}>
       <CreateButton />
@@ -35,7 +35,7 @@ const EntityList = () => (
         />
       </Datagrid>
     </List>
-  </Grid>
+  </DefaultPageGrid>
 );
 
 export default EntityList;

@@ -5,13 +5,13 @@ import {
   CreateButton,
   ReferenceField,
 } from "react-admin";
-import Grid from "@mui/material/Unstable_Grid2";
 import LoanPortfolio from "./LoanPortfolio";
 import DirectDebits from "./DirectDebits";
 import Insurance from "./Insurance";
+import DefaultPageGrid from "../../commons/DefaultPageGrid";
 
 const EntityList = () => (
-  <Grid container flexDirection={"column"} rowGap={"0.5rem"}>
+  <DefaultPageGrid>
     <DirectDebits />
     <Insurance />
     <LoanPortfolio />
@@ -29,7 +29,7 @@ const EntityList = () => (
         </ReferenceField>
       </Datagrid>
     </List>
-  </Grid>
+  </DefaultPageGrid>
 );
 
 export default EntityList;

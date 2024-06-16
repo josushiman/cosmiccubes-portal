@@ -7,6 +7,7 @@ import { CustomCard } from "../../commons/CustomCard";
 import AverageCardBillChart from "./AverageCardBillChart";
 import CustomDataTable from "../../commons/CustomDataTable";
 import dayjs from "dayjs";
+import DefaultPageGrid from "../../commons/DefaultPageGrid";
 
 const AverageCardBill = () => {
   const { data, loading, error } = useAsync("/average-card-bill?months=6");
@@ -54,7 +55,7 @@ const AverageCardBill = () => {
 
   return (
     <CustomCard>
-      <Grid container flexDirection={"column"} rowGap={"1rem"}>
+      <DefaultPageGrid>
         <Grid
           container
           columnGap={"0.5rem"}
@@ -135,7 +136,7 @@ const AverageCardBill = () => {
           </Typography>
           <CustomDataTable data={monthData} />
         </Grid>
-      </Grid>
+      </DefaultPageGrid>
     </CustomCard>
   );
 };

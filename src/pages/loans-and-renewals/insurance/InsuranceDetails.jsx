@@ -5,6 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 import { CustomCard } from "../../../commons/CustomCard";
 import formatCurrency from "../../../hooks/formatCurrency";
 import CustomLoadingScreen from "../../../commons/CustomLoadingScreen";
+import DefaultPageGrid from "../../../commons/DefaultPageGrid";
 
 const InsuranceDetails = () => {
   const { data } = useLocation().state;
@@ -14,7 +15,7 @@ const InsuranceDetails = () => {
   }
 
   return (
-    <Grid container rowGap={"0.5rem"} flexDirection={"column"}>
+    <DefaultPageGrid>
       {data.map((value, index) => {
         return (
           <CustomCard key={index}>
@@ -83,7 +84,7 @@ const InsuranceDetails = () => {
           </CustomCard>
         );
       })}
-    </Grid>
+    </DefaultPageGrid>
   );
 };
 

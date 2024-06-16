@@ -10,11 +10,12 @@ import useAsync from "../../../hooks/useAsync";
 import Trends from "./Trends";
 import HandleDataLoad from "../../../commons/HandleDataLoad";
 import { ThickBorderLinearProgressWithBackground } from "../../../commons/BorderLinearProgress";
-import CustomLineChart from "../../../pages/commons/CustomLineChart";
+import CustomLineChart from "../../../commons/CustomLineChart";
 import CustomDataTable from "../../../commons/CustomDataTable";
 import InfoCardGrid from "../../../commons/InfoCardGrid";
 import InfoCard from "../../../commons/InfoCard";
 import LinkedInfoCard from "../../../commons/LinkedInfoCard";
+import DefaultPageGrid from "../../../commons/DefaultPageGrid";
 
 // TODO pie chart for spent in that category but broken down by payee
 
@@ -36,7 +37,7 @@ const CategoryDetails = () => {
   const reversedData = data.trends.data.slice().reverse();
 
   return (
-    <Grid container rowGap={"0.5rem"} flexDirection={"column"}>
+    <DefaultPageGrid>
       <InfoCardGrid rows={2}>
         <CustomCard
           sx={{
@@ -96,7 +97,7 @@ const CategoryDetails = () => {
           <CustomDataTable data={reversedData} defaultRowsPerPage={6} />
         </Grid>
       </CustomCard>
-    </Grid>
+    </DefaultPageGrid>
   );
 };
 
