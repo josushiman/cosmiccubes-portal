@@ -9,33 +9,6 @@ import LinkedInfoCard from "../../commons/LinkedInfoCard";
 import InfoCardGrid from "../../commons/InfoCardGrid";
 import DefaultPageGrid from "../../commons/DefaultPageGrid";
 
-const infoCards = [
-  {
-    name: "bills",
-    navLink: "/monthly-summary/bills",
-  },
-  {
-    name: "budgets",
-    navLink: "/dashboard/budgets",
-  },
-  {
-    name: "categories",
-    navLink: "/monthly-summary/categories",
-  },
-  {
-    name: "daily spend",
-    navLink: "/daily-spend",
-  },
-  {
-    name: "payees",
-    navLink: "/monthly-summary/payees",
-  },
-  {
-    name: "transactions",
-    navLink: "/monthly-summary/transactions",
-  },
-];
-
 const MonthSummary = () => {
   const { isCurrentMonth, timePeriod } = useContext(TimePeriodContext);
   const { data, loading, error } = useAsync(`/monthly-summary${timePeriod}`);
@@ -45,6 +18,36 @@ const MonthSummary = () => {
   }
 
   const notificationText = data?.notif ? data.notif : null;
+
+  const infoCards = [
+    {
+      name: "bills",
+      navLink: "/monthly-summary/bills",
+    },
+    {
+      name: "budgets",
+      navLink: "/dashboard/budgets",
+    },
+    {
+      name: "categories",
+      navLink: "/monthly-summary/categories",
+    },
+    {
+      name: "daily spend",
+      navLink: "/daily-spend",
+      navState: {
+        dailySpend: data.summary.daily_spend,
+      },
+    },
+    {
+      name: "payees",
+      navLink: "/monthly-summary/payees",
+    },
+    {
+      name: "transactions",
+      navLink: "/monthly-summary/transactions",
+    },
+  ];
 
   return (
     <DefaultPageGrid>
@@ -58,6 +61,7 @@ const MonthSummary = () => {
               icon={true}
               name={value.name}
               navLink={value.navLink}
+              navState={value.navState}
             />
           );
         })}

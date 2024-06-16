@@ -62,7 +62,13 @@ const DailySpendChart = ({
               return axisTick;
             }}
           />
-          <ReferenceLine y={dailySpend} stroke="white" strokeDasharray="3 3" />
+          {dailySpend && (
+            <ReferenceLine
+              y={dailySpend}
+              stroke="white"
+              strokeDasharray="3 3"
+            />
+          )}
           <Bar
             dataKey="total"
             fill="#C06969"

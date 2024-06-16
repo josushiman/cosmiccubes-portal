@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { Box } from "@mui/material";
 import useAsync from "../../hooks/useAsync";
 import HandleDataLoad from "../../commons/HandleDataLoad";
@@ -34,9 +35,8 @@ const DailySpendSummary = () => {
   const [numDays, setNumDays] = useState(7);
   const [selectedDate, setSelectedDate] = useState(undefined);
   const { data, loading, error } = useAsync(`/daily-spend?num_days=7`);
-  const dailySpend = 53;
-  // const { dailySpend } = useLocation().state;
-  // TODO remove state from navigation
+  const navState = useLocation().state;
+  const dailySpend = navState ? navState.dailySpend : null;
 
   useEffect(() => {
     setSelectedDate(undefined);
@@ -68,7 +68,7 @@ const DailySpendSummary = () => {
           span={2}
         />
       </InfoCardGrid>
-      <CustomCard nopadding={true}>
+      <CustomCard nopadding="true">
         <Box sx={{ padding: "1rem 3rem" }}>
           <CustomSlider
             defaultValue={7}
@@ -84,7 +84,7 @@ const DailySpendSummary = () => {
       <CustomCard>
         <DailySpendChart
           data={filteredData}
-          dailySpend={dailySpend}
+          dailySpend={dailySpend ? dailySpend : null}
           selectedDate={selectedDate}
           setSelectedDate={setSelectedDate}
         />
