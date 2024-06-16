@@ -73,7 +73,6 @@ const DailySpendSummary = () => {
           <CustomSlider
             defaultValue={7}
             step={null}
-            valueLabelDisplay="auto"
             min={3}
             max={7}
             marks={marks}
