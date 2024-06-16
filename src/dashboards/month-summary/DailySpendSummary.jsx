@@ -1,24 +1,34 @@
 import { useEffect, useState } from "react";
-import { Box, FilledInput, FormControl, InputLabel } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
-import Grid from "@mui/material/Unstable_Grid2";
+import { Box } from "@mui/material";
 import useAsync from "../../hooks/useAsync";
 import HandleDataLoad from "../../commons/HandleDataLoad";
 import { CustomCard } from "../../commons/CustomCard";
 import DailySpendChart from "./components/DailySpendChart";
 import CustomDataTable from "../../commons/CustomDataTable";
 import DefaultPageGrid from "../../commons/DefaultPageGrid";
+import InfoCardGrid from "../../commons/InfoCardGrid";
+import InfoCard from "../../commons/InfoCard";
+import CustomSlider from "../../commons/CustomSlider";
 
-const disabledStyles = {
-  padding: "0.75rem 1rem",
-  pointerEvents: "none",
-  opacity: "10%",
-};
-
-const defaultStyle = {
-  padding: "0.75rem 1rem",
-};
+const marks = [
+  {
+    value: 3,
+    label: "3 days",
+  },
+  {
+    value: 4,
+  },
+  {
+    value: 5,
+  },
+  {
+    value: 6,
+  },
+  {
+    value: 7,
+    label: "7 days",
+  },
+];
 
 const DailySpendSummary = () => {
   const [numDays, setNumDays] = useState(7);
@@ -36,71 +46,55 @@ const DailySpendSummary = () => {
     return <HandleDataLoad data={data} loading={loading} error={error} />;
   }
 
-  const filteredDays = numDays + 1;
+  const allTransactions = data.days.reduce(
+    (accumulator, object) => accumulator.concat(object.transactions),
+    []
+  );
+  const filteredDays = numDays;
 
   const filteredData = data.days.slice(-filteredDays);
   const totalSpent = filteredData.reduce((accumulator, currentValue) => {
     return accumulator + (currentValue["total"] || 0);
   }, 0);
-
-  const handleClick = (count) =>
-    setNumDays((prevNumDays) => prevNumDays + count);
+  const dailyAverage = totalSpent / numDays;
 
   return (
     <DefaultPageGrid>
-      <CustomCard>
-        <DefaultPageGrid>
-          <DailySpendChart
-            data={filteredData}
-            dailySpend={dailySpend}
-            total={totalSpent}
-            numDays={filteredDays}
-            selectedDate={selectedDate}
-            setSelectedDate={setSelectedDate}
-          />
-          <Grid
-            container
-            flexDirection={"column"}
-            rowGap={"0.5rem"}
-            alignItems={"stretch"}
-          >
-            <FormControl sx={{ m: 1, width: "100%" }} variant="filled" disabled>
-              <InputLabel htmlFor="filled-days">Number of days</InputLabel>
-              <FilledInput id="filled-days" label="Days" value={numDays + 1} />
-            </FormControl>
-            <Grid
-              container
-              display={"grid"}
-              gridTemplateColumns={"1fr 2px 1fr"}
-              gridTemplateRows={"4rem"}
-              alignItems={"center"}
-              justifyItems={"center"}
-              borderRadius={"0.5rem"}
-              border={"1px solid #313131"}
-            >
-              <Box
-                sx={numDays == 3 ? disabledStyles : defaultStyle}
-                onClick={() => handleClick(-1)}
-              >
-                <RemoveIcon fontSize="medium" />
-              </Box>
-              <hr style={{ opacity: "5%", height: "100%" }} />
-              <Box
-                sx={numDays == 7 ? disabledStyles : defaultStyle}
-                onClick={() => handleClick(1)}
-              >
-                <AddIcon fontSize="medium" />
-              </Box>
-            </Grid>
-          </Grid>
-        </DefaultPageGrid>
-      </CustomCard>
-      {selectedDate && (
-        <CustomDataTable
-          data={selectedDate.transactions}
-          showTransactions={true}
+      <InfoCardGrid rows={1}>
+        <InfoCard name="average" value={dailyAverage} />
+        <InfoCard
+          name="total spent"
+          value={selectedDate ? selectedDate.total : totalSpent}
+          span={2}
         />
-      )}
+      </InfoCardGrid>
+      <CustomCard nopadding={true}>
+        <Box sx={{ padding: "1rem 3rem" }}>
+          <CustomSlider
+            defaultValue={7}
+            step={null}
+            valueLabelDisplay="auto"
+            min={3}
+            max={7}
+            marks={marks}
+            onChange={(e) => setNumDays(e.target.value)}
+          />
+        </Box>
+      </CustomCard>
+      <CustomCard>
+        <DailySpendChart
+          data={filteredData}
+          dailySpend={dailySpend}
+          selectedDate={selectedDate}
+          setSelectedDate={setSelectedDate}
+        />
+      </CustomCard>
+      <CustomDataTable
+        data={
+          selectedDate ? selectedDate.transactions : allTransactions.reverse()
+        }
+        showTransactions={true}
+      />
     </DefaultPageGrid>
   );
 };

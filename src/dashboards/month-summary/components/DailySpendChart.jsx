@@ -6,8 +6,6 @@ import {
   ReferenceLine,
   ResponsiveContainer,
 } from "recharts";
-import Grid from "@mui/material/Unstable_Grid2";
-import { Typography } from "@mui/material";
 import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
 import formatCurrency from "../../../hooks/formatCurrency";
@@ -16,13 +14,10 @@ import DefaultPageGrid from "../../../commons/DefaultPageGrid";
 const DailySpendChart = ({
   data,
   dailySpend,
-  total,
-  numDays,
   selectedDate,
   setSelectedDate,
 }) => {
   dayjs.extend(advancedFormat);
-  const dailyAverage = total / numDays;
 
   const handleClick = (payload) => {
     if (selectedDate == payload) {
@@ -75,39 +70,6 @@ const DailySpendChart = ({
           />
         </BarChart>
       </ResponsiveContainer>
-      <Grid container flexDirection={"column"}>
-        <Grid
-          container
-          padding={"0.25rem 1rem"}
-          justifyContent={"space-between"}
-        >
-          <Typography>Daily average:</Typography>
-          <Typography>£ {formatCurrency(dailyAverage, false, true)}</Typography>
-        </Grid>
-        {selectedDate ? (
-          <Grid
-            container
-            padding={"0.25rem 1rem"}
-            justifyContent={"space-between"}
-          >
-            <Typography>
-              {dayjs(selectedDate.date).format("dddd Do MMM")}
-            </Typography>
-            <Typography>
-              £ {formatCurrency(selectedDate.total, false, true)}
-            </Typography>
-          </Grid>
-        ) : (
-          <Grid
-            container
-            padding={"0.25rem 1rem"}
-            justifyContent={"space-between"}
-          >
-            <Typography>Total spent:</Typography>
-            <Typography>£ {formatCurrency(total, false, true)}</Typography>
-          </Grid>
-        )}
-      </Grid>
     </DefaultPageGrid>
   );
 };

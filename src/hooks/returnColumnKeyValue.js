@@ -25,6 +25,7 @@ export const columnValueFormatMap = {
     value.length > 20 ? value.slice(0, 20) + "..." : value,
   topspender: (value) => `£ ${formatCurrency(value, false, false)}`,
   total: (value) => formatCurrency(value, false, false),
+  "total spent": (value) => `£ ${formatCurrency(value, false, false)}`,
 };
 
 export const returnColumnKey = (originalKey) => {
