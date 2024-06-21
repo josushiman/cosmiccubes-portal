@@ -48,6 +48,7 @@ const ServerKnowledgeTrigger = () => {
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
+          <MenuItem value={"/ynab/update-all-endpoints"}>All</MenuItem>
           <MenuItem value={"/ynab/update-accounts"}>Accounts</MenuItem>
           <MenuItem value={"/ynab/update-categories"}>Categories</MenuItem>
           <MenuItem value={"/ynab/update-month-details"}>
