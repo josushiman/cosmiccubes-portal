@@ -3,7 +3,8 @@ import Grid from "@mui/material/Unstable_Grid2";
 import { CustomCard } from "../../../commons/CustomCard";
 import formatCurrency from "../../../hooks/formatCurrency";
 import { ThickBorderLinearProgressWithBackground } from "../../../commons/BorderLinearProgress";
-import DefaultPageGrid from "../../../commons/DefaultPageGrid";
+import InfoCardGrid from "../../../commons/InfoCardGrid";
+import InfoCard from "../../../commons/InfoCard";
 
 const Summary = ({ data, isCurrentMonth }) => {
   const {
@@ -23,7 +24,7 @@ const Summary = ({ data, isCurrentMonth }) => {
   const ProgressBarText = () => {
     if (progress < 100) {
       return (
-        <Typography variant="body1">
+        <Typography variant="caption" alignSelf={"end"}>
           <strong>£ {formatCurrency(balance_spent, false, true)}</strong> of{" "}
           <strong>£ {formatCurrency(balance_budget, false, true)}</strong> spent
           this month
@@ -34,7 +35,7 @@ const Summary = ({ data, isCurrentMonth }) => {
     const overSpent = balance_spent - balance_budget;
 
     return (
-      <Typography variant="body1">
+      <Typography variant="caption" alignSelf={"right"}>
         You {isCurrentMonth() ? "are" : "were"}{" "}
         <strong>£ {formatCurrency(overSpent, false, true)}</strong> over budget
       </Typography>
@@ -42,53 +43,30 @@ const Summary = ({ data, isCurrentMonth }) => {
   };
 
   return (
-    <CustomCard>
-      <DefaultPageGrid>
+    <InfoCardGrid rows={2}>
+      <InfoCard name="whats left" value={balance_available} span={2} />
+      {isCurrentMonth() && <InfoCard name="days left" value={days_left} />}
+      <InfoCard name="daily spend" value={daily_spend} />
+      <CustomCard
+        sx={{
+          gridColumn: "span 2",
+        }}
+      >
         <Grid
           container
-          justifyContent={"space-between"}
-          flexDirection={"row"}
+          flexDirection={"column"}
+          height={"100%"}
           width={"100%"}
+          justifyContent={"center"}
         >
-          <Typography variant="h4" fontWeight={500}>
-            £ {formatCurrency(balance_available, false, true)}
-          </Typography>
-          {isCurrentMonth() && (
-            <>
-              <hr style={{ opacity: "25%" }} />
-              <Typography
-                variant="body1"
-                fontWeight={300}
-                style={{
-                  alignSelf: "center",
-                }}
-              >
-                {days_left} days left
-              </Typography>
-            </>
-          )}
+          <ThickBorderLinearProgressWithBackground
+            variant="determinate"
+            value={progress}
+          />
+          <ProgressBarText />
         </Grid>
-        <ThickBorderLinearProgressWithBackground
-          variant="determinate"
-          value={progress}
-        />
-        <ProgressBarText />
-        <hr style={{ width: "100%", opacity: "25%" }} />
-        <Grid
-          container
-          justifyContent={"space-between"}
-          flexDirection={"row"}
-          width={"100%"}
-        >
-          <Typography variant="h5">
-            {isCurrentMonth() ? "Daily" : "Average daily"} spend:
-          </Typography>
-          <Typography variant="h5" fontWeight={500}>
-            £ {formatCurrency(daily_spend, false, true)}
-          </Typography>
-        </Grid>
-      </DefaultPageGrid>
-    </CustomCard>
+      </CustomCard>
+    </InfoCardGrid>
   );
 };
 

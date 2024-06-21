@@ -18,6 +18,7 @@ export const columnValueFormatMap = {
       : value == 0
       ? `£ ${formatCurrency(0, false, true)}`
       : "∞",
+  "daily spend": (value) => `£ ${formatCurrency(value, false, true)}`,
   date: (value) => dayjs(value).format("Do"),
   month: (value) => dayjs(value).format("MMMM 'YY"),
   payee: (value) => (value.length > 20 ? value.slice(0, 20) + "..." : value),
@@ -26,6 +27,7 @@ export const columnValueFormatMap = {
   topspender: (value) => `£ ${formatCurrency(value, false, false)}`,
   total: (value) => formatCurrency(value, false, false),
   "total spent": (value) => `£ ${formatCurrency(value, false, false)}`,
+  "whats left": (value) => `£ ${formatCurrency(value, false, false)}`,
 };
 
 export const returnColumnKey = (originalKey) => {
