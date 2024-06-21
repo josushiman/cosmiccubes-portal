@@ -13,6 +13,7 @@ import DefaultPageGrid from "../../commons/DefaultPageGrid";
 //  Payee spent on the most
 //  Bar Graph on payees sort by most spent to least
 //  Data Table below to allow filter and result (show the big spender by default)
+//  Payee nice name
 
 const PayeeSummary = () => {
   const { timePeriod } = useContext(TimePeriodContext);
