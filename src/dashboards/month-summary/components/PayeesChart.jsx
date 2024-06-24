@@ -10,7 +10,8 @@ import { CustomCard } from "../../../commons/CustomCard";
 import formatCurrency from "../../../hooks/formatCurrency";
 
 const PayeesChart = ({ data, payeeCount }) => {
-  const endIndexVar = Math.round(payeeCount / 3);
+  const endIndexVar =
+    payeeCount > 10 ? Math.round(payeeCount / 3) : payeeCount - 1;
 
   return (
     <CustomCard>

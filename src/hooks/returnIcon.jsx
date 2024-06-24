@@ -1,6 +1,6 @@
-import CancelIcon from "@mui/icons-material/Cancel";
 import CategoryIcon from "@mui/icons-material/Category";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import CheckIcon from "@mui/icons-material/Check";
+import CloseIcon from "@mui/icons-material/Close";
 import GroupsIcon from "@mui/icons-material/Groups";
 import LeaderboardIcon from "@mui/icons-material/Leaderboard";
 import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
@@ -17,7 +17,7 @@ const iconMap = {
   budgets: () => <ShowChartIcon />,
   categories: () => <CategoryIcon />,
   "daily spend": () => <TodayIcon />,
-  "on track": (value) => (value ? <CheckCircleIcon /> : <CancelIcon />),
+  "on track": (value) => (value ? <CheckIcon /> : <CloseIcon />),
   "past bills": () => <LeaderboardIcon />,
   payees: () => <GroupsIcon />,
   transactions: () => <ReceiptIcon />,
