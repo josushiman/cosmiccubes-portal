@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useParams } from "react-router-dom";
 import { TimePeriodContext } from "../../context/TimePeriodContext";
 import useAsync from "../../hooks/useAsync";
 import {
@@ -29,9 +30,12 @@ const CustomAccordion = styled(Accordion)(() => ({
 }));
 
 const TransactionsSummary = () => {
+  let { categoryName, subcategoryName } = useParams();
   const { timePeriod } = useContext(TimePeriodContext);
   const { data, loading, error } = useAsync(
-    `/transaction-summary${timePeriod}`
+    categoryName
+      ? `/categories-summary/${categoryName}/${subcategoryName}/transactions${timePeriod}`
+      : `/transaction-summary${timePeriod}`
   );
 
   if (loading || !data || error) {
@@ -48,7 +52,9 @@ const TransactionsSummary = () => {
         />
         <InfoCard name="refunds" value={data.refunds.count} />
         <InfoCard name="transactions" value={data.transaction_count} />
-        <LinkedInfoCard icon={true} name="past bills" navLink="/past-bills" />
+        {!categoryName && (
+          <LinkedInfoCard icon={true} name="past bills" navLink="/past-bills" />
+        )}
       </InfoCardGrid>
       <TotalCard value={data.total} />
       <Grid>

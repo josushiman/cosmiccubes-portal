@@ -78,6 +78,10 @@ export const App = () => (
         path="categories-summary/:categoryName/:subcategoryName/payees"
         element={<PayeeSummary />}
       />
+      <Route
+        path="categories-summary/:categoryName/:subcategoryName/transactions"
+        element={<TransactionsSummary />}
+      />
       <Route path="dashboard/budgets" element={<BudgetDashboard />} />
       <Route path="daily-spend" element={<DailySpendSummary />} />
       <Route path="gym-summary" element={<GymSummary />} />

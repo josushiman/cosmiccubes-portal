@@ -264,8 +264,11 @@ const CustomDataTable = ({
         </TableHead>
         <TableBody style={{ backgroundColor: "#121212" }}>
           {(rowsPerPage > 0
-            ? data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            : data
+            ? filteredData.slice(
+                page * rowsPerPage,
+                page * rowsPerPage + rowsPerPage
+              )
+            : filteredData
           ).map((row, index) => {
             return showTransactions ? (
               <TransactionRow key={index} row={row} />
@@ -288,7 +291,7 @@ const CustomDataTable = ({
           <TableRow>
             <TablePagination
               rowsPerPageOptions={[{ label: "All", value: -1 }]}
-              count={data.length}
+              count={filteredData.length}
               rowsPerPage={rowsPerPage}
               page={page}
               slotProps={{
