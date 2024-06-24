@@ -8,6 +8,9 @@ import ReceiptIcon from "@mui/icons-material/Receipt";
 import ShowChartIcon from "@mui/icons-material/ShowChart";
 import TableRowsIcon from "@mui/icons-material/TableRows";
 import TodayIcon from "@mui/icons-material/Today";
+import TrendingDownIcon from "@mui/icons-material/TrendingDown";
+import TrendingFlatIcon from "@mui/icons-material/TrendingFlat";
+import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 
 const iconMap = {
   bills: () => <ReceiptLongIcon />,
@@ -18,6 +21,14 @@ const iconMap = {
   "past bills": () => <LeaderboardIcon />,
   payees: () => <GroupsIcon />,
   transactions: () => <ReceiptIcon />,
+  trending: (value) =>
+    value > 0 ? (
+      <TrendingUpIcon />
+    ) : value < 0 ? (
+      <TrendingDownIcon />
+    ) : (
+      <TrendingFlatIcon />
+    ),
   "view all": () => <TableRowsIcon />,
 };
 

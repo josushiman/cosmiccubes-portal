@@ -20,6 +20,10 @@ export const columnValueFormatMap = {
       : "∞",
   "daily spend": (value) => `£ ${formatCurrency(value, false, true)}`,
   date: (value) => dayjs(value).format("Do"),
+  "last month diff": (value) =>
+    value < 0
+      ? `£ ( ${formatCurrency(-value, false, false)} )`
+      : `£ ${formatCurrency(value, false, false)}`,
   month: (value) => dayjs(value).format("MMMM 'YY"),
   payee: (value) => (value.length > 20 ? value.slice(0, 20) + "..." : value),
   payee_name: (value) =>

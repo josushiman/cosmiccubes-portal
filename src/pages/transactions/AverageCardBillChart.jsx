@@ -1,10 +1,11 @@
 import {
-  LineChart,
+  ComposedChart,
   Line,
   XAxis,
   YAxis,
   ResponsiveContainer,
   Tooltip,
+  Bar,
 } from "recharts";
 import dayjs from "dayjs";
 import formatCurrency from "../../hooks/formatCurrency";
@@ -26,7 +27,7 @@ const AverageCardBillChart = ({
 
   return (
     <ResponsiveContainer width="100%" height={150}>
-      <LineChart
+      <ComposedChart
         data={data}
         margin={{
           top: 5,
@@ -60,6 +61,7 @@ const AverageCardBillChart = ({
           }}
         />
         <Tooltip content={<></>} />
+        <Bar dataKey="total" fill="#313131" />
         {amexLine && (
           <Line
             type="bump"
@@ -90,7 +92,7 @@ const AverageCardBillChart = ({
             strokeOpacity={0.7}
           />
         )}
-      </LineChart>
+      </ComposedChart>
     </ResponsiveContainer>
   );
 };

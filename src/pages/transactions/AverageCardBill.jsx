@@ -43,6 +43,10 @@ const AverageCardBill = ({ data }) => {
         account: "HSBC",
         amount: selectedItem["HSBC CC"],
       },
+      {
+        account: "Total",
+        amount: selectedItem["total"],
+      },
     ];
   }
 
