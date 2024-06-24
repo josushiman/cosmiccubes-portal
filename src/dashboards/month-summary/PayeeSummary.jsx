@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useParams } from "react-router-dom";
 import { TimePeriodContext } from "../../context/TimePeriodContext";
 import HandleDataLoad from "../../commons/HandleDataLoad";
 import useAsync from "../../hooks/useAsync";
@@ -8,16 +9,17 @@ import InfoCardGrid from "../../commons/InfoCardGrid";
 import InfoCard from "../../commons/InfoCard";
 import DefaultPageGrid from "../../commons/DefaultPageGrid";
 
-// Payees broken down by:
-//  Number of unique payees (no bills)
-//  Payee spent on the most
-//  Bar Graph on payees sort by most spent to least
 //  Data Table below to allow filter and result (show the big spender by default)
 //  Payee nice name
 
 const PayeeSummary = () => {
+  let { categoryName, subcategoryName } = useParams();
   const { timePeriod } = useContext(TimePeriodContext);
-  const { data, loading, error } = useAsync(`/payee-summary${timePeriod}`);
+  const { data, loading, error } = useAsync(
+    categoryName
+      ? `/categories-summary/${categoryName}/${subcategoryName}/payees${timePeriod}`
+      : `/payee-summary${timePeriod}`
+  );
 
   if (loading || !data || error) {
     return <HandleDataLoad data={data} loading={loading} error={error} />;

@@ -74,6 +74,10 @@ export const App = () => (
       options={{ label: "Server Knowledge" }}
     />
     <CustomRoutes>
+      <Route
+        path="categories-summary/:categoryName/:subcategoryName/payees"
+        element={<PayeeSummary />}
+      />
       <Route path="dashboard/budgets" element={<BudgetDashboard />} />
       <Route path="daily-spend" element={<DailySpendSummary />} />
       <Route path="gym-summary" element={<GymSummary />} />

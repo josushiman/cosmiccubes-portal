@@ -47,6 +47,7 @@ const PayeesChart = ({ data, payeeCount }) => {
             stroke="white"
             domain={[0, "dataMax"]}
             tickMargin={5}
+            allowDecimals={false}
           />
           <Bar yAxisId="left" dataKey="total" fill="#C06969" />
           <Bar yAxisId="right" dataKey="count" fill="#F0F0C9" />
