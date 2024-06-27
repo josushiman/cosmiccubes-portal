@@ -67,6 +67,7 @@ const CustomMenu = ({ dense = false }) => {
             <Menu.DashboardItem primaryText="Home" leftIcon={<HomeIcon />} />
             <Menu.ResourceItem name="portal/admin/budgets" />
             <Menu.ResourceItem name="portal/admin/ynab-categories" />
+            {/* TODO  <Menu.ResourceItem name="portal/admin/investments" /> */}
             <Menu.ResourceItem name="portal/admin/loans-and-renewals" />
             <Menu.ResourceItem name="portal/admin/savings" />
             <Menu.ResourceItem name="portal/admin/ynab-server-knowledge" />
