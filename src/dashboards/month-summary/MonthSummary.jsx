@@ -8,7 +8,6 @@ import HandleDataLoad from "../../commons/HandleDataLoad";
 import LinkedInfoCard from "../../commons/LinkedInfoCard";
 import InfoCardGrid from "../../commons/InfoCardGrid";
 import DefaultPageGrid from "../../commons/DefaultPageGrid";
-import InvestmentsOverview from "./components/InvestmentsOverview";
 
 const MonthSummary = () => {
   const { isCurrentMonth, timePeriod } = useContext(TimePeriodContext);
@@ -67,7 +66,7 @@ const MonthSummary = () => {
           );
         })}
       </InfoCardGrid>
-      <InvestmentsOverview />
+      {/* <InvestmentsOverview /> */}
       <FinancialOverview data={data.income_expenses} />
     </DefaultPageGrid>
   );
