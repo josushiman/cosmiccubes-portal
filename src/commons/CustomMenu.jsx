@@ -9,6 +9,7 @@ import TranslateIcon from "@mui/icons-material/Translate";
 import BoltIcon from "@mui/icons-material/Bolt";
 import AirplaneTicketIcon from "@mui/icons-material/AirplaneTicket";
 import HomeIcon from "@mui/icons-material/Home";
+import SubscriptionsIcon from "@mui/icons-material/Subscriptions";
 import CustomSubMenu from "./CustomSubMenu";
 
 const LogoutMenuButton = ({ ref }) => {
@@ -25,6 +26,8 @@ const LogoutMenuButton = ({ ref }) => {
     />
   );
 };
+
+// When adding custom routes - you need to ensure the route path exists in App.jsx
 
 const CustomMenu = ({ dense = false }) => {
   const [state, setState] = useState({
@@ -68,7 +71,11 @@ const CustomMenu = ({ dense = false }) => {
             <Menu.ResourceItem name="portal/admin/budgets" />
             <Menu.ResourceItem name="portal/admin/ynab-categories" />
             {/* TODO  <Menu.ResourceItem name="portal/admin/investments" /> */}
-            <Menu.ResourceItem name="portal/admin/loans-and-renewals" />
+            <Menu.Item
+              to="loans-and-renewals/overview"
+              primaryText="Loans & Renewals"
+              leftIcon={<SubscriptionsIcon />}
+            />
             <Menu.ResourceItem name="portal/admin/savings" />
             <Menu.ResourceItem name="portal/admin/ynab-server-knowledge" />
             <Menu.ResourceItem name="portal/admin/ynab-transaction" />

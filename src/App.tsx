@@ -22,6 +22,7 @@ import InsuranceDetails from "./pages/loans-and-renewals/insurance/InsuranceDeta
 import DailySpendSummary from "./dashboards/month-summary/DailySpendSummary";
 import BudgetDashboard from "./pages/budgets/BudgetDashboard";
 import PastBills from "./pages/transactions/PastBills";
+import LoansAndRenewalsOverview from "./pages/loans-and-renewals/LoansAndRenewalsOverview";
 
 const defaultTheme = defaultDarkTheme;
 
@@ -86,6 +87,10 @@ export const App = () => (
       <Route path="daily-spend" element={<DailySpendSummary />} />
       <Route path="gym-summary" element={<GymSummary />} />
       <Route path="insurance/details" element={<InsuranceDetails />} />
+      <Route
+        path="loans-and-renewals/overview"
+        element={<LoansAndRenewalsOverview />}
+      />
       <Route path="monthly-summary/bills" element={<BillsSummary />} />
       <Route
         path="monthly-summary/categories"
