@@ -26,6 +26,7 @@ const EntityEdit = () => {
     return {
       name: data.name,
       provider: data.provider,
+      closed: data.closed,
       payment_date: data.payment_date,
       payment_amount: data.payment_amount,
       starting_balance: data.starting_balance,
