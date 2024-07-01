@@ -7,6 +7,7 @@ import {
   ReferenceInput,
   AutocompleteInput,
   DateInput,
+  BooleanInput,
 } from "react-admin";
 import dayjs from "dayjs";
 
@@ -43,6 +44,7 @@ const EntityEdit = () => {
         <TextInput source="provider" fullWidth />
         <DateInput source="start_date" validate={[required()]} />
         <DateInput source="end_date" />
+        <BooleanInput source="closed" />
         <NumberInput source="payment_date" />
         <NumberInput
           source="payment_amount"
