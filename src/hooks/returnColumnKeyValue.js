@@ -18,6 +18,7 @@ export const columnValueFormatMap = {
       : value == 0
       ? `£ ${formatCurrency(0, false, true)}`
       : "∞",
+  "credit util.": (value) => `${value} %`,
   "daily spend": (value) => `£ ${formatCurrency(value, false, true)}`,
   date: (value) => dayjs(value).format("Do"),
   "last month diff": (value) =>
