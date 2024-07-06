@@ -16,7 +16,7 @@ const Insurance = () => {
   const bind = useGesture(
     {
       onDrag: ({ down, movement: [mx], direction: [dx], distance, cancel }) => {
-        if (distance > 50) cancel(); // Cancel the gesture if it exceeds XXXpx
+        if (distance > 100) cancel(); // Cancel the gesture if it exceeds XXXpx
 
         api.start({ x: down ? mx : 0, immediate: down });
 
