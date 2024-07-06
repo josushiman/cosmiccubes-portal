@@ -7,7 +7,7 @@ const InsuranceDetails = ({ data }) => {
   return (
     <Grid container flexDirection={"column"} rowGap={"0.5rem"}>
       <Grid container justifyContent={"space-between"}>
-        <Typography>Name</Typography>
+        <Typography>Type</Typography>
         <Typography fontWeight={200}>{data.name}</Typography>
       </Grid>
       <Grid container justifyContent={"space-between"}>

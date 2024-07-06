@@ -59,13 +59,21 @@ const Insurance = () => {
           </Grid>
         ))}
       </Grid>
-      <Grid container justifyContent={"center"} sx={{ color: "#C06969" }}>
+      <Grid
+        container
+        justifyContent={"center"}
+        columnGap={"0.5rem"}
+        sx={{ color: "#F0F0C9" }}
+      >
         {data.map((_, i) => (
           <Grid key={i}>
             {i === index ? (
               <CircleIcon fontSize="small" />
             ) : (
-              <RadioButtonUncheckedIcon fontSize="small" />
+              <RadioButtonUncheckedIcon
+                fontSize="small"
+                onClick={() => setIndex(i)}
+              />
             )}
           </Grid>
         ))}
