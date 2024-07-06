@@ -37,17 +37,17 @@ const LoansAndRenewalsOverview = () => {
       <Grid>
         <CustomAccordion
           name="insurance"
-          value={data.month_totals.insurance}
+          value={data.totals.insurance}
           details={<Insurance />}
         />
         <CustomAccordion
           name="loans"
-          value={data.month_totals.loans}
+          value={data.totals.loans}
           details={<LoanPortfolio />}
         />
         <CustomAccordion
           name="subscriptions"
-          value={data.month_totals.subscriptions}
+          value={data.totals.subscriptions}
           details={"blah"}
         />
       </Grid>
