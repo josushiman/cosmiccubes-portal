@@ -1,5 +1,6 @@
 const pathMap = {
   "/": "Home",
+  "/loans-and-renewals/overview": "Loans & renewals",
   "/monthly-summary/bills": "Bills summary",
   "/monthly-summary/categories": "Categories summary",
   "/monthly-summary/payees": "Payee summary",

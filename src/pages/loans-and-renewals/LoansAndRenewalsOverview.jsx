@@ -28,7 +28,11 @@ const LoansAndRenewalsOverview = () => {
         <InfoCard name="credit util." value={data.credit.utilisation} />
         <InfoCard name="loans" value={data.counts.loans} />
         <InfoCard name="subscriptions" value={data.counts.subscriptions} />
-        <InfoCard name="total credit" value={data.credit.total} span={2} />
+        <InfoCard
+          name="total credit spent"
+          value={data.credit.total}
+          span={2}
+        />
         <LinkedInfoCard
           icon
           name="view all"
