@@ -92,8 +92,6 @@ const TimePeriodProvider = ({ children }) => {
   };
 
   const resetTimeRange = () => {
-    console.debug(timePeriod);
-
     const monthsParts = timePeriod.split("?months=");
     let numParts = monthsParts.length;
 

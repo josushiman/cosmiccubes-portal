@@ -5,7 +5,6 @@ import returnIcon from "../hooks/returnIcon";
 import { returnValue } from "../hooks/returnValue";
 
 const InfoCard = ({ icon, name, value = undefined, span = undefined }) => {
-  console.debug("Props passed down:", icon, name, value);
   return (
     <CustomCard
       sx={{
