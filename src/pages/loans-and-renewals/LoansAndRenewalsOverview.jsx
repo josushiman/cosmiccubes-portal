@@ -1,6 +1,9 @@
 import Grid from "@mui/material/Unstable_Grid2";
 import { Typography } from "@mui/material";
 import DefaultPageGrid from "../../commons/DefaultPageGrid";
+import formatCurrency from "../../hooks/formatCurrency";
+import { CustomCard } from "../../commons/CustomCard";
+import { ThickBorderLinearProgressWithBackground } from "../../commons/BorderLinearProgress";
 import InfoCard from "../../commons/InfoCard";
 import InfoCardGrid from "../../commons/InfoCardGrid";
 import LinkedInfoCard from "../../commons/LinkedInfoCard";
@@ -24,10 +27,35 @@ const LoansAndRenewalsOverview = () => {
 
   return (
     <DefaultPageGrid>
-      <InfoCardGrid rows={2}>
+      <InfoCardGrid rows={3}>
         <InfoCard name="credit util." value={data.credit.utilisation} />
-        <InfoCard name="loans" value={data.counts.loans} />
-        <InfoCard name="subscriptions" value={data.counts.subscriptions} />
+        <CustomCard
+          sx={{
+            gridColumn: "span 2",
+          }}
+        >
+          <Grid
+            container
+            flexDirection={"column"}
+            height={"100%"}
+            width={"100%"}
+            justifyContent={"center"}
+          >
+            <ThickBorderLinearProgressWithBackground
+              variant="determinate"
+              value={data.credit.utilisation}
+            />
+            <Typography variant="caption" alignSelf={"end"}>
+              <strong>
+                £ {formatCurrency(data.credit.total, false, true)}
+              </strong>{" "}
+              of{" "}
+              <strong>
+                £ {formatCurrency(data.credit.limit, false, true)}
+              </strong>
+            </Typography>
+          </Grid>
+        </CustomCard>
         <InfoCard
           name="total credit spent"
           value={data.credit.total}
@@ -38,6 +66,9 @@ const LoansAndRenewalsOverview = () => {
           name="view all"
           navLink="/portal/admin/loans-and-renewals"
         />
+        <InfoCard name="insurance" value={data.counts.insurance} />
+        <InfoCard name="loans" value={data.counts.loans} />
+        <InfoCard name="subscriptions" value={data.counts.subscriptions} />
       </InfoCardGrid>
       <Grid container flexDirection={"column"}>
         <Typography
