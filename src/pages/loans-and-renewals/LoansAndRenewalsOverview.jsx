@@ -1,4 +1,5 @@
 import Grid from "@mui/material/Unstable_Grid2";
+import { Typography } from "@mui/material";
 import DefaultPageGrid from "../../commons/DefaultPageGrid";
 import InfoCard from "../../commons/InfoCard";
 import InfoCardGrid from "../../commons/InfoCardGrid";
@@ -34,7 +35,14 @@ const LoansAndRenewalsOverview = () => {
           navLink="/portal/admin/loans-and-renewals"
         />
       </InfoCardGrid>
-      <Grid>
+      <Grid container flexDirection={"column"}>
+        <Typography
+          variant="caption"
+          alignSelf={"flex-end"}
+          marginRight={"0.5rem"}
+        >
+          Cost per year
+        </Typography>
         <CustomAccordion
           name="insurance"
           value={data.totals.insurance}
