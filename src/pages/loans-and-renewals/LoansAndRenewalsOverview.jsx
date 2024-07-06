@@ -7,11 +7,11 @@ import { ThickBorderLinearProgressWithBackground } from "../../commons/BorderLin
 import InfoCard from "../../commons/InfoCard";
 import InfoCardGrid from "../../commons/InfoCardGrid";
 import LinkedInfoCard from "../../commons/LinkedInfoCard";
-import Insurance from "./Insurance";
 import LoanPortfolio from "./LoanPortfolio";
 import CustomAccordion from "../../commons/CustomAccordion";
 import useAsync from "../../hooks/useAsync";
 import HandleDataLoad from "../../commons/HandleDataLoad";
+import Insurance from "./Insurance";
 
 const LoansAndRenewalsOverview = () => {
   const { data, loading, error } = useAsync("/loans-renewals-overview");
@@ -19,15 +19,20 @@ const LoansAndRenewalsOverview = () => {
   if (loading || !data || error) {
     return <HandleDataLoad data={data} loading={loading} error={error} />;
   }
-  //  Count of: Direct debits, Loans, Subscriptions
-  //  Total Credit amount being used
-  //  TODO get credit utilisation stats. Save credit limit per account
-  //  Total yearly sum of: Direct Debits, Loans, Renewals, Subscriptions
-  //  TBD - What detail for each item?
 
   return (
     <DefaultPageGrid>
       <InfoCardGrid rows={3}>
+        <InfoCard
+          name="total credit spent"
+          value={data.credit.total}
+          span={2}
+        />
+        <LinkedInfoCard
+          icon
+          name="view all"
+          navLink="/portal/admin/loans-and-renewals"
+        />
         <InfoCard name="credit util." value={data.credit.utilisation} />
         <CustomCard
           sx={{
@@ -56,16 +61,6 @@ const LoansAndRenewalsOverview = () => {
             </Typography>
           </Grid>
         </CustomCard>
-        <InfoCard
-          name="total credit spent"
-          value={data.credit.total}
-          span={2}
-        />
-        <LinkedInfoCard
-          icon
-          name="view all"
-          navLink="/portal/admin/loans-and-renewals"
-        />
         <InfoCard name="insurance" value={data.counts.insurance} />
         <InfoCard name="loans" value={data.counts.loans} />
         <InfoCard name="subscriptions" value={data.counts.subscriptions} />
@@ -82,6 +77,7 @@ const LoansAndRenewalsOverview = () => {
           name="insurance"
           value={data.totals.insurance}
           details={<Insurance />}
+          // details={<SwipeableGrid components={components} />}
         />
         <CustomAccordion
           name="loans"

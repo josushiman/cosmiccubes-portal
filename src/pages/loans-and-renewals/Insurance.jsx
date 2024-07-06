@@ -1,34 +1,76 @@
-import { Typography } from "@mui/material";
+import { useState } from "react";
+import { useSpring, animated } from "@react-spring/web";
+import { useGesture } from "react-use-gesture";
 import Grid from "@mui/material/Unstable_Grid2";
-import { Link } from "react-router-dom";
+import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
+import CircleIcon from "@mui/icons-material/Circle";
 import useAsync from "../../hooks/useAsync";
 import HandleDataLoad from "../../commons/HandleDataLoad";
+import InsuranceDetails from "./insurance/InsuranceDetails";
 
 const Insurance = () => {
   const { data, loading, error } = useAsync("/insurance");
+  const [index, setIndex] = useState(0);
+  const [{ x }, api] = useSpring(() => ({ x: 0 }));
+
+  const bind = useGesture(
+    {
+      onDrag: ({ down, movement: [mx], direction: [dx], distance, cancel }) => {
+        if (distance > 50) cancel(); // Cancel the gesture if it exceeds XXXpx
+
+        api.start({ x: down ? mx : 0, immediate: down });
+
+        if (!down && distance > 5) {
+          if (dx > 0) {
+            // Swiped right
+            setIndex((prevIndex) =>
+              prevIndex > 0 ? prevIndex - 1 : prevIndex
+            );
+          } else if (dx < 0) {
+            // Swiped left
+            setIndex((prevIndex) =>
+              prevIndex < data.length - 1 ? prevIndex + 1 : prevIndex
+            );
+          }
+        }
+      },
+    },
+    {
+      drag: { filterTaps: true, axis: "x" },
+    }
+  );
 
   if (loading || !data || error) {
     return <HandleDataLoad data={data} loading={loading} error={error} />;
   }
 
   return (
-    <Link
-      to={`/insurance/details`}
-      state={{ data: data }}
-      style={{
-        textDecoration: "none",
-        color: "inherit",
-      }}
-    >
-      <Grid container flexDirection={"column"} rowGap={"0.5rem"}>
-        {data.map((value, index) => (
-          <Grid container key={index} justifyContent={"space-between"}>
-            <Typography textTransform={"capitalize"}>{value.name}</Typography>
-            <Typography>{value.end_date}</Typography>
+    <Grid container flexDirection={"column"} rowGap={"0.5rem"}>
+      <Grid
+        container
+        flexDirection={"column"}
+        {...bind()}
+        component={animated.div}
+        style={{ x }}
+      >
+        {data.map((_, i) => (
+          <Grid key={i} style={{ display: i === index ? "block" : "none" }}>
+            <InsuranceDetails data={data[i]} />
           </Grid>
         ))}
       </Grid>
-    </Link>
+      <Grid container justifyContent={"center"} sx={{ color: "#C06969" }}>
+        {data.map((_, i) => (
+          <Grid key={i}>
+            {i === index ? (
+              <CircleIcon fontSize="small" />
+            ) : (
+              <RadioButtonUncheckedIcon fontSize="small" />
+            )}
+          </Grid>
+        ))}
+      </Grid>
+    </Grid>
   );
 };
 
