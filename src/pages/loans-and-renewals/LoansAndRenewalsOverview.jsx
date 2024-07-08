@@ -7,11 +7,11 @@ import { ThickBorderLinearProgressWithBackground } from "../../commons/BorderLin
 import InfoCard from "../../commons/InfoCard";
 import InfoCardGrid from "../../commons/InfoCardGrid";
 import LinkedInfoCard from "../../commons/LinkedInfoCard";
-import LoanPortfolio from "./LoanPortfolio";
 import CustomAccordion from "../../commons/CustomAccordion";
 import useAsync from "../../hooks/useAsync";
 import HandleDataLoad from "../../commons/HandleDataLoad";
 import Insurance from "./Insurance";
+import LoansOverview from "./LoansOverview";
 
 const LoansAndRenewalsOverview = () => {
   const { data, loading, error } = useAsync("/loans-renewals-overview");
@@ -77,12 +77,11 @@ const LoansAndRenewalsOverview = () => {
           name="insurance"
           value={data.totals.insurance}
           details={<Insurance />}
-          // details={<SwipeableGrid components={components} />}
         />
         <CustomAccordion
           name="loans"
           value={data.totals.loans}
-          details={<LoanPortfolio />}
+          details={<LoansOverview loans={data.loans.data} />}
         />
         <CustomAccordion
           name="subscriptions"

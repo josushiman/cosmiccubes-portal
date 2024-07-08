@@ -7,7 +7,7 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import CustomDataTable from "./CustomDataTable";
 
-const CustomAccordion = ({ name, value, dataTable, details }) => {
+const CustomAccordion = ({ name, value, dataTable, details = null }) => {
   return (
     <Accordion
       sx={{
@@ -16,16 +16,12 @@ const CustomAccordion = ({ name, value, dataTable, details }) => {
         borderTopRightRadius: "0.25rem",
       }}
     >
-      <AccordionSummary
-        expandIcon={<ExpandMoreIcon />}
-        aria-controls="panel1-content"
-        id="panel1-header"
-      >
+      <AccordionSummary expandIcon={<ExpandMoreIcon />}>
         <Typography
           variant="h6"
           fontWeight={300}
           textTransform={"capitalize"}
-          sx={{ alignSelf: "center", width: "50%", flexShrink: 0 }}
+          sx={{ alignSelf: "center", width: "40%", flexShrink: 0 }}
         >
           {name}
         </Typography>
