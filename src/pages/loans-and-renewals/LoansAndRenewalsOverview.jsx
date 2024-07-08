@@ -12,6 +12,7 @@ import useAsync from "../../hooks/useAsync";
 import HandleDataLoad from "../../commons/HandleDataLoad";
 import Insurance from "./Insurance";
 import LoansOverview from "./LoansOverview";
+import Subscriptions from "./Subscriptions";
 
 const LoansAndRenewalsOverview = () => {
   const { data, loading, error } = useAsync("/loans-renewals-overview");
@@ -86,7 +87,7 @@ const LoansAndRenewalsOverview = () => {
         <CustomAccordion
           name="subscriptions"
           value={data.totals.subscriptions}
-          details={"blah"}
+          details={<Subscriptions />}
         />
       </Grid>
     </DefaultPageGrid>
