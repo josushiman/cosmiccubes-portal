@@ -12,6 +12,7 @@ import TodayIcon from "@mui/icons-material/Today";
 import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 import TrendingFlatIcon from "@mui/icons-material/TrendingFlat";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+import TypeSpecimenIcon from "@mui/icons-material/TypeSpecimen";
 
 const iconMap = {
   bills: () => <ReceiptLongIcon />,
@@ -32,6 +33,7 @@ const iconMap = {
       <TrendingFlatIcon />
     ),
   "view all": () => <TableRowsIcon />,
+  "workout types": () => <TypeSpecimenIcon />,
 };
 
 const returnIcon = (name, value = undefined) => {

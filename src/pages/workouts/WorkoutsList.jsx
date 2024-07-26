@@ -4,39 +4,38 @@ import {
   TextField,
   ReferenceField,
   NumberField,
+  DateField,
 } from "react-admin";
-import CustomCreateButton from "../commons/CustomCreateButton";
 import DefaultPageGrid from "../../commons/DefaultPageGrid";
+import InfoCardGrid from "../../commons/InfoCardGrid";
+import LinkedInfoCard from "../../commons/LinkedInfoCard";
+import InfoCard from "../../commons/InfoCard";
 
 const EntityList = () => {
   return (
     <DefaultPageGrid>
-      <CustomCreateButton resource={"portal/admin/budgets"} />
+      <InfoCardGrid rows={1}>
+        <InfoCard name="avg. duration" value={47} />
+        <InfoCard name="avg. cal" value={376} />
+        <LinkedInfoCard
+          icon={true}
+          name="workout types"
+          navLink="/portal/admin/workout-types"
+        />
+      </InfoCardGrid>
       <List actions={null} hasCreate={false}>
-        <Datagrid bulkActionButtons={false} rowClick="edit">
+        <Datagrid bulkActionButtons={false}>
           <ReferenceField
-            source="category.id"
-            reference="portal/admin/ynab-categories"
-            label="Category Group"
-            sortable={false}
-          >
-            <TextField source="category_group_name" />
-          </ReferenceField>
-          <ReferenceField
-            source="category.id"
-            reference="portal/admin/ynab-categories"
-            label="Category"
+            source="type.id"
+            reference="portal/admin/workout-type"
+            label="Type"
             sortable={false}
           >
             <TextField source="name" />
           </ReferenceField>
-          <NumberField
-            source="amount"
-            options={{
-              style: "currency",
-              currency: "GBP",
-            }}
-          />
+          <NumberField source="cals_burned" />
+          <NumberField source="duration" />
+          <DateField source="start_time" />
         </Datagrid>
       </List>
     </DefaultPageGrid>
