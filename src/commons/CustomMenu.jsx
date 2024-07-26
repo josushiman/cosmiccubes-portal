@@ -86,7 +86,9 @@ const CustomMenu = ({ dense = false }) => {
             name="Gym Summary"
             icon={<FitnessCenterIcon />}
             dense={dense}
-          ></CustomSubMenu>
+          >
+            <Menu.ResourceItem name="portal/admin/workouts" />
+          </CustomSubMenu>
           <CustomSubMenu
             handleToggle={() => handleToggle("menuLanguages")}
             isOpen={state.menuLanguages}

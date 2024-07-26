@@ -23,6 +23,8 @@ import DailySpendSummary from "./dashboards/month-summary/DailySpendSummary";
 import BudgetDashboard from "./pages/budgets/BudgetDashboard";
 import PastBills from "./pages/transactions/PastBills";
 import LoansAndRenewalsOverview from "./pages/loans-and-renewals/LoansAndRenewalsOverview";
+import workouts from "./pages/workouts";
+import workoutTypes from "./pages/workouts/types";
 
 const defaultTheme = defaultDarkTheme;
 
@@ -63,6 +65,16 @@ export const App = () => (
       name="portal/admin/savings"
       {...savings}
       options={{ label: "Savings" }}
+    />
+    <Resource
+      name="portal/admin/workouts"
+      {...workouts}
+      options={{ label: "Workouts" }}
+    />
+    <Resource
+      name="portal/admin/workout-types"
+      {...workoutTypes}
+      options={{ label: "Workout Types" }}
     />
     <Resource
       name="portal/admin/ynab-transaction"
