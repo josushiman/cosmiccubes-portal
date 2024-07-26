@@ -20,6 +20,7 @@ import serverKnowledge from "./pages/server-knowledge";
 import transactions from "./pages/transactions";
 import InsuranceDetails from "./pages/loans-and-renewals/insurance/InsuranceDetails";
 import DailySpendSummary from "./dashboards/month-summary/DailySpendSummary";
+import heartRates from "./pages/heart-rates";
 import BudgetDashboard from "./pages/budgets/BudgetDashboard";
 import PastBills from "./pages/transactions/PastBills";
 import LoansAndRenewalsOverview from "./pages/loans-and-renewals/LoansAndRenewalsOverview";
@@ -45,6 +46,11 @@ export const App = () => (
       name="portal/admin/ynab-categories"
       {...categories}
       options={{ label: "Categories" }}
+    />
+    <Resource
+      name="portal/admin/heart-rates"
+      {...heartRates}
+      options={{ label: "Heart Rates" }}
     />
     <Resource
       name="portal/admin/loans-and-renewals"

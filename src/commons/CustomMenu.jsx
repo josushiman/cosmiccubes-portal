@@ -87,6 +87,7 @@ const CustomMenu = ({ dense = false }) => {
             icon={<FitnessCenterIcon />}
             dense={dense}
           >
+            <Menu.ResourceItem name="portal/admin/heart-rates" />
             <Menu.ResourceItem name="portal/admin/workouts" />
           </CustomSubMenu>
           <CustomSubMenu
