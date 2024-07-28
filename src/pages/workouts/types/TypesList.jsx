@@ -5,7 +5,7 @@ import DefaultPageGrid from "../../../commons/DefaultPageGrid";
 const EntityList = () => {
   return (
     <DefaultPageGrid>
-      <CustomCreateButton resource={"portal/admin/budgets"} />
+      <CustomCreateButton resource={"portal/admin/workout-types"} />
       <List actions={null} hasCreate={false}>
         <Datagrid bulkActionButtons={false} rowClick="edit">
           <TextField source="name" />
