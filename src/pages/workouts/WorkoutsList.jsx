@@ -27,15 +27,15 @@ const EntityList = () => {
         <Datagrid bulkActionButtons={false}>
           <ReferenceField
             source="type.id"
-            reference="portal/admin/workout-type"
+            reference="portal/admin/workout-types"
             label="Type"
             sortable={false}
           >
             <TextField source="name" />
           </ReferenceField>
-          <NumberField source="cals_burned" />
+          <NumberField source="cals_burned" label="Cals" />
           <NumberField source="duration" />
-          <DateField source="start_time" />
+          <DateField source="start_time" label="Start" showTime />
         </Datagrid>
       </List>
     </DefaultPageGrid>
